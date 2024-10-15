@@ -6,13 +6,13 @@
   }
 }
 
-@mixin for-tablet-portrait {
+@mixin for-tablet {
   @media (min-width: $mobile + 1) and (max-width: $tablet-portrait) {
     @content;
   }
 }
 
-@mixin for-tablet-landscape {
+@mixin for-laptop {
   @media (min-width: $tablet-portrait + 1) and (max-width: $tablet-landscape) {
     @content;
   }
