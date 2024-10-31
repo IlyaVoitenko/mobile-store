@@ -17,6 +17,9 @@
   @include for-laptop {
     justify-content: space-evenly;
   }
+  @include for-desktop {
+    justify-content: space-evenly;
+  }
   .showMenu {
     display: flex !important;
   }
@@ -283,6 +286,11 @@
     }
     @include for-laptop {
       width: 36%;
+      justify-content: space-between;
+    }
+
+    @include for-desktop {
+      width: 30%;
       justify-content: space-between;
     }
   }

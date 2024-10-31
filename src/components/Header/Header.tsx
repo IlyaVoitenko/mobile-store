@@ -6,7 +6,6 @@ import loop from "../../assets/loop.svg";
 
 const Header = () => {
   const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
-  console.log(isShowMenu);
   return (
     <header className="containerHeader">
       <div className="containerInfoHeader">
