@@ -6,6 +6,23 @@
   flex-direction: column;
   padding-top: 18px;
 }
+.showMenu {
+  display: flex !important;
+}
+.notShowMenu {
+  @include for-mobile {
+    display: none !important;
+  }
+  @include for-tablet {
+    display: flex;
+  }
+  @include for-laptop {
+    display: flex;
+  }
+  @include for-desktop {
+    display: flex;
+  }
+}
 .containerInfoHeader {
   display: flex;
   align-items: center;
@@ -19,23 +36,6 @@
   }
   @include for-desktop {
     justify-content: space-evenly;
-  }
-  .showMenu {
-    display: flex !important;
-  }
-  .notShowMenu {
-    @include for-mobile {
-      display: none !important;
-    }
-    @include for-tablet {
-      display: block;
-    }
-    @include for-laptop {
-      display: block;
-    }
-    @include for-desktop {
-      display: block;
-    }
   }
   .btnShowMenu {
     display: none;
@@ -66,7 +66,6 @@
       width: 53%;
     }
   }
-
   @include for-mobile {
     .logoContainer {
       display: flex;
@@ -293,5 +292,193 @@
       width: 30%;
       justify-content: space-between;
     }
+  }
+}
+.containerCategoriesHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $headerCategoriesBg;
+  height: 51px;
+  margin-top: 18px;
+
+  @include for-mobile {
+    height: 250px;
+  }
+
+  .CategoriesHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include for-mobile {
+      flex-direction: column;
+      justify-content: space-around;
+      height: 90%;
+    }
+    @include for-tablet {
+      width: 95.4%;
+    }
+    @include for-laptop {
+      width: 92.6%;
+    }
+    @include for-desktop {
+      width: 77%;
+    }
+  }
+  .containerShoppingInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85px;
+    height: 28px;
+
+    @include for-tablet {
+      width: 70px;
+    }
+
+    img {
+      width: 18px;
+      height: 18px;
+
+      @include for-tablet {
+        width: 15px;
+        height: 15px;
+      }
+    }
+
+    @include for-tablet {
+      margin-right: 1.5%;
+    }
+    @include for-laptop {
+      margin-right: 3%;
+    }
+    @include for-desktop {
+      margin-right: 2%;
+    }
+  }
+  .containerMenuAndDropdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include for-mobile {
+      flex-direction: column;
+    }
+    @include for-tablet {
+      width: 85%;
+    }
+    @include for-laptop {
+      width: 80%;
+    }
+    @include for-desktop {
+      width: 80%;
+    }
+  }
+  .itemsInfoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .summaText {
+    font-family: $fontFamily;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.32px;
+    text-align: left;
+
+    @include for-tablet {
+      font-size: 10px;
+    }
+  }
+
+  .amountItems {
+    font-family: $fontFamily;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 14.32px;
+    text-align: left;
+
+    @include for-tablet {
+      font-size: 10px;
+    }
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+
+    .dropBtn {
+      height: 48px;
+      width: 190px;
+      background-color: $blue;
+      color: $white;
+      font-family: $fontFamily;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16.71px;
+      border: none;
+
+      @include for-mobile {
+        margin-bottom: 10px;
+      }
+      @include for-laptop {
+        width: 150px;
+      }
+      @include for-tablet {
+        width: 120px;
+      }
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      width: 100%;
+      height: 100px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content Link {
+      color: black;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+  }
+  .dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .dropdown:hover .dropBtn {
+    background-color: $blueHover;
+  }
+  .catalogMenuText {
+    font-family: $fontFamily;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16.71px;
+    text-align: left;
+    text-decoration: none;
+    color: $colorTextGrey;
+
+    @include for-laptop {
+      font-size: 12px;
+    }
+    @include for-tablet {
+      font-size: 10px;
+    }
+  }
+  .SelectHeader {
+    border: none;
+    background-color: $headerCategoriesBg;
+  }
+  .SelectHeader:focus {
+    outline: none;
   }
 }
