@@ -6,6 +6,11 @@
   flex-direction: column;
   padding-top: 18px;
 }
+.containerInfoHeaderContext {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .showMenu {
   display: flex !important;
 }
@@ -27,15 +32,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   @include for-mobile {
     flex-direction: column;
+    width: 100%;
+  }
+  @include for-tablet {
+    width: 100%;
   }
   @include for-laptop {
     justify-content: space-evenly;
+    width: 100%;
   }
   @include for-desktop {
-    justify-content: space-evenly;
+    justify-content: space-between;
+    width: 77%;
   }
   .btnShowMenu {
     display: none;
@@ -65,6 +75,9 @@
     @include for-laptop {
       width: 53%;
     }
+    @include for-desktop {
+      width: 53%;
+    }
   }
   @include for-mobile {
     .logoContainer {
@@ -83,6 +96,9 @@
       font-size: 20px;
       font-weight: 600;
       font-family: $fontFamily;
+      @include for-desktop {
+        font-size: 27px;
+      }
     }
     @include for-mobile {
       width: 150px;
@@ -289,7 +305,7 @@
     }
 
     @include for-desktop {
-      width: 30%;
+      width: 40%;
       justify-content: space-between;
     }
   }
