@@ -1,0 +1,14 @@
+@use "./mediaQuery" as *;
+@use "./variables" as *;
+
+@mixin containerResponsiveWidth {
+  @include for-laptop {
+    width: $widthContextLaptop;
+  }
+  @include for-desktop {
+    width: $widthContextDesktop;
+  }
+  @include for-tablet {
+    width: $widthContextTablet;
+  }
+}

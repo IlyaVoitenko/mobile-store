@@ -7,7 +7,7 @@ import shoppingBag from "../../assets/shopping-bag.svg";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [isShowMenu, setIsShowMenu] = useState<boolean>(false);
+  const [isShowMenu, setIsShowMenu] = useState<boolean>(true);
   const [iPhoneSelect, setIPhoneSelect] = useState<string>("iPhone");
   const [appleStoreSelect, setAppleStoreSelect] =
     useState<string>("Apple Store");

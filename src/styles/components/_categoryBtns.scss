@@ -1,0 +1,253 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/mediaQuery" as *;
+
+.containerCategoryLinks {
+  display: flex;
+
+  @include for-mobile {
+    flex-wrap: wrap;
+  }
+}
+.containerCategory {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+
+  @include for-mobile {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  @include containerResponsiveWidth;
+}
+
+.categoryLinks {
+  text-decoration: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex: 1;
+  height: 71px;
+  border-left: 1px $borderCategoryBtns;
+  background-color: $white;
+  border-left: solid 1px $borderCategoryBtns;
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
+
+  @include for-tablet {
+    height: 55px;
+  }
+
+  span {
+    color: $categoryTextColor;
+  }
+}
+.categoryLinks:first-child {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-left: none;
+  @include for-mobile {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 0px;
+  }
+}
+.categoryLinks:nth-child(4) {
+  @include for-mobile {
+    border-top-right-radius: 5px;
+    border-left: none;
+  }
+}
+.categoryLinks:nth-child(5) {
+  @include for-mobile {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 5px;
+    border-left: 1px solid $white;
+  }
+}
+.categoryLinks:last-child {
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+
+  @include for-mobile {
+    border-top-right-radius: 0px;
+
+    border-bottom-right-radius: 5px;
+  }
+}
+
+.iPhoneContextContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 86px;
+  height: 40px;
+  @include for-tablet {
+    justify-content: space-evenly;
+  }
+  img {
+    width: 40px;
+    height: 40px;
+    @include for-tablet {
+      width: 30px;
+    }
+  }
+  span {
+    font-family: $fontFamily;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16.71px;
+    text-align: left;
+    @include for-tablet {
+      font-size: 10px;
+    }
+  }
+}
+.iPadContextContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 73px;
+  height: 40px;
+  @include for-tablet {
+    justify-content: space-evenly;
+  }
+  img {
+    width: 28.13px;
+    height: 30.63px;
+    @include for-tablet {
+      width: 23px;
+    }
+  }
+  span {
+    font-family: $fontFamily;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16.71px;
+    text-align: left;
+    @include for-tablet {
+      font-size: 10px;
+    }
+  }
+}
+.appleWatchContextContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 76px;
+  height: 40px;
+  @include for-tablet {
+    justify-content: space-between;
+  }
+  img {
+    width: 14.38px;
+    height: 30.62px;
+    @include for-tablet {
+      width: 12px;
+    }
+  }
+  span {
+    font-family: $fontFamily;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16.71px;
+    text-align: center;
+    @include for-tablet {
+      font-size: 10px;
+    }
+  }
+}
+.iMacContextContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 40px;
+  width: 78px;
+  @include for-tablet {
+    justify-content: space-evenly;
+  }
+  span {
+    font-family: $fontFamily;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16.71px;
+    text-align: left;
+
+    @include for-tablet {
+      font-size: 10px;
+    }
+  }
+  img {
+    height: 28.13px;
+    width: 30.63px;
+
+    @include for-tablet {
+      width: 25px;
+    }
+  }
+}
+.androidSmartphonesContextContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 34px;
+  width: 125px;
+
+  @include for-tablet {
+    justify-content: space-evenly;
+  }
+  span {
+    font-family: $fontFamily;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 17px;
+    text-align: left;
+    width: 66%;
+
+    @include for-tablet {
+      font-size: 10px;
+      width: 50%;
+      line-height: 14px;
+    }
+  }
+  img {
+    width: 27.36px;
+    height: 30px;
+
+    @include for-tablet {
+      width: 22px;
+    }
+  }
+}
+.accessoriesContextContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 31px;
+  width: 116px;
+  @include for-tablet {
+    justify-content: space-evenly;
+  }
+  span {
+    font-family: $fontFamily;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 14px;
+    text-align: center;
+
+    @include for-tablet {
+      font-size: 10px;
+    }
+  }
+
+  img {
+    width: 17.92px;
+    height: 31px;
+    @include for-tablet {
+      width: 15px;
+    }
+  }
+}
