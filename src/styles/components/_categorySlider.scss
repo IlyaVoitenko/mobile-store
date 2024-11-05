@@ -1,0 +1,210 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/mediaQuery" as *;
+
+.slideCategoryContainer {
+  position: relative;
+  display: flex;
+
+  img {
+    width: 100%;
+  }
+  .slideCategoryInfoContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    left: 10%;
+    top: 20%;
+
+    @include for-mobile {
+      height: 62px;
+    }
+    @include for-tablet {
+      height: 110px;
+    }
+    @include for-laptop {
+      width: 315px;
+      height: 145px;
+    }
+    @include for-desktop {
+      width: 315px;
+      height: 145px;
+    }
+
+    .slideCategoryInfoLink {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $blue;
+      font-family: $fontFamily;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 14.32px;
+      text-align: left;
+      width: 149px;
+      height: 36px;
+      border-radius: 8px;
+      background-color: $white;
+      text-align: center;
+      text-decoration: none;
+
+      @include for-mobile {
+        width: 60px;
+        font-size: 6px;
+        height: 16px;
+        border-radius: 4px;
+      }
+      @include for-tablet {
+        width: 100px;
+        font-size: 9px;
+        height: 26px;
+      }
+      @include for-laptop {
+        width: 120px;
+        font-size: 11px;
+        height: 30px;
+      }
+    }
+  }
+  .slideCategoryInfo {
+    display: flex;
+    flex-direction: column;
+    color: $white;
+
+    .slideCategoryInfoTitleProduct {
+      font-family: $fontFamily;
+      font-size: 50px;
+      font-weight: 700;
+      line-height: 59.67px;
+      text-align: left;
+
+      @include for-mobile {
+        font-size: 20px;
+        line-height: 20px;
+      }
+      @include for-tablet {
+        font-size: 32px;
+        line-height: 37px;
+      }
+      @include for-laptop {
+        font-size: 40px;
+      }
+    }
+    .slideCategoryInfoDescriptionProduct {
+      font-family: $fontFamily;
+      font-size: 23px;
+      font-weight: 400;
+      line-height: 27.45px;
+      text-align: left;
+
+      @include for-mobile {
+        font-size: 9px;
+        line-height: 20px;
+      }
+
+      @include for-tablet {
+        font-size: 15px;
+      }
+      @include for-laptop {
+        font-size: 18px;
+      }
+    }
+  }
+  .changeSliderContainer {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 115px;
+    left: 10%;
+    top: 80%;
+
+    @include for-mobile {
+      width: 60px;
+    }
+    @include for-tablet {
+      width: 90px;
+    }
+    @include for-laptop {
+      width: 110px;
+    }
+    @include for-desktop {
+      width: 130px;
+    }
+    .sliderAmount {
+      font-family: $fontFamily;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 14.32px;
+      text-align: left;
+      color: grey;
+      @include for-tablet {
+        font-size: 10px;
+      }
+      @include for-mobile {
+        font-size: 9px;
+      }
+    }
+    .changeCurrentSlider {
+      font-family: $fontFamily;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 19.09px;
+      text-align: left;
+      color: $white;
+
+      @include for-tablet {
+        font-size: 13px;
+      }
+      @include for-mobile {
+        font-size: 11px;
+      }
+    }
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background-color: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      img {
+        width: 25%;
+        height: 25%;
+      }
+
+      @include for-mobile {
+        width: 17px;
+        height: 17px;
+
+        img {
+          width: 25%;
+          height: 25%;
+        }
+      }
+      @include for-tablet {
+        width: 25px;
+        height: 25px;
+
+        img {
+          width: 25%;
+          height: 25%;
+        }
+      }
+      @include for-laptop {
+        width: 30px;
+        height: 30px;
+
+        img {
+          width: 30%;
+          height: 30%;
+        }
+      }
+    }
+  }
+}

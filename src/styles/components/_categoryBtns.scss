@@ -14,11 +14,24 @@
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+  justify-content: space-between;
 
   @include for-mobile {
     padding-left: 10px;
     padding-right: 10px;
+    height: 300px;
   }
+
+  @include for-tablet {
+    height: 317px;
+  }
+  @include for-laptop {
+    height: 400px;
+  }
+  @include for-desktop {
+    height: 460px;
+  }
+
   @include containerResponsiveWidth;
 }
 
@@ -39,7 +52,7 @@
   border-right: none;
 
   @include for-tablet {
-    height: 55px;
+    height: 45px;
   }
 
   span {
