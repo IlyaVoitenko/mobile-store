@@ -43,10 +43,16 @@
     justify-content: space-evenly;
     width: 100%;
   }
+
   @include for-desktop {
     justify-content: space-between;
     width: 77%;
+
+    @include for-retina {
+      width: 90%;
+    }
   }
+
   .btnShowMenu {
     display: none;
     @include for-mobile {
@@ -340,6 +346,9 @@
     }
     @include for-desktop {
       width: 77%;
+      @include for-retina {
+        width: 90%;
+      }
     }
   }
   .containerShoppingInfo {

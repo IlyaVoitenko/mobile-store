@@ -10,13 +10,20 @@
   img {
     width: 100%;
   }
+
+  .freeIphone {
+    position: absolute;
+    height: 100%;
+    width: 63%;
+    left: 40%;
+  }
   .slideCategoryInfoContainer {
     position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-    left: 10%;
+    left: $slideCategoryInfoLeftPositionContent;
     top: 20%;
 
     @include for-mobile {
@@ -119,9 +126,8 @@
     justify-content: space-between;
     align-items: center;
     width: 115px;
-    left: 10%;
+    left: $slideCategoryInfoLeftPositionContent;
     top: 80%;
-
     @include for-mobile {
       width: 60px;
     }

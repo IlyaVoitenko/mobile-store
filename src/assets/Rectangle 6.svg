@@ -1,0 +1,21 @@
+<svg width="1109px" height="364px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1109 364">
+  <!-- Прямоугольник с градиентом и фильтром для размытия -->
+  <g filter="url(#background-blur)">
+    <rect x="0" y="0" width="1109" height="364" rx="15" fill="url(#combined-gradient)" />
+  </g>
+
+  <!-- Определение градиента и фильтра -->
+  <defs>
+    <!-- Линейный градиент для плавного перехода от синего к черному и затем к желтому -->
+    <linearGradient id="combined-gradient" x1="0" y1="0.5" x2="1" y2="0.6">
+      <stop offset="30%" style="stop-color:#5A71AA; stop-opacity:1" /> <!-- Синий цвет слева -->
+      <stop offset="60%" style="stop-color:#242424; stop-opacity:1" /> <!-- Черный цвет в центре -->
+      <stop offset="100%" style="stop-color:rgba(243, 206, 73); stop-opacity:1" /> <!-- Желтый цвет справа -->
+    </linearGradient>
+
+    <!-- Фильтр для размытия фона -->
+    <filter id="background-blur" x="-300" y="-300" width="1709" height="964" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="0.4" />
+    </filter>
+  </defs>
+</svg>

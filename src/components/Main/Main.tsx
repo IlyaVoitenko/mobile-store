@@ -15,6 +15,9 @@ import iPhone from "../../assets/iPhone.svg";
 import arrowLeft from "../../assets/arrowLeft.svg";
 import arrowRight from "../../assets/arrowRight.svg";
 
+import test from "../../assets/Rectangle 6.svg";
+import freeIPhone from "../../assets/Free_iPhone_11_Pro_Mockup_2 1.svg";
+
 import { slidersCategory } from "./constants";
 import { SetStateAction, useState } from "react";
 
@@ -86,9 +89,12 @@ const Main = () => {
 
           <div className="slideCategoryContainer">
             <img
-              src={slidersCategory[currentSlideNumber - 1].slideImg}
+              // src={slidersCategory[currentSlideNumber - 1].slideImg}
+              src={test}
               alt={slidersCategory[currentSlideNumber - 1].productName}
             />
+            <img src={freeIPhone} alt="phones" className="freeIphone" />
+
             <nav className="slideCategoryInfoContainer">
               <div className="slideCategoryInfo">
                 <h2 className="slideCategoryInfoTitleProduct">

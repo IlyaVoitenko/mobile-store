@@ -6,22 +6,19 @@
   max-width: $desktop;
   min-height: 100vh;
 
-  @media (max-width: $mobile) {
+  @include for-mobile {
     width: 100%;
     min-height: 100vh;
   }
-
-  @media (min-width: $mobile + 1) and (max-width: $tablet-portrait) {
+  @include for-tablet {
     width: 100%;
     min-height: 100vh;
   }
-
-  @media (min-width: $tablet-portrait + 1) and (max-width: $tablet-landscape) {
+  @include for-laptop {
     width: 100%;
     min-height: 100vh;
   }
-
-  @media (min-width: $tablet-landscape + 1) {
+  @include for-desktop {
     width: 100%;
     max-width: $desktop;
     min-height: 100vh;

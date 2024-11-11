@@ -30,6 +30,9 @@
   }
   @include for-desktop {
     height: 460px;
+    @include for-retina {
+      height: 450px;
+    }
   }
 
   @include containerResponsiveWidth;
