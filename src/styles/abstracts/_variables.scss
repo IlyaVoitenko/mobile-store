@@ -1,14 +1,20 @@
+$mobileS: 375px;
+$mobileM: 425px;
 $mobile: 576px;
 $tablet: 768px;
 $laptop: 1024px;
-$desktop: 1920px;
+$laptopL: 1440px;
+
+$desktopScreen: 2560px;
 
 $fontFamily: "Roboto";
 
+$widthContextTablet: 95.4%;
 $widthContextLaptop: 92.6%;
 $widthContextDesktop: 77%;
-$widthContextTablet: 95.4%;
-
+$widthContextDesktop4K: 1109px;
 $widthContextDesktopRetina: 90%;
 
 $slideCategoryInfoLeftPositionContent: 8%;
+
+$paddingContainer: 10px;

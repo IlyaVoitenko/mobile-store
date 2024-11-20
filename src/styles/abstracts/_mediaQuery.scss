@@ -1,5 +1,20 @@
 @use "./variables" as *;
 
+@mixin for-mobileS {
+  @media (min-width: 320px) and (max-width: $mobileS - 1) {
+    @content;
+  }
+}
+@mixin for-mobileM {
+  @media (min-width: $mobileS) and (max-width: $mobileM - 1) {
+    @content;
+  }
+}
+@mixin for-mobileL {
+  @media (min-width: $mobileM) and (max-width: $mobile) {
+    @content;
+  }
+}
 @mixin for-mobile {
   @media (max-width: $mobile) {
     @content;
@@ -23,7 +38,12 @@
   }
 }
 @mixin for-desktop {
-  @media (min-width: $laptop + 1) {
+  @media (min-width: $laptop+1) and (max-width: $laptopL) {
+    @content;
+  }
+}
+@mixin for-desktop4K {
+  @media (min-width: $laptopL + 1) and (max-width: $desktopScreen) {
     @content;
   }
 }

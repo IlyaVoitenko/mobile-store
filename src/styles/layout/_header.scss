@@ -40,8 +40,8 @@
     width: 100%;
   }
   @include for-laptop {
-    justify-content: space-evenly;
-    width: 100%;
+    justify-content: space-between;
+    width: 92%;
   }
 
   @include for-desktop {
@@ -51,6 +51,11 @@
     @include for-retina {
       width: 90%;
     }
+  }
+  @include for-desktop4K {
+    width: 1109px;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .btnShowMenu {
@@ -84,6 +89,9 @@
     @include for-desktop {
       width: 53%;
     }
+    @include for-desktop4K {
+      width: 53%;
+    }
   }
   @include for-mobile {
     .logoContainer {
@@ -104,6 +112,12 @@
       font-family: $fontFamily;
       @include for-desktop {
         font-size: 27px;
+        @include for-retina {
+          font-size: 27.5px;
+        }
+      }
+      @include for-desktop4K {
+        font-size: 27px;
       }
     }
     @include for-mobile {
@@ -118,6 +132,9 @@
 
     @include for-laptop {
       width: 150px;
+      span {
+        font-size: 20px;
+      }
     }
   }
   .logoIcon {
@@ -204,6 +221,9 @@
     @include for-tablet {
       font-size: 12px;
     }
+    @include for-laptop {
+      font-size: 12px;
+    }
   }
   .searchInputContainer {
     position: relative;
@@ -220,7 +240,11 @@
       height: 15px;
     }
     @include for-laptop {
-      left: 86%;
+      left: 90%;
+      top: 30%;
+
+      width: 15px;
+      height: 15px;
     }
   }
   .searchInput {
@@ -239,7 +263,7 @@
       width: 170px;
     }
     @include for-laptop {
-      width: 200px;
+      width: 260px;
     }
   }
   .searchInput::placeholder {
@@ -276,6 +300,9 @@
       font-size: 11px;
       line-height: 12.71px;
     }
+    @include for-laptop {
+      font-size: 13px;
+    }
   }
 
   .callBack {
@@ -295,6 +322,9 @@
       font-weight: 500;
       line-height: 10px;
     }
+    @include for-laptop {
+      font-size: 12px;
+    }
   }
   .containerSearchAndCallBack {
     display: flex;
@@ -306,12 +336,19 @@
       justify-content: space-evenly;
     }
     @include for-laptop {
-      width: 36%;
+      width: 40%;
       justify-content: space-between;
     }
 
     @include for-desktop {
-      width: 40%;
+      width: 38%;
+      justify-content: space-between;
+      @include for-retina {
+        width: 33%;
+      }
+    }
+    @include for-desktop4K {
+      width: 38%;
       justify-content: space-between;
     }
   }
@@ -350,6 +387,9 @@
         width: 90%;
       }
     }
+    @include for-desktop4K {
+      width: $widthContextDesktop4K;
+    }
   }
   .containerShoppingInfo {
     display: flex;
@@ -361,7 +401,9 @@
     @include for-tablet {
       width: 70px;
     }
-
+    @include for-desktop4K {
+      padding-right: 3%;
+    }
     img {
       width: 18px;
       height: 18px;
@@ -397,6 +439,9 @@
     }
     @include for-desktop {
       width: 80%;
+    }
+    @include for-desktop4K {
+      width: 83%;
     }
   }
   .itemsInfoContainer {
@@ -493,7 +538,7 @@
     color: $colorTextGrey;
 
     @include for-laptop {
-      font-size: 12px;
+      font-size: 10px;
     }
     @include for-tablet {
       font-size: 10px;

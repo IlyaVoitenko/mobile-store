@@ -17,13 +17,13 @@
   justify-content: space-between;
 
   @include for-mobile {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: $paddingContainer;
+    padding-right: $paddingContainer;
     height: 300px;
   }
 
   @include for-tablet {
-    height: 317px;
+    height: 305px;
   }
   @include for-laptop {
     height: 400px;

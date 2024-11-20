@@ -10,7 +10,12 @@
   img {
     width: 100%;
   }
-
+  @include for-desktop {
+    margin-top: 20px;
+  }
+  @include for-desktop4K {
+    margin-top: 40px;
+  }
   .freeIphone {
     position: absolute;
     height: 100%;
@@ -40,7 +45,9 @@
       width: 315px;
       height: 145px;
     }
-
+    @include for-desktop4K {
+      height: 145px;
+    }
     .slideCategoryInfoLink {
       display: flex;
       justify-content: center;

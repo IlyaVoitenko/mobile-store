@@ -5,6 +5,7 @@ import Header from "../../components/Header";
 import "../../styles/pages/_index.scss";
 import "../../styles/pages/_main.scss";
 import "../../styles/components/_categorySlider.scss";
+import "../../styles/components/_needHelp.scss";
 
 import accessoriesIcon from "../../assets/accessoriesIcon.svg";
 import androidIcon from "../../assets/androidIcon.svg";
@@ -15,7 +16,9 @@ import iPhone from "../../assets/iPhone.svg";
 import arrowLeft from "../../assets/arrowLeft.svg";
 import arrowRight from "../../assets/arrowRight.svg";
 
-import test from "../../assets/Rectangle 6.svg";
+import iPhoneBg from "../../assets/Rectangle 6.svg";
+import needHelpBg from "../../assets/needHelpBg.svg";
+
 import freeIPhone from "../../assets/Free_iPhone_11_Pro_Mockup_2 1.svg";
 
 import { slidersCategory } from "./constants";
@@ -40,8 +43,26 @@ const handleNextSlider = (
   if (currentSlideNumber > amountSliders) return;
   setCurrentSlideNumber(currentSlideNumber);
 };
+const clientPhoneNumberRegex = /^\+?\d{0,15}$/;
+const clientNameRegex = /^[a-zA-Z]+$/;
 const Main = () => {
-  const [currentSlideNumber, setCurrentSlideNumber] = useState(1);
+  const [currentSlideNumber, setCurrentSlideNumber] = useState<number>(1);
+  const [nameClient, setNameClient] = useState<string>("");
+  const [phoneNumber, setPhoneNumber] = useState<string>("");
+
+  const handleChangeClientNumber = (target: EventTarget & HTMLInputElement) => {
+    const { value } = target;
+    const isPhone = clientPhoneNumberRegex.test(value);
+
+    if (isPhone) setPhoneNumber(value);
+  };
+
+  const handleChangeClientName = (target: EventTarget & HTMLInputElement) => {
+    const { value } = target;
+    if (!clientNameRegex.test(value)) return "Invalid first name.";
+    setNameClient(value);
+  };
+
   const amountSliders = slidersCategory.length;
   return (
     <div className="pageDefault">
@@ -86,11 +107,10 @@ const Main = () => {
               </div>
             </Link>
           </nav>
-
           <div className="slideCategoryContainer">
             <img
               // src={slidersCategory[currentSlideNumber - 1].slideImg}
-              src={test}
+              src={iPhoneBg}
               alt={slidersCategory[currentSlideNumber - 1].productName}
             />
             <img src={freeIPhone} alt="phones" className="freeIphone" />
@@ -134,6 +154,37 @@ const Main = () => {
                 <img src={arrowRight} alt="arrow right slide category" />
               </button>
             </div>
+          </div>
+        </div>
+        <div className="needHelpContainer">
+          <img src={needHelpBg} alt="bg image need help" />
+          <div className="needHelpContentContainer">
+            <h3 className="titleNeedHelp">Need help?</h3>
+            <h4 className="subtitleNeedHelp">
+              Leave a request in the form below and we will call you back as
+              soon as possible
+            </h4>
+            <form>
+              <input
+                value={nameClient}
+                onChange={({ target }) => handleChangeClientName(target)}
+                placeholder="name"
+                required
+              />
+              <input
+                value={phoneNumber}
+                onChange={({ target }) => handleChangeClientNumber(target)}
+                placeholder="phone number"
+                required
+              />
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                }}
+              >
+                Call me back
+              </button>
+            </form>
           </div>
         </div>
       </main>

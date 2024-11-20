@@ -3,7 +3,7 @@
 .pageDefault {
   background-color: $bgPage;
   width: 100%;
-  max-width: $desktop;
+  max-width: $desktopScreen;
   min-height: 100vh;
 
   @include for-mobile {
@@ -20,13 +20,14 @@
   }
   @include for-desktop {
     width: 100%;
-    max-width: $desktop;
+    max-width: $desktopScreen;
     min-height: 100vh;
   }
 }
 .containerContentPage {
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
