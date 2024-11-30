@@ -32,11 +32,6 @@
     @content;
   }
 }
-@mixin for-retina {
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    @content;
-  }
-}
 @mixin for-desktop {
   @media (min-width: $laptop+1) and (max-width: $laptopL) {
     @content;
@@ -44,6 +39,26 @@
 }
 @mixin for-desktop4K {
   @media (min-width: $laptopL + 1) and (max-width: $desktopScreen) {
+    @content;
+  }
+}
+
+//Retina
+@mixin for-retina {
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    @content;
+  }
+}
+@mixin retina-laptop-l-half-1 {
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 1025px) and (max-width: 1232px),
+    (min-resolution: 192dpi) and (min-width: 1025px) and (max-width: 1232px) {
+    @content;
+  }
+}
+
+@mixin retina-laptop-l-half-2 {
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 1233px) and (max-width: 1440px),
+    (min-resolution: 192dpi) and (min-width: 1233px) and (max-width: 1440px) {
     @content;
   }
 }

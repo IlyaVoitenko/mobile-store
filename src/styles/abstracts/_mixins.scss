@@ -2,8 +2,8 @@
 @use "./variables" as *;
 
 @mixin containerResponsiveWidth {
-  @include for-laptop {
-    width: $widthContextLaptop;
+  @include for-desktop4K {
+    width: $widthContextDesktop4K;
   }
   @include for-desktop {
     width: $widthContextDesktop;
@@ -11,6 +11,9 @@
     @include for-retina {
       width: $widthContextDesktopRetina;
     }
+  }
+  @include for-laptop {
+    width: $widthContextLaptop;
   }
   @include for-tablet {
     width: $widthContextTablet;

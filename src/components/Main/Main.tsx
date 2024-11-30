@@ -6,6 +6,7 @@ import "../../styles/pages/_index.scss";
 import "../../styles/pages/_main.scss";
 import "../../styles/components/_categorySlider.scss";
 import "../../styles/components/_needHelp.scss";
+import "../../styles/components/_scrollerLogos.scss";
 
 import accessoriesIcon from "../../assets/accessoriesIcon.svg";
 import androidIcon from "../../assets/androidIcon.svg";
@@ -20,6 +21,13 @@ import iPhoneBg from "../../assets/Rectangle 6.svg";
 import needHelpBg from "../../assets/needHelpBg.svg";
 
 import freeIPhone from "../../assets/Free_iPhone_11_Pro_Mockup_2 1.svg";
+
+import logoApple from "../../assets/logoApple.svg";
+import logoLG from "../../assets/logoLG.svg";
+import logoLenovo from "../../assets/logoLenovo.svg";
+import logoNokia from "../../assets/logoNokia.svg";
+import logoXiaomi from "../../assets/logoXiaomi.svg";
+import logoSamsung from "../../assets/logoSamsung.svg";
 
 import { slidersCategory } from "./constants";
 import { SetStateAction, useState } from "react";
@@ -186,6 +194,88 @@ const Main = () => {
               </button>
             </form>
           </div>
+        </div>
+        <div className="scrollerLogosContainer">
+          <ul className="listLogos ">
+            <li>
+              <img
+                src={logoSamsung}
+                alt="logo Samsung"
+                className="logoSamsungScroll"
+              />
+            </li>
+            <li>
+              <img
+                src={logoXiaomi}
+                alt="logo Xiaomi"
+                className="logoXiaomiScroll"
+              />
+            </li>
+            <li>
+              <img
+                src={logoNokia}
+                alt="logo Nokia"
+                className="logoNokiaScroll"
+              />
+            </li>
+            <li>
+              <img src={logoLG} alt="logo LG" className="logoLGScroll" />
+            </li>
+            <li>
+              <img
+                src={logoLenovo}
+                alt="logo Lenovo"
+                className="logoLenovoScroll"
+              />
+            </li>
+            <li>
+              <img
+                src={logoApple}
+                alt="logo Apple"
+                className="logoAppleScroll"
+              />
+            </li>
+          </ul>
+          <ul className="listLogos ">
+            <li>
+              <img
+                src={logoSamsung}
+                alt="logo Samsung"
+                className="logoSamsungScroll"
+              />
+            </li>
+            <li>
+              <img
+                src={logoXiaomi}
+                alt="logo Xiaomi"
+                className="logoXiaomiScroll"
+              />
+            </li>
+            <li>
+              <img
+                src={logoNokia}
+                alt="logo Nokia"
+                className="logoNokiaScroll"
+              />
+            </li>
+            <li>
+              <img src={logoLG} alt="logo LG" className="logoLGScroll" />
+            </li>
+            <li>
+              <img
+                src={logoLenovo}
+                alt="logo Lenovo"
+                className="logoLenovoScroll"
+              />
+            </li>
+            <li>
+              <img
+                src={logoApple}
+                alt="logo Apple"
+                className="logoAppleScroll"
+              />
+            </li>
+          </ul>
         </div>
       </main>
     </div>

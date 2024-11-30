@@ -1,0 +1,150 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/mediaQuery" as *;
+
+@keyframes slidersLogoAnimation {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.scrollerLogosContainer {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+
+  @include for-mobile {
+    width: 95.4%;
+  }
+  @include containerResponsiveWidth;
+}
+
+.listLogos {
+  white-space: nowrap;
+  position: relative;
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  animation: 40s slidersLogoAnimation infinite linear;
+
+  li {
+    padding-left: 4rem;
+    padding-right: 4rem;
+
+    @include for-tablet {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+    @include for-mobile {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  .logoSamsungScroll {
+    width: 145.47px;
+    height: 48.3px;
+
+    @include for-tablet {
+      width: 70px;
+      height: 50px;
+    }
+
+    @include for-mobile {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  .logoXiaomiScroll {
+    width: 55px;
+    height: 55px;
+
+    @include for-tablet {
+      width: 60px;
+      height: 30px;
+    }
+
+    @include for-mobile {
+      height: 25px;
+      width: 50px;
+    }
+  }
+  .logoNokiaScroll {
+    width: 123px;
+    height: 20.9px;
+
+    @include for-tablet {
+      width: 70px;
+      height: 50px;
+    }
+
+    @include for-mobile {
+      height: 50px;
+      width: 50px;
+    }
+  }
+  .logoLGScroll {
+    width: 94px;
+    height: 41px;
+
+    @include for-tablet {
+      width: 60px;
+      height: 20px;
+    }
+
+    @include for-mobile {
+      height: 50px;
+      width: 50px;
+    }
+  }
+  .logoLenovoScroll {
+    width: 126.72px;
+    height: 26.27px;
+
+    @include for-tablet {
+      width: 70px;
+      height: 50px;
+    }
+
+    @include for-mobile {
+      height: 50px;
+      width: 50px;
+    }
+  }
+  .logoAppleScroll {
+    width: 45.51px;
+    height: 53.96px;
+
+    @include for-tablet {
+      width: 26px;
+      height: 50px;
+    }
+
+    @include for-mobile {
+      height: 25px;
+      width: 50px;
+    }
+  }
+}
+.scrollerLogosContainer:before,
+.scrollerLogosContainer:after {
+  position: absolute;
+  top: 0;
+  width: 50px;
+  height: 100%;
+  content: "";
+  z-index: 2;
+}
+.scrollerLogosContainer:before {
+  left: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0), $bgPage);
+}
+.scrollerLogosContainer:after {
+  right: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), $bgPage);
+}
