@@ -12,23 +12,25 @@
   }
 
   @include for-mobile {
-    margin-top: 30px;
-
-    padding-left: $paddingContainer;
-    padding-right: $paddingContainer;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   @include for-tablet {
-    margin-top: 35px;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
   @include for-laptop {
-    margin-top: 45px;
+    margin-top: 25px;
+    margin-bottom: 25px;
   }
   @include for-desktop {
-    margin-top: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
   @include for-desktop4K {
-    margin-top: 60px;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
   @include containerResponsiveWidth;
   .needHelpContentContainer {
@@ -92,14 +94,19 @@
       }
       @include for-laptop {
         font-size: 11px;
+        // @include for-retina {
+        //   font-size: 10px;
+        //   line-height: 40px;
+        // }
       }
       @include for-tablet {
         font-size: 9px;
         line-height: 20px;
       }
+
       @include for-desktop {
         @include for-retina {
-          font-size: 15px;
+          font-size: 12.5px;
           line-height: 40px;
         }
       }
@@ -152,17 +159,16 @@
         }
         @include for-laptop {
           font-size: 12px;
-          width: 125px;
+          width: 134px;
           height: 33px;
         }
         @include for-desktop {
           @include for-retina {
-            width: 200px;
+            width: 169px;
           }
         }
       }
       input {
-        max-width: 166px;
         height: 38px;
         border-radius: 6px;
         border: 1px solid grey;
@@ -210,10 +216,21 @@
         @include for-laptop {
           width: 125px;
           height: 33px;
+
+          @include for-retina {
+            width: 125px;
+          }
         }
         @include for-desktop {
-          @include for-retina {
-            width: 200px;
+          // @include for-retina {
+          //   width: 200px;
+          // }
+          width: 145px;
+          @include retina-laptop-l-half-1 {
+            width: 28%;
+          }
+          @include retina-laptop-l-half-2 {
+            width: 29%;
           }
         }
       }

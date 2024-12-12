@@ -1,0 +1,31 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/mediaQuery" as *;
+
+.basketBtn {
+  width: 102px;
+  height: 38px;
+  border-radius: 5px;
+  background-color: $blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+
+  img {
+    width: 12px;
+    height: 11px;
+    margin-left: 3px;
+  }
+  span {
+    font-family: $fontFamily;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: $white;
+  }
+}

@@ -3,6 +3,35 @@
 @use "../abstracts/mixins" as *;
 @use "../abstracts/mediaQuery" as *;
 
+.sliderAmount {
+  font-family: $fontFamily;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.32px;
+  text-align: left;
+  color: grey;
+  @include for-tablet {
+    font-size: 10px;
+  }
+  @include for-mobile {
+    font-size: 9px;
+  }
+}
+.changeCurrentSlider {
+  font-family: $fontFamily;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 19.09px;
+  text-align: left;
+  color: $white;
+  @include for-tablet {
+    font-size: 13px;
+  }
+  @include for-mobile {
+    font-size: 11px;
+  }
+}
+
 .slideCategoryContainer {
   position: relative;
   display: flex;
@@ -147,35 +176,7 @@
     @include for-desktop {
       width: 130px;
     }
-    .sliderAmount {
-      font-family: $fontFamily;
-      font-size: 12px;
-      font-weight: 400;
-      line-height: 14.32px;
-      text-align: left;
-      color: grey;
-      @include for-tablet {
-        font-size: 10px;
-      }
-      @include for-mobile {
-        font-size: 9px;
-      }
-    }
-    .changeCurrentSlider {
-      font-family: $fontFamily;
-      font-size: 16px;
-      font-weight: 700;
-      line-height: 19.09px;
-      text-align: left;
-      color: $white;
 
-      @include for-tablet {
-        font-size: 13px;
-      }
-      @include for-mobile {
-        font-size: 11px;
-      }
-    }
     button {
       display: flex;
       justify-content: center;

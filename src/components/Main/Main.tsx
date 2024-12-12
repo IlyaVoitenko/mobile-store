@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { arrProduct } from "../ProductCollection/constanst";
 
 import Header from "../../components/Header";
+import ProductCollection from "../ProductCollection";
 
 import "../../styles/pages/_index.scss";
 import "../../styles/pages/_main.scss";
@@ -145,7 +147,7 @@ const Main = () => {
                 <img src={arrowLeft} alt="arrow left slide category" />
               </button>
               <div>
-                <span className="changeCurrentSlider">
+                <span className="changeCurrentSlider colorCurrentItem">
                   {currentSlideNumber}
                 </span>
                 <span className="sliderAmount">/{amountSliders}</span>
@@ -164,6 +166,11 @@ const Main = () => {
             </div>
           </div>
         </div>
+        <ProductCollection
+          listProduct={arrProduct}
+          title={"Recommended"}
+          amountItems={4}
+        />
         <div className="needHelpContainer">
           <img src={needHelpBg} alt="bg image need help" />
           <div className="needHelpContentContainer">
@@ -195,6 +202,12 @@ const Main = () => {
             </form>
           </div>
         </div>
+        <ProductCollection
+          listProduct={arrProduct}
+          title={"Popular"}
+          amountItems={4}
+        />
+
         <div className="scrollerLogosContainer">
           <ul className="listLogos ">
             <li>

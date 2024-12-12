@@ -1,0 +1,82 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/mediaQuery" as *;
+
+.ProductCardContainer {
+  width: 255px;
+  height: 390px;
+  background-color: $white;
+  border-radius: 17px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  .ProductCardImg {
+    width: 255px;
+    height: 186px;
+    border-radius: 17px 17px 0px 0px;
+    opacity: 0px;
+  }
+  .descriptionProduct {
+    font-family: $fontFamily;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-clamp: 3;
+    padding-left: $paddingContainer;
+    padding-right: $paddingContainer;
+    color: $colorsProductText;
+    margin-top: 20px;
+  }
+  .productInfoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 110px;
+
+    .priceAndCurrencyProductContainer {
+      display: flex;
+      align-items: center;
+      .priceProduct {
+        font-family: $fontFamily;
+        color: $colorsProductText;
+        font-size: 23px;
+        font-weight: 600;
+        line-height: 18px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+
+        padding-left: $paddingContainer;
+        padding-right: $paddingContainer;
+      }
+      .productCurrency {
+        font-family: $fontFamily;
+        color: $colorsProductText;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 18px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+      }
+    }
+  }
+  .addToCardBtnAndAmountProductContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: $paddingContainer;
+    padding-right: $paddingContainer;
+    margin-bottom: 20px;
+  }
+}

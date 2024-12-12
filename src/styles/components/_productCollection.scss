@@ -1,0 +1,63 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/mediaQuery" as *;
+
+.productCollectionContainer {
+  margin-top: 20px;
+  @include containerResponsiveWidth;
+  .currentProductList {
+    color: #0066cc;
+  }
+  .titleAndAmountContainer {
+    display: flex;
+    align-items: center;
+    .title {
+      font-family: $fontFamily;
+      font-size: 50px;
+      font-weight: 600;
+      line-height: 59.67px;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+
+      @include for-mobile {
+        font-size: 20px;
+      }
+      @include for-tablet {
+        font-size: 25px;
+      }
+      @include for-laptop {
+        font-size: 30px;
+      }
+    }
+  }
+  .amountProductsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 74px;
+    height: 19px;
+    margin-left: 1%;
+
+    @include for-mobile {
+      width: 60px;
+      margin-left: 3%;
+    }
+    @include for-tablet {
+      width: 65px;
+      margin-left: 2%;
+    }
+  }
+  .listContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+
+    @include for-mobile {
+      justify-content: center;
+    }
+  }
+}
