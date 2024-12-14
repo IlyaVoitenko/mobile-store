@@ -9,6 +9,7 @@ import "../../styles/pages/_main.scss";
 import "../../styles/components/_categorySlider.scss";
 import "../../styles/components/_needHelp.scss";
 import "../../styles/components/_scrollerLogos.scss";
+import "../../styles/components/_categoriesBlocks.scss";
 
 import accessoriesIcon from "../../assets/accessoriesIcon.svg";
 import androidIcon from "../../assets/androidIcon.svg";
@@ -18,6 +19,12 @@ import iPad from "../../assets/iPad.svg";
 import iPhone from "../../assets/iPhone.svg";
 import arrowLeft from "../../assets/arrowLeft.svg";
 import arrowRight from "../../assets/arrowRight.svg";
+import ArrowRightBlue from "../../assets/ArrowRightBlue.svg";
+import iphoneCategoryBlock from "../../assets/iphoneCategoryBlock.svg";
+import iPadCategory from "../../assets/iPadCategory.svg";
+import IMacCategory from "../../assets/IMacCategory.svg";
+import CaseIphone from "../../assets/CaseIphone.svg";
+import appleWatchCategory from "../../assets/appleWatchCategory.svg";
 
 import iPhoneBg from "../../assets/Rectangle 6.svg";
 import needHelpBg from "../../assets/needHelpBg.svg";
@@ -207,6 +214,78 @@ const Main = () => {
           title={"Popular"}
           amountItems={4}
         />
+        <nav className="categoriesBlocksContainer">
+          <div className="blocksContainer">
+            <Link to="#" className="categoriesBlocksLink first">
+              <div className="categoriesBlockContent">
+                <span className="categoriesTitle">Iphone</span>
+                <span className="categoryTextLink">
+                  Go to the category <img src={ArrowRightBlue} alt="" />
+                </span>{" "}
+              </div>
+              <img
+                src={iphoneCategoryBlock}
+                alt="Iphone category block"
+                className="bgImageCategories"
+              />
+            </Link>
+            <Link
+              to="#"
+              className="categoriesBlocksLink second categoriesBlocksLink "
+            >
+              <div className="categoriesBlockContent">
+                <span className="categoriesTitle">Accessories</span>
+                <span className="categoryTextLink">
+                  Go to the category <img src={ArrowRightBlue} alt="" />
+                </span>
+              </div>
+              <img
+                src={CaseIphone}
+                alt="Accessories category block"
+                className="bgImageCategories"
+              />
+            </Link>
+            <Link to="#" className="categoriesBlocksLink third  ">
+              <div className="categoriesBlockContent">
+                <span className="categoriesTitle">iMac</span>
+                <span className="categoryTextLink">
+                  Go to the category <img src={ArrowRightBlue} alt="" />
+                </span>{" "}
+              </div>
+              <img
+                src={IMacCategory}
+                alt="IMac category block"
+                className="bgImageCategories"
+              />
+            </Link>
+            <Link to="#" className="categoriesBlocksLink fourth">
+              <div className="categoriesBlockContent">
+                <span className="categoriesTitle">IPad</span>
+                <span className="categoryTextLink">
+                  Go to the category <img src={ArrowRightBlue} alt="" />
+                </span>{" "}
+              </div>
+              <img
+                src={iPadCategory}
+                alt="IPad category block"
+                className="bgImageCategories"
+              />
+            </Link>
+          </div>
+          <Link to="#" className="categoriesBlocksLink fifth  ">
+            <div className="categoriesBlockContent">
+              <span className="categoriesTitle">Apple Watch</span>
+              <span className="categoryTextLink">
+                Go to the category <img src={ArrowRightBlue} alt="" />
+              </span>{" "}
+            </div>
+            <img
+              src={appleWatchCategory}
+              alt="apple watch category block"
+              className="bgImageCategories"
+            />
+          </Link>
+        </nav>
 
         <div className="scrollerLogosContainer">
           <ul className="listLogos ">

@@ -62,10 +62,10 @@ const Header = () => {
               !isShowMenu ? "showMenu" : "notShowMenu"
             }`}
           >
-            <div className="searchInputContainer">
+            <search role="search" className="searchInputContainer">
               <img src={loop} alt="loop" className="loopImg" />
               <input className="searchInput" placeholder="Search..." />
-            </div>
+            </search>
             <div className="contactInfoContainer">
               <a href="tel:(099) 999-99-99" className="callBack">
                 Call me back
@@ -92,6 +92,7 @@ const Header = () => {
               </nav>
             </div>
             <select
+              aria-label="iPhone"
               defaultValue={iPhoneSelect}
               className="SelectHeader catalogMenuText"
               onChange={({ target }) => setIPhoneSelect(target.value)}
@@ -99,6 +100,7 @@ const Header = () => {
               <option value="iPhone">iPhone</option>
             </select>
             <select
+              aria-label="Apple Store"
               defaultValue={appleStoreSelect}
               className="SelectHeader catalogMenuText"
               onChange={({ target }) => setAppleStoreSelect(target.value)}
@@ -106,6 +108,7 @@ const Header = () => {
               <option value="Apple Store">Apple Store</option>
             </select>
             <select
+              aria-label="Smartphones"
               defaultValue={smartphonesSelect}
               className="SelectHeader catalogMenuText"
               onChange={({ target }) => setSmartphones(target.value)}
@@ -113,6 +116,7 @@ const Header = () => {
               <option value="Smartphones">Smartphones</option>
             </select>
             <select
+              aria-label="Accessories"
               defaultValue={accessoriesSelect}
               className="SelectHeader catalogMenuText"
               onChange={({ target }) => setAccessories(target.value)}
