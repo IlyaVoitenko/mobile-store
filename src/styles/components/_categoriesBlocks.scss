@@ -80,7 +80,8 @@
       font-size: 17px;
     }
     @include for-laptop {
-      font-size: 17px;
+      font-size: 26px;
+      font-weight: 500;
     }
   }
 
@@ -94,6 +95,16 @@
     }
     @include for-laptop {
       width: 73%;
+    }
+
+    @include for-desktop {
+      @include retina-laptop-l-half-1 {
+        width: 80%;
+      }
+
+      @include retina-laptop-l-half-2 {
+        width: 78%;
+      }
     }
 
     .bgImageCategories {
@@ -134,8 +145,13 @@
           top: 1%;
         }
         @include for-laptop {
-          left: 42%;
-          width: 58%;
+          left: 32%;
+          width: 68%;
+        }
+        @include for-desktop {
+          @include retina-laptop-l-half-2 {
+            height: 270px;
+          }
         }
       }
     }
@@ -189,10 +205,19 @@
           left: 52%;
         }
         @include for-laptop {
-          top: 42%;
-          left: 56%;
+          top: 16%;
+          left: 59%;
           width: 100px;
-          height: 90px;
+          height: 190px;
+        }
+        @include for-desktop {
+          @include retina-laptop-l-half-1 {
+          }
+          @include retina-laptop-l-half-2 {
+            top: 25%;
+            left: 50%;
+            height: 200px;
+          }
         }
       }
     }
@@ -239,6 +264,12 @@
           width: 70%;
           left: 14%;
           top: 46%;
+        }
+        @include for-desktop {
+          @include retina-laptop-l-half-2 {
+            height: 170px;
+            left: 4%;
+          }
         }
       }
       .categoriesBlockContent {
@@ -302,9 +333,14 @@
           top: 4%;
         }
         @include for-laptop {
-          width: 49%;
-          left: 53%;
+          width: 60%;
+          left: 41%;
           top: 4%;
+        }
+        @include for-desktop {
+          @include retina-laptop-l-half-2 {
+            height: 270px;
+          }
         }
       }
     }
@@ -348,6 +384,16 @@
         width: 410px;
         height: 200px;
       }
+      @include for-desktop {
+        @include retina-laptop-l-half-1 {
+          width: 515px;
+          height: 244px;
+        }
+        @include retina-laptop-l-half-2 {
+          width: 610px;
+          height: 280px;
+        }
+      }
     }
     .categoriesBlocksLink:nth-child(2),
     .categoriesBlocksLink:nth-child(3) {
@@ -382,6 +428,14 @@
         @include for-laptop {
           width: 60px;
         }
+        @include for-desktop {
+          @include retina-laptop-l-half-1 {
+            width: 70px;
+          }
+          @include retina-laptop-l-half-2 {
+            width: 70px;
+          }
+        }
       }
       @include for-mobile {
         width: 100%;
@@ -394,6 +448,12 @@
       @include for-laptop {
         width: 250px;
         height: 200px;
+      }
+      @include for-desktop {
+        @include retina-laptop-l-half-2 {
+          width: 311px;
+          height: 280px;
+        }
       }
       @include for-desktop4K {
         .categoryTextLink {
@@ -440,6 +500,14 @@
         width: 72%;
         left: 12%;
       }
+      @include for-desktop {
+        @include retina-laptop-l-half-1 {
+          left: 4%;
+        }
+        @include retina-laptop-l-half-2 {
+          left: 7%;
+        }
+      }
     }
     .categoriesBlockContent {
       display: flex;
@@ -457,14 +525,15 @@
       }
       @include for-laptop {
         width: 37%;
-        height: 100px;
+        height: 115px;
       }
       .categoriesTitle {
         @include for-tablet {
           line-height: 22px;
         }
         @include for-laptop {
-          line-height: 22px;
+          line-height: 33px;
+          height: 60px;
         }
       }
       .categoryTextLink {
@@ -507,6 +576,12 @@
     @include for-laptop {
       height: 430px;
       width: 220px;
+    }
+    @include for-desktop {
+      @include retina-laptop-l-half-2 {
+        width: 305px;
+        height: 585px;
+      }
     }
   }
 }
