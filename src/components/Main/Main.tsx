@@ -10,6 +10,7 @@ import "../../styles/components/_categorySlider.scss";
 import "../../styles/components/_needHelp.scss";
 import "../../styles/components/_scrollerLogos.scss";
 import "../../styles/components/_categoriesBlocks.scss";
+import "../../styles/components/_onlineStoreShop.scss";
 
 import accessoriesIcon from "../../assets/accessoriesIcon.svg";
 import androidIcon from "../../assets/androidIcon.svg";
@@ -37,6 +38,11 @@ import logoLenovo from "../../assets/logoLenovo.svg";
 import logoNokia from "../../assets/logoNokia.svg";
 import logoXiaomi from "../../assets/logoXiaomi.svg";
 import logoSamsung from "../../assets/logoSamsung.svg";
+
+import certificateGuarantee from "../../assets/certificateGuarantee.svg";
+import DiscountsChecked from "../../assets/DiscountsChecked.svg";
+import Discounts from "../../assets/Discounts.svg";
+import client from "../../assets/client.svg";
 
 import { slidersCategory } from "./constants";
 import { SetStateAction, useState } from "react";
@@ -286,7 +292,89 @@ const Main = () => {
             />
           </Link>
         </nav>
+        <div className="containerOnlineStore">
+          <div className="onlineStoreDescription">
+            <h1 className="onlineStoreTitle">Online store new shop</h1>
+            <p className="onlineStoreParagraph">
+              In the catalog of our store - only proven equipment from reliable,
+              well-established manufacturers in the market. In addition to the
+              gadgets themselves, we offer a wide range of related accessories:
+              speakers, headphones, cases, memory cards and other useful
+              devices.
+              <br />
+              <br />
+              To make shopping with us easier and faster, we left the
+              possibility of ordering without registration. We are sure that
+              this news will delight you with the opportunity to save your own
+              time.
+            </p>
+          </div>
+          <div className="onlineStoreAdvantages">
+            <span>
+              New store is your reliable supplier of proven gadgets and branded
+              accessories. We have only the best:
+            </span>
+            <ul className="advantagesList">
+              <li className="advantagesItem">
+                <img
+                  src={certificateGuarantee}
+                  className="advantagesIcon"
+                  alt="No fakes certificate guarantee!"
+                />
 
+                <div className="advantagesInfo">
+                  <span>No fakes!</span>
+                  <p>
+                    Only 100% original equipment and accessories (iPhones,
+                    MacBooks, headphones, cases).
+                  </p>
+                </div>
+              </li>
+              <li className="advantagesItem">
+                <img
+                  src={DiscountsChecked}
+                  className="advantagesIcon"
+                  alt="Adequate prices"
+                />
+                <div className="advantagesInfo">
+                  <span>Adequate prices</span>
+                  <p>
+                    We have a reasonable pricing policy and offer one of the
+                    most affordable rates.
+                  </p>
+                </div>
+              </li>{" "}
+              <li className="advantagesItem">
+                <img
+                  src={Discounts}
+                  className="advantagesIcon"
+                  alt="Maximum advantage"
+                />
+                <div className="advantagesInfo">
+                  <span>Maximum advantage</span>
+                  <p>
+                    Only 100% original equipment We have regular promotions and
+                    special promotions for regular and new customers.
+                  </p>
+                </div>
+              </li>
+              <li className="advantagesItem">
+                <img
+                  src={client}
+                  className="advantagesIcon"
+                  alt="Professional service"
+                />
+                <div className="advantagesInfo">
+                  <span>Professional service</span>
+                  <p>
+                    We guarantee constant information support and operational
+                    service.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div className="scrollerLogosContainer">
           <ul className="listLogos ">
             <li>

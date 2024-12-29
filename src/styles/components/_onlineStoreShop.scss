@@ -1,0 +1,183 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/mediaQuery" as *;
+
+.containerOnlineStore {
+  @include containerResponsiveWidth;
+
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  height: 333px;
+  justify-content: space-between;
+
+  @include for-tablet {
+    flex-direction: column;
+    height: 650px;
+  }
+  @include for-mobile {
+    flex-direction: column;
+    height: 940px;
+    align-items: center;
+  }
+  .onlineStoreDescription {
+    display: flex;
+    flex-direction: column;
+
+    .onlineStoreTitle {
+      width: 469px;
+      font-family: $fontFamily;
+      font-size: 50px;
+      font-weight: 600;
+      line-height: 48px;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: $greyOnlineStore;
+      @include for-laptop {
+        width: 404px;
+        font-size: 41px;
+      }
+      @include for-mobile {
+        width: 100%;
+      }
+    }
+    .onlineStoreParagraph {
+      width: 501px;
+      margin-top: 20px;
+      font-family: $fontFamily;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: $paragraphOnlineStore;
+
+      @include for-laptop {
+        width: 397px;
+        font-size: 11.1px;
+      }
+      @include for-mobile {
+        width: 100%;
+      }
+      @include for-desktop4K {
+        width: 475px;
+        font-size: 13px;
+      }
+    }
+  }
+  .onlineStoreAdvantages {
+    width: 715px;
+    height: 280px;
+    border-radius: 15px;
+    background-color: $white;
+    padding: 30px;
+
+    @include for-laptop {
+      padding: 20px;
+      width: 795px;
+    }
+
+    @include for-tablet {
+      padding: 20px;
+      @include containerResponsiveWidth;
+    }
+
+    @include for-mobileS {
+      padding: 10px;
+      height: 59%;
+      @include containerResponsiveWidth;
+    }
+    @include for-mobileL {
+      padding: 12px;
+      height: 56%;
+      @include containerResponsiveWidth;
+    }
+    @include for-mobileM {
+      padding: 10px;
+      height: 56%;
+      @include containerResponsiveWidth;
+    }
+    span {
+      font-family: $fontFamily;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 26px;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: $paragraphOnlineStore;
+
+      @include for-laptop {
+        line-height: 10px;
+        font-size: 12.3px;
+        font-weight: 500;
+      }
+      @include for-tablet {
+        line-height: 24px;
+        font-size: 17.1px;
+        font-weight: 500;
+      }
+      @include for-mobile {
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 20px;
+      }
+    }
+    .advantagesList {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      @include for-mobileS {
+        justify-content: center;
+      }
+      @include for-mobileL {
+        justify-content: flex-start;
+      }
+      .advantagesItem {
+        display: flex;
+        width: 285px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        align-items: flex-start;
+        justify-content: space-between;
+        @include for-laptop {
+          width: 232px;
+        }
+      }
+      .advantagesInfo {
+        span {
+          font-family: $fontFamily;
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 16.71px;
+          text-align: left;
+          text-underline-position: from-font;
+          text-decoration-skip-ink: none;
+          color: $paragraphOnlineStore;
+        }
+        p {
+          width: 226px;
+          font-family: $fontFamily;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 17px;
+          text-align: left;
+          text-underline-position: from-font;
+          text-decoration-skip-ink: none;
+          color: $paragraphOnlineStore;
+          margin-top: 10px;
+
+          @include for-laptop {
+            width: 173px;
+            font-size: 10.7px;
+          }
+        }
+      }
+    }
+  }
+}

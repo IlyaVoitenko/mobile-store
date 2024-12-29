@@ -17,9 +17,17 @@
   overflow: hidden;
   position: relative;
   white-space: nowrap;
+  margin-top: 50px;
+  margin-bottom: 50px;
 
+  @include for-tablet {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
   @include for-mobile {
     width: 95.4%;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   @include containerResponsiveWidth;
 }

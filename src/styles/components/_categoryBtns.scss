@@ -17,9 +17,8 @@
   justify-content: space-between;
 
   @include for-mobile {
-    padding-left: $paddingContainer;
-    padding-right: $paddingContainer;
     height: 300px;
+    width: 100%;
   }
 
   @include for-tablet {

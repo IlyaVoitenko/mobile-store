@@ -222,9 +222,6 @@
           }
         }
         @include for-desktop {
-          // @include for-retina {
-          //   width: 200px;
-          // }
           width: 145px;
           @include retina-laptop-l-half-1 {
             width: 28%;
