@@ -120,6 +120,11 @@
       );
 
       .bgImageCategories {
+        @include DPR-laptop-l-half-1 {
+          left: 30.5%;
+          top: 5%;
+        }
+
         left: 34%;
         top: 5%;
 
@@ -150,6 +155,7 @@
         }
         @include for-desktop {
           @include retina-laptop-l-half-2 {
+            left: 28%;
             height: 270px;
           }
         }

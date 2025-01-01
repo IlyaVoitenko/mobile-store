@@ -62,3 +62,9 @@
     @content;
   }
 }
+@mixin DPR-laptop-l-half-1 {
+  @media (width >= 1025px) and (width <= 1232px) and (resolution >= 192dpi),
+    (width >= 1025px) and (width <= 1232px) and (-webkit-device-pixel-ratio >= 2) {
+    @content;
+  }
+}

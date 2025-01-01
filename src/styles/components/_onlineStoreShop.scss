@@ -21,6 +21,7 @@
     height: 940px;
     align-items: center;
   }
+
   .onlineStoreDescription {
     display: flex;
     flex-direction: column;
@@ -35,6 +36,7 @@
       text-underline-position: from-font;
       text-decoration-skip-ink: none;
       color: $greyOnlineStore;
+
       @include for-laptop {
         width: 404px;
         font-size: 41px;
@@ -54,7 +56,10 @@
       text-underline-position: from-font;
       text-decoration-skip-ink: none;
       color: $paragraphOnlineStore;
-
+      @include DPR-laptop-l-half-1 {
+        width: 440px;
+        font-size: 12px;
+      }
       @include for-laptop {
         width: 397px;
         font-size: 11.1px;
@@ -74,6 +79,10 @@
     border-radius: 15px;
     background-color: $white;
     padding: 30px;
+
+    @include DPR-laptop-l-half-1 {
+      padding: 20px;
+    }
 
     @include for-laptop {
       padding: 20px;
@@ -110,6 +119,10 @@
       text-decoration-skip-ink: none;
       color: $paragraphOnlineStore;
 
+      @include DPR-laptop-l-half-1 {
+        font-size: 14px;
+        line-height: 19px;
+      }
       @include for-laptop {
         line-height: 10px;
         font-size: 12.3px;
@@ -145,6 +158,10 @@
         margin-bottom: 20px;
         align-items: flex-start;
         justify-content: space-between;
+
+        @include DPR-laptop-l-half-1 {
+          width: 265px;
+        }
         @include for-laptop {
           width: 232px;
         }
@@ -171,7 +188,10 @@
           text-decoration-skip-ink: none;
           color: $paragraphOnlineStore;
           margin-top: 10px;
-
+          @include DPR-laptop-l-half-1 {
+            width: 210px;
+            font-size: 13px;
+          }
           @include for-laptop {
             width: 173px;
             font-size: 10.7px;
