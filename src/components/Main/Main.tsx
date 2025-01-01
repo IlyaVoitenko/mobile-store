@@ -1,48 +1,10 @@
+import resources from "./resources";
+
 import { Link } from "react-router-dom";
-import { arrProduct } from "../ProductCollection/constanst";
+import { arrProduct } from "../ProductCollection/constants";
 
 import Header from "../../components/Header";
 import ProductCollection from "../ProductCollection";
-
-import "../../styles/pages/_index.scss";
-import "../../styles/pages/_main.scss";
-import "../../styles/components/_categorySlider.scss";
-import "../../styles/components/_needHelp.scss";
-import "../../styles/components/_scrollerLogos.scss";
-import "../../styles/components/_categoriesBlocks.scss";
-import "../../styles/components/_onlineStoreShop.scss";
-
-import accessoriesIcon from "../../assets/accessoriesIcon.svg";
-import androidIcon from "../../assets/androidIcon.svg";
-import iMac from "../../assets/iMac.svg";
-import watch from "../../assets/watch.svg";
-import iPad from "../../assets/iPad.svg";
-import iPhone from "../../assets/iPhone.svg";
-import arrowLeft from "../../assets/arrowLeft.svg";
-import arrowRight from "../../assets/arrowRight.svg";
-import ArrowRightBlue from "../../assets/ArrowRightBlue.svg";
-import iphoneCategoryBlock from "../../assets/iphoneCategoryBlock.svg";
-import iPadCategory from "../../assets/iPadCategory.svg";
-import IMacCategory from "../../assets/IMacCategory.svg";
-import CaseIphone from "../../assets/CaseIphone.svg";
-import appleWatchCategory from "../../assets/appleWatchCategory.svg";
-
-import iPhoneBg from "../../assets/Rectangle 6.svg";
-import needHelpBg from "../../assets/needHelpBg.svg";
-
-import freeIPhone from "../../assets/Free_iPhone_11_Pro_Mockup_2 1.svg";
-
-import logoApple from "../../assets/logoApple.svg";
-import logoLG from "../../assets/logoLG.svg";
-import logoLenovo from "../../assets/logoLenovo.svg";
-import logoNokia from "../../assets/logoNokia.svg";
-import logoXiaomi from "../../assets/logoXiaomi.svg";
-import logoSamsung from "../../assets/logoSamsung.svg";
-
-import certificateGuarantee from "../../assets/certificateGuarantee.svg";
-import DiscountsChecked from "../../assets/DiscountsChecked.svg";
-import Discounts from "../../assets/Discounts.svg";
-import client from "../../assets/client.svg";
 
 import { slidersCategory } from "./constants";
 import { SetStateAction, useState } from "react";
@@ -95,48 +57,52 @@ const Main = () => {
           <nav className="containerCategoryLinks">
             <Link to={"#"} className="categoryLinks ">
               <div className="iPhoneContextContainer">
-                <img src={iPhone} alt="iPhone" />
+                <img src={resources.iPhone} alt="iPhone" />
                 <span>Iphone</span>
               </div>
             </Link>
             <Link to={"#"} className="categoryLinks">
               <div className="iPadContextContainer">
-                <img src={iPad} alt="iPad" />
+                <img src={resources.iPad} alt="iPad" />
                 <span>IPad</span>
               </div>
             </Link>
             <Link to={"#"} className="categoryLinks">
               <div className="appleWatchContextContainer">
-                <img src={watch} alt="Apple Watch" />
+                <img src={resources.watch} alt="Apple Watch" />
                 <span>Apple Watch</span>
               </div>
             </Link>
             <Link to={"#"} className="categoryLinks">
               <div className="iMacContextContainer">
-                <img src={iMac} alt="iMac icon" />
+                <img src={resources.iMac} alt="iMac icon" />
                 <span>IMac</span>
               </div>
             </Link>
             <Link to={"#"} className="categoryLinks">
               <div className="androidSmartphonesContextContainer">
-                <img src={androidIcon} alt="Android icon" />
+                <img src={resources.androidIcon} alt="Android icon" />
                 <span>Android Smartphones</span>{" "}
               </div>
             </Link>
             <Link to={"#"} className="categoryLinks">
               <div className="accessoriesContextContainer">
-                <img src={accessoriesIcon} alt="Accessories icon" />
+                <img src={resources.accessoriesIcon} alt="Accessories icon" />
                 <span>Accessories</span>
               </div>
             </Link>
           </nav>
           <div className="slideCategoryContainer">
             <img
-              // src={slidersCategory[currentSlideNumber - 1].slideImg}
-              src={iPhoneBg}
+              // src={resources.slidersCategory[currentSlideNumber - 1].slideImg}
+              src={resources.iPhoneBg}
               alt={slidersCategory[currentSlideNumber - 1].productName}
             />
-            <img src={freeIPhone} alt="phones" className="freeIphone" />
+            <img
+              src={resources.freeIPhone}
+              alt="phones"
+              className="freeIphone"
+            />
 
             <nav className="slideCategoryInfoContainer">
               <div className="slideCategoryInfo">
@@ -157,7 +123,10 @@ const Main = () => {
                   handlePreSlider(currentSlideNumber - 1, setCurrentSlideNumber)
                 }
               >
-                <img src={arrowLeft} alt="arrow left slide category" />
+                <img
+                  src={resources.arrowLeft}
+                  alt="arrow left slide category"
+                />
               </button>
               <div>
                 <span className="changeCurrentSlider colorCurrentItem">
@@ -174,7 +143,10 @@ const Main = () => {
                   )
                 }
               >
-                <img src={arrowRight} alt="arrow right slide category" />
+                <img
+                  src={resources.arrowRight}
+                  alt="arrow right slide category"
+                />
               </button>
             </div>
           </div>
@@ -185,7 +157,7 @@ const Main = () => {
           amountItems={4}
         />
         <div className="needHelpContainer">
-          <img src={needHelpBg} alt="bg image need help" />
+          <img src={resources.needHelpBg} alt="bg image need help" />
           <div className="needHelpContentContainer">
             <h3 className="titleNeedHelp">Need help?</h3>
             <h4 className="subtitleNeedHelp">
@@ -226,11 +198,12 @@ const Main = () => {
               <div className="categoriesBlockContent">
                 <span className="categoriesTitle">Iphone</span>
                 <span className="categoryTextLink">
-                  Go to the category <img src={ArrowRightBlue} alt="" />
+                  Go to the category{" "}
+                  <img src={resources.ArrowRightBlue} alt="" />
                 </span>{" "}
               </div>
               <img
-                src={iphoneCategoryBlock}
+                src={resources.iphoneCategoryBlock}
                 alt="Iphone category block"
                 className="bgImageCategories"
               />
@@ -242,11 +215,12 @@ const Main = () => {
               <div className="categoriesBlockContent">
                 <span className="categoriesTitle">Accessories</span>
                 <span className="categoryTextLink">
-                  Go to the category <img src={ArrowRightBlue} alt="" />
+                  Go to the category{" "}
+                  <img src={resources.ArrowRightBlue} alt="" />
                 </span>
               </div>
               <img
-                src={CaseIphone}
+                src={resources.CaseIphone}
                 alt="Accessories category block"
                 className="bgImageCategories"
               />
@@ -255,11 +229,12 @@ const Main = () => {
               <div className="categoriesBlockContent">
                 <span className="categoriesTitle">iMac</span>
                 <span className="categoryTextLink">
-                  Go to the category <img src={ArrowRightBlue} alt="" />
+                  Go to the category{" "}
+                  <img src={resources.ArrowRightBlue} alt="" />
                 </span>{" "}
               </div>
               <img
-                src={IMacCategory}
+                src={resources.IMacCategory}
                 alt="IMac category block"
                 className="bgImageCategories"
               />
@@ -268,11 +243,12 @@ const Main = () => {
               <div className="categoriesBlockContent">
                 <span className="categoriesTitle">IPad</span>
                 <span className="categoryTextLink">
-                  Go to the category <img src={ArrowRightBlue} alt="" />
+                  Go to the category{" "}
+                  <img src={resources.ArrowRightBlue} alt="" />
                 </span>{" "}
               </div>
               <img
-                src={iPadCategory}
+                src={resources.iPadCategory}
                 alt="IPad category block"
                 className="bgImageCategories"
               />
@@ -282,11 +258,11 @@ const Main = () => {
             <div className="categoriesBlockContent">
               <span className="categoriesTitle">Apple Watch</span>
               <span className="categoryTextLink">
-                Go to the category <img src={ArrowRightBlue} alt="" />
+                Go to the category <img src={resources.ArrowRightBlue} alt="" />
               </span>{" "}
             </div>
             <img
-              src={appleWatchCategory}
+              src={resources.appleWatchCategory}
               alt="apple watch category block"
               className="bgImageCategories"
             />
@@ -317,7 +293,7 @@ const Main = () => {
             <ul className="advantagesList">
               <li className="advantagesItem">
                 <img
-                  src={certificateGuarantee}
+                  src={resources.certificateGuarantee}
                   className="advantagesIcon"
                   alt="No fakes certificate guarantee!"
                 />
@@ -332,7 +308,7 @@ const Main = () => {
               </li>
               <li className="advantagesItem">
                 <img
-                  src={DiscountsChecked}
+                  src={resources.DiscountsChecked}
                   className="advantagesIcon"
                   alt="Adequate prices"
                 />
@@ -346,7 +322,7 @@ const Main = () => {
               </li>{" "}
               <li className="advantagesItem">
                 <img
-                  src={Discounts}
+                  src={resources.Discounts}
                   className="advantagesIcon"
                   alt="Maximum advantage"
                 />
@@ -360,7 +336,7 @@ const Main = () => {
               </li>
               <li className="advantagesItem">
                 <img
-                  src={client}
+                  src={resources.client}
                   className="advantagesIcon"
                   alt="Professional service"
                 />
@@ -379,38 +355,42 @@ const Main = () => {
           <ul className="listLogos ">
             <li>
               <img
-                src={logoSamsung}
+                src={resources.logoSamsung}
                 alt="logo Samsung"
                 className="logoSamsungScroll"
               />
             </li>
             <li>
               <img
-                src={logoXiaomi}
+                src={resources.logoXiaomi}
                 alt="logo Xiaomi"
                 className="logoXiaomiScroll"
               />
             </li>
             <li>
               <img
-                src={logoNokia}
+                src={resources.logoNokia}
                 alt="logo Nokia"
                 className="logoNokiaScroll"
               />
             </li>
             <li>
-              <img src={logoLG} alt="logo LG" className="logoLGScroll" />
+              <img
+                src={resources.logoLG}
+                alt="logo LG"
+                className="logoLGScroll"
+              />
             </li>
             <li>
               <img
-                src={logoLenovo}
+                src={resources.logoLenovo}
                 alt="logo Lenovo"
                 className="logoLenovoScroll"
               />
             </li>
             <li>
               <img
-                src={logoApple}
+                src={resources.logoApple}
                 alt="logo Apple"
                 className="logoAppleScroll"
               />
@@ -419,44 +399,49 @@ const Main = () => {
           <ul className="listLogos ">
             <li>
               <img
-                src={logoSamsung}
+                src={resources.logoSamsung}
                 alt="logo Samsung"
                 className="logoSamsungScroll"
               />
             </li>
             <li>
               <img
-                src={logoXiaomi}
+                src={resources.logoXiaomi}
                 alt="logo Xiaomi"
                 className="logoXiaomiScroll"
               />
             </li>
             <li>
               <img
-                src={logoNokia}
+                src={resources.logoNokia}
                 alt="logo Nokia"
                 className="logoNokiaScroll"
               />
             </li>
             <li>
-              <img src={logoLG} alt="logo LG" className="logoLGScroll" />
+              <img
+                src={resources.logoLG}
+                alt="logo LG"
+                className="logoLGScroll"
+              />
             </li>
             <li>
               <img
-                src={logoLenovo}
+                src={resources.logoLenovo}
                 alt="logo Lenovo"
                 className="logoLenovoScroll"
               />
             </li>
             <li>
               <img
-                src={logoApple}
+                src={resources.logoApple}
                 alt="logo Apple"
                 className="logoAppleScroll"
               />
             </li>
           </ul>
         </div>
+        <div className="containerDeliveryGoods"></div>
       </main>
     </div>
   );
