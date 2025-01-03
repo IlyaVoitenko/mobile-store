@@ -50,6 +50,9 @@
     height: 100%;
     width: 63%;
     left: 40%;
+    @include for-tablet {
+      left: 39%;
+    }
     @include for-mobile {
       left: 39%;
     }

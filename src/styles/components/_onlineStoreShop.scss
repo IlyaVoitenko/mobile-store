@@ -7,7 +7,6 @@
   @include containerResponsiveWidth;
 
   margin-top: 20px;
-  margin-bottom: 20px;
   display: flex;
   height: 333px;
   justify-content: space-between;
@@ -18,7 +17,7 @@
   }
   @include for-mobile {
     flex-direction: column;
-    height: 940px;
+    height: 963px;
     align-items: center;
   }
 
@@ -83,7 +82,9 @@
     @include DPR-laptop-l-half-1 {
       padding: 20px;
     }
-
+    @include for-desktop {
+      padding: 20px;
+    }
     @include for-laptop {
       padding: 20px;
       width: 795px;
@@ -162,6 +163,11 @@
         @include DPR-laptop-l-half-1 {
           width: 265px;
         }
+        @include for-desktop {
+          margin-top: 15px;
+          width: 265px;
+        }
+
         @include for-laptop {
           width: 232px;
         }
@@ -188,6 +194,10 @@
           text-decoration-skip-ink: none;
           color: $paragraphOnlineStore;
           margin-top: 10px;
+          @include for-desktop {
+            width: 210px;
+            font-size: 13px;
+          }
           @include DPR-laptop-l-half-1 {
             width: 210px;
             font-size: 13px;

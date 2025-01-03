@@ -441,7 +441,38 @@ const Main = () => {
             </li>
           </ul>
         </div>
-        <div className="containerDeliveryGoods"></div>
+        <div className="containerDeliveryGoods">
+          <img src={resources.deliveryGoods} alt="delivery goods" />
+          <div className="deliveryGoodsContent">
+            <h3 className="deliveryGoodsTitle">
+              Delivery of goods in the store
+            </h3>
+            <div className="deliveryGoodsInfo">
+              <h6 className="deliveryGoodsSubtitle">
+                In city, all orders made in our store are delivered free of
+                charge.
+              </h6>
+              <p className="deliveryGoodsParagraph">
+                To deliver orders to other Ukrainian cities, we use the services
+                of the transport company. Also, for the convenience of
+                customers, we offer the possibility of self-delivery of the
+                products you are interested in from our points of issue.
+              </p>
+              <div>
+                <h6 className="deliveryGoodsSubtitle">
+                  The main priority of the new-store is the comfort of our
+                  customers.
+                </h6>
+                <p className="deliveryGoodsParagraph">
+                  It is for this purpose that we guarantee our customers the
+                  high quality of the products offered, reasonable prices for
+                  equipment and accessories, regular updates of the assortment
+                  and convenient delivery to anywhere in country.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   );

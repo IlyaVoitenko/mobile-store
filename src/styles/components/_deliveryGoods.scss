@@ -4,4 +4,135 @@
 @use "../abstracts/mediaQuery" as *;
 
 .containerDeliveryGoods {
+  @include containerResponsiveWidth;
+  display: flex;
+  justify-content: space-between;
+
+  @include for-desktop {
+    height: 357px;
+    @include for-retina {
+      height: 500px;
+    }
+    img {
+      width: 48%;
+
+      @include for-retina {
+        width: 57%;
+      }
+    }
+  }
+  @include for-laptop {
+    img {
+      width: 50%;
+    }
+  }
+  @include for-tablet {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 930px;
+
+    img {
+      width: 100%;
+    }
+  }
+  @include for-mobile {
+    flex-direction: column;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .deliveryGoodsTitle {
+    font-family: $fontFamily;
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 48px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+  .deliveryGoodsContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 530px;
+    @include for-mobile {
+      width: 100%;
+      height: 350px;
+      margin-top: 15px;
+    }
+    @include for-tablet {
+      height: 400px;
+    }
+    @include for-laptop {
+      width: 440px;
+    }
+    .deliveryGoodsTitle {
+      font-family: $fontFamily;
+      font-size: 50px;
+      font-weight: 600;
+      line-height: 48px;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: $greyOnlineStore;
+      @include for-laptop {
+        font-size: 38px;
+        line-height: 36px;
+      }
+      @include for-mobile {
+        font-size: 35px;
+        line-height: 35px;
+      }
+    }
+    .deliveryGoodsSubtitle {
+      font-family: $fontFamily;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 24px;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: $paragraphOnlineStore;
+      @include for-desktop {
+        @include for-retina {
+          font-size: 17px;
+        }
+      }
+      @include for-laptop {
+        font-size: 12px;
+      }
+      @include for-mobile {
+        font-size: 12px;
+      }
+    }
+    .deliveryGoodsParagraph {
+      font-family: $fontFamily;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 24px;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: $paragraphOnlineStore;
+      @include for-desktop {
+        @include for-retina {
+          font-size: 17px;
+        }
+      }
+      @include for-laptop {
+        font-size: 11px;
+      }
+      @include for-mobile {
+        font-size: 12px;
+      }
+    }
+  }
+  .deliveryGoodsInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 70%;
+  }
 }

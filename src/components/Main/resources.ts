@@ -39,6 +39,7 @@ import DiscountsChecked from "../../assets/DiscountsChecked.svg";
 import Discounts from "../../assets/Discounts.svg";
 import client from "../../assets/client.svg";
 import categorySliderIphone from "../../assets/categorySliderIphone.svg";
+import deliveryGoods from "../../assets/deliveryGoods.svg";
 
 export default {
   categorySliderIphone,
@@ -71,4 +72,5 @@ export default {
   DiscountsChecked,
   Discounts,
   client,
+  deliveryGoods,
 };
