@@ -6,12 +6,27 @@ import AmountProduct from "./AmountProduct";
 
 type ProductCardProps = {
   card: ProductSection;
+  promotion?: boolean;
 };
 
-const ProductCard = ({ card }: ProductCardProps) => {
+const ProductCard = ({ card, promotion = false }: ProductCardProps) => {
   const { priceProduct, descriptionProduct, imgProduct } = card || {};
   return (
     <li className="ProductCardContainer">
+      {promotion && (
+        <ul className="promotionList">
+          <li className=" blueBg">
+            <span className="promotionText">Delivery</span>
+          </li>
+          <li className=" redBg">
+            <span className="promotionText">Installment plan</span>
+          </li>
+          <li className=" greenBg">
+            <span className="promotionText">Warranty</span>
+          </li>
+        </ul>
+      )}
+
       <img
         src={imgProduct}
         alt={descriptionProduct}

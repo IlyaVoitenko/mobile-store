@@ -155,6 +155,7 @@ const Main = () => {
           listProduct={arrProduct}
           title={"Recommended"}
           amountItems={4}
+          promotion={true}
         />
         <div className="needHelpContainer">
           <img src={resources.needHelpBg} alt="bg image need help" />
@@ -191,6 +192,7 @@ const Main = () => {
           listProduct={arrProduct}
           title={"Popular"}
           amountItems={4}
+          promotion={true}
         />
         <nav className="categoriesBlocksContainer">
           <div className="blocksContainer">

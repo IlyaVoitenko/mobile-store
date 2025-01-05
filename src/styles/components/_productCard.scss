@@ -7,7 +7,7 @@
   width: 255px;
   height: 390px;
   background-color: $white;
-  border-radius: 17px;
+  border-radius: $ProductCardBorderRadius;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,8 +16,7 @@
   .ProductCardImg {
     width: 255px;
     height: 186px;
-    border-radius: 17px 17px 0px 0px;
-    opacity: 0px;
+    border-radius: $ProductCardBorderRadius $ProductCardBorderRadius 0px 0px;
   }
   .descriptionProduct {
     font-family: $fontFamily;
@@ -78,5 +77,45 @@
     padding-left: $paddingContainer;
     padding-right: $paddingContainer;
     margin-bottom: 20px;
+  }
+  .promotionList {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 115px;
+
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 30px;
+    }
+
+    .promotionText {
+      font-family: $fontFamily;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 18px;
+      text-align: center;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+      color: $white;
+    }
+    .redBg {
+      width: 100px;
+      background-color: $promoRed;
+      border-radius: 0px $ProductCardBorderRadius $ProductCardBorderRadius 0px;
+    }
+    .blueBg {
+      width: 65px;
+      background-color: $promoBlue;
+      border-radius: 19px $ProductCardBorderRadius $ProductCardBorderRadius 0px;
+    }
+    .greenBg {
+      width: 69px;
+      background-color: $promoGreen;
+      border-radius: 0px $ProductCardBorderRadius $ProductCardBorderRadius 0px;
+    }
   }
 }

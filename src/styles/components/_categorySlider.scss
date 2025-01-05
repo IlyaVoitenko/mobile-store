@@ -66,8 +66,14 @@
     left: $slideCategoryInfoLeftPositionContent;
     top: 20%;
 
-    @include for-mobile {
+    @include for-mobileL {
       height: 62px;
+    }
+    @include for-mobileM {
+      height: 62px;
+    }
+    @include for-mobileS {
+      height: 52px;
     }
     @include for-tablet {
       height: 110px;
@@ -136,8 +142,16 @@
       line-height: 59.67px;
       text-align: left;
 
-      @include for-mobile {
-        font-size: 20px;
+      @include for-mobileL {
+        font-size: 16px;
+        line-height: 20px;
+      }
+      @include for-mobileM {
+        font-size: 16px;
+        line-height: 20px;
+      }
+      @include for-mobileS {
+        font-size: 16px;
         line-height: 20px;
       }
       @include for-tablet {
@@ -155,11 +169,18 @@
       line-height: 27.45px;
       text-align: left;
 
-      @include for-mobile {
-        font-size: 9px;
+      @include for-mobileL {
+        font-size: 7px;
         line-height: 20px;
       }
-
+      @include for-mobileM {
+        font-size: 7px;
+        line-height: 20px;
+      }
+      @include for-mobileS {
+        font-size: 7px;
+        line-height: 20px;
+      }
       @include for-tablet {
         font-size: 15px;
       }

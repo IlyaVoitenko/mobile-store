@@ -11,6 +11,7 @@ type ProductCollectionProps = {
   listProduct: ProductSection[];
   title: string;
   amountItems: number;
+  promotion: boolean;
 };
 const ProductCollection = ({
   listProduct,
@@ -55,7 +56,7 @@ const ProductCollection = ({
       <ul className="listContainer">
         {newProductCollectionSlice &&
           newProductCollectionSlice.map((card) => (
-            <ProductCard key={card.id} card={card} />
+            <ProductCard key={card.id} card={card} promotion={true} />
           ))}
       </ul>
     </div>
