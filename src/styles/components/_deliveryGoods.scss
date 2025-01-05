@@ -9,15 +9,26 @@
   justify-content: space-between;
 
   @include for-desktop {
-    height: 357px;
-    @include for-retina {
-      height: 500px;
+    height: 405px;
+    @include retina-laptop-l-half-1 {
+      align-items: center;
+      height: 454px;
     }
+    @include retina-laptop-l-half-2 {
+      align-items: center;
+      height: 509px;
+    }
+
     img {
       width: 48%;
-
-      @include for-retina {
+      @include retina-laptop-l-half-1 {
         width: 57%;
+      }
+      @include retina-laptop-l-half-2 {
+        width: 59%;
+      }
+      @include for-desktop {
+        width: 55%;
       }
     }
   }
@@ -43,15 +54,6 @@
       width: 100%;
     }
   }
-  .deliveryGoodsTitle {
-    font-family: $fontFamily;
-    font-size: 50px;
-    font-weight: 600;
-    line-height: 48px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-  }
   .deliveryGoodsContent {
     display: flex;
     flex-direction: column;
@@ -67,6 +69,19 @@
     }
     @include for-laptop {
       width: 440px;
+      @include retina-laptop-l-half-1 {
+        height: 357px;
+      }
+    }
+    @include for-desktop {
+      width: 440px;
+      @include retina-laptop-l-half-1 {
+        height: 406px;
+      }
+      @include retina-laptop-l-half-2 {
+        width: 480px;
+        height: 500px;
+      }
     }
     .deliveryGoodsTitle {
       font-family: $fontFamily;
@@ -85,6 +100,17 @@
         font-size: 35px;
         line-height: 35px;
       }
+      @include for-desktop {
+        font-size: 41px;
+        @include retina-laptop-l-half-1 {
+          font-size: 41px;
+          line-height: 44px;
+        }
+        @include retina-laptop-l-half-2 {
+          font-size: 41px;
+          line-height: 48px;
+        }
+      }
     }
     .deliveryGoodsSubtitle {
       font-family: $fontFamily;
@@ -96,8 +122,11 @@
       text-decoration-skip-ink: none;
       color: $paragraphOnlineStore;
       @include for-desktop {
-        @include for-retina {
-          font-size: 17px;
+        @include retina-laptop-l-half-1 {
+          font-size: 14px;
+        }
+        @include retina-laptop-l-half-2 {
+          font-size: 14px;
         }
       }
       @include for-laptop {
@@ -117,8 +146,11 @@
       text-decoration-skip-ink: none;
       color: $paragraphOnlineStore;
       @include for-desktop {
-        @include for-retina {
-          font-size: 17px;
+        @include retina-laptop-l-half-1 {
+          font-size: 15px;
+        }
+        @include retina-laptop-l-half-2 {
+          font-size: 15px;
         }
       }
       @include for-laptop {

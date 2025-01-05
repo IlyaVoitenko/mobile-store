@@ -39,6 +39,22 @@
     left: 4%;
     top: 20%;
 
+    @include for-mobileS {
+      left: 2%;
+      top: 20%;
+    }
+    @include for-mobileM {
+      left: 2%;
+      top: 15%;
+    }
+    @include for-mobileL {
+      left: 2%;
+      top: 13%;
+    }
+    @include for-laptop {
+      left: 4%;
+      top: 14%;
+    }
     .titleNeedHelp {
       font-family: $fontFamily;
       font-size: 24.88px;
@@ -73,8 +89,9 @@
       font-family: $fontFamily;
       font-size: 13px;
       font-weight: 400;
-      line-height: 28px;
+      line-height: 37px;
       text-align: left;
+
       text-underline-position: from-font;
       text-decoration-skip-ink: none;
       color: $white;
@@ -94,10 +111,6 @@
       }
       @include for-laptop {
         font-size: 11px;
-        // @include for-retina {
-        //   font-size: 10px;
-        //   line-height: 40px;
-        // }
       }
       @include for-tablet {
         font-size: 9px;

@@ -343,7 +343,10 @@
     @include for-desktop {
       width: 38%;
       justify-content: space-between;
-      @include for-retina {
+      @include retina-laptop-l-half-1 {
+        width: 40%;
+      }
+      @include retina-laptop-l-half-2 {
         width: 33%;
       }
     }

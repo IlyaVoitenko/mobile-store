@@ -78,10 +78,10 @@
     }
     @include for-desktop {
       width: 315px;
-      height: 145px;
+      height: 180px;
     }
     @include for-desktop4K {
-      height: 145px;
+      height: 180px;
     }
     .slideCategoryInfoLink {
       display: flex;
@@ -111,10 +111,16 @@
         font-size: 9px;
         height: 26px;
       }
+
       @include for-laptop {
         width: 120px;
         font-size: 11px;
         height: 30px;
+      }
+      @include for-desktop {
+        width: 160px;
+        font-size: 14px;
+        height: 40px;
       }
     }
   }
