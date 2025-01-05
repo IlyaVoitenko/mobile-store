@@ -4,9 +4,9 @@
 @use "../abstracts/mediaQuery" as *;
 
 .containerOnlineStore {
+  margin-top: 20px;
   @include containerResponsiveWidth;
 
-  margin-top: 20px;
   display: flex;
   height: 333px;
   justify-content: space-between;

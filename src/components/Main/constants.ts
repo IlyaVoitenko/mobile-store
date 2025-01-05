@@ -1,7 +1,6 @@
 import { nanoid } from "nanoid";
 import { SlidersCategoryItem } from "../../types";
 import resources from "./resources";
-console.log("re§sources", resources.categorySliderIphone);
 export const slidersCategory: SlidersCategoryItem[] = [
   {
     id: nanoid(),
