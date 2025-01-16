@@ -12,6 +12,9 @@
       width: $widthContextDesktopRetina;
     }
   }
+  @include for-LaptopL {
+    width: $weightLaptopLMore;
+  }
   @include for-laptop {
     width: $widthContextLaptop;
   }

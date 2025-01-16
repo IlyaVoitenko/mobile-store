@@ -4,11 +4,12 @@
 @use "../abstracts/mediaQuery" as *;
 
 .categoriesBlocksContainer {
-  @include containerResponsiveWidth;
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
   margin-bottom: 2rem;
+
+  @include containerResponsiveWidth;
 
   @include for-mobile {
     flex-direction: column;
@@ -57,6 +58,14 @@
       font-size: 10px;
       line-height: 12px;
     }
+    @include for-desktop4K {
+      font-size: 26px;
+      font-weight: 500;
+      img {
+        height: 21px;
+        margin-left: 0.5rem;
+      }
+    }
 
     img {
       margin-left: 0.4rem;
@@ -83,6 +92,10 @@
       font-size: 26px;
       font-weight: 500;
     }
+    @include for-desktop4K {
+      font-size: 51px;
+      font-weight: 500;
+    }
   }
 
   .blocksContainer {
@@ -106,7 +119,9 @@
         width: 78%;
       }
     }
-
+    @include for-desktop4K {
+      width: 75%;
+    }
     .bgImageCategories {
       position: absolute;
     }
@@ -120,13 +135,13 @@
       );
 
       .bgImageCategories {
+        left: 34%;
+        top: 5%;
+
         @include DPR-laptop-l-half-1 {
           left: 30.5%;
           top: 5%;
         }
-
-        left: 34%;
-        top: 5%;
 
         @include for-mobileS {
           left: 18%;
@@ -159,6 +174,11 @@
             height: 270px;
           }
         }
+        @include for-desktop4K {
+          width: 66%;
+          left: 34%;
+          top: 10%;
+        }
       }
     }
     .second {
@@ -183,6 +203,9 @@
 
         @include for-tablet {
           height: 70px;
+        }
+        @include for-desktop4K {
+          height: 130px;
         }
       }
       .bgImageCategories {
@@ -225,20 +248,26 @@
             height: 200px;
           }
         }
+
+        @include for-desktop4K {
+          width: 44%;
+          left: 54%;
+          top: 20%;
+        }
       }
     }
     .third {
       margin-top: 1.59rem;
-
-      @include for-mobile {
-        margin-top: 0rem;
-      }
       background: rgb(255, 255, 255);
       background: linear-gradient(
         129deg,
         rgba(255, 255, 255, 0.7665660014005602) 11%,
         rgba(67, 67, 67, 0.3772102591036415) 100%
       );
+
+      @include for-mobile {
+        margin-top: 0rem;
+      }
 
       .bgImageCategories {
         left: 0%;
@@ -277,6 +306,11 @@
             left: 4%;
           }
         }
+        @include for-desktop4K {
+          width: 90%;
+          left: 6%;
+          top: 31%;
+        }
       }
       .categoriesBlockContent {
         display: flex;
@@ -304,16 +338,15 @@
     }
     .fourth {
       margin-top: 1.59rem;
-      @include for-mobile {
-        margin-top: 0rem;
-      }
       background: rgb(255, 255, 255);
       background: linear-gradient(
         100deg,
         rgba(255, 255, 255, 1) 25%,
         rgba(127, 146, 189, 0.779) 100%
       );
-
+      @include for-mobile {
+        margin-top: 0rem;
+      }
       .bgImageCategories {
         left: 45%;
         top: 5%;
@@ -348,6 +381,11 @@
             height: 270px;
           }
         }
+        @include for-desktop4K {
+          width: 62%;
+          left: 37%;
+          top: 3%;
+        }
       }
     }
     .categoriesBlocksLink {
@@ -377,6 +415,9 @@
         @include for-laptop {
           height: 60px;
         }
+        @include for-desktop4K {
+          height: 100px;
+        }
       }
       @include for-mobile {
         width: 100%;
@@ -400,6 +441,10 @@
           height: 280px;
         }
       }
+      @include for-desktop4K {
+        width: 900px;
+        height: 450px;
+      }
     }
     .categoriesBlocksLink:nth-child(2),
     .categoriesBlocksLink:nth-child(3) {
@@ -407,6 +452,11 @@
       width: 255px;
       height: 242px;
       display: block;
+
+      @include for-desktop4K {
+        width: 600px;
+        height: 450px;
+      }
 
       .categoryTextLink {
         display: flex;
@@ -442,6 +492,15 @@
             width: 70px;
           }
         }
+        @include for-desktop4K {
+          font-size: 26px;
+          font-weight: 500;
+          line-height: 34px;
+          width: 130px;
+          img {
+            height: 23px;
+          }
+        }
       }
       @include for-mobile {
         width: 100%;
@@ -459,11 +518,6 @@
         @include retina-laptop-l-half-2 {
           width: 311px;
           height: 280px;
-        }
-      }
-      @include for-desktop4K {
-        .categoryTextLink {
-          width: 70px;
         }
       }
     }
@@ -514,6 +568,10 @@
           left: 7%;
         }
       }
+      @include for-desktop4K {
+        width: 76%;
+        left: 9%;
+      }
     }
     .categoriesBlockContent {
       display: flex;
@@ -533,6 +591,9 @@
         width: 37%;
         height: 115px;
       }
+      @include for-desktop4K {
+        height: 220px;
+      }
       .categoriesTitle {
         @include for-tablet {
           line-height: 22px;
@@ -540,6 +601,10 @@
         @include for-laptop {
           line-height: 33px;
           height: 60px;
+        }
+        @include for-desktop4K {
+          line-height: 60px;
+          height: 120px;
         }
       }
       .categoryTextLink {
@@ -560,6 +625,16 @@
         }
         @include for-laptop {
           width: 73%;
+        }
+        @include for-desktop4K {
+          width: 51%;
+          font-size: 26px;
+          font-weight: 500;
+          line-height: 34px;
+
+          img {
+            height: 23px;
+          }
         }
       }
     }
@@ -588,6 +663,10 @@
         width: 305px;
         height: 585px;
       }
+    }
+    @include for-desktop4K {
+      width: 485px;
+      height: 925px;
     }
   }
 }

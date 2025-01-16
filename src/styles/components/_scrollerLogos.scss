@@ -29,6 +29,15 @@
     margin-top: 10px;
     margin-bottom: 10px;
   }
+  @include for-LaptopL {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  @include for-desktop4K {
+    margin-top: 50px;
+    margin-bottom: 125px;
+  }
+
   @include containerResponsiveWidth;
 }
 
@@ -52,6 +61,10 @@
       padding-left: 2rem;
       padding-right: 2rem;
     }
+    @include for-desktop4K {
+      padding-left: 9rem;
+      padding-right: 9rem;
+    }
   }
 
   .logoSamsungScroll {
@@ -67,6 +80,10 @@
       width: 50px;
       height: 50px;
     }
+    @include for-desktop4K {
+      width: 170px;
+      height: 100px;
+    }
   }
   .logoXiaomiScroll {
     width: 55px;
@@ -80,6 +97,10 @@
     @include for-mobile {
       height: 25px;
       width: 50px;
+    }
+    @include for-desktop4K {
+      width: 100px;
+      height: 66px;
     }
   }
   .logoNokiaScroll {
@@ -95,6 +116,10 @@
       height: 50px;
       width: 50px;
     }
+    @include for-desktop4K {
+      width: 200px;
+      height: 100px;
+    }
   }
   .logoLGScroll {
     width: 94px;
@@ -108,6 +133,10 @@
     @include for-mobile {
       height: 50px;
       width: 50px;
+    }
+    @include for-desktop4K {
+      width: 150px;
+      height: 100px;
     }
   }
   .logoLenovoScroll {
@@ -123,6 +152,10 @@
       height: 50px;
       width: 50px;
     }
+    @include for-desktop4K {
+      width: 200px;
+      height: 100px;
+    }
   }
   .logoAppleScroll {
     width: 45.51px;
@@ -136,6 +169,10 @@
     @include for-mobile {
       height: 25px;
       width: 50px;
+    }
+    @include for-desktop4K {
+      width: 200px;
+      height: 75px;
     }
   }
 }

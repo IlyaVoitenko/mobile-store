@@ -9,6 +9,9 @@
   @include for-mobile {
     flex-wrap: wrap;
   }
+  @include for-LaptopL {
+    margin-bottom: 20px;
+  }
 }
 .containerCategory {
   display: flex;
@@ -56,7 +59,9 @@
   @include for-tablet {
     height: 45px;
   }
-
+  @include for-desktop4K {
+    height: 104px;
+  }
   span {
     color: $categoryTextColor;
   }
@@ -100,6 +105,10 @@
   align-items: center;
   width: 86px;
   height: 40px;
+  @include for-desktop4K {
+    height: 73px;
+    width: 120px;
+  }
   @include for-tablet {
     justify-content: space-evenly;
   }
@@ -109,6 +118,10 @@
     @include for-tablet {
       width: 30px;
     }
+    @include for-desktop4K {
+      width: 43px;
+      height: 43px;
+    }
   }
   span {
     font-family: $fontFamily;
@@ -118,6 +131,10 @@
     text-align: left;
     @include for-tablet {
       font-size: 10px;
+    }
+    @include for-desktop4K {
+      font-size: 22px;
+      line-height: 27px;
     }
   }
 }
@@ -127,6 +144,10 @@
   align-items: center;
   width: 73px;
   height: 40px;
+  @include for-desktop4K {
+    height: 73px;
+    width: 120px;
+  }
   @include for-tablet {
     justify-content: space-evenly;
   }
@@ -135,6 +156,10 @@
     height: 30.63px;
     @include for-tablet {
       width: 23px;
+    }
+    @include for-desktop4K {
+      width: 43px;
+      height: 43px;
     }
   }
   span {
@@ -145,6 +170,10 @@
     text-align: left;
     @include for-tablet {
       font-size: 10px;
+    }
+    @include for-desktop4K {
+      font-size: 22px;
+      line-height: 27px;
     }
   }
 }
@@ -157,11 +186,19 @@
   @include for-tablet {
     justify-content: space-between;
   }
+  @include for-desktop4K {
+    height: 73px;
+    width: 120px;
+  }
   img {
     width: 14.38px;
     height: 30.62px;
     @include for-tablet {
       width: 12px;
+    }
+    @include for-desktop4K {
+      width: 43px;
+      height: 43px;
     }
   }
   span {
@@ -172,6 +209,10 @@
     text-align: center;
     @include for-tablet {
       font-size: 10px;
+    }
+    @include for-desktop4K {
+      font-size: 22px;
+      line-height: 27px;
     }
   }
 }
@@ -184,6 +225,10 @@
   @include for-tablet {
     justify-content: space-evenly;
   }
+  @include for-desktop4K {
+    height: 73px;
+    width: 120px;
+  }
   span {
     font-family: $fontFamily;
     font-size: 14px;
@@ -194,11 +239,18 @@
     @include for-tablet {
       font-size: 10px;
     }
+    @include for-desktop4K {
+      font-size: 22px;
+      line-height: 27px;
+    }
   }
   img {
     height: 28.13px;
     width: 30.63px;
-
+    @include for-desktop4K {
+      height: 43px;
+      width: 43px;
+    }
     @include for-tablet {
       width: 25px;
     }
@@ -214,6 +266,10 @@
   @include for-tablet {
     justify-content: space-evenly;
   }
+  @include for-desktop4K {
+    height: 73px;
+    width: 195px;
+  }
   span {
     font-family: $fontFamily;
     font-size: 14px;
@@ -227,6 +283,10 @@
       width: 50%;
       line-height: 14px;
     }
+    @include for-desktop4K {
+      font-size: 22px;
+      line-height: 27px;
+    }
   }
   img {
     width: 27.36px;
@@ -234,6 +294,10 @@
 
     @include for-tablet {
       width: 22px;
+    }
+    @include for-desktop4K {
+      width: 43px;
+      height: 43px;
     }
   }
 }
@@ -246,6 +310,10 @@
   @include for-tablet {
     justify-content: space-evenly;
   }
+  @include for-desktop4K {
+    height: 73px;
+    width: 195px;
+  }
   span {
     font-family: $fontFamily;
     font-size: 14px;
@@ -256,6 +324,10 @@
     @include for-tablet {
       font-size: 10px;
     }
+    @include for-desktop4K {
+      font-size: 22px;
+      line-height: 27px;
+    }
   }
 
   img {
@@ -263,6 +335,10 @@
     height: 31px;
     @include for-tablet {
       width: 15px;
+    }
+    @include for-desktop4K {
+      width: 43px;
+      height: 43px;
     }
   }
 }

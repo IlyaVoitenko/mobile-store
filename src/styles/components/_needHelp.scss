@@ -55,6 +55,13 @@
       left: 4%;
       top: 14%;
     }
+    @include for-desktop4K {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 158px;
+      top: 29%;
+    }
     .titleNeedHelp {
       font-family: $fontFamily;
       font-size: 24.88px;
@@ -83,6 +90,12 @@
       }
       @include for-laptop {
         font-size: 20px;
+      }
+      @include for-desktop {
+        font-size: 44px;
+      }
+      @include for-desktop4K {
+        font-size: 45px;
       }
     }
     .subtitleNeedHelp {
@@ -122,6 +135,9 @@
           font-size: 12.5px;
           line-height: 40px;
         }
+      }
+      @include for-desktop4K {
+        font-size: 23px;
       }
     }
     form {
@@ -179,6 +195,11 @@
           @include for-retina {
             width: 169px;
           }
+        }
+        @include for-desktop4K {
+          width: 260px;
+          font-size: 25px;
+          height: 69px;
         }
       }
       input {
@@ -243,28 +264,33 @@
             width: 29%;
           }
         }
-      }
-      input:focus {
-        border: 1px solid $white;
-        color: $white;
-      }
-      input::placeholder {
-        color: grey;
-      }
-      input::placeholder {
-        color: grey;
-      }
-      input::-webkit-input-placeholder {
-        color: grey;
-      }
-      input:-ms-input-placeholder {
-        color: grey;
-      }
-      input::-moz-placeholder {
-        color: grey;
-      }
-      input:-moz-placeholder {
-        color: grey;
+        @include for-desktop4K {
+          width: 240px;
+          font-size: 25px;
+          height: 69px;
+        }
+        input:focus {
+          border: 1px solid $white;
+          color: $white;
+        }
+        input::placeholder {
+          color: grey;
+        }
+        input::placeholder {
+          color: grey;
+        }
+        input::-webkit-input-placeholder {
+          color: grey;
+        }
+        input:-ms-input-placeholder {
+          color: grey;
+        }
+        input::-moz-placeholder {
+          color: grey;
+        }
+        input:-moz-placeholder {
+          color: grey;
+        }
       }
     }
   }

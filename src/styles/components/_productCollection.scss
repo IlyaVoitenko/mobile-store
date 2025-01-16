@@ -5,6 +5,14 @@
 
 .productCollectionContainer {
   margin-top: 20px;
+
+  @include for-desktop4K {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 675px;
+  }
+
   @include containerResponsiveWidth;
   .currentProductList {
     color: #0066cc;

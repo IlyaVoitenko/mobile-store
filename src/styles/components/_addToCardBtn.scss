@@ -13,10 +13,19 @@
   justify-content: center;
   border: none;
 
+  @include for-desktop4K {
+    width: 152px;
+    height: 60px;
+  }
   img {
     width: 12px;
     height: 11px;
     margin-left: 3px;
+
+    @include for-desktop4K {
+      width: 25px;
+      height: 18px;
+    }
   }
   span {
     font-family: $fontFamily;
@@ -27,5 +36,10 @@
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     color: $white;
+
+    @include for-desktop4K {
+      font-size: 20px;
+      line-height: 18px;
+    }
   }
 }

@@ -5,12 +5,14 @@
 
 .containerOnlineStore {
   margin-top: 20px;
-  @include containerResponsiveWidth;
-
   display: flex;
   height: 333px;
   justify-content: space-between;
+  @include containerResponsiveWidth;
 
+  @include for-desktop4K {
+    height: 700px;
+  }
   @include for-tablet {
     flex-direction: column;
     height: 650px;
@@ -32,6 +34,10 @@
     display: flex;
     flex-direction: column;
 
+    @include for-desktop4K {
+      height: 100%;
+      width: 42%;
+    }
     .onlineStoreTitle {
       width: 469px;
       font-family: $fontFamily;
@@ -50,6 +56,11 @@
       @include for-mobile {
         width: 100%;
       }
+      @include for-desktop4K {
+        font-size: 75px;
+        line-height: 88px;
+        width: 85%;
+      }
     }
     .onlineStoreParagraph {
       width: 501px;
@@ -62,6 +73,10 @@
       text-underline-position: from-font;
       text-decoration-skip-ink: none;
       color: $paragraphOnlineStore;
+
+      @include for-LaptopL {
+        width: 514px;
+      }
       @include DPR-laptop-l-half-1 {
         width: 440px;
         font-size: 12px;
@@ -74,8 +89,9 @@
         width: 100%;
       }
       @include for-desktop4K {
-        width: 475px;
-        font-size: 13px;
+        font-size: 24px;
+        line-height: 48px;
+        width: 100%;
       }
     }
   }
@@ -85,9 +101,23 @@
     border-radius: 15px;
     background-color: $white;
     padding: 30px;
-
+    @include for-LaptopL {
+      width: 600px;
+      height: 280px;
+      border-radius: 15px;
+      background-color: $white;
+      padding: 20px;
+    }
     @include DPR-laptop-l-half-1 {
       padding: 20px;
+    }
+    @include for-desktop4K {
+      width: 54%;
+      height: 80%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     @include for-desktop {
       padding: 20px;
@@ -146,6 +176,15 @@
         font-weight: 500;
         line-height: 20px;
       }
+      @include for-LaptopL {
+        font-size: 14px;
+        line-height: 21px;
+      }
+      @include for-desktop4K {
+        font-size: 28px;
+        font-weight: 400;
+        line-height: 48px;
+      }
     }
     .advantagesList {
       list-style-type: none;
@@ -160,6 +199,9 @@
       @include for-mobileL {
         justify-content: flex-start;
       }
+      @include for-desktop4K {
+        align-items: flex-start;
+      }
       .advantagesItem {
         display: flex;
         width: 285px;
@@ -168,6 +210,9 @@
         align-items: flex-start;
         justify-content: space-between;
 
+        @include for-LaptopL {
+          width: 265px;
+        }
         @include DPR-laptop-l-half-1 {
           width: 265px;
         }
@@ -178,6 +223,12 @@
 
         @include for-laptop {
           width: 232px;
+        }
+        @include for-desktop4K {
+          width: 47%;
+          img {
+            width: 63px;
+          }
         }
       }
       .advantagesInfo {
@@ -190,6 +241,11 @@
           text-underline-position: from-font;
           text-decoration-skip-ink: none;
           color: $paragraphOnlineStore;
+
+          @include for-desktop4K {
+            font-size: 24px;
+            line-height: 30px;
+          }
         }
         p {
           width: 226px;
@@ -202,6 +258,10 @@
           text-decoration-skip-ink: none;
           color: $paragraphOnlineStore;
           margin-top: 10px;
+          @include for-LaptopL {
+            width: 210px;
+            font-size: 13px;
+          }
           @include for-desktop {
             width: 210px;
             font-size: 13px;
@@ -213,6 +273,11 @@
           @include for-laptop {
             width: 173px;
             font-size: 10.7px;
+          }
+          @include for-desktop4K {
+            width: 440px;
+            font-size: 24px;
+            line-height: 38px;
           }
         }
       }

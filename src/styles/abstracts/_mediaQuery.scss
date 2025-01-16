@@ -37,8 +37,13 @@
     @content;
   }
 }
+@mixin for-LaptopL {
+  @media (min-width: 1401px) and (max-width: 1919px) {
+    @content;
+  }
+}
 @mixin for-desktop4K {
-  @media (min-width: $laptopL + 1) and (max-width: $desktopScreen) {
+  @media (min-width: 1920px) and (max-width: $desktopScreen) {
     @content;
   }
 }
@@ -65,6 +70,12 @@
 @mixin DPR-laptop-l-half-1 {
   @media (width >= 1025px) and (width <= 1232px) and (resolution >= 192dpi),
     (width >= 1025px) and (width <= 1232px) and (-webkit-device-pixel-ratio >= 2) {
+    @content;
+  }
+}
+
+@mixin for-mobileHover {
+  @media (hover: hover) {
     @content;
   }
 }

@@ -16,6 +16,9 @@
   @include for-mobile {
     font-size: 9px;
   }
+  @include for-desktop4K {
+    font-size: 21px;
+  }
 }
 .changeCurrentSlider {
   font-family: $fontFamily;
@@ -29,6 +32,12 @@
   }
   @include for-mobile {
     font-size: 11px;
+  }
+  @include for-LaptopL {
+    font-size: 22px;
+  }
+  @include for-desktop4K {
+    font-size: 24px;
   }
 }
 
@@ -87,7 +96,10 @@
       height: 180px;
     }
     @include for-desktop4K {
-      height: 180px;
+      height: 270px;
+    }
+    @include for-LaptopL {
+      height: 130px;
     }
     .slideCategoryInfoLink {
       display: flex;
@@ -128,12 +140,23 @@
         font-size: 14px;
         height: 40px;
       }
+      @include for-desktop4K {
+        width: 305px;
+        font-size: 25px;
+        height: 67px;
+        border-radius: 18px;
+      }
     }
   }
   .slideCategoryInfo {
     display: flex;
     flex-direction: column;
     color: $white;
+
+    @include for-desktop4K {
+      height: 68%;
+      justify-content: space-around;
+    }
 
     .slideCategoryInfoTitleProduct {
       font-family: $fontFamily;
@@ -161,6 +184,9 @@
       @include for-laptop {
         font-size: 40px;
       }
+      @include for-desktop4K {
+        font-size: 99px;
+      }
     }
     .slideCategoryInfoDescriptionProduct {
       font-family: $fontFamily;
@@ -187,6 +213,9 @@
       @include for-laptop {
         font-size: 18px;
       }
+      @include for-desktop4K {
+        font-size: 44px;
+      }
     }
   }
   .changeSliderContainer {
@@ -197,6 +226,9 @@
     width: 115px;
     left: $slideCategoryInfoLeftPositionContent;
     top: 80%;
+    @include for-desktop4K {
+      width: 190px;
+    }
     @include for-mobile {
       width: 60px;
     }
@@ -224,7 +256,14 @@
         width: 25%;
         height: 25%;
       }
-
+      @include for-desktop4K {
+        width: 65px;
+        height: 65px;
+        img {
+          width: 25%;
+          height: 25%;
+        }
+      }
       @include for-mobile {
         width: 17px;
         height: 17px;

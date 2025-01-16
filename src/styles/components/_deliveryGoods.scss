@@ -4,9 +4,9 @@
 @use "../abstracts/mediaQuery" as *;
 
 .containerDeliveryGoods {
-  @include containerResponsiveWidth;
   display: flex;
   justify-content: space-between;
+  @include containerResponsiveWidth;
 
   @include for-desktop {
     height: 405px;
@@ -54,6 +54,12 @@
       width: 100%;
     }
   }
+  @include for-desktop4K {
+    height: 700px;
+    img {
+      width: 52%;
+    }
+  }
   .deliveryGoodsContent {
     display: flex;
     flex-direction: column;
@@ -83,6 +89,10 @@
         height: 500px;
       }
     }
+    @include for-desktop4K {
+      width: 46%;
+      height: 700px;
+    }
     .deliveryGoodsTitle {
       font-family: $fontFamily;
       font-size: 50px;
@@ -111,6 +121,11 @@
           line-height: 48px;
         }
       }
+      @include for-desktop4K {
+        font-size: 72px;
+        font-weight: 600;
+        line-height: 81px;
+      }
     }
     .deliveryGoodsSubtitle {
       font-family: $fontFamily;
@@ -135,6 +150,10 @@
       @include for-mobile {
         font-size: 12px;
       }
+      @include for-desktop4K {
+        font-size: 24px;
+        line-height: 38px;
+      }
     }
     .deliveryGoodsParagraph {
       font-family: $fontFamily;
@@ -158,6 +177,10 @@
       }
       @include for-mobile {
         font-size: 12px;
+      }
+      @include for-desktop4K {
+        font-size: 24px;
+        line-height: 54px;
       }
     }
   }

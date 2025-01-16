@@ -8,6 +8,10 @@
   background-color: $bgPage;
   width: 97px;
   height: 38px;
+  @include for-desktop4K {
+    width: 152px;
+    height: 60px;
+  }
   button {
     background-color: $bgPage;
     border-radius: 5px;
@@ -18,6 +22,10 @@
     border: none;
     color: $btnsAmountProject;
     font-size: 20px;
+
+    @include for-desktop4K {
+      font-size: 30px;
+    }
   }
   span {
     display: flex;
@@ -34,5 +42,8 @@
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+    @include for-desktop4K {
+      font-size: 24px;
+    }
   }
 }

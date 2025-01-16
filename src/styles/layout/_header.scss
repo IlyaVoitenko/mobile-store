@@ -6,6 +6,24 @@
   flex-direction: column;
   padding-top: 18px;
 }
+.iPhoneSelect {
+  @include for-mobile {
+    display: none;
+  }
+  @include for-tablet {
+    display: none;
+  }
+  @include for-laptop {
+    display: none;
+  }
+  @include for-desktop {
+    display: none;
+  }
+  @include for-desktop4K {
+    display: none;
+    width: 100px;
+  }
+}
 .containerInfoHeaderContext {
   display: flex;
   justify-content: center;
@@ -32,6 +50,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @include for-LaptopL {
+    justify-content: space-between;
+    width: $weightLaptopLMore;
+  }
   @include for-mobile {
     flex-direction: column;
     width: 100%;
@@ -53,9 +76,10 @@
     }
   }
   @include for-desktop4K {
-    width: 1109px;
+    width: $widthContextDesktop4K;
     justify-content: space-between;
     align-items: center;
+    height: 80px;
   }
 
   .btnShowMenu {
@@ -91,6 +115,7 @@
     }
     @include for-desktop4K {
       width: 53%;
+      height: 100%;
     }
   }
   @include for-mobile {
@@ -106,6 +131,7 @@
     display: flex;
     align-items: center;
     width: 190px;
+
     span {
       font-size: 20px;
       font-weight: 600;
@@ -117,7 +143,7 @@
         }
       }
       @include for-desktop4K {
-        font-size: 27px;
+        font-size: 30px;
       }
     }
     @include for-mobile {
@@ -136,10 +162,30 @@
         font-size: 20px;
       }
     }
+    @include for-desktop4K {
+      width: 100%;
+    }
   }
   .logoIcon {
     width: 39.37px;
     height: 46.91px;
+
+    @include for-mobile {
+      width: 30px;
+      height: 35px;
+    }
+    @include for-tablet {
+      width: 30px;
+      height: 35px;
+    }
+    @include for-laptop {
+      width: 30px;
+      height: 35px;
+    }
+    @include for-desktop4K {
+      width: 73.37px;
+      height: 63.91px;
+    }
   }
   .addressText {
     width: 114px;
@@ -165,6 +211,16 @@
       line-height: 20px;
       width: 100px;
     }
+    @include for-desktop4K {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 174px;
+      line-height: 29.71px;
+      font-size: 21px;
+      font-weight: 500;
+      height: 100%;
+    }
   }
   .workScheduleContainer {
     display: flex;
@@ -187,6 +243,10 @@
     @include for-tablet {
       width: 130px;
     }
+    @include for-desktop4K {
+      width: 250px;
+      height: 100%;
+    }
   }
   .paddingLeft {
     @include for-tablet {
@@ -196,6 +256,12 @@
       padding-left: 22%;
     }
     @include for-desktop {
+      padding-left: 22%;
+    }
+    @include for-LaptopL {
+      padding-left: 22%;
+    }
+    @include for-desktop4K {
       padding-left: 22%;
     }
   }
@@ -210,6 +276,10 @@
     @include for-tablet {
       font-size: 10px;
     }
+    @include for-desktop4K {
+      font-size: 23px;
+      line-height: 31px;
+    }
   }
   .workScheduleHours {
     font-family: $fontFamily;
@@ -223,6 +293,10 @@
     }
     @include for-laptop {
       font-size: 12px;
+    }
+    @include for-desktop4K {
+      font-size: 23px;
+      line-height: 30px;
     }
   }
   .searchInputContainer {
@@ -246,13 +320,17 @@
       width: 15px;
       height: 15px;
     }
+    @include for-desktop4K {
+      top: 37%;
+      width: 6%;
+    }
   }
   .searchInput {
     width: 267px;
     height: 40px;
     font-family: $fontFamily;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 15.51px;
     text-align: left;
     border-radius: 4px;
@@ -265,6 +343,12 @@
     @include for-laptop {
       width: 260px;
     }
+    @include for-desktop4K {
+      width: 400px;
+      height: 70px;
+      font-size: 25px;
+      line-height: 15.51px;
+    }
   }
   .searchInput::placeholder {
     font-family: $fontFamily;
@@ -273,6 +357,10 @@
     line-height: 15.51px;
     text-align: left;
     color: $search;
+
+    @include for-desktop4K {
+      font-size: 21px;
+    }
   }
   .searchInput:focus {
     outline: none;
@@ -286,6 +374,11 @@
       align-items: center;
       height: 50px;
       margin: 20px;
+    }
+    @include for-desktop4K {
+      justify-content: space-around;
+      align-items: end;
+      height: 100%;
     }
   }
   .contactNumber {
@@ -302,6 +395,10 @@
     }
     @include for-laptop {
       font-size: 13px;
+    }
+    @include for-desktop4K {
+      font-size: 28px;
+      line-height: 21.48px;
     }
   }
 
@@ -325,6 +422,11 @@
     @include for-laptop {
       font-size: 12px;
     }
+    @include for-desktop4K {
+      width: 100%;
+      font-size: 25px;
+      line-height: 16.71px;
+    }
   }
   .containerSearchAndCallBack {
     display: flex;
@@ -339,7 +441,10 @@
       width: 40%;
       justify-content: space-between;
     }
-
+    @include for-LaptopL {
+      width: 430px;
+      justify-content: space-between;
+    }
     @include for-desktop {
       width: 38%;
       justify-content: space-between;
@@ -351,8 +456,10 @@
       }
     }
     @include for-desktop4K {
-      width: 38%;
+      height: 100%;
+      width: 31%;
       justify-content: space-between;
+      align-items: center;
     }
   }
 }
@@ -367,7 +474,9 @@
   @include for-mobile {
     height: 250px;
   }
-
+  @include for-desktop4K {
+    height: 80px;
+  }
   .CategoriesHeader {
     display: flex;
     justify-content: space-between;
@@ -390,6 +499,9 @@
         width: 90%;
       }
     }
+    @include for-LaptopL {
+      width: $weightLaptopLMore;
+    }
     @include for-desktop4K {
       width: $widthContextDesktop4K;
     }
@@ -401,11 +513,25 @@
     width: 85px;
     height: 28px;
 
+    @include for-mobile {
+      width: 70px;
+    }
     @include for-tablet {
+      width: 70px;
+    }
+    @include for-laptop {
+      width: 70px;
+    }
+    @include for-desktop {
       width: 70px;
     }
     @include for-desktop4K {
       padding-right: 3%;
+      width: 6.5%;
+      height: 100%;
+    }
+    @include for-LaptopL {
+      width: 70px;
     }
     img {
       width: 18px;
@@ -414,6 +540,10 @@
       @include for-tablet {
         width: 15px;
         height: 15px;
+      }
+      @include for-desktop4K {
+        width: 30px;
+        height: 32px;
       }
     }
 
@@ -425,6 +555,9 @@
     }
     @include for-desktop {
       margin-right: 2%;
+    }
+    @include for-LaptopL {
+      margin-right: 3%;
     }
   }
   .containerMenuAndDropdown {
@@ -446,34 +579,47 @@
     @include for-desktop4K {
       width: 83%;
     }
+    @include for-LaptopL {
+      width: 80%;
+    }
   }
   .itemsInfoContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @include for-desktop4K {
+      height: 40px;
+    }
   }
 
   .summaText {
     font-family: $fontFamily;
     font-size: 12px;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 14.32px;
     text-align: left;
 
     @include for-tablet {
       font-size: 10px;
     }
+    @include for-desktop4K {
+      font-size: 24px;
+    }
   }
 
   .amountItems {
     font-family: $fontFamily;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 14.32px;
     text-align: left;
 
     @include for-tablet {
       font-size: 10px;
+    }
+    @include for-desktop4K {
+      font-size: 23px;
     }
   }
 
@@ -491,6 +637,7 @@
       font-size: 14px;
       line-height: 16.71px;
       border: none;
+      cursor: pointer;
 
       @include for-mobile {
         margin-bottom: 10px;
@@ -500,6 +647,11 @@
       }
       @include for-tablet {
         width: 120px;
+      }
+      @include for-desktop4K {
+        width: 240px;
+        height: 80px;
+        font-size: 24px;
       }
     }
 
@@ -546,11 +698,51 @@
     @include for-tablet {
       font-size: 10px;
     }
+    @include for-desktop4K {
+      font-size: 23px;
+    }
   }
+
+  .SelectWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    img {
+      padding-left: 0.5rem;
+
+      @include for-mobile {
+        width: 8px;
+        height: 15px;
+      }
+      @include for-tablet {
+        width: 8px;
+        height: 15px;
+      }
+      @include for-laptop {
+        width: 8px;
+        height: 15px;
+      }
+      @include for-desktop {
+        width: 10px;
+        height: 15px;
+      }
+      @include for-desktop4K {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+
   .SelectHeader {
     border: none;
     background-color: $headerCategoriesBg;
+    cursor: pointer;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
   }
+
   .SelectHeader:focus {
     outline: none;
   }
