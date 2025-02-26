@@ -5,6 +5,9 @@
 
 .marginTop {
   margin-top: 3rem;
+  @include for-LaptopL {
+    margin-top: 1rem;
+  }
 }
 .contactNumber {
   font-family: $fontFamily;

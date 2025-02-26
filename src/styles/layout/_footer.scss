@@ -22,7 +22,9 @@
       flex-direction: column;
       width: 400px;
       height: 100%;
-
+      @include for-LaptopL {
+        width: 300px;
+      }
       @include for-desktop4K {
         width: 475px;
       }
@@ -47,8 +49,16 @@
         text-decoration-skip-ink: none;
         color: $colorsProductText;
         outline: none;
-
+        @include for-LaptopL {
+          width: 172px;
+          height: 40px;
+          font-size: 14px;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
         @include for-desktop4K {
+          width: 400px;
+
           font-size: 27px;
           padding-left: 1rem;
           padding-right: 6rem;
@@ -73,6 +83,11 @@
       text-align: left;
       text-underline-position: from-font;
       text-decoration-skip-ink: none;
+      @include for-LaptopL {
+        width: 68%;
+        height: 20%;
+        margin-top: 2rem;
+      }
       @include for-desktop4K {
         font-size: 27px;
         line-height: 37px;
@@ -88,9 +103,14 @@
         background-color: $blue;
         display: flex;
         border: none;
-
+        position: absolute;
+        @include for-LaptopL {
+          left: 93%;
+          width: 40px;
+          height: 40px;
+        }
         @include for-desktop4K {
-          position: absolute;
+          left: 83%;
           width: 80px;
           height: 80px;
           img {
@@ -103,11 +123,14 @@
     .email {
       display: flex;
       height: 200px;
-      margin-top: 2rem;
       flex-direction: row-reverse;
+      justify-content: flex-end;
+      align-items: center;
+      @include for-LaptopL {
+        height: 100%;
+      }
       @include for-desktop4K {
         height: 220px;
-        margin-top: 2rem;
       }
     }
     .Copyright {
@@ -132,6 +155,9 @@
     flex-direction: column;
   }
   .footerProducts {
+    @include for-LaptopL {
+      height: 49%;
+    }
     .footerNavList {
       height: 80%;
       display: flex;
@@ -158,16 +184,33 @@
           font-size: 24px;
           line-height: 30px;
         }
+        @include for-LaptopL {
+          font-size: 14px;
+          line-height: 3px;
+          width: 90px;
+          margin-right: 2rem;
+        }
       }
     }
   }
   .footerMenu {
+    @include for-LaptopL {
+      height: 49%;
+    }
     .footerNavList {
       height: 80%;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       flex-wrap: nowrap;
+      #ShippingPayment {
+        @include for-LaptopL {
+          line-height: 17px;
+        }
+        @include for-desktop4K {
+          line-height: 30px;
+        }
+      }
       a {
         width: 200px;
         font-family: $fontFamily;
@@ -183,7 +226,10 @@
         margin-top: 1rem;
         margin-bottom: 1rem;
         margin-right: 4rem;
-
+        @include for-LaptopL {
+          width: 70px;
+          line-height: 3px;
+        }
         @include for-desktop4K {
           font-size: 24px;
           line-height: 30px;
@@ -210,6 +256,9 @@
   .textRight {
     text-align: right;
     margin-top: 2rem;
+    @include for-LaptopL {
+      margin-top: 0rem;
+    }
   }
   .footerContactsInfo {
     display: flex;
@@ -217,5 +266,8 @@
     justify-content: space-around;
     align-items: flex-end;
     height: 50%;
+    @include for-LaptopL {
+      height: 36%;
+    }
   }
 }

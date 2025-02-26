@@ -112,6 +112,9 @@
     @include for-laptop {
       width: 53%;
     }
+    @include for-LaptopL {
+      width: 57%;
+    }
     @include for-desktop {
       width: 53%;
     }
@@ -331,7 +334,16 @@
   @include for-laptop {
     height: 40px;
     line-height: 20px;
-    width: 100px;
+    font-size: 14px;
+    width: 123px;
+    font-weight: 500;
+  }
+  @include for-LaptopL {
+    height: 40px;
+    line-height: 20px;
+    font-size: 14px;
+    width: 123px;
+    font-weight: 500;
   }
   @include for-desktop4K {
     display: flex;
@@ -631,7 +643,7 @@
   display: flex;
   align-items: center;
   width: 190px;
-
+  justify-content: space-between;
   span {
     font-size: 20px;
     font-weight: 600;
@@ -655,7 +667,6 @@
     }
     width: 123px;
   }
-
   @include for-laptop {
     width: 150px;
     span {
@@ -663,7 +674,7 @@
     }
   }
   @include for-desktop4K {
-    width: 100%;
+    width: 292px;
   }
 }
 .logoIcon {

@@ -15,7 +15,10 @@ const Footer = () => {
           <label htmlFor="email" className="emailLabel">
             Newsletter subscription
             <form className="email">
-              <button className="emailButton">
+              <button
+                className="emailButton"
+                onClick={(e) => e.preventDefault()}
+              >
                 <img src={sendIcon} alt="" />
               </button>
               <input
@@ -66,7 +69,10 @@ const Footer = () => {
             <Link to="#">Smartphones</Link>
             <Link to="#">Accessories</Link>
             <Link to="#">Contacts</Link>
-            <Link to="#"> Shipping and payment</Link>
+            <Link to="#" id="ShippingPayment">
+              {" "}
+              Shipping and payment
+            </Link>
           </nav>
         </div>
         <div className="footerContacts ">
