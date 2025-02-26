@@ -1,4 +1,6 @@
-@use "../abstracts" as *;
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/mixins" as *;
 @use "../abstracts/mediaQuery" as *;
 
 .containerHeader {
@@ -127,101 +129,7 @@
       padding-right: 10px;
     }
   }
-  .logoTextAndImage {
-    display: flex;
-    align-items: center;
-    width: 190px;
 
-    span {
-      font-size: 20px;
-      font-weight: 600;
-      font-family: $fontFamily;
-      @include for-desktop {
-        font-size: 27px;
-        @include for-retina {
-          font-size: 27.5px;
-        }
-      }
-      @include for-desktop4K {
-        font-size: 30px;
-      }
-    }
-    @include for-mobile {
-      width: 150px;
-    }
-    @include for-tablet {
-      span {
-        font-size: 15px;
-      }
-      width: 123px;
-    }
-
-    @include for-laptop {
-      width: 150px;
-      span {
-        font-size: 20px;
-      }
-    }
-    @include for-desktop4K {
-      width: 100%;
-    }
-  }
-  .logoIcon {
-    width: 39.37px;
-    height: 46.91px;
-
-    @include for-mobile {
-      width: 30px;
-      height: 35px;
-    }
-    @include for-tablet {
-      width: 30px;
-      height: 35px;
-    }
-    @include for-laptop {
-      width: 30px;
-      height: 35px;
-    }
-    @include for-desktop4K {
-      width: 73.37px;
-      height: 63.91px;
-    }
-  }
-  .addressText {
-    width: 114px;
-    height: 34px;
-    color: $colorTextGrey;
-    line-height: 16.71px;
-    font-size: 14px;
-    font-weight: 600;
-    font-family: $fontFamily;
-
-    @include for-mobile {
-      width: 100%;
-      justify-content: center;
-      align-items: center;
-    }
-    @include for-tablet {
-      width: 86px;
-      line-height: 19.71px;
-      font-size: 12px;
-    }
-    @include for-laptop {
-      height: 40px;
-      line-height: 20px;
-      width: 100px;
-    }
-    @include for-desktop4K {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 174px;
-      line-height: 29.71px;
-      font-size: 21px;
-      font-weight: 500;
-      height: 100%;
-    }
-  }
   .workScheduleContainer {
     display: flex;
     @include for-mobile {
@@ -262,7 +170,7 @@
       padding-left: 22%;
     }
     @include for-desktop4K {
-      padding-left: 22%;
+      padding-left: 23%;
     }
   }
   .workScheduleDays {
@@ -365,69 +273,7 @@
   .searchInput:focus {
     outline: none;
   }
-  .contactInfoContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: end;
-    @include for-mobile {
-      align-items: center;
-      height: 50px;
-      margin: 20px;
-    }
-    @include for-desktop4K {
-      justify-content: space-around;
-      align-items: end;
-      height: 100%;
-    }
-  }
-  .contactNumber {
-    font-family: $fontFamily;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 21.48px;
-    text-align: left;
-    color: $contactNumberColor;
 
-    @include for-tablet {
-      font-size: 11px;
-      line-height: 12.71px;
-    }
-    @include for-laptop {
-      font-size: 13px;
-    }
-    @include for-desktop4K {
-      font-size: 28px;
-      line-height: 21.48px;
-    }
-  }
-
-  .callBack {
-    width: 82px;
-    height: 17px;
-    font-family: $fontFamily;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 16.71px;
-    text-align: right;
-    color: $blue;
-    text-decoration: underline;
-    text-decoration-style: dashed;
-
-    @include for-tablet {
-      font-size: 11px;
-      font-weight: 500;
-      line-height: 10px;
-    }
-    @include for-laptop {
-      font-size: 12px;
-    }
-    @include for-desktop4K {
-      width: 100%;
-      font-size: 25px;
-      line-height: 16.71px;
-    }
-  }
   .containerSearchAndCallBack {
     display: flex;
     @include for-mobile {
@@ -461,6 +307,40 @@
       justify-content: space-between;
       align-items: center;
     }
+  }
+}
+.addressText {
+  width: 114px;
+  height: 34px;
+  color: $colorTextGrey;
+  line-height: 16.71px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: $fontFamily;
+
+  @include for-mobile {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  @include for-tablet {
+    width: 86px;
+    line-height: 19.71px;
+    font-size: 12px;
+  }
+  @include for-laptop {
+    height: 40px;
+    line-height: 20px;
+    width: 100px;
+  }
+  @include for-desktop4K {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 177px;
+    line-height: 29.71px;
+    font-size: 21px;
+    font-weight: 500;
   }
 }
 .containerCategoriesHeader {
@@ -649,7 +529,7 @@
         width: 120px;
       }
       @include for-desktop4K {
-        width: 240px;
+        width: 292px;
         height: 80px;
         font-size: 24px;
       }
@@ -745,5 +625,65 @@
 
   .SelectHeader:focus {
     outline: none;
+  }
+}
+.logoTextAndImage {
+  display: flex;
+  align-items: center;
+  width: 190px;
+
+  span {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: $fontFamily;
+    @include for-desktop {
+      font-size: 27px;
+      @include for-retina {
+        font-size: 27.5px;
+      }
+    }
+    @include for-desktop4K {
+      font-size: 37px;
+    }
+  }
+  @include for-mobile {
+    width: 150px;
+  }
+  @include for-tablet {
+    span {
+      font-size: 15px;
+    }
+    width: 123px;
+  }
+
+  @include for-laptop {
+    width: 150px;
+    span {
+      font-size: 20px;
+    }
+  }
+  @include for-desktop4K {
+    width: 100%;
+  }
+}
+.logoIcon {
+  width: 39.37px;
+  height: 46.91px;
+
+  @include for-mobile {
+    width: 30px;
+    height: 35px;
+  }
+  @include for-tablet {
+    width: 30px;
+    height: 35px;
+  }
+  @include for-laptop {
+    width: 30px;
+    height: 35px;
+  }
+  @include for-desktop4K {
+    width: 89.37px;
+    height: 86.91px;
   }
 }

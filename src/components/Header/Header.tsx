@@ -2,6 +2,8 @@ import resources from "./resources";
 import { useState } from "react";
 import "./../../styles/layout/_header.scss";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
+import ContactInfo from "./ContactInfo";
 
 const Header = () => {
   const [isShowMenu, setIsShowMenu] = useState<boolean>(true);
@@ -17,11 +19,7 @@ const Header = () => {
         <div className="containerInfoHeader">
           <div className="containerLogoAndWorkSchedule">
             <div className="logoContainer">
-              <div className="logoTextAndImage">
-                <span>Store</span>
-                <img src={resources.logo} className="logoIcon" alt="logo" />
-                <span>mobile</span>
-              </div>
+              <Logo />
               <button
                 className="btnShowMenu"
                 onClick={() => setIsShowMenu(!isShowMenu)}
@@ -34,7 +32,7 @@ const Header = () => {
                 !isShowMenu ? "showMenu" : "notShowMenu"
               }`}
             >
-              City name st. Street name, 21
+              City name <br /> st. Street name, 21
             </span>
             <div
               className={`workScheduleContainer ${
@@ -63,12 +61,7 @@ const Header = () => {
               <img src={resources.loop} alt="loop" className="loopImg" />
               <input className="searchInput" placeholder="Search..." />
             </search>
-            <div className="contactInfoContainer">
-              <a href="tel:(099) 999-99-99" className="callBack">
-                Call me back
-              </a>
-              <span className="contactNumber">(099) 999-99-99</span>
-            </div>
+            <ContactInfo isFooter={false} />
           </div>
         </div>
       </div>

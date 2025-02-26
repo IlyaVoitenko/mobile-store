@@ -8,6 +8,7 @@ import ProductCollection from "../ProductCollection";
 
 import { slidersCategory } from "./constants";
 import { SetStateAction, useState } from "react";
+import Footer from "../Footer";
 
 const handlePreSlider = (
   currentSlideNumber: number,
@@ -476,6 +477,7 @@ const Main = () => {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 };
