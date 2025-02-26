@@ -5,6 +5,9 @@
 
 .marginTop {
   margin-top: 3rem;
+  @include for-laptop {
+    margin-top: 2rem;
+  }
   @include for-LaptopL {
     margin-top: 1rem;
   }

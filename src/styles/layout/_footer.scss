@@ -13,7 +13,12 @@
     height: 450px;
     justify-content: space-between;
     @include containerResponsiveWidth;
-
+    @include for-laptop {
+      height: 250px;
+    }
+    @include for-LaptopL {
+      height: 250px;
+    }
     @include for-mobile {
       flex-direction: column;
     }
@@ -22,6 +27,9 @@
       flex-direction: column;
       width: 400px;
       height: 100%;
+      @include for-laptop {
+        width: 175px;
+      }
       @include for-LaptopL {
         width: 300px;
       }
@@ -49,6 +57,13 @@
         text-decoration-skip-ink: none;
         color: $colorsProductText;
         outline: none;
+        @include for-laptop {
+          width: 100%;
+          height: 40px;
+          font-size: 14px;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
         @include for-LaptopL {
           width: 172px;
           height: 40px;
@@ -83,9 +98,14 @@
       text-align: left;
       text-underline-position: from-font;
       text-decoration-skip-ink: none;
+      @include for-laptop {
+        width: 100%;
+        height: 36%;
+        margin-top: 2rem;
+      }
       @include for-LaptopL {
         width: 68%;
-        height: 20%;
+        height: 33%;
         margin-top: 2rem;
       }
       @include for-desktop4K {
@@ -104,6 +124,11 @@
         display: flex;
         border: none;
         position: absolute;
+        @include for-laptop {
+          left: 95%;
+          width: 40px;
+          height: 40px;
+        }
         @include for-LaptopL {
           left: 93%;
           width: 40px;
@@ -126,6 +151,9 @@
       flex-direction: row-reverse;
       justify-content: flex-end;
       align-items: center;
+      @include for-laptop {
+        height: 22%;
+      }
       @include for-LaptopL {
         height: 100%;
       }
@@ -155,8 +183,12 @@
     flex-direction: column;
   }
   .footerProducts {
+    @include for-laptop {
+      height: 88%;
+      width: 33%;
+    }
     @include for-LaptopL {
-      height: 49%;
+      height: 83%;
     }
     .footerNavList {
       height: 80%;
@@ -164,6 +196,13 @@
       flex-direction: column;
       justify-content: flex-start;
       flex-wrap: wrap;
+      @include for-laptop {
+        height: 80%;
+      }
+      @include for-LaptopL {
+        height: 100%;
+        margin-top: 1rem;
+      }
       a {
         width: 200px;
         font-family: $fontFamily;
@@ -179,10 +218,10 @@
         margin-top: 1rem;
         margin-bottom: 1rem;
         margin-right: 4rem;
-
-        @include for-desktop4K {
-          font-size: 24px;
-          line-height: 30px;
+        @include for-laptop {
+          width: 80px;
+          line-height: 3px;
+          margin-right: 2rem;
         }
         @include for-LaptopL {
           font-size: 14px;
@@ -190,10 +229,18 @@
           width: 90px;
           margin-right: 2rem;
         }
+        @include for-desktop4K {
+          font-size: 24px;
+          line-height: 30px;
+        }
       }
     }
   }
   .footerMenu {
+    @include for-laptop {
+      height: 88%;
+      width: 75px;
+    }
     @include for-LaptopL {
       height: 49%;
     }
@@ -203,7 +250,14 @@
       flex-direction: column;
       justify-content: flex-start;
       flex-wrap: nowrap;
+
+      @include for-LaptopL {
+        margin-top: 1rem;
+      }
       #ShippingPayment {
+        @include for-laptop {
+          line-height: 17px;
+        }
         @include for-LaptopL {
           line-height: 17px;
         }
@@ -226,6 +280,10 @@
         margin-top: 1rem;
         margin-bottom: 1rem;
         margin-right: 4rem;
+        @include for-laptop {
+          width: 80px;
+          line-height: 3px;
+        }
         @include for-LaptopL {
           width: 70px;
           line-height: 3px;
@@ -256,6 +314,9 @@
   .textRight {
     text-align: right;
     margin-top: 2rem;
+    @include for-laptop {
+      margin-top: 0rem;
+    }
     @include for-LaptopL {
       margin-top: 0rem;
     }
@@ -266,8 +327,11 @@
     justify-content: space-around;
     align-items: flex-end;
     height: 50%;
+    @include for-laptop {
+      height: 57%;
+    }
     @include for-LaptopL {
-      height: 36%;
+      height: 52%;
     }
   }
 }
