@@ -80,7 +80,8 @@ const Footer = () => {
           <div className="footerContactsInfo">
             <ContactInfo isFooter={true} />
             <span className="addressText textRight">
-              City name <br /> st. Street name, 21
+              City name{" "}
+              <address className="newLineText">st. Street name, 21</address>
             </span>
           </div>
         </div>

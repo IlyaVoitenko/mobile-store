@@ -5,6 +5,13 @@
 
 .marginTop {
   margin-top: 3rem;
+  @include for-mobile {
+    display: flex;
+    align-items: flex-start;
+  }
+  @include for-tablet {
+    margin-top: 1.1rem;
+  }
   @include for-laptop {
     margin-top: 2rem;
   }

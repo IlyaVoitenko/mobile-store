@@ -8,11 +8,32 @@
   align-items: center;
   justify-content: center;
   margin-top: 5rem;
+
+  @include for-mobile {
+    height: 785px;
+    align-items: flex-start;
+  }
+
+  @include for-mobileS {
+    height: 822px;
+    margin-top: 5rem;
+  }
+  @include for-mobileM {
+    height: 822px;
+    margin-top: 2rem;
+  }
+  @include for-mobileL {
+    height: 790px;
+    margin-top: 0rem;
+  }
   .containerFooterInfo {
     display: flex;
     height: 450px;
     justify-content: space-between;
     @include containerResponsiveWidth;
+    @include for-tablet {
+      height: 245px;
+    }
     @include for-laptop {
       height: 250px;
     }
@@ -27,8 +48,14 @@
       flex-direction: column;
       width: 400px;
       height: 100%;
+      @include for-mobile {
+        width: 100%;
+      }
+      @include for-tablet {
+        width: 200px;
+      }
       @include for-laptop {
-        width: 175px;
+        width: 232px;
       }
       @include for-LaptopL {
         width: 300px;
@@ -57,8 +84,22 @@
         text-decoration-skip-ink: none;
         color: $colorsProductText;
         outline: none;
+        @include for-mobile {
+          width: 88%;
+          height: 36px;
+          font-size: 14px;
+          padding-left: 0.6rem;
+          padding-right: 1rem;
+        }
+        @include for-tablet {
+          width: 79%;
+          height: 36px;
+          font-size: 14px;
+          padding-left: 0.3rem;
+          padding-right: 2rem;
+        }
         @include for-laptop {
-          width: 100%;
+          width: 175px;
           height: 40px;
           font-size: 14px;
           padding-left: 1rem;
@@ -98,6 +139,15 @@
       text-align: left;
       text-underline-position: from-font;
       text-decoration-skip-ink: none;
+      @include for-mobile {
+        height: 100px;
+        margin-top: 1rem;
+      }
+      @include for-tablet {
+        width: 100%;
+        height: 70px;
+        margin-top: 3rem;
+      }
       @include for-laptop {
         width: 100%;
         height: 36%;
@@ -124,8 +174,29 @@
         display: flex;
         border: none;
         position: absolute;
+
+        @include for-mobileS {
+          left: 88%;
+          width: 36px;
+          height: 36px;
+        }
+        @include for-mobileM {
+          left: 90%;
+          width: 36px;
+          height: 36px;
+        }
+        @include for-mobileL {
+          left: 91%;
+          width: 36px;
+          height: 36px;
+        }
+        @include for-tablet {
+          left: 82%;
+          width: 36px;
+          height: 36px;
+        }
         @include for-laptop {
-          left: 95%;
+          left: 83%;
           width: 40px;
           height: 40px;
         }
@@ -181,8 +252,14 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    @include for-mobile {
+      margin-top: 1rem;
+    }
   }
   .footerProducts {
+    @include for-tablet {
+      height: 85%;
+    }
     @include for-laptop {
       height: 88%;
       width: 33%;
@@ -196,6 +273,14 @@
       flex-direction: column;
       justify-content: flex-start;
       flex-wrap: wrap;
+      @include for-mobile {
+        height: 100%;
+        flex-direction: row;
+      }
+      @include for-tablet {
+        height: 100%;
+        margin-top: 1rem;
+      }
       @include for-laptop {
         height: 80%;
       }
@@ -218,6 +303,17 @@
         margin-top: 1rem;
         margin-bottom: 1rem;
         margin-right: 4rem;
+        @include for-mobile {
+          width: 90px;
+          line-height: 17px;
+          margin-bottom: 0rem;
+          margin-right: 0rem;
+        }
+        @include for-tablet {
+          width: 80px;
+          margin-right: 1rem;
+          line-height: 3px;
+        }
         @include for-laptop {
           width: 80px;
           line-height: 3px;
@@ -237,12 +333,16 @@
     }
   }
   .footerMenu {
+    @include for-tablet {
+      width: 70px;
+      height: 100%;
+    }
     @include for-laptop {
       height: 88%;
       width: 75px;
     }
     @include for-LaptopL {
-      height: 49%;
+      height: 97%;
     }
     .footerNavList {
       height: 80%;
@@ -250,11 +350,21 @@
       flex-direction: column;
       justify-content: flex-start;
       flex-wrap: nowrap;
-
-      @include for-LaptopL {
+      @include for-mobile {
+        height: 100%;
+      }
+      @include for-tablet {
+        height: 100%;
         margin-top: 1rem;
       }
+      @include for-LaptopL {
+        margin-top: 1rem;
+        height: 100%;
+      }
       #ShippingPayment {
+        @include for-tablet {
+          line-height: 17px;
+        }
         @include for-laptop {
           line-height: 17px;
         }
@@ -280,6 +390,14 @@
         margin-top: 1rem;
         margin-bottom: 1rem;
         margin-right: 4rem;
+        @include for-mobile {
+          width: 90px;
+          line-height: 17px;
+        }
+        @include for-tablet {
+          width: 70px;
+          line-height: 3px;
+        }
         @include for-laptop {
           width: 80px;
           line-height: 3px;
@@ -314,6 +432,13 @@
   .textRight {
     text-align: right;
     margin-top: 2rem;
+    @include for-mobile {
+      margin-top: 0rem;
+      width: 40%;
+    }
+    @include for-tablet {
+      margin-top: 0rem;
+    }
     @include for-laptop {
       margin-top: 0rem;
     }
@@ -321,17 +446,28 @@
       margin-top: 0rem;
     }
   }
-  .footerContactsInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-end;
-    height: 50%;
-    @include for-laptop {
-      height: 57%;
-    }
-    @include for-LaptopL {
-      height: 52%;
+  .footerContacts {
+    .footerContactsInfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: flex-end;
+      height: 50%;
+      @include for-mobile {
+        height: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      @include for-tablet {
+        height: 52%;
+      }
+      @include for-laptop {
+        height: 57%;
+      }
+      @include for-LaptopL {
+        height: 52%;
+      }
     }
   }
 }

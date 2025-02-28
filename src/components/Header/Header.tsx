@@ -27,13 +27,15 @@ const Header = () => {
                 &#9776;
               </button>
             </div>
-            <span
-              className={`addressText ${
+            <div
+              className={`addressContainer addressText ${
                 !isShowMenu ? "showMenu" : "notShowMenu"
               }`}
             >
-              City name <br /> st. Street name, 21
-            </span>
+              <span>City name{"  "}</span>
+              <address>st. Street name, 21</address>
+            </div>
+
             <div
               className={`workScheduleContainer ${
                 !isShowMenu ? "showMenu" : "notShowMenu"
