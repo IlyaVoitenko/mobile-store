@@ -1,0 +1,68 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/mediaQuery" as *;
+
+.containerSortProducts {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.sortProductsLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  cursor: pointer;
+}
+
+.containerProductNameAndCount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  @include containerResponsiveWidth;
+  .productNameAndCount {
+    display: flex;
+    align-items: end;
+
+    .productName {
+      font-family: $fontFamily;
+      font-weight: 600;
+      font-size: 50px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      vertical-align: middle;
+    }
+    .productCount {
+      font-family: $fontFamily;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 18px;
+      vertical-align: middle;
+      color: $itemsCountsColors;
+      padding-left: 0.5rem;
+    }
+  }
+}
+#sortProducts {
+  border: none;
+  background-color: $bgPage;
+  cursor: pointer;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+}
+#sortProducts:focus {
+  outline: none;
+}
+.sortProductsSpan {
+  display: flex;
+  align-items: center;
+  font-family: $fontFamily;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  vertical-align: middle;
+  color: $itemsCountsColors;
+}

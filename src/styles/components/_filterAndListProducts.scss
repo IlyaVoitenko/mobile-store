@@ -1,0 +1,35 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/mediaQuery" as *;
+
+.containerFilterAndListProducts {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  .filtersProducts {
+    display: flex;
+    justify-content: center;
+    width: 255px;
+    height: 775px;
+    border-radius: 17px;
+    background-color: $white;
+
+    .filterPrises {
+      width: 224px;
+      height: 91px;
+
+      .filterTitle {
+        font-family: $fontFamily;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+      }
+    }
+  }
+  .listProducts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+}

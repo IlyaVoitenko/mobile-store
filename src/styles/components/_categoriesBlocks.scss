@@ -43,7 +43,7 @@
     align-items: center;
     font-family: $fontFamily;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 18px;
     text-align: left;
     text-underline-position: from-font;
@@ -484,6 +484,9 @@
         @include for-laptop {
           width: 60px;
         }
+        @include for-LaptopL {
+          width: 75px;
+        }
         @include for-desktop {
           @include retina-laptop-l-half-1 {
             width: 70px;
@@ -616,7 +619,7 @@
           margin-left: 0.2rem;
         }
         @include for-mobile {
-          width: 60%;
+          width: 66px;
         }
         @include for-tablet {
           img {

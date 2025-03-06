@@ -8,7 +8,6 @@
   align-items: center;
   justify-content: center;
   margin-top: 5rem;
-
   @include for-mobile {
     height: 785px;
     align-items: flex-start;
@@ -427,6 +426,12 @@
     @include for-desktop4K {
       font-size: 35px;
       line-height: 45px;
+    }
+  }
+  #titleContact {
+    text-align: right;
+    @include for-mobile {
+      text-align: left;
     }
   }
   .textRight {

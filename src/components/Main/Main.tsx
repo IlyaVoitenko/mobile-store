@@ -56,37 +56,37 @@ const Main = () => {
       <main className="containerContentPage">
         <div className="containerCategory">
           <nav className="containerCategoryLinks">
-            <Link to={"#"} className="categoryLinks ">
+            <Link to={"/Category"} className="categoryLinks ">
               <div className="iPhoneContextContainer">
                 <img src={resources.iPhone} alt="iPhone" />
                 <span>Iphone</span>
               </div>
             </Link>
-            <Link to={"#"} className="categoryLinks">
+            <Link to={"/Category"} className="categoryLinks">
               <div className="iPadContextContainer">
                 <img src={resources.iPad} alt="iPad" />
                 <span>IPad</span>
               </div>
             </Link>
-            <Link to={"#"} className="categoryLinks">
+            <Link to={"/Category"} className="categoryLinks">
               <div className="appleWatchContextContainer">
                 <img src={resources.watch} alt="Apple Watch" />
                 <span>Apple Watch</span>
               </div>
             </Link>
-            <Link to={"#"} className="categoryLinks">
+            <Link to={"/Category"} className="categoryLinks">
               <div className="iMacContextContainer">
                 <img src={resources.iMac} alt="iMac icon" />
                 <span>IMac</span>
               </div>
             </Link>
-            <Link to={"#"} className="categoryLinks">
+            <Link to={"/Category"} className="categoryLinks">
               <div className="androidSmartphonesContextContainer">
                 <img src={resources.androidIcon} alt="Android icon" />
                 <span>Android Smartphones</span>{" "}
               </div>
             </Link>
-            <Link to={"#"} className="categoryLinks">
+            <Link to={"/Category"} className="categoryLinks">
               <div className="accessoriesContextContainer">
                 <img src={resources.accessoriesIcon} alt="Accessories icon" />
                 <span>Accessories</span>
@@ -114,7 +114,7 @@ const Main = () => {
                   {slidersCategory[currentSlideNumber - 1].productDescription}
                 </h3>
               </div>
-              <Link to={"#"} className="slideCategoryInfoLink">
+              <Link to={"/Category"} className="slideCategoryInfoLink">
                 Go to the category
               </Link>
             </nav>
@@ -197,7 +197,7 @@ const Main = () => {
         />
         <nav className="categoriesBlocksContainer">
           <div className="blocksContainer">
-            <Link to="#" className="categoriesBlocksLink first">
+            <Link to="/Category" className="categoriesBlocksLink first">
               <div className="categoriesBlockContent">
                 <span className="categoriesTitle">Iphone</span>
                 <span className="categoryTextLink">
@@ -212,14 +212,14 @@ const Main = () => {
               />
             </Link>
             <Link
-              to="#"
+              to="/Category"
               className="categoriesBlocksLink second categoriesBlocksLink "
             >
               <div className="categoriesBlockContent">
                 <span className="categoriesTitle">Accessories</span>
                 <span className="categoryTextLink">
-                  Go to the category{" "}
-                  <img src={resources.ArrowRightBlue} alt="" />
+                  Go to the <br />
+                  category <img src={resources.ArrowRightBlue} alt="" />
                 </span>
               </div>
               <img
@@ -228,11 +228,11 @@ const Main = () => {
                 className="bgImageCategories"
               />
             </Link>
-            <Link to="#" className="categoriesBlocksLink third  ">
+            <Link to="/Category" className="categoriesBlocksLink third  ">
               <div className="categoriesBlockContent">
                 <span className="categoriesTitle">iMac</span>
                 <span className="categoryTextLink">
-                  Go to the category{" "}
+                  Go to the <br /> category{" "}
                   <img src={resources.ArrowRightBlue} alt="" />
                 </span>{" "}
               </div>
@@ -242,7 +242,7 @@ const Main = () => {
                 className="bgImageCategories"
               />
             </Link>
-            <Link to="#" className="categoriesBlocksLink fourth">
+            <Link to="/Category" className="categoriesBlocksLink fourth">
               <div className="categoriesBlockContent">
                 <span className="categoriesTitle">IPad</span>
                 <span className="categoryTextLink">
@@ -257,7 +257,7 @@ const Main = () => {
               />
             </Link>
           </div>
-          <Link to="#" className="categoriesBlocksLink fifth  ">
+          <Link to="/Category" className="categoriesBlocksLink fifth  ">
             <div className="categoriesBlockContent">
               <span className="categoriesTitle">Apple Watch</span>
               <span className="categoryTextLink">

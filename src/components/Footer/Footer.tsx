@@ -36,26 +36,26 @@ const Footer = () => {
           <nav className="footerNavList">
             {slidersCategory &&
               slidersCategory.map((item) => (
-                <Link to="#" key={item.id}>
+                <Link to="/Category" key={item.id}>
                   {item.productName}
                 </Link>
               ))}
             {slidersCategory &&
               slidersCategory.map((item) => (
-                <Link to="#" key={item.id}>
+                <Link to="/Category" key={item.id}>
                   {item.productName}
                 </Link>
               ))}
             {slidersCategory &&
               slidersCategory.map((item) => (
-                <Link to="#" key={item.id}>
+                <Link to="/Category" key={item.id}>
                   {item.productName}
                 </Link>
               ))}
             {slidersCategory &&
               slidersCategory
                 .map((item) => (
-                  <Link to="#" key={item.id}>
+                  <Link to="/Category" key={item.id}>
                     {item.productName}
                   </Link>
                 ))
@@ -76,7 +76,9 @@ const Footer = () => {
           </nav>
         </div>
         <div className="footerContacts ">
-          <h4 className="title">Our contacts</h4>
+          <h4 className="title" id="titleContact">
+            Our contacts
+          </h4>
           <div className="footerContactsInfo">
             <ContactInfo isFooter={true} />
             <span className="addressText textRight">
