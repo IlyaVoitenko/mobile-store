@@ -7,6 +7,7 @@ import arrowDownGrey from "../../assets/arrowDownGrey.svg";
 import "../../styles/components/_categoryNavProduct.scss";
 import "../../styles/components/_productNameAndCount.scss";
 import "../../styles/components/_filterAndListProducts.scss";
+import PriceRange from "../PriceRange";
 const Category = () => {
   return (
     <div className="pageDefault">
@@ -39,6 +40,7 @@ const Category = () => {
           <div className="filtersProducts">
             <div className="filterPrises">
               <span className="filterTitle">Price</span>
+              <PriceRange />
             </div>
           </div>
           <ul className="listProducts"></ul>

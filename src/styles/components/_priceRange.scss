@@ -1,0 +1,112 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/mediaQuery" as *;
+
+.double-slider-box {
+  background-color: #fff;
+  border-radius: 10px;
+  max-width: 300px;
+  margin: auto;
+}
+.range-slider {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  margin: 15px 0;
+  background-color: $rangePriceLineColor;
+  border-radius: 5px;
+}
+
+.slider-track {
+  height: 100%;
+  position: absolute;
+  background-color: $rangePriceLineColor;
+  left: 0;
+  right: 100%;
+  border-radius: 5px;
+}
+
+.range-slider input[type="range"] {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  background: none;
+  pointer-events: none;
+  appearance: none;
+  height: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 4px;
+  background: #0066cc;
+  pointer-events: auto;
+  appearance: none;
+  cursor: pointer;
+  box-shadow: 0 0.125rem 0.5625rem -0.125rem rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 2;
+  background-image: url("../../assets/trigger_from.svg");
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 4px;
+  background: #0066cc;
+  pointer-events: auto;
+  appearance: none;
+  cursor: pointer;
+  box-shadow: 0 0.125rem 0.5625rem -0.125rem rgba(0, 0, 0, 0.25);
+  position: relative;
+  z-index: 2;
+}
+
+.input-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  span {
+    font-family: $fontFamily;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: $itemsCountsColors;
+  }
+}
+
+.min-box,
+.max-box {
+  width: 50%;
+}
+
+.max-box input {
+  float: right;
+}
+input[type="text"] {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid #eceef4;
+  border-radius: 5px;
+  text-align: center;
+
+  font-family: $fontFamily;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+  vertical-align: middle;
+  color: $greyNavLink;
+}
+
+input[type="text"]::-webkit-inner-spin-button,
+input[type="text"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
