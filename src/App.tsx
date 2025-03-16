@@ -4,7 +4,12 @@ import MainPage from "./pages/MainPage";
 import CategoryPage from "./pages/CategoryPage";
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/Category" element={<CategoryPage />} />

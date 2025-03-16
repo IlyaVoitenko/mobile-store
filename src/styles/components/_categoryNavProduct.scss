@@ -4,11 +4,12 @@
 @use "../abstracts/mediaQuery" as *;
 
 .navProduct {
-  @include containerResponsiveWidth;
   display: flex;
   justify-content: start;
   align-items: center;
   margin-top: 0.5rem;
+  @include containerResponsiveWidth;
+
   .linkMainPage {
     font-family: $fontFamily;
     font-weight: 500;

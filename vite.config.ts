@@ -3,13 +3,20 @@ import react from "@vitejs/plugin-react";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 
 export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler",
+      },
+    },
+  },
   plugins: [
     react(),
     viteStaticCopy({
       targets: [
         {
-          src: "public/fonts", // Укажите папку, откуда копировать шрифты
-          dest: "fonts", // Куда копировать
+          src: "public/fonts",
+          dest: "fonts",
         },
       ],
     }),
