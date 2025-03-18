@@ -1,55 +1,46 @@
 import resources from "./resources";
-
+import { startTransition, useActionState } from "react";
 import { Link } from "react-router-dom";
 import { arrProduct } from "../ProductCollection/constants";
-
+import {
+  handleChangeClientName,
+  handleChangeClientNumber,
+  handleNextSlider,
+  handlePreSlider,
+  objectToFormData,
+  queryClient,
+} from "./helper/index";
 import Header from "../../components/Header";
 import ProductCollection from "../ProductCollection";
 
 import { slidersCategory } from "./constants";
-import { SetStateAction, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Footer from "../Footer";
+import NeedHelpSubmitBtn from "./NeedHelpSubmitBtn";
 
-const handlePreSlider = (
-  currentSlideNumber: number,
-  setCurrentSlideNumber: {
-    (value: SetStateAction<number>): void;
-  }
-) => {
-  if (currentSlideNumber < 1) return;
-  setCurrentSlideNumber(currentSlideNumber);
-};
-const handleNextSlider = (
-  currentSlideNumber: number,
-  setCurrentSlideNumber: {
-    (value: SetStateAction<number>): void;
-  },
-  amountSliders: number
-) => {
-  if (currentSlideNumber > amountSliders) return;
-  setCurrentSlideNumber(currentSlideNumber);
-};
-const clientPhoneNumberRegex = /^\+?\d{0,15}$/;
-const clientNameRegex = /^[a-zA-Z]+$/;
 const Main = () => {
+  const initialFormData = {
+    nameClient: "",
+    phoneNumber: "",
+    success: false,
+  };
+  const [state, formAction] = useActionState(
+    queryClient,
+    objectToFormData(initialFormData)
+  );
+  const formRef = useRef<HTMLFormElement>(null);
   const [currentSlideNumber, setCurrentSlideNumber] = useState<number>(1);
   const [nameClient, setNameClient] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
-
-  const handleChangeClientNumber = (target: EventTarget & HTMLInputElement) => {
-    const { value } = target;
-    const isPhone = clientPhoneNumberRegex.test(value);
-
-    if (isPhone) setPhoneNumber(value);
-  };
-
-  const handleChangeClientName = (target: EventTarget & HTMLInputElement) => {
-    const { value } = target;
-    if (!clientNameRegex.test(value)) return "Invalid first name.";
-    setNameClient(value);
-  };
-
   const amountSliders = slidersCategory.length;
+  useEffect(() => {
+    if (!state.success) return;
+    setNameClient("");
+    setPhoneNumber("");
+    startTransition(() => {
+      formAction(objectToFormData(initialFormData));
+    });
+  }, [initialFormData, state.success]);
   return (
     <div className="pageDefault">
       <Header />
@@ -166,26 +157,32 @@ const Main = () => {
               Leave a request in the form below and we will call you back as
               soon as possible
             </h4>
-            <form>
+            <form ref={formRef} action={formAction}>
               <input
                 value={nameClient}
-                onChange={({ target }) => handleChangeClientName(target)}
+                onInput={({ target }) =>
+                  handleChangeClientName(
+                    target as HTMLInputElement,
+                    setNameClient
+                  )
+                }
                 placeholder="name"
+                name="nameClient"
                 required
               />
               <input
                 value={phoneNumber}
-                onChange={({ target }) => handleChangeClientNumber(target)}
+                onInput={({ target }) =>
+                  handleChangeClientNumber(
+                    target as HTMLInputElement,
+                    setPhoneNumber
+                  )
+                }
                 placeholder="phone number"
+                name="phoneNumber"
                 required
               />
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                }}
-              >
-                Call me back
-              </button>
+              <NeedHelpSubmitBtn />
             </form>
           </div>
         </div>
