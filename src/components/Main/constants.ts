@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
-import { SlidersCategoryItem } from "../../types";
+import { ISlidersCategoryItem } from "../../types";
 import resources from "./resources";
-export const slidersCategory: SlidersCategoryItem[] = [
+export const slidersCategory: ISlidersCategoryItem[] = [
   {
     id: nanoid(),
     slideImg: resources.categorySliderIphone,

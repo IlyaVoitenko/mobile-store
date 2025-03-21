@@ -16,8 +16,12 @@
     background-color: $white;
 
     .filterPrises {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-top: 1.3rem;
       width: 224px;
-      height: 91px;
+      height: 101px;
 
       .filterTitle {
         font-family: $fontFamily;

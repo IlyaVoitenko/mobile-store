@@ -1,14 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../../styles/pages/_index.scss";
 import Footer from "../Footer";
 import Header from "../Header";
+import PriceRange from "../PriceRange";
 import ArrowRightGrey from "../../assets/ArrowRightGrey.svg";
 import arrowDownGrey from "../../assets/arrowDownGrey.svg";
 import "../../styles/components/_categoryNavProduct.scss";
 import "../../styles/components/_productNameAndCount.scss";
 import "../../styles/components/_filterAndListProducts.scss";
-import PriceRange from "../PriceRange";
+import { filtersProduct } from "../../helper";
 const Category = () => {
+  const { category } = useParams();
+  console.log(category, typeof category);
+  const filters = filtersProduct(category);
+  console.log(filters);
+  const {} = filters || {};
   return (
     <div className="pageDefault">
       <Header />
@@ -18,11 +24,11 @@ const Category = () => {
             Main
           </Link>
           <img src={ArrowRightGrey} alt="" />{" "}
-          <span className="selectedProduct">Iphone</span>
+          <span className="selectedProduct">{category}</span>
         </nav>
         <div className="containerProductNameAndCount">
           <div className="productNameAndCount">
-            <h1 className="productName">Iphone</h1>
+            <h1 className="productName">{category}</h1>
             <span className="productCount">0 items</span>
           </div>
           <section className="containerSortProducts">

@@ -161,7 +161,7 @@ const Header = () => {
             <img src={resources.shoppingBag} alt="shopping bag" />
             <div className="itemsInfoContainer">
               <span className="amountItems">0 goods</span>
-              <span className="summaText">0 uah</span>
+              <span className="summaText">0 usd</span>
             </div>
           </div>
         </nav>

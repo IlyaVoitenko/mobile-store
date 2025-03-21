@@ -656,6 +656,8 @@
   align-items: center;
   width: 190px;
   justify-content: space-between;
+  text-decoration: none;
+  color: $linkLogoColor;
   span {
     font-size: 20px;
     font-weight: 600;

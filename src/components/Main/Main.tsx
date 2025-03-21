@@ -9,7 +9,7 @@ import {
   handlePreSlider,
   objectToFormData,
   queryClient,
-} from "./helper/index";
+} from "../../helper";
 import Header from "../../components/Header";
 import ProductCollection from "../ProductCollection";
 
@@ -40,44 +40,48 @@ const Main = () => {
     startTransition(() => {
       formAction(objectToFormData(initialFormData));
     });
-  }, [initialFormData, state.success]);
+  }, [state.success]);
+
   return (
     <div className="pageDefault">
       <Header />
       <main className="containerContentPage">
         <div className="containerCategory">
           <nav className="containerCategoryLinks">
-            <Link to={"/Category"} className="categoryLinks ">
+            <Link to={"/category/Iphone"} className="categoryLinks ">
               <div className="iPhoneContextContainer">
                 <img src={resources.iPhone} alt="iPhone" />
                 <span>Iphone</span>
               </div>
             </Link>
-            <Link to={"/Category"} className="categoryLinks">
+            <Link to={"/category/IPad"} className="categoryLinks">
               <div className="iPadContextContainer">
                 <img src={resources.iPad} alt="iPad" />
                 <span>IPad</span>
               </div>
             </Link>
-            <Link to={"/Category"} className="categoryLinks">
+            <Link to={"/category/Apple Watch"} className="categoryLinks">
               <div className="appleWatchContextContainer">
                 <img src={resources.watch} alt="Apple Watch" />
                 <span>Apple Watch</span>
               </div>
             </Link>
-            <Link to={"/Category"} className="categoryLinks">
+            <Link to={"/category/IMac"} className="categoryLinks">
               <div className="iMacContextContainer">
                 <img src={resources.iMac} alt="iMac icon" />
                 <span>IMac</span>
               </div>
             </Link>
-            <Link to={"/Category"} className="categoryLinks">
+            <Link
+              to={"/category/Android Smartphones"}
+              className="categoryLinks"
+            >
               <div className="androidSmartphonesContextContainer">
                 <img src={resources.androidIcon} alt="Android icon" />
                 <span>Android Smartphones</span>{" "}
               </div>
             </Link>
-            <Link to={"/Category"} className="categoryLinks">
+            <Link to={"/category/Accessories"} className="categoryLinks">
               <div className="accessoriesContextContainer">
                 <img src={resources.accessoriesIcon} alt="Accessories icon" />
                 <span>Accessories</span>

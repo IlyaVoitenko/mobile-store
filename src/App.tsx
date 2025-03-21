@@ -12,7 +12,7 @@ function App() {
     >
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/Category" element={<CategoryPage />} />
+        <Route path="/category/:category" element={<CategoryPage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,12 +1,12 @@
 import { nanoid } from "nanoid";
-import { ProductSection } from "../../types";
+import { IProductSection } from "../../types";
 
 import colorsCaseApple from "../../assets/colorsCaseApple.svg";
 import caseApple from "../../assets/caseApple.svg";
 import appleScreens from "../../assets/appleScreens.svg";
 import samsungScreens from "../../assets/SamsungScreens.svg";
 
-export const arrProduct: ProductSection[] = [
+export const arrProduct: IProductSection[] = [
   {
     id: nanoid(),
     priceProduct: 0,

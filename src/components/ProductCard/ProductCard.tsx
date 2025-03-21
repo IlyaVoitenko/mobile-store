@@ -1,11 +1,11 @@
-import { ProductSection } from "../../types";
+import { IProductSection } from "../../types";
 import "../../styles/components/_productCard.scss";
 
 import AddToCardBtn from "./AddToCardBtn";
 import AmountProduct from "./AmountProduct";
 
 type ProductCardProps = {
-  card: ProductSection;
+  card: IProductSection;
   promotion?: boolean;
 };
 
