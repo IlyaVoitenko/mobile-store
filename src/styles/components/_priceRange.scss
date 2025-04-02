@@ -91,7 +91,7 @@ input[type="range"]::-moz-range-thumb {
 input[type="text"] {
   width: 70%;
   padding: 10px;
-  border: 1px solid #eceef4;
+  border: 1px solid $inputGreyColor;
   border-radius: 5px;
   text-align: center;
 
