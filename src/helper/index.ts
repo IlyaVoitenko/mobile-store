@@ -59,7 +59,9 @@ export const handleNextSlider = (
   if (currentSlideNumber > amountSliders) return;
   setCurrentSlideNumber(currentSlideNumber);
 };
-export const objectToFormData = (obj: Record<string, any>): FormData => {
+export const objectToFormData = (
+  obj: Record<string, string | Blob>
+): FormData => {
   const formData = new FormData();
   Object.entries(obj).forEach(([key, value]) => {
     formData.append(key, value);
@@ -68,7 +70,7 @@ export const objectToFormData = (obj: Record<string, any>): FormData => {
 };
 export const filtersProduct = (
   category: string | undefined
-): IFiltersProduct => {
+): IFiltersProduct | void => {
   switch (category) {
     case "Iphone":
       return {
@@ -114,6 +116,30 @@ export const filtersProduct = (
         type: ["Case", "Screen Protector", "Charger", "Headphones"],
       };
     default:
-      return redirect("/");
+      redirect("/");
   }
+};
+export const handleFilter = (
+  target: HTMLInputElement,
+  setSelectedFilters: React.Dispatch<React.SetStateAction<IFiltersProduct>>,
+  filter: keyof IFiltersProduct
+) => {
+  const name = target.name;
+  const isChecked = target.checked;
+
+  setSelectedFilters((prev) => {
+    const currentFilter = prev[filter] ?? [];
+
+    if (isChecked) {
+      return {
+        ...prev,
+        [filter]: [...currentFilter, name],
+      };
+    } else {
+      return {
+        ...prev,
+        [filter]: currentFilter.filter((item) => item !== name),
+      };
+    }
+  });
 };

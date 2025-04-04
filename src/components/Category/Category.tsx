@@ -10,13 +10,35 @@ import arrowDownBlue from "../../assets/arrowDownBlue.svg";
 import "../../styles/components/_categoryNavProduct.scss";
 import "../../styles/components/_productNameAndCount.scss";
 import "../../styles/components/_filterAndListProducts.scss";
-import { filtersProduct } from "../../helper";
-import { useState } from "react";
+import { filtersProduct, handleFilter } from "../../helper";
+import { IFiltersProduct } from "../../types";
+import { useEffect, useState } from "react";
+
 const Category = () => {
   const [isShow, setIsShow] = useState(false);
+  const [selectedFilters, setSelectedFilters] = useState<IFiltersProduct>({
+    models: [],
+    memory: [],
+    color: [],
+    type: [],
+  });
   const { category } = useParams();
   const filters = filtersProduct(category);
   const { models, memory, color, type } = filters || {};
+
+  useEffect(() => {
+    setSelectedFilters({
+      models: [],
+      memory: [],
+      color: [],
+      type: [],
+    });
+    setIsShow(false);
+  }, [category]);
+
+  useEffect(() => {
+    console.log(selectedFilters);
+  }, [selectedFilters]);
   return (
     <div className="pageDefault">
       <Header />
@@ -61,6 +83,10 @@ const Category = () => {
                             id={item}
                             name={item}
                             className="checkboxFilter"
+                            checked={selectedFilters?.models?.includes(item)}
+                            onChange={({ target }) =>
+                              handleFilter(target, setSelectedFilters, "models")
+                            }
                           />
                           <span className="box"></span>
 
@@ -90,6 +116,10 @@ const Category = () => {
                             id={item}
                             name={item}
                             className="checkboxFilter"
+                            checked={selectedFilters?.memory.includes(item)}
+                            onChange={({ target }) =>
+                              handleFilter(target, setSelectedFilters, "memory")
+                            }
                           />
                           <span className="box"></span>
 
@@ -112,6 +142,10 @@ const Category = () => {
                             id={item}
                             name={item}
                             className="checkboxFilter"
+                            checked={selectedFilters?.color.includes(item)}
+                            onChange={({ target }) =>
+                              handleFilter(target, setSelectedFilters, "color")
+                            }
                           />
                           <span className="box"></span>
 
@@ -134,6 +168,10 @@ const Category = () => {
                             id={item}
                             name={item}
                             className="checkboxFilter"
+                            checked={selectedFilters?.type.includes(item)}
+                            onChange={({ target }) =>
+                              handleFilter(target, setSelectedFilters, "type")
+                            }
                           />
                           <span className="box"></span>
 
