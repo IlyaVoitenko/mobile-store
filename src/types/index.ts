@@ -27,6 +27,7 @@ export interface IProduct {
 export interface IQueryData {
   nameClient: string;
   phoneNumber: string;
+  success: boolean;
 }
 export interface IActionStateReducer<S> {
   (prevState: S, formData: FormData): S | Promise<S>;

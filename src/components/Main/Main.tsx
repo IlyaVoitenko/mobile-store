@@ -1,5 +1,4 @@
 import resources from "./resources";
-import { startTransition, useActionState } from "react";
 import { Link } from "react-router-dom";
 import { arrProduct } from "../ProductCollection/constants";
 import {
@@ -7,8 +6,6 @@ import {
   handleChangeClientNumber,
   handleNextSlider,
   handlePreSlider,
-  objectToFormData,
-  queryClient,
 } from "../../helper";
 import Header from "../../components/Header";
 import ProductCollection from "../ProductCollection";
@@ -19,28 +16,15 @@ import Footer from "../Footer";
 import NeedHelpSubmitBtn from "./NeedHelpSubmitBtn";
 
 const Main = () => {
-  const initialFormData = {
-    nameClient: "",
-    phoneNumber: "",
-    success: false,
-  };
-  const [state, formAction] = useActionState(
-    queryClient,
-    objectToFormData(initialFormData)
-  );
   const formRef = useRef<HTMLFormElement>(null);
   const [currentSlideNumber, setCurrentSlideNumber] = useState<number>(1);
   const [nameClient, setNameClient] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const amountSliders = slidersCategory.length;
   useEffect(() => {
-    if (!state.success) return;
     setNameClient("");
     setPhoneNumber("");
-    startTransition(() => {
-      formAction(objectToFormData(initialFormData));
-    });
-  }, [state.success]);
+  }, []);
 
   return (
     <div className="pageDefault">
@@ -90,7 +74,6 @@ const Main = () => {
           </nav>
           <div className="slideCategoryContainer">
             <img
-              // src={resources.slidersCategory[currentSlideNumber - 1].slideImg}
               src={resources.iPhoneBg}
               alt={slidersCategory[currentSlideNumber - 1].productName}
             />
@@ -161,7 +144,7 @@ const Main = () => {
               Leave a request in the form below and we will call you back as
               soon as possible
             </h4>
-            <form ref={formRef} action={formAction}>
+            <form ref={formRef}>
               <input
                 value={nameClient}
                 onInput={({ target }) =>
