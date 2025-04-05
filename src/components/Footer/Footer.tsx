@@ -36,26 +36,26 @@ const Footer = () => {
           <nav className="footerNavList">
             {slidersCategory &&
               slidersCategory.map((item) => (
-                <Link to="/Category" key={item.id}>
+                <Link to="/category/Iphone" key={item.id}>
                   {item.productName}
                 </Link>
               ))}
             {slidersCategory &&
               slidersCategory.map((item) => (
-                <Link to="/Category" key={item.id}>
+                <Link to="/category/Iphone" key={item.id}>
                   {item.productName}
                 </Link>
               ))}
             {slidersCategory &&
               slidersCategory.map((item) => (
-                <Link to="/Category" key={item.id}>
+                <Link to="/category/Iphone" key={item.id}>
                   {item.productName}
                 </Link>
               ))}
             {slidersCategory &&
               slidersCategory
                 .map((item) => (
-                  <Link to="/Category" key={item.id}>
+                  <Link to="/category/Iphone" key={item.id}>
                     {item.productName}
                   </Link>
                 ))
@@ -65,10 +65,10 @@ const Footer = () => {
         <div className="footerMenu footerItemsContainer">
           <h4 className="title">Menu</h4>
           <nav className="footerNavList">
-            <Link to="#">Apple Store </Link>
-            <Link to="#">Smartphones</Link>
-            <Link to="#">Accessories</Link>
-            <Link to="#">Contacts</Link>
+            <Link to="/">Apple Store </Link>
+            <Link to="/category/Android Smartphones">Smartphones</Link>
+            <Link to="/category/Accessories">Accessories</Link>
+            <Link to="/">Contacts</Link>
             <Link to="#" id="ShippingPayment">
               {" "}
               Shipping and payment

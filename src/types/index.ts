@@ -16,13 +16,16 @@ export interface IProduct {
   price: number;
   inStock: boolean;
   isPopular: boolean;
-  colors: string[];
-  models: string[];
   storageOptions?: string[];
   selectedColor?: string;
   selectedModel?: string;
   selectedStorage?: string;
   quantity: number;
+}
+export interface IProductCategory {
+  categories: {
+    [key: string]: IProduct[];
+  };
 }
 export interface IQueryData {
   nameClient: string;
