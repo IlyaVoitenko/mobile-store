@@ -4,7 +4,7 @@ import { IProductSection } from "../../types";
 import colorsCaseApple from "../../assets/colorsCaseApple.svg";
 import caseApple from "../../assets/caseApple.svg";
 import appleScreens from "../../assets/appleScreens.svg";
-import samsungScreens from "../../assets/SamsungScreens.svg";
+import samsungScreens from "../../assets/samsungScreens.svg";
 
 export const arrProduct: IProductSection[] = [
   {
