@@ -7,14 +7,79 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  .applyFilterBtnContainer {
+    position: absolute;
+    left: 99%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    transform: translateY(-50%);
+    transition: top 0.4s ease, transform 0.4s ease;
+  }
+
   .filtersProducts {
+    position: relative;
     display: flex;
     justify-content: center;
     width: 255px;
     height: 800px;
     border-radius: 17px;
     background-color: $white;
-
+    .triangle {
+      position: relative;
+      left: 1.1%;
+      margin-top: 0.8rem;
+      width: 22.3px;
+      height: 22.3px;
+      background-color: #ffffff;
+      transform: rotate(90deg) skew(-30deg) scale(1, 0.866);
+      box-shadow: 4px 7px 10px -3px rgba(0, 77, 132, 0.1607843137);
+      border-right: #c8dded solid 1px;
+    }
+    .triangle::before,
+    .triangle::after {
+      content: "";
+      position: absolute;
+      width: inherit;
+      height: inherit;
+      background-color: inherit;
+      border-top-right-radius: inherit;
+    }
+    .triangle::before {
+      transform: rotate(-135deg) skewX(-45deg) scale(1.414, 0.707)
+        translateY(-50%);
+      box-shadow: 0px 0px 14px 0px rgba(0, 77, 132, 0.1607843137);
+      border-top: #c8dded solid 1px;
+      box-shadow: -6px -5px 10px -1px rgba(0, 77, 132, 0.1607843137);
+    }
+    .triangle::after {
+      transform: rotate(135deg) skewY(-45deg) scale(0.707, 1.414)
+        translateX(50%);
+      border-top: #c8dded solid 1px;
+      border-right: #c8dded solid 1px;
+      border-top-right-radius: 30%;
+      box-shadow: 3px -3px 6px -4px rgba(0, 77, 132, 0.1607843137);
+    }
+    .applyFilterBtn {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      box-shadow: 0px 0px 14px 0px $applyBtnBoxShadowColor;
+      border: 1px solid $applyBtnBorderColor;
+      background-color: $white;
+      width: 147.5px;
+      height: 48px;
+      border-radius: 0px 12px 12px 0px;
+      border-left: 0px;
+      span {
+        font-family: $fontFamily;
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 20px;
+        color: $blue;
+      }
+    }
     .filterPrises {
       display: flex;
       flex-direction: column;

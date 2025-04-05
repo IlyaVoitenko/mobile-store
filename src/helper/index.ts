@@ -84,30 +84,30 @@ export const filtersProduct = (
           "11 Pro ",
           "11",
         ],
-        memory: ["64GB", "128GB", "256GB", "512GB", "1 TB"],
+        memory: ["64 GB", "128 GB", "256 GB", "512 GB", "1 TB"],
         color: ["Red", "Black", "Blue", "Yellow", "Green"],
       };
     case "IPad":
       return {
         models: ["Pro", "Air", "Mini"],
-        memory: ["64GB", "128GB", "256GB", "512GB", "1 TB"],
+        memory: ["64 GB", "128 GB", "256 GB", "512 GB", "1 TB"],
         color: ["Red", "Black", "Blue", "Yellow", "Green"],
       };
     case "Apple Watch":
       return {
         models: ["Series 7", "SE", "Series 3"],
-        memory: ["64GB", "128GB"],
+        memory: ["64 GB", "128 GB"],
       };
     case "IMac":
       return {
         models: ["Pro", "Air", "Mini"],
-        memory: ["64GB", "128GB", "256GB", "512GB", "1 TB"],
+        memory: ["64 GB", "128 GB", "256 GB", "512 GB", "1 TB"],
         color: ["Red", "Black", "Blue", "Yellow", "Green"],
       };
     case "Android Smartphones":
       return {
         models: ["Samsung", "Xiaomi", "Huawei", "Oppo", "Vivo"],
-        memory: ["64GB", "128GB", "256GB", "512GB", "1 TB"],
+        memory: ["64 GB", "128 GB", "256 GB", "512 GB", "1 TB"],
         color: ["Red", "Black", "Blue", "Yellow", "Green"],
       };
     case "Accessories":
@@ -126,7 +126,6 @@ export const handleFilter = (
 ) => {
   const name = target.name;
   const isChecked = target.checked;
-
   setSelectedFilters((prev) => {
     const currentFilter = prev[filter] ?? [];
 
@@ -142,4 +141,22 @@ export const handleFilter = (
       };
     }
   });
+};
+export const handlePositionApplyBtn = () => {};
+export const handlePositionFilter = (
+  target: HTMLInputElement,
+  setPositionApplyBtn: React.Dispatch<React.SetStateAction<number>>,
+  containerRef: React.RefObject<HTMLDivElement>
+) => {
+  const inputRect = target.getBoundingClientRect();
+  const containerRect = containerRef.current?.getBoundingClientRect();
+
+  if (containerRect) {
+    const inputTop = inputRect.top + inputRect.height / 2;
+    const containerTop = containerRect.top;
+    const containerHeight = containerRect.height;
+
+    const percent = ((inputTop - containerTop) / containerHeight) * 100;
+    setPositionApplyBtn(percent);
+  }
 };

@@ -7,22 +7,29 @@ import PriceRange from "../PriceRange";
 import ArrowRightGrey from "../../assets/ArrowRightGrey.svg";
 import arrowDownGrey from "../../assets/arrowDownGrey.svg";
 import arrowDownBlue from "../../assets/arrowDownBlue.svg";
+import successFilter from "../../assets/successFilter.svg";
 import "../../styles/components/_categoryNavProduct.scss";
 import "../../styles/components/_productNameAndCount.scss";
 import "../../styles/components/_filterAndListProducts.scss";
-import { filtersProduct, handleFilter } from "../../helper";
+import {
+  filtersProduct,
+  handleFilter,
+  handlePositionFilter,
+} from "../../helper";
 import { IFiltersProduct } from "../../types";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const Category = () => {
+  const { category } = useParams();
   const [isShow, setIsShow] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [selectedFilters, setSelectedFilters] = useState<IFiltersProduct>({
     models: [],
     memory: [],
     color: [],
     type: [],
   });
-  const { category } = useParams();
+  const [positionApplyBtn, setPositionApplyBtn] = useState(7);
   const filters = filtersProduct(category);
   const { models, memory, color, type } = filters || {};
 
@@ -36,9 +43,6 @@ const Category = () => {
     setIsShow(false);
   }, [category]);
 
-  useEffect(() => {
-    console.log(selectedFilters);
-  }, [selectedFilters]);
   return (
     <div className="pageDefault">
       <Header />
@@ -67,7 +71,7 @@ const Category = () => {
           </section>
         </div>
         <section className="containerFilterAndListProducts">
-          <div className="filtersProducts">
+          <div className="filtersProducts" ref={containerRef}>
             <div className="filterPrises">
               <span className="filterTitle">Price</span>
               <PriceRange />
@@ -83,10 +87,21 @@ const Category = () => {
                             id={item}
                             name={item}
                             className="checkboxFilter"
-                            checked={selectedFilters?.models?.includes(item)}
-                            onChange={({ target }) =>
-                              handleFilter(target, setSelectedFilters, "models")
+                            checked={
+                              selectedFilters?.models?.includes(item) ?? false
                             }
+                            onChange={({ target }) => {
+                              handlePositionFilter(
+                                target,
+                                setPositionApplyBtn,
+                                containerRef
+                              );
+                              handleFilter(
+                                target,
+                                setSelectedFilters,
+                                "models"
+                              );
+                            }}
                           />
                           <span className="box"></span>
 
@@ -116,10 +131,21 @@ const Category = () => {
                             id={item}
                             name={item}
                             className="checkboxFilter"
-                            checked={selectedFilters?.memory.includes(item)}
-                            onChange={({ target }) =>
-                              handleFilter(target, setSelectedFilters, "memory")
+                            checked={
+                              selectedFilters?.memory?.includes(item) ?? false
                             }
+                            onChange={({ target }) => {
+                              handlePositionFilter(
+                                target,
+                                setPositionApplyBtn,
+                                containerRef
+                              );
+                              handleFilter(
+                                target,
+                                setSelectedFilters,
+                                "memory"
+                              );
+                            }}
                           />
                           <span className="box"></span>
 
@@ -142,10 +168,17 @@ const Category = () => {
                             id={item}
                             name={item}
                             className="checkboxFilter"
-                            checked={selectedFilters?.color.includes(item)}
-                            onChange={({ target }) =>
-                              handleFilter(target, setSelectedFilters, "color")
+                            checked={
+                              selectedFilters?.color?.includes(item) ?? false
                             }
+                            onChange={({ target }) => {
+                              handlePositionFilter(
+                                target,
+                                setPositionApplyBtn,
+                                containerRef
+                              );
+                              handleFilter(target, setSelectedFilters, "color");
+                            }}
                           />
                           <span className="box"></span>
 
@@ -168,10 +201,17 @@ const Category = () => {
                             id={item}
                             name={item}
                             className="checkboxFilter"
-                            checked={selectedFilters?.type.includes(item)}
-                            onChange={({ target }) =>
-                              handleFilter(target, setSelectedFilters, "type")
+                            checked={
+                              selectedFilters?.type?.includes(item) ?? false
                             }
+                            onChange={({ target }) => {
+                              handlePositionFilter(
+                                target,
+                                setPositionApplyBtn,
+                                containerRef
+                              );
+                              handleFilter(target, setSelectedFilters, "type");
+                            }}
                           />
                           <span className="box"></span>
 
@@ -182,6 +222,17 @@ const Category = () => {
                   </ul>
                 </div>
               )}
+            </div>
+            <div
+              className="applyFilterBtnContainer"
+              style={{
+                top: `${positionApplyBtn}%`,
+              }}
+            >
+              <div className="triangle"></div>
+              <button className="applyFilterBtn">
+                <span>Apply filter</span> <img src={successFilter} alt="" />
+              </button>
             </div>
           </div>
           <ul className="listProducts"></ul>
