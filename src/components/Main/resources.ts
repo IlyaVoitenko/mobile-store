@@ -41,7 +41,7 @@ import client from "../../assets/client.svg";
 import categorySliderIphone from "../../assets/categorySliderIphone.svg";
 import deliveryGoods from "../../assets/deliveryGoods.svg";
 
-import ArrowDown from "../../assets/ArrowDown.svg";
+import ArrowDown from "../../assets/arrowDownGrey.svg";
 
 export default {
   categorySliderIphone,
