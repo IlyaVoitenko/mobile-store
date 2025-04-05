@@ -1,0 +1,25 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/mediaQuery" as *;
+
+.containerLoading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+.spinner {
+  width: 6px;
+  height: 6px;
+  animation: spinner-xp626r 1.1s infinite;
+  border-radius: 50%;
+  box-shadow: 24px 0 0 6px $blue, -24px 0 0 6px $blue;
+}
+
+@keyframes spinner-xp626r {
+  to {
+    transform: rotate(360deg);
+  }
+}

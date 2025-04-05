@@ -1,21 +1,22 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import LoadingPage from "./pages/LoadingPage";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    lazy: async () => ({
+      Component: (await import("./pages/MainPage")).default,
+    }),
+  },
+  {
+    path: "/category/:category",
+    lazy: async () => ({
+      Component: (await import("./pages/CategoryPage")).default,
+    }),
+  },
+]);
 
-import MainPage from "./pages/MainPage";
-import CategoryPage from "./pages/CategoryPage";
 function App() {
-  return (
-    <BrowserRouter
-      future={{
-        v7_startTransition: true,
-        v7_relativeSplatPath: true,
-      }}
-    >
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/category/:category" element={<CategoryPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
+  return <RouterProvider router={router} fallbackElement={<LoadingPage />} />;
 }
 
 export default App;
