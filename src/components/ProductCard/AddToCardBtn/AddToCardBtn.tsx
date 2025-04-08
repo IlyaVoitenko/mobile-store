@@ -1,6 +1,11 @@
 import "../../../styles/components/_addToCardBtn.scss";
 import basketImg from "../../../assets/basketImg.svg";
-const AddToCardBtn = ({ dataCard }) => {
+import { IProduct } from "../../../types";
+
+interface AddToCardBtnProps {
+  dataCard: IProduct;
+}
+const AddToCardBtn = ({ dataCard }: AddToCardBtnProps) => {
   return (
     <button
       className="basketBtn"

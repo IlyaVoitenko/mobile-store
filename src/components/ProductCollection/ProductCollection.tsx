@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IProductSection } from "../../types";
+import { IProduct } from "../../types";
 import ProductCard from "../ProductCard";
 import "../../styles/components/_categorySlider.scss";
 import "../../styles/components/_productCollection.scss";
@@ -8,7 +8,7 @@ import ArrowLeftBlue from "../../assets/ArrowLeftBlue.svg";
 import ArrowRightBlue from "../../assets/ArrowRightBlue.svg";
 
 type ProductCollectionProps = {
-  listProduct: IProductSection[];
+  listProduct: IProduct[];
   title: string;
   amountItems: number;
   promotion: boolean;
