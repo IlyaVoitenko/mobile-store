@@ -12,6 +12,7 @@
   align-items: center;
   justify-content: center;
   border: none;
+  cursor: pointer;
 
   @include for-desktop4K {
     width: 152px;

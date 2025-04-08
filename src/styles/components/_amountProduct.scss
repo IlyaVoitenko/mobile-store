@@ -22,6 +22,7 @@
     border: none;
     color: $btnsAmountProject;
     font-size: 20px;
+    cursor: pointer;
 
     @include for-desktop4K {
       font-size: 30px;

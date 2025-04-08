@@ -4,23 +4,32 @@ export interface ISlidersCategoryItem {
   productName: string;
   productDescription: string;
 }
-export interface IProductSection {
-  id: string;
-  priceProduct: number;
-  descriptionProduct: string;
-  imgProduct: string;
-}
+
 export interface IProduct {
   id: number | string;
-  name: string;
+  name?: string;
+  description?: string;
   price: number;
-  inStock: boolean;
-  isPopular: boolean;
-  storageOptions?: string[];
-  selectedColor?: string;
-  selectedModel?: string;
-  selectedStorage?: string;
-  quantity: number;
+  inStock?: boolean;
+  isPopular?: boolean;
+  color?: string;
+  model?: string;
+  storage?: string;
+  quantity?: number;
+  imgUrl: string;
+}
+export interface IUnifiedProduct {
+  id: string | number;
+  name?: string;
+  description?: string;
+  price: number;
+  imgUrl: string;
+  inStock?: boolean;
+  isPopular?: boolean;
+  color?: string;
+  model?: string;
+  storage?: string;
+  quantity?: number;
 }
 export interface IProductCategory {
   categories: {

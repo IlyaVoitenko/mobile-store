@@ -1,0 +1,75 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/mediaQuery" as *;
+
+.paginationContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  @include for-desktop4K {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    width: 540px;
+    height: 46px;
+    border-radius: 10px;
+    background-color: $white;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+
+    .btnPaginationNavigation {
+      width: 73px;
+      height: 36px;
+      border-radius: 5px;
+      background-color: $bgPage;
+      border: none;
+      cursor: pointer;
+
+      span {
+        font-family: $fontFamily;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        vertical-align: middle;
+        color: $blue;
+      }
+    }
+    .paginationItem {
+      font-family: $fontFamily;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 100%;
+      vertical-align: middle;
+      color: $colorsProductText;
+
+      @include for-desktop4K {
+        font-size: 16px;
+        line-height: 100%;
+      }
+    }
+  }
+  .paginationList {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 20%;
+    .paginationItem {
+      font-family: $fontFamily;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 100%;
+      vertical-align: middle;
+      color: $colorsProductText;
+    }
+  }
+}

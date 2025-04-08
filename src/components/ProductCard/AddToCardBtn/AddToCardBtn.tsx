@@ -1,8 +1,13 @@
 import "../../../styles/components/_addToCardBtn.scss";
 import basketImg from "../../../assets/basketImg.svg";
-const AddToCardBtn = () => {
+const AddToCardBtn = ({ dataCard }) => {
   return (
-    <button className="basketBtn">
+    <button
+      className="basketBtn"
+      onClick={() => {
+        console.log(dataCard);
+      }}
+    >
       <span>Add to cart</span> <img src={basketImg} alt="Add to card button" />
     </button>
   );

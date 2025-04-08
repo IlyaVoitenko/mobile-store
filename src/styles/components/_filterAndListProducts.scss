@@ -4,6 +4,7 @@
 @use "../abstracts/mediaQuery" as *;
 
 .containerFilterAndListProducts {
+  @include containerResponsiveWidth;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -183,9 +184,46 @@
       }
     }
   }
-  .listProducts {
+  .listProductsContainer {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 74%;
+
+    .btnShowAllItems {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 255px;
+      height: 46px;
+      background-color: $white;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+
+      span {
+        font-family: $fontFamily;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: $blue;
+      }
+      img {
+        width: 10px;
+        margin-left: 0.5rem;
+      }
+    }
+    .btnShowAllItems:hover {
+      background-color: $search;
+    }
+
+    .listProducts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
   }
 }

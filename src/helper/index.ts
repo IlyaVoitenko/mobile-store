@@ -143,7 +143,7 @@ export const handleFilter = (
   });
 };
 export const handlePositionApplyBtn = () => {};
-export const handlePositionFilter = (
+export const handlePositionBtnApplyFilters = (
   target: HTMLInputElement,
   setPositionApplyBtn: React.Dispatch<React.SetStateAction<number>>,
   containerRef: React.RefObject<HTMLDivElement>

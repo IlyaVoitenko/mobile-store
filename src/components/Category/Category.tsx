@@ -14,13 +14,19 @@ import "../../styles/components/_filterAndListProducts.scss";
 import {
   filtersProduct,
   handleFilter,
-  handlePositionFilter,
+  handlePositionBtnApplyFilters,
 } from "../../helper";
 import { IFiltersProduct } from "../../types";
 import { useEffect, useState, useRef } from "react";
-
+import { listProduct } from "./constants";
+import ProductCard from "../ProductCard";
+import Pagination from "../Pagination";
+import { useSelector } from "react-redux";
+import { getProductsSelector } from "../../store/selectors";
 const Category = () => {
   const { category } = useParams();
+  const productsSelector = useSelector(getProductsSelector);
+  console.log(productsSelector);
   const [isShow, setIsShow] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedFilters, setSelectedFilters] = useState<IFiltersProduct>({
@@ -31,6 +37,8 @@ const Category = () => {
   });
   const [positionApplyBtn, setPositionApplyBtn] = useState(7);
   const filters = filtersProduct(category);
+  const listProducts =
+    listProduct?.categories?.[category as keyof typeof listProduct.categories];
   const { models, memory, color, type } = filters || {};
 
   useEffect(() => {
@@ -57,7 +65,7 @@ const Category = () => {
         <div className="containerProductNameAndCount">
           <div className="productNameAndCount">
             <h1 className="productName">{category}</h1>
-            <span className="productCount">0 items</span>
+            <span className="productCount">{listProducts.length} items</span>
           </div>
           <section className="containerSortProducts">
             <label className="sortProductsLabel" htmlFor="sortProducts">
@@ -91,7 +99,7 @@ const Category = () => {
                               selectedFilters?.models?.includes(item) ?? false
                             }
                             onChange={({ target }) => {
-                              handlePositionFilter(
+                              handlePositionBtnApplyFilters(
                                 target,
                                 setPositionApplyBtn,
                                 containerRef
@@ -135,7 +143,7 @@ const Category = () => {
                               selectedFilters?.memory?.includes(item) ?? false
                             }
                             onChange={({ target }) => {
-                              handlePositionFilter(
+                              handlePositionBtnApplyFilters(
                                 target,
                                 setPositionApplyBtn,
                                 containerRef
@@ -172,7 +180,7 @@ const Category = () => {
                               selectedFilters?.color?.includes(item) ?? false
                             }
                             onChange={({ target }) => {
-                              handlePositionFilter(
+                              handlePositionBtnApplyFilters(
                                 target,
                                 setPositionApplyBtn,
                                 containerRef
@@ -205,7 +213,7 @@ const Category = () => {
                               selectedFilters?.type?.includes(item) ?? false
                             }
                             onChange={({ target }) => {
-                              handlePositionFilter(
+                              handlePositionBtnApplyFilters(
                                 target,
                                 setPositionApplyBtn,
                                 containerRef
@@ -235,7 +243,16 @@ const Category = () => {
               </button>
             </div>
           </div>
-          <ul className="listProducts"></ul>
+          <div className="listProductsContainer">
+            <ul className="listProducts">
+              {productsSelector &&
+                productsSelector?.map((item) => (
+                  <ProductCard card={item} key={item.id} />
+                ))}
+            </ul>
+
+            <Pagination list={listProducts} />
+          </div>
         </section>
       </main>
       <Footer />
