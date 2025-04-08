@@ -16,7 +16,7 @@ import {
   handleFilter,
   handlePositionBtnApplyFilters,
 } from "../../helper";
-import { IFiltersProduct } from "../../types";
+import { IFiltersProduct, IProduct } from "../../types";
 import { useEffect, useState, useRef } from "react";
 import { listProduct } from "./constants";
 import ProductCard from "../ProductCard";
@@ -26,8 +26,9 @@ import { getProductsSelector } from "../../store/selectors";
 const Category = () => {
   const { category } = useParams();
   const productsSelector = useSelector(getProductsSelector);
-  console.log(productsSelector);
+  console.log("productsSelector:", productsSelector);
   const [isShow, setIsShow] = useState(false);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedFilters, setSelectedFilters] = useState<IFiltersProduct>({
     models: [],
@@ -37,8 +38,7 @@ const Category = () => {
   });
   const [positionApplyBtn, setPositionApplyBtn] = useState(7);
   const filters = filtersProduct(category);
-  const listProducts =
-    listProduct?.categories?.[category as keyof typeof listProduct.categories];
+  const listProducts = listProduct?.[category as keyof typeof listProduct];
   const { models, memory, color, type } = filters || {};
 
   useEffect(() => {
@@ -246,7 +246,7 @@ const Category = () => {
           <div className="listProductsContainer">
             <ul className="listProducts">
               {productsSelector &&
-                productsSelector?.map((item) => (
+                productsSelector?.map((item: IProduct) => (
                   <ProductCard card={item} key={item.id} />
                 ))}
             </ul>

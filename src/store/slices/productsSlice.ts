@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { listProduct } from "../../components/Category/constants";
-
-const initialState = {
-  products: listProduct.categories,
+import { IProductCategory } from "../../types";
+interface initialStateProps {
+  products: IProductCategory[];
+}
+const initialState: initialStateProps = {
+  products: [listProduct],
 };
 
 const productsSlice = createSlice({

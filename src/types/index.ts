@@ -18,23 +18,9 @@ export interface IProduct {
   quantity?: number;
   imgUrl: string;
 }
-export interface IUnifiedProduct {
-  id: string | number;
-  name?: string;
-  description?: string;
-  price: number;
-  imgUrl: string;
-  inStock?: boolean;
-  isPopular?: boolean;
-  color?: string;
-  model?: string;
-  storage?: string;
-  quantity?: number;
-}
+
 export interface IProductCategory {
-  categories: {
-    [key: string]: IProduct[];
-  };
+  [key: string]: IProduct[];
 }
 export interface IQueryData {
   nameClient: string;
@@ -49,4 +35,9 @@ export interface IFiltersProduct {
   memory?: string[];
   color?: string[];
   type?: string[];
+}
+export interface IState {
+  products: {
+    products: IProductCategory[];
+  };
 }
