@@ -8,6 +8,7 @@ const initialState: initialStateProps = {
   products: [listProduct],
 };
 
+console.log("initialState:", initialState.products);
 const productsSlice = createSlice({
   name: "products",
   initialState,

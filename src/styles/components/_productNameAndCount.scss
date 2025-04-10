@@ -41,6 +41,11 @@
       vertical-align: middle;
       color: $itemsCountsColors;
       padding-left: 0.5rem;
+
+      @include for-desktop4K {
+        font-size: 20px;
+        line-height: 100%;
+      }
     }
   }
 }
@@ -52,6 +57,19 @@
   -webkit-appearance: none;
   appearance: none;
   position: relative;
+
+  font-family: $fontFamily;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0%;
+  text-align: right;
+  vertical-align: middle;
+  color: $greyTitleFilter;
+
+  @include for-desktop4K {
+    font-size: 17px;
+  }
 }
 #sortProducts:focus {
   outline: none;
@@ -65,4 +83,9 @@
   line-height: 18px;
   vertical-align: middle;
   color: $itemsCountsColors;
+
+  @include for-desktop4K {
+    font-size: 20px;
+    line-height: 100%;
+  }
 }

@@ -68,7 +68,7 @@ export const objectToFormData = (
   });
   return formData;
 };
-export const filtersProduct = (
+export const filtersProductByCategory = (
   category: string | undefined
 ): IFiltersProduct | void => {
   switch (category) {

@@ -17,6 +17,16 @@
   @include for-desktop4K {
     width: 400px;
     height: 550px;
+    margin-bottom: 60px;
+  }
+  @include for-LaptopL {
+    margin-bottom: 1.5rem;
+  }
+  @include for-laptop {
+    margin-bottom: 1.5rem;
+  }
+  @include for-tablet {
+    margin-bottom: 1.5rem;
   }
 }
 .ProductCardImgCategoriesPage {

@@ -18,11 +18,19 @@
     vertical-align: middle;
     text-decoration: none;
     color: $greyNavLink;
+
+    @include for-desktop4K {
+      font-size: 17px;
+    }
   }
   img {
     width: 10px;
     padding-left: 0.2rem;
     padding-right: 0.2rem;
+
+    @include for-desktop4K {
+      width: 15px;
+    }
   }
   .selectedProduct {
     font-family: $fontFamily;
@@ -32,5 +40,9 @@
     letter-spacing: 0%;
     vertical-align: middle;
     color: $greySelectedProduct;
+
+    @include for-desktop4K {
+      font-size: 17px;
+    }
   }
 }

@@ -102,6 +102,12 @@ input[type="text"] {
   text-align: center;
   vertical-align: middle;
   color: $greyNavLink;
+
+  @include for-desktop4K {
+    font-size: 20px;
+    line-height: 33px;
+    border-radius: 10px;
+  }
 }
 
 input[type="text"]::-webkit-inner-spin-button,

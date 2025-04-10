@@ -12,7 +12,7 @@ import "../../styles/components/_categoryNavProduct.scss";
 import "../../styles/components/_productNameAndCount.scss";
 import "../../styles/components/_filterAndListProducts.scss";
 import {
-  filtersProduct,
+  filtersProductByCategory,
   handleFilter,
   handlePositionBtnApplyFilters,
 } from "../../helper";
@@ -36,8 +36,8 @@ const Category = () => {
     color: [],
     type: [],
   });
-  const [positionApplyBtn, setPositionApplyBtn] = useState(7);
-  const filters = filtersProduct(category);
+  const [positionApplyBtn, setPositionApplyBtn] = useState(21);
+  const filters = filtersProductByCategory(category);
   const listProducts = listProduct?.[category as keyof typeof listProduct];
   const { models, memory, color, type } = filters || {};
 

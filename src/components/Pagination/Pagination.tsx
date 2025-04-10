@@ -17,6 +17,7 @@ const Pagination = ({ list }: PaginationProps) => {
   const totalItems = list.length;
   const totalPages = Math.ceil(totalItems / LIMIT_PER_PAGE);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isShowAllItems, setIsShowAllItems] = useState(false);
   const startIndex = currentPage * LIMIT_PER_PAGE;
   const endIndex = startIndex - LIMIT_PER_PAGE;
   const paginatedList = list.slice(endIndex, startIndex);
@@ -33,7 +34,12 @@ const Pagination = ({ list }: PaginationProps) => {
           onClick={() => setCurrentPage(currentPage - 1)}
         >
           {" "}
-          <img src={paginationLeftArrow} alt="" /> <span>Prev</span>
+          <img
+            src={paginationLeftArrow}
+            className="paginationLeftArrow"
+            alt=""
+          />{" "}
+          <span>Prev</span>
         </button>
         <ul className="paginationList">
           {Array.from({ length: totalPages }, (_, index) => index + 1).map(
@@ -54,12 +60,31 @@ const Pagination = ({ list }: PaginationProps) => {
           onClick={() => setCurrentPage(currentPage + 1)}
         >
           {" "}
-          <span>Next</span> <img src={paginationRightArrow} alt="" />
+          <span>Next</span>{" "}
+          <img
+            className="paginationRightArrow"
+            src={paginationRightArrow}
+            alt=""
+          />
         </button>
       </div>
 
-      <button className="btnShowAllItems">
-        <span>Show all items</span>
+      <button
+        className="btnShowAllItems"
+        onClick={() => {
+          console.log(isShowAllItems);
+          if (!isShowAllItems) {
+            setIsShowAllItems(!isShowAllItems);
+            setCurrentPage(1);
+            dispatch(setProducts(list));
+          } else {
+            setIsShowAllItems(!isShowAllItems);
+            dispatch(setProducts(list.slice(0, LIMIT_PER_PAGE)));
+            setCurrentPage(1);
+          }
+        }}
+      >
+        <span> {isShowAllItems ? "Hidden items" : "Show all items"}</span>
         <img src={arrowDownBlue} alt="" />
       </button>
     </section>

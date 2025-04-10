@@ -11,8 +11,37 @@
   margin-bottom: 20px;
 
   @include for-desktop4K {
+    width: 100%;
     margin-top: 50px;
     margin-bottom: 50px;
+  }
+  @include for-LaptopL {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  @include for-laptop {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  @include for-tablet {
+    width: 80%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    flex-direction: column-reverse;
+    justify-content: space-around;
+    height: 150px;
+  }
+  @include for-mobile {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    flex-direction: column-reverse;
+    justify-content: space-around;
+    height: 150px;
   }
   .pagination {
     display: flex;
@@ -26,13 +55,42 @@
     padding-left: 0.3rem;
     padding-right: 0.3rem;
 
+    @include for-desktop4K {
+      width: 62.5%;
+      height: 70px;
+    }
+    @include for-LaptopL {
+      width: 64.2%;
+    }
+    @include for-laptop {
+      width: 50%;
+    }
+    @include for-tablet {
+      width: 100%;
+    }
+    @include for-mobile {
+      width: 100%;
+    }
     .btnPaginationNavigation {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 73px;
       height: 36px;
       border-radius: 5px;
       background-color: $bgPage;
       border: none;
       cursor: pointer;
+      .paginationLeftArrow {
+        margin-right: 0.5rem;
+      }
+      .paginationRightArrow {
+        margin-left: 0.5rem;
+      }
+      @include for-desktop4K {
+        width: 103px;
+        height: 59px;
+      }
 
       span {
         font-family: $fontFamily;
@@ -41,35 +99,120 @@
         line-height: 18px;
         vertical-align: middle;
         color: $blue;
-      }
-    }
-    .paginationItem {
-      font-family: $fontFamily;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 100%;
-      vertical-align: middle;
-      color: $colorsProductText;
 
-      @include for-desktop4K {
-        font-size: 16px;
-        line-height: 100%;
+        @include for-desktop4K {
+          font-size: 18px;
+          line-height: 100%;
+        }
+      }
+      img {
+        width: 10px;
+        @include for-desktop4K {
+          width: 15px;
+        }
+        @include for-LaptopL {
+          width: 10px;
+        }
+        @include for-laptop {
+          width: 10px;
+        }
+        @include for-tablet {
+          width: 10px;
+        }
+        @include for-mobile {
+          width: 10px;
+        }
       }
     }
   }
-  .paginationList {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 20%;
-    .paginationItem {
-      font-family: $fontFamily;
-      cursor: pointer;
-      font-weight: 500;
-      font-size: 14px;
+}
+.paginationList {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 20%;
+  @include for-desktop4K {
+    width: 33%;
+  }
+  @include for-LaptopL {
+    width: 34%;
+  }
+  @include for-laptop {
+    width: 33%;
+  }
+  @include for-tablet {
+    width: 33%;
+  }
+  @include for-mobile {
+    width: 33%;
+  }
+  .paginationItem {
+    font-family: $fontFamily;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    vertical-align: middle;
+    color: $colorsProductText;
+
+    @include for-desktop4K {
+      font-size: 18px;
       line-height: 100%;
-      vertical-align: middle;
-      color: $colorsProductText;
     }
   }
+}
+.btnShowAllItems {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 255px;
+  height: 46px;
+  background-color: $white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+
+  @include for-desktop4K {
+    width: 400px;
+    height: 70px;
+  }
+  @include for-LaptopL {
+    width: 255px;
+  }
+  @include for-laptop {
+    width: 255px;
+  }
+  @include for-tablet {
+    width: 255px;
+  }
+  @include for-mobile {
+    width: 255px;
+  }
+  span {
+    font-family: $fontFamily;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: $blue;
+
+    @include for-desktop4K {
+      font-size: 22px;
+      line-height: 100%;
+    }
+  }
+  img {
+    width: 10px;
+    margin-left: 0.5rem;
+    @include for-desktop4K {
+      width: 15px;
+    }
+  }
+}
+.btnShowAllItems:hover {
+  background-color: $search;
+}
+.btnShowAllItems:active {
+  background-color: $search;
 }
