@@ -45,7 +45,11 @@ const Pagination = ({ list }: PaginationProps) => {
           {Array.from({ length: totalPages }, (_, index) => index + 1).map(
             (pageNumber: number) => (
               <li
-                className="paginationItem"
+                className={`${
+                  pageNumber === currentPage
+                    ? "paginationItemActive"
+                    : "paginationItem"
+                } `}
                 onClick={() => setCurrentPage(pageNumber)}
                 key={pageNumber}
               >

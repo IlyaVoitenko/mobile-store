@@ -147,6 +147,9 @@
     width: 33%;
   }
   .paginationItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: $fontFamily;
     cursor: pointer;
     font-weight: 500;
@@ -154,7 +157,28 @@
     line-height: 100%;
     vertical-align: middle;
     color: $colorsProductText;
-
+    width: 29px;
+    height: 29px;
+    @include for-desktop4K {
+      font-size: 18px;
+      line-height: 100%;
+    }
+  }
+  .paginationItemActive {
+    font-family: $fontFamily;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 100%;
+    vertical-align: middle;
+    color: $blue;
+    background-color: $bgPage;
+    width: 29px;
+    height: 25px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     @include for-desktop4K {
       font-size: 18px;
       line-height: 100%;
