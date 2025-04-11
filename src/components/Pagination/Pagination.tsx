@@ -5,7 +5,7 @@ import paginationLeftArrow from "../../assets/paginationLeftArrow.svg";
 import paginationRightArrow from "../../assets/paginationRightArrow.svg";
 import { IProduct } from "../../types";
 import { useDispatch } from "react-redux";
-import { setProducts } from "../../store/slices/productsSlice";
+import { setProductsByCategory } from "../../store/slices/productsSlice";
 import { handleReducerPaginationPages } from "../../helper";
 import { nanoid } from "nanoid";
 
@@ -14,9 +14,9 @@ const LIMIT_PER_PAGE = 12;
 interface PaginationProps {
   list: IProduct[];
 }
-const Pagination = ({ list }: PaginationProps) => {
+const Pagination = ({ list = [] }: PaginationProps) => {
   const dispatch = useDispatch();
-  const totalItems = list.length;
+  const totalItems = list.length || 0;
   const totalPages = Math.ceil(totalItems / LIMIT_PER_PAGE);
   const [currentPage, setCurrentPage] = useState(1);
   const [isShowAllItems, setIsShowAllItems] = useState(false);
@@ -29,7 +29,7 @@ const Pagination = ({ list }: PaginationProps) => {
   );
 
   useEffect(() => {
-    dispatch(setProducts(paginatedList));
+    dispatch(setProductsByCategory(paginatedList));
   }, [dispatch, currentPage]);
 
   return (
@@ -104,10 +104,10 @@ const Pagination = ({ list }: PaginationProps) => {
           if (!isShowAllItems) {
             setIsShowAllItems(!isShowAllItems);
             setCurrentPage(1);
-            dispatch(setProducts(list));
+            dispatch(setProductsByCategory(list));
           } else {
             setIsShowAllItems(!isShowAllItems);
-            dispatch(setProducts(list.slice(0, LIMIT_PER_PAGE)));
+            dispatch(setProductsByCategory(list.slice(0, LIMIT_PER_PAGE)));
             setCurrentPage(1);
           }
         }}

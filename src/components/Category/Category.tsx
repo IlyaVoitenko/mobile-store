@@ -16,17 +16,28 @@ import {
   handleFilter,
   handlePositionBtnApplyFilters,
 } from "../../helper";
-import { IFiltersProduct, IProduct } from "../../types";
+import {
+  IFiltersProduct,
+  IProduct,
+  CategoryType,
+  ProductMap,
+} from "../../types";
 import { useEffect, useState, useRef } from "react";
-import { listProduct } from "./constants";
 import ProductCard from "../ProductCard";
 import Pagination from "../Pagination";
-import { useSelector } from "react-redux";
-import { getProductsSelector } from "../../store/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getProductsSelector,
+  getProductsByCategorySelector,
+} from "../../store/selectors";
 const Category = () => {
-  const { category } = useParams();
-  const productsSelector = useSelector(getProductsSelector);
-  console.log("productsSelector:", productsSelector);
+  const { category } = useParams() as { category: CategoryType };
+  const dispatch = useDispatch();
+  const productsSelector = useSelector(getProductsSelector) as ProductMap;
+  const productsByCategorySelector = useSelector(
+    getProductsByCategorySelector
+  ) as IProduct[];
+
   const [isShow, setIsShow] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -37,8 +48,7 @@ const Category = () => {
     type: [],
   });
   const [positionApplyBtn, setPositionApplyBtn] = useState(21);
-  const filters = filtersProductByCategory(category);
-  const listProducts = listProduct?.[category as keyof typeof listProduct];
+  const filters = filtersProductByCategory(category as CategoryType);
   const { models, memory, color, type } = filters || {};
 
   useEffect(() => {
@@ -49,7 +59,7 @@ const Category = () => {
       type: [],
     });
     setIsShow(false);
-  }, [category]);
+  }, [category, dispatch]);
 
   return (
     <div className="pageDefault">
@@ -60,12 +70,14 @@ const Category = () => {
             Main
           </Link>
           <img src={ArrowRightGrey} alt="" />{" "}
-          <span className="selectedProduct">{category}</span>
+          <span className="selectedProduct">{category as CategoryType}</span>
         </nav>
         <div className="containerProductNameAndCount">
           <div className="productNameAndCount">
-            <h1 className="productName">{category}</h1>
-            <span className="productCount">{listProducts.length} items</span>
+            <h1 className="productName">{category as CategoryType}</h1>
+            <span className="productCount">
+              {category && productsSelector[category]?.length} items
+            </span>
           </div>
           <section className="containerSortProducts">
             <label className="sortProductsLabel" htmlFor="sortProducts">
@@ -245,13 +257,14 @@ const Category = () => {
           </div>
           <div className="listProductsContainer">
             <ul className="listProducts">
-              {productsSelector &&
-                productsSelector?.map((item: IProduct) => (
+              {productsByCategorySelector &&
+                productsByCategorySelector?.map((item) => (
                   <ProductCard card={item} key={item.id} />
                 ))}
             </ul>
-
-            <Pagination list={listProducts} />
+            {category && Array.isArray(productsSelector[category]) && (
+              <Pagination list={productsSelector[category]} />
+            )}
           </div>
         </section>
       </main>

@@ -5,6 +5,18 @@ export interface ISlidersCategoryItem {
   productDescription: string;
 }
 
+export type CategoryType =
+  | "Iphone"
+  | "IPad"
+  | "Smartphones"
+  | "Accessories"
+  | "IMac"
+  | "AppleWatch";
+
+export type ProductMap = {
+  [key in CategoryType]?: IProduct[];
+};
+
 export interface IProduct {
   id: number | string;
   name?: string;

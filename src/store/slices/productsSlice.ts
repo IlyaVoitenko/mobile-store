@@ -1,24 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { listProduct } from "../../components/Category/constants";
-import { IProductCategory } from "../../types";
+import { IProduct, IProductCategory } from "../../types";
 interface initialStateProps {
-  products: IProductCategory[];
+  products: IProductCategory;
+  productsByCategory: IProduct[];
 }
 const initialState: initialStateProps = {
-  products: [listProduct],
+  products: listProduct,
+  productsByCategory: [],
 };
 
-console.log("initialState:", initialState.products);
 const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
     setProducts: (state, action) => {
-      state.products = action.payload;
+      state.products = { ...action.payload };
+    },
+    setProductsByCategory: (state, action) => {
+      state.productsByCategory = [...action.payload];
     },
   },
 });
 
-export const { setProducts } = productsSlice.actions;
+export const { setProducts, setProductsByCategory } = productsSlice.actions;
 
 export default productsSlice.reducer;
