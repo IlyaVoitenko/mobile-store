@@ -6,6 +6,8 @@ import paginationRightArrow from "../../assets/paginationRightArrow.svg";
 import { IProduct } from "../../types";
 import { useDispatch } from "react-redux";
 import { setProducts } from "../../store/slices/productsSlice";
+import { handleReducerPaginationPages } from "../../helper";
+import { nanoid } from "nanoid";
 
 const LIMIT_PER_PAGE = 12;
 
@@ -21,10 +23,15 @@ const Pagination = ({ list }: PaginationProps) => {
   const startIndex = currentPage * LIMIT_PER_PAGE;
   const endIndex = startIndex - LIMIT_PER_PAGE;
   const paginatedList = list.slice(endIndex, startIndex);
+  const reducedTotalPages = handleReducerPaginationPages(
+    totalPages,
+    currentPage
+  );
 
   useEffect(() => {
     dispatch(setProducts(paginatedList));
   }, [dispatch, currentPage]);
+
   return (
     <section className="paginationContainer">
       <div className="pagination">
@@ -42,8 +49,8 @@ const Pagination = ({ list }: PaginationProps) => {
           <span>Prev</span>
         </button>
         <ul className="paginationList">
-          {Array.from({ length: totalPages }, (_, index) => index + 1).map(
-            (pageNumber: number) => (
+          {reducedTotalPages &&
+            reducedTotalPages.map((pageNumber: number) => (
               <li
                 className={`${
                   pageNumber === currentPage
@@ -55,7 +62,24 @@ const Pagination = ({ list }: PaginationProps) => {
               >
                 {pageNumber}
               </li>
-            )
+            ))}
+          {totalPages !== currentPage && (
+            <li className="paginationItem" key={nanoid()}>
+              {"..."}
+            </li>
+          )}
+          {totalPages !== currentPage && (
+            <li
+              className={`${
+                totalPages === currentPage
+                  ? "paginationItemActive"
+                  : "paginationItem"
+              } `}
+              onClick={() => setCurrentPage(totalPages)}
+              key={nanoid()}
+            >
+              {totalPages}
+            </li>
           )}
         </ul>
         <button

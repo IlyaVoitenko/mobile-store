@@ -160,3 +160,20 @@ export const handlePositionBtnApplyFilters = (
     setPositionApplyBtn(percent);
   }
 };
+
+export const handleReducerPaginationPages = (
+  paginationPages: number,
+  currentPage: number
+) => {
+  const list = Array.from({ length: paginationPages }, (_, index) => index + 1);
+
+  const prevPage = currentPage - 2;
+  const nextPage = currentPage + 1;
+
+  if (currentPage < 3) return list.slice(0, 3);
+  if (currentPage > paginationPages - 2)
+    return list.slice(paginationPages - 3, paginationPages);
+
+  const reducedList = list.slice(prevPage, nextPage);
+  return reducedList;
+};
