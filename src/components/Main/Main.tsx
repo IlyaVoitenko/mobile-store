@@ -25,7 +25,6 @@ const Main = () => {
   useEffect(() => {
     setNameClient("");
     setPhoneNumber("");
-    // dispatch(setProducts([]));
   }, []);
 
   return (
