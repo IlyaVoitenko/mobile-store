@@ -21,9 +21,11 @@ const Main = () => {
   const [nameClient, setNameClient] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
   const amountSliders = slidersCategory.length;
+
   useEffect(() => {
     setNameClient("");
     setPhoneNumber("");
+    // dispatch(setProducts([]));
   }, []);
 
   return (

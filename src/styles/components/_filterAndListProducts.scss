@@ -15,6 +15,7 @@
     align-items: center;
     justify-content: center;
   }
+
   .applyFilterBtnContainer {
     position: absolute;
     left: 99%;
@@ -293,6 +294,7 @@
       margin-top: 20px;
       width: 90%;
     }
+
     .listProducts {
       display: flex;
       flex-wrap: wrap;
@@ -306,6 +308,26 @@
         justify-content: center;
         align-items: center;
       }
+    }
+  }
+}
+.notFoundAlert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100%;
+  span {
+    font-family: $fontFamily;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: $greyTitleFilter;
+
+    @include for-desktop4K {
+      font-size: 30px;
+      line-height: 50px;
     }
   }
 }
