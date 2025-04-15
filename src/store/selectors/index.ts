@@ -1,14 +1,26 @@
-import { IProduct } from "../../types";
-
-interface IProductsState {
-  products: IProduct;
-  productsByCategory: IProduct[];
-}
+import {
+  IProduct,
+  initialStateProps,
+  IProductCategory,
+  IFilter,
+} from "../../types";
 
 export const getProductsSelector = (state: {
-  products: IProductsState;
-}): IProduct => state.products.products;
+  products: initialStateProps;
+}): IProductCategory => state.products.products;
 
-export const getProductsByCategorySelector = (state: {
-  products: IProductsState;
-}): IProduct[] => state.products.productsByCategory;
+export const getPaginatedProductsSelector = (state: {
+  products: initialStateProps;
+}): IProduct[] => state.products.paginatedProducts;
+
+export const getProductsByFilterSelector = (state: {
+  products: initialStateProps;
+}): IProduct[] => state.products.productFiltered;
+
+export const getIsLoadingSelector = (state: {
+  products: initialStateProps;
+}): boolean => state.products.isLoading;
+
+export const getSelectedFiltersSelector = (
+  state: initialStateProps
+): { filters: IFilter } => state.products.selectedFilters;

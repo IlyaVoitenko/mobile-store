@@ -16,7 +16,11 @@ export type CategoryType =
 export type ProductMap = {
   [key in CategoryType]?: IProduct[];
 };
+export type FilterKey = "model" | "storage" | "color" | "type";
 
+export type Filters = {
+  [key in FilterKey]: string[];
+};
 export interface IProduct {
   id: number | string;
   name?: string;
@@ -29,6 +33,7 @@ export interface IProduct {
   storage?: string;
   quantity?: number;
   imgUrl: string;
+  type?: string;
 }
 
 export interface IProductCategory {
@@ -42,14 +47,27 @@ export interface IQueryData {
 export interface IActionStateReducer<S> {
   (prevState: S, formData: FormData): S | Promise<S>;
 }
-export interface IFiltersProduct {
-  models?: string[];
-  memory?: string[];
-  color?: string[];
-  type?: string[];
-}
 export interface IState {
   products: {
     products: IProductCategory[];
   };
+}
+
+export interface IFilter {
+  model?: string[];
+  storage?: string[];
+  color?: string[];
+  type?: string[];
+}
+export interface initialStateProps {
+  products: IProductCategory;
+  paginatedProducts: IProduct[];
+  productFiltered: IProduct[];
+  filters: IFilter;
+  isLoading: boolean;
+}
+
+export interface ApplyFilterArgs {
+  productsByFilterSelector: IProduct[];
+  selectedFilters: string[];
 }

@@ -1,5 +1,12 @@
 import { SetStateAction } from "react";
-import { IQueryData, IActionStateReducer, IFiltersProduct } from "../types";
+import {
+  IQueryData,
+  IActionStateReducer,
+  IProduct,
+  FilterKey,
+  Filters,
+  IFilter,
+} from "../types";
 import { redirect } from "react-router-dom";
 
 export const queryClient: IActionStateReducer<IQueryData> = async (
@@ -70,11 +77,11 @@ export const objectToFormData = (
 };
 export const filtersProductByCategory = (
   category: string | undefined
-): IFiltersProduct | void => {
+): IFilter | void => {
   switch (category) {
     case "Iphone":
       return {
-        models: [
+        model: [
           "13 Pro Max",
           "13 Pro",
           "12 Pro Max",
@@ -84,30 +91,30 @@ export const filtersProductByCategory = (
           "11 Pro ",
           "11",
         ],
-        memory: ["64 GB", "128 GB", "256 GB", "512 GB", "1 TB"],
+        storage: ["64 GB", "128 GB", "256 GB", "512 GB", "1 TB"],
         color: ["Red", "Black", "Blue", "Yellow", "Green"],
       };
     case "IPad":
       return {
-        models: ["Pro", "Air", "Mini"],
-        memory: ["64 GB", "128 GB", "256 GB", "512 GB", "1 TB"],
+        model: ["Pro", "Air", "Mini"],
+        storage: ["64 GB", "128 GB", "256 GB", "512 GB", "1 TB"],
         color: ["Red", "Black", "Blue", "Yellow", "Green"],
       };
     case "Apple Watch":
       return {
-        models: ["Series 7", "SE", "Series 3"],
-        memory: ["64 GB", "128 GB"],
+        model: ["Series 7", "SE", "Series 3"],
+        storage: ["64 GB", "128 GB"],
       };
     case "IMac":
       return {
-        models: ["Pro", "Air", "Mini"],
-        memory: ["64 GB", "128 GB", "256 GB", "512 GB", "1 TB"],
+        model: ["Pro", "Air", "Mini"],
+        storage: ["64 GB", "128 GB", "256 GB", "512 GB", "1 TB"],
         color: ["Red", "Black", "Blue", "Yellow", "Green"],
       };
     case "Android Smartphones":
       return {
-        models: ["Samsung", "Xiaomi", "Huawei", "Oppo", "Vivo"],
-        memory: ["64 GB", "128 GB", "256 GB", "512 GB", "1 TB"],
+        model: ["Samsung", "Xiaomi", "Huawei", "Oppo", "Vivo"],
+        storage: ["64 GB", "128 GB", "256 GB", "512 GB", "1 TB"],
         color: ["Red", "Black", "Blue", "Yellow", "Green"],
       };
     case "Accessories":
@@ -121,12 +128,12 @@ export const filtersProductByCategory = (
 };
 export const handleFilter = (
   target: HTMLInputElement,
-  setSelectedFilters: React.Dispatch<React.SetStateAction<IFiltersProduct>>,
-  filter: keyof IFiltersProduct
+  setState,
+  filter: keyof Filters
 ) => {
   const name = target.name;
   const isChecked = target.checked;
-  setSelectedFilters((prev) => {
+  setState((prev) => {
     const currentFilter = prev[filter] ?? [];
 
     if (isChecked) {
@@ -142,7 +149,6 @@ export const handleFilter = (
     }
   });
 };
-export const handlePositionApplyBtn = () => {};
 export const handlePositionBtnApplyFilters = (
   target: HTMLInputElement,
   setPositionApplyBtn: React.Dispatch<React.SetStateAction<number>>,
@@ -176,4 +182,19 @@ export const handleReducerPaginationPages = (
 
   const reducedList = list.slice(prevPage, nextPage);
   return reducedList;
+};
+export const handleApplyFilters = (
+  products: IProduct[],
+  selectedFilters: Filters
+) => {
+  console.log("products:", products);
+  return products?.filter((product: IProduct) => {
+    return Object.entries(selectedFilters).every(([key, values]) => {
+      if (values.length === 0) return true;
+      console.log("selectedFilters:", selectedFilters);
+      console.log("product[key] :", product[key]);
+      console.log(values);
+      return values.includes(product[key as FilterKey]);
+    });
+  });
 };

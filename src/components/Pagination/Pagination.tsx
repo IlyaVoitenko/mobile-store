@@ -28,6 +28,7 @@ const Pagination = ({ list = [] }: PaginationProps) => {
     currentPage
   );
 
+  // console.log("paginatedList", paginatedList);
   useEffect(() => {
     dispatch(setProductsByCategory(paginatedList));
   }, [dispatch, currentPage]);
