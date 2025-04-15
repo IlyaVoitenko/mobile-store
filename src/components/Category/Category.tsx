@@ -15,8 +15,8 @@ import {
   filtersProductByCategory,
   handleFilter,
   handlePositionBtnApplyFilters,
+  handleApplyFilters,
 } from "../../helper";
-import { applyInitialFilterThunk } from "../../store/thunk";
 import { IProduct, CategoryType, ProductMap } from "../../types";
 import { useEffect, useState, useRef } from "react";
 import ProductCard from "../ProductCard";
@@ -28,7 +28,10 @@ import {
   getProductsByFilterSelector,
   getSelectedFiltersSelector,
 } from "../../store/selectors";
-import { setSelectedFilters } from "../../store/slices/productsSlice";
+import {
+  setSelectedFilters,
+  setProductsByFilter,
+} from "../../store/slices/productsSlice";
 const Category = () => {
   const { category } = useParams() as { category: CategoryType };
 
@@ -40,13 +43,14 @@ const Category = () => {
   const paginatedProducts = useSelector(
     getPaginatedProductsSelector
   ) as IProduct[];
-
-  const [isShow, setIsShow] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
   const selectedFilters = useSelector(getSelectedFiltersSelector);
-  const [actionFilters, setActionFilters] = useState(selectedFilters);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const [actionFilters, setActionFilters] = useState(selectedFilters);
+  const [isShow, setIsShow] = useState(false);
   const [positionApplyBtn, setPositionApplyBtn] = useState(21);
+
   const filters = filtersProductByCategory(category as CategoryType);
   const { model, storage, color, type } = filters || {};
 
@@ -244,12 +248,9 @@ const Category = () => {
               <button
                 className="applyFilterBtn"
                 onClick={() => {
-                  dispatch(
-                    applyInitialFilterThunk({
-                      productsByFilterSelector,
-                      selectedFilters,
-                    })
-                  );
+                  const products: IProduct[] = productsSelector[category] ?? [];
+                  const res = handleApplyFilters(products, selectedFilters);
+                  dispatch(setProductsByFilter(res));
                 }}
               >
                 <span>Apply filter</span> <img src={successFilter} alt="" />
@@ -258,7 +259,6 @@ const Category = () => {
           </div>
           {productsByFilterSelector?.length !== 0 ? (
             <div className="listProductsContainer">
-              bb
               <ul className="listProducts">
                 {paginatedProducts &&
                   paginatedProducts?.map((item) => (
@@ -272,7 +272,6 @@ const Category = () => {
             </div>
           ) : (
             <div className="listProductsContainer">
-              ff
               <ul className="listProducts">
                 {paginatedProducts &&
                   paginatedProducts?.map((item) => (

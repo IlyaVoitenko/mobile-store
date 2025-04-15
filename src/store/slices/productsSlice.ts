@@ -6,7 +6,6 @@ const initialState: initialStateProps = {
   products: listProduct,
   paginatedProducts: [],
   productFiltered: [],
-  filters: {},
   isLoading: false,
   selectedFilters: { model: [], storage: [], color: [], type: [] },
 };
@@ -16,7 +15,7 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     setSelectedFilters: (state, action) => {
-      state.selectedFilters = action.payload;
+      state.selectedFilters = { ...action.payload };
     },
     setProducts: (state, action) => {
       state.products = { ...action.payload };
@@ -28,10 +27,7 @@ const productsSlice = createSlice({
       state.paginatedProducts = [...action.payload];
     },
     setProductsByFilter: (state, action) => {
-      state.productFiltered = action.payload;
-    },
-    setInitialProductFiltered: (state) => {
-      state.productFiltered = state.products;
+      state.productFiltered = [...action.payload];
     },
   },
 });
@@ -40,7 +36,6 @@ export const {
   setProducts,
   setProductsByCategory,
   setProductsByFilter,
-  setInitialProductFiltered,
   setIsLoading,
   setSelectedFilters,
 } = productsSlice.actions;

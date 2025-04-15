@@ -19,7 +19,7 @@ export type ProductMap = {
 export type FilterKey = "model" | "storage" | "color" | "type";
 
 export type Filters = {
-  [key in FilterKey]: string[];
+  [key in FilterKey]?: string[];
 };
 export interface IProduct {
   id: number | string;
@@ -63,7 +63,7 @@ export interface initialStateProps {
   products: IProductCategory;
   paginatedProducts: IProduct[];
   productFiltered: IProduct[];
-  filters: IFilter;
+  selectedFilters: IFilter;
   isLoading: boolean;
 }
 

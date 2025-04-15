@@ -5,7 +5,6 @@ import {
   IProduct,
   FilterKey,
   Filters,
-  IFilter,
 } from "../types";
 import { redirect } from "react-router-dom";
 
@@ -77,7 +76,7 @@ export const objectToFormData = (
 };
 export const filtersProductByCategory = (
   category: string | undefined
-): IFilter | void => {
+): Filters | void => {
   switch (category) {
     case "Iphone":
       return {
@@ -128,12 +127,12 @@ export const filtersProductByCategory = (
 };
 export const handleFilter = (
   target: HTMLInputElement,
-  setState,
+  setState: React.Dispatch<React.SetStateAction<Filters>>,
   filter: keyof Filters
 ) => {
   const name = target.name;
   const isChecked = target.checked;
-  setState((prev) => {
+  setState((prev: Filters) => {
     const currentFilter = prev[filter] ?? [];
 
     if (isChecked) {
@@ -186,15 +185,12 @@ export const handleReducerPaginationPages = (
 export const handleApplyFilters = (
   products: IProduct[],
   selectedFilters: Filters
-) => {
-  console.log("products:", products);
+): IProduct[] => {
   return products?.filter((product: IProduct) => {
     return Object.entries(selectedFilters).every(([key, values]) => {
       if (values.length === 0) return true;
-      console.log("selectedFilters:", selectedFilters);
-      console.log("product[key] :", product[key]);
-      console.log(values);
-      return values.includes(product[key as FilterKey]);
+
+      return values.includes(product[key as FilterKey] as string);
     });
   });
 };

@@ -21,6 +21,6 @@ export const getIsLoadingSelector = (state: {
   products: initialStateProps;
 }): boolean => state.products.isLoading;
 
-export const getSelectedFiltersSelector = (
-  state: initialStateProps
-): { filters: IFilter } => state.products.selectedFilters;
+export const getSelectedFiltersSelector = (state: {
+  products: initialStateProps;
+}): IFilter => state.products.selectedFilters;
