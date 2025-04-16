@@ -22,7 +22,7 @@ export const queryClient: IActionStateReducer<IQueryData> = async (
     success: true,
   };
 };
-export const handleChangeClientName = (
+export const handleValidClientName = (
   target: EventTarget & HTMLInputElement,
   setNameClient: {
     (value: SetStateAction<string>): void;
@@ -34,7 +34,7 @@ export const handleChangeClientName = (
   if (!clientNameRegex.test(value)) return;
   setNameClient(value);
 };
-export const handleChangeClientNumber = (
+export const handleValidClientNumber = (
   target: EventTarget & HTMLInputElement,
   setPhoneNumber: {
     (value: SetStateAction<string>): void;
@@ -75,7 +75,7 @@ export const objectToFormData = (
   });
   return formData;
 };
-export const filtersProductByCategory = (
+export const filtersProductsByCategory = (
   category: string | undefined
 ): Filters | void => {
   switch (category) {
@@ -126,7 +126,7 @@ export const filtersProductByCategory = (
       redirect("/");
   }
 };
-export const handleFilter = (
+export const handleIsCheckedFilter = (
   target: HTMLInputElement,
   setState: React.Dispatch<React.SetStateAction<Filters>>,
   filter: keyof Filters
@@ -183,7 +183,7 @@ export const handleReducerPaginationPages = (
   const reducedList = list.slice(prevPage, nextPage);
   return reducedList;
 };
-export const handleApplyFilters = (
+export const handleFilteringGoodsBySelectedCategories = (
   products: IProduct[],
   selectedFilters: Filters
 ): IProduct[] => {
@@ -205,3 +205,4 @@ export const handleFilterGoodsByPriceRange = (
     (item) => item.price <= maxPrice && item.price >= minPrice
   );
 };
+export const handleApplyFilters = () => {};

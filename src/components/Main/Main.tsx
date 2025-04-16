@@ -2,8 +2,8 @@ import resources from "./resources";
 import { Link } from "react-router-dom";
 import { arrProduct } from "../ProductCollection/constants";
 import {
-  handleChangeClientName,
-  handleChangeClientNumber,
+  handleValidClientName,
+  handleValidClientNumber,
   handleNextSlider,
   handlePreSlider,
 } from "../../helper";
@@ -149,7 +149,7 @@ const Main = () => {
               <input
                 value={nameClient}
                 onInput={({ target }) =>
-                  handleChangeClientName(
+                  handleValidClientName(
                     target as HTMLInputElement,
                     setNameClient
                   )
@@ -161,7 +161,7 @@ const Main = () => {
               <input
                 value={phoneNumber}
                 onInput={({ target }) =>
-                  handleChangeClientNumber(
+                  handleValidClientNumber(
                     target as HTMLInputElement,
                     setPhoneNumber
                   )
@@ -170,7 +170,10 @@ const Main = () => {
                 name="phoneNumber"
                 required
               />
-              <NeedHelpSubmitBtn />
+              <NeedHelpSubmitBtn
+                setNameClient={setNameClient}
+                setPhoneNumber={setPhoneNumber}
+              />
             </form>
           </div>
         </div>

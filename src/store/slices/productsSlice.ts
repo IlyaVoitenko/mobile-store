@@ -9,12 +9,16 @@ const initialState: initialStateProps = {
   isLoading: false,
   selectedFilters: { model: [], storage: [], color: [], type: [] },
   priceRange: { minPrice: null, maxPrice: null },
+  isPopularGoods: null,
 };
 
 const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
+    setIsPopularGoods: (state, action) => {
+      state.isPopularGoods = action.payload;
+    },
     setSelectedFilters: (state, action) => {
       state.selectedFilters = { ...action.payload };
     },
@@ -42,6 +46,7 @@ const productsSlice = createSlice({
 
 export const {
   setProducts,
+  setIsPopularGoods,
   setProductsByCategory,
   setProductsByFilter,
   setIsLoading,

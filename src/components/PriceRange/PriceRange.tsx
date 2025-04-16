@@ -77,6 +77,7 @@ const PriceRange = ({ listProducts }: IPriceRangeProps) => {
       );
     }
   }, []);
+
   return (
     <div className="double-slider-box">
       <div className="input-box">

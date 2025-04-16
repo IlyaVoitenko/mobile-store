@@ -12,11 +12,11 @@ import "../../styles/components/_categoryNavProduct.scss";
 import "../../styles/components/_productNameAndCount.scss";
 import "../../styles/components/_filterAndListProducts.scss";
 import {
-  filtersProductByCategory,
-  handleFilter,
+  filtersProductsByCategory,
+  handleIsCheckedFilter,
   handlePositionBtnApplyFilters,
   handleFilterGoodsByPriceRange,
-  handleApplyFilters,
+  handleFilteringGoodsBySelectedCategories,
 } from "../../helper";
 import { IProduct, CategoryType, ProductMap } from "../../types";
 import { useEffect, useState, useRef } from "react";
@@ -24,6 +24,7 @@ import ProductCard from "../ProductCard";
 import Pagination from "../Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  // getIsPopularGoods,
   getProductsSelector,
   getPaginatedProductsSelector,
   getProductsByFilterSelector,
@@ -46,6 +47,7 @@ const Category = () => {
     getPaginatedProductsSelector
   ) as IProduct[];
   const selectedFilters = useSelector(getSelectedFiltersSelector);
+  // const isPopularGoods = useSelector(getIsPopularGoods);
   const priceRangeSelector = useSelector(getPriceRangeSelector);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -54,7 +56,7 @@ const Category = () => {
   const [isShow, setIsShow] = useState(false);
   const [positionApplyBtn, setPositionApplyBtn] = useState(21);
 
-  const filters = filtersProductByCategory(category as CategoryType);
+  const filters = filtersProductsByCategory(category as CategoryType);
   const { model, storage, color, type } = filters || {};
 
   useEffect(() => {
@@ -64,6 +66,7 @@ const Category = () => {
   useEffect(() => {
     dispatch(setSelectedFilters(actionFilters));
   }, [actionFilters, dispatch]);
+  useEffect(() => {}, [selectedFilters]);
 
   return (
     <div className="pageDefault">
@@ -91,8 +94,16 @@ const Category = () => {
                 Sort by &nbsp; <img src={arrowDownGrey} alt="" />
               </span>
             </label>
-            <select name="sortProducts" id="sortProducts">
-              <option value="Popular">Popular</option>
+            <select
+              name="sortProducts"
+              id="sortProducts"
+              onChange={(value) => {
+                console.log(value);
+              }}
+            >
+              <option value={"null"}>Default</option>
+              <option value={1}>Popular</option>
+              <option value={0}>Unpopular</option>
             </select>
           </section>
         </div>
@@ -126,7 +137,11 @@ const Category = () => {
                                 setPositionApplyBtn,
                                 containerRef
                               );
-                              handleFilter(target, setActionFilters, "model");
+                              handleIsCheckedFilter(
+                                target,
+                                setActionFilters,
+                                "model"
+                              );
                             }}
                           />
                           <span className="box"></span>
@@ -166,7 +181,11 @@ const Category = () => {
                                 setPositionApplyBtn,
                                 containerRef
                               );
-                              handleFilter(target, setActionFilters, "storage");
+                              handleIsCheckedFilter(
+                                target,
+                                setActionFilters,
+                                "storage"
+                              );
                             }}
                           />
                           <span className="box"></span>
@@ -199,7 +218,11 @@ const Category = () => {
                                 setPositionApplyBtn,
                                 containerRef
                               );
-                              handleFilter(target, setActionFilters, "color");
+                              handleIsCheckedFilter(
+                                target,
+                                setActionFilters,
+                                "color"
+                              );
                             }}
                           />
                           <span className="box"></span>
@@ -232,7 +255,11 @@ const Category = () => {
                                 setPositionApplyBtn,
                                 containerRef
                               );
-                              handleFilter(target, setActionFilters, "type");
+                              handleIsCheckedFilter(
+                                target,
+                                setActionFilters,
+                                "type"
+                              );
                             }}
                           />
                           <span className="box"></span>
@@ -256,10 +283,11 @@ const Category = () => {
                 className="applyFilterBtn"
                 onClick={() => {
                   const products: IProduct[] = productsSelector[category] ?? [];
-                  const filteredListGoods = handleApplyFilters(
-                    products,
-                    selectedFilters
-                  );
+                  const filteredListGoods =
+                    handleFilteringGoodsBySelectedCategories(
+                      products,
+                      selectedFilters
+                    );
                   const filteredByPriceRange = handleFilterGoodsByPriceRange(
                     filteredListGoods,
                     priceRangeSelector
