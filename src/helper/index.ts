@@ -2,6 +2,7 @@ import { SetStateAction } from "react";
 import {
   IQueryData,
   IActionStateReducer,
+  IPriceRange,
   IProduct,
   FilterKey,
   Filters,
@@ -193,4 +194,14 @@ export const handleApplyFilters = (
       return values.includes(product[key as FilterKey] as string);
     });
   });
+};
+export const handleFilterGoodsByPriceRange = (
+  list: IProduct[],
+  priceRange: IPriceRange
+) => {
+  const { maxPrice, minPrice } = priceRange;
+  if (maxPrice === null || minPrice === null) return list;
+  return list?.filter(
+    (item) => item.price <= maxPrice && item.price >= minPrice
+  );
 };

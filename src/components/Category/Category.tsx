@@ -15,6 +15,7 @@ import {
   filtersProductByCategory,
   handleFilter,
   handlePositionBtnApplyFilters,
+  handleFilterGoodsByPriceRange,
   handleApplyFilters,
 } from "../../helper";
 import { IProduct, CategoryType, ProductMap } from "../../types";
@@ -32,7 +33,6 @@ import {
 import {
   setSelectedFilters,
   setProductsByFilter,
-  setPriceRangeGoods,
 } from "../../store/slices/productsSlice";
 const Category = () => {
   const { category } = useParams() as { category: CategoryType };
@@ -46,14 +46,13 @@ const Category = () => {
     getPaginatedProductsSelector
   ) as IProduct[];
   const selectedFilters = useSelector(getSelectedFiltersSelector);
-  // const priceRangeSelector = useSelector(getPriceRangeSelector);
+  const priceRangeSelector = useSelector(getPriceRangeSelector);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [actionFilters, setActionFilters] = useState(selectedFilters);
   const [isShow, setIsShow] = useState(false);
   const [positionApplyBtn, setPositionApplyBtn] = useState(21);
-  // const [priceRange, setPriceRange] = useState(priceRangeSelector);
 
   const filters = filtersProductByCategory(category as CategoryType);
   const { model, storage, color, type } = filters || {};
@@ -105,7 +104,6 @@ const Category = () => {
                 listProducts={
                   productsByFilterSelector || productsSelector[category]
                 }
-                // setPriceRange={setPriceRange}
               />
               {model && (
                 <div className="containerFilters">
@@ -258,10 +256,15 @@ const Category = () => {
                 className="applyFilterBtn"
                 onClick={() => {
                   const products: IProduct[] = productsSelector[category] ?? [];
-                  const res = handleApplyFilters(products, selectedFilters);
-                  dispatch(setProductsByFilter(res));
-                  // console.log(first);
-                  // dispatch(setPriceRangeGoods(priceRange));
+                  const filteredListGoods = handleApplyFilters(
+                    products,
+                    selectedFilters
+                  );
+                  const filteredByPriceRange = handleFilterGoodsByPriceRange(
+                    filteredListGoods,
+                    priceRangeSelector
+                  );
+                  dispatch(setProductsByFilter(filteredByPriceRange));
                 }}
               >
                 <span>Apply filter</span> <img src={successFilter} alt="" />

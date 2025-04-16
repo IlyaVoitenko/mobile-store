@@ -59,13 +59,18 @@ export interface IFilter {
   color?: string[];
   type?: string[];
 }
+export interface IPriceRange {
+  minPrice: number | null;
+  maxPrice: number | null;
+}
+
 export interface initialStateProps {
   products: IProductCategory;
   paginatedProducts: IProduct[];
   productFiltered: IProduct[];
   selectedFilters: IFilter;
   isLoading: boolean;
-  priceRange: { minPrice: number | null; maxPrice: number | null };
+  priceRange: IPriceRange;
 }
 
 export interface ApplyFilterArgs {
