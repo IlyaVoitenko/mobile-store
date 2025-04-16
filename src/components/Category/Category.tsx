@@ -27,10 +27,12 @@ import {
   getPaginatedProductsSelector,
   getProductsByFilterSelector,
   getSelectedFiltersSelector,
+  getPriceRangeSelector,
 } from "../../store/selectors";
 import {
   setSelectedFilters,
   setProductsByFilter,
+  setPriceRangeGoods,
 } from "../../store/slices/productsSlice";
 const Category = () => {
   const { category } = useParams() as { category: CategoryType };
@@ -44,12 +46,14 @@ const Category = () => {
     getPaginatedProductsSelector
   ) as IProduct[];
   const selectedFilters = useSelector(getSelectedFiltersSelector);
+  // const priceRangeSelector = useSelector(getPriceRangeSelector);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [actionFilters, setActionFilters] = useState(selectedFilters);
   const [isShow, setIsShow] = useState(false);
   const [positionApplyBtn, setPositionApplyBtn] = useState(21);
+  // const [priceRange, setPriceRange] = useState(priceRangeSelector);
 
   const filters = filtersProductByCategory(category as CategoryType);
   const { model, storage, color, type } = filters || {};
@@ -97,7 +101,12 @@ const Category = () => {
           <div className="filtersProducts" ref={containerRef}>
             <div className="filterPrises">
               <span className="filterTitle">Price</span>
-              <PriceRange />
+              <PriceRange
+                listProducts={
+                  productsByFilterSelector || productsSelector[category]
+                }
+                // setPriceRange={setPriceRange}
+              />
               {model && (
                 <div className="containerFilters">
                   <span className="filterTitle">Phone models</span>
@@ -251,6 +260,8 @@ const Category = () => {
                   const products: IProduct[] = productsSelector[category] ?? [];
                   const res = handleApplyFilters(products, selectedFilters);
                   dispatch(setProductsByFilter(res));
+                  // console.log(first);
+                  // dispatch(setPriceRangeGoods(priceRange));
                 }}
               >
                 <span>Apply filter</span> <img src={successFilter} alt="" />

@@ -24,3 +24,6 @@ export const getIsLoadingSelector = (state: {
 export const getSelectedFiltersSelector = (state: {
   products: initialStateProps;
 }): IFilter => state.products.selectedFilters;
+
+export const getPriceRangeSelector = (state: { products: initialStateProps }) =>
+  state.products.priceRange;

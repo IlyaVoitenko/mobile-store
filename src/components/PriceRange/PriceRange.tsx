@@ -1,79 +1,106 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { IProduct } from "../../types";
 import "../../styles/components/_priceRange.scss";
-const PriceRange = () => {
-  const initialMinPrice = 0;
-  const initialMaxPrice = 1100;
+import { useDispatch, useSelector } from "react-redux";
+import { setPriceRangeGoods } from "../../store/slices/productsSlice";
+import { getPriceRangeSelector } from "../../store/selectors";
+interface IPriceRangeProps {
+  listProducts: IProduct[];
+}
+const PriceRange = ({ listProducts }: IPriceRangeProps) => {
+  const dispatch = useDispatch();
+  const priceRangeSelector = useSelector(getPriceRangeSelector);
+  const { minPrice, maxPrice } = priceRangeSelector;
+  const initialMinPrice = Math.min(
+    ...listProducts.map((item: { price: number }) => item.price)
+  );
+  const initialMaxPrice = Math.max(
+    ...listProducts.map((item: { price: number }) => item.price)
+  );
 
   const [sliderMinValue] = useState(initialMinPrice);
   const [sliderMaxValue] = useState(initialMaxPrice);
 
-  const [minVal, setMinVal] = useState(initialMinPrice);
-  const [maxVal, setMaxVal] = useState(initialMaxPrice);
-  const [minInput, setMinInput] = useState(initialMinPrice);
-  const [maxInput, setMaxInput] = useState(initialMaxPrice);
+  const [minVal, setMinVal] = useState(minPrice ? minPrice : initialMinPrice);
+  const [maxVal, setMaxVal] = useState(maxPrice ? maxPrice : initialMaxPrice);
 
   const minGap = 5;
 
-  const slideMin = (e: { target: { value: string } }) => {
-    const value = parseInt(e.target.value, 10);
-    if (value >= sliderMinValue && maxVal - value >= minGap) {
-      setMinVal(value);
-      setMinInput(value);
-    }
+  const slideMin = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseInt(target.value, 10);
+
+    if (value >= sliderMinValue && maxVal - value >= minGap) setMinVal(value);
   };
 
-  const slideMax = (e: { target: { value: string } }) => {
-    const { value } = e.target;
+  const slideMax = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = target;
     const newValue = parseInt(value, 10);
-
-    if (newValue <= sliderMaxValue && newValue - minVal >= minGap) {
+    if (newValue <= sliderMaxValue && newValue - minVal >= minGap)
       setMaxVal(newValue);
-      setMaxInput(newValue);
-    }
   };
 
-  const handleMinInput = (e: { target: { value: string } }) => {
-    const value = e.target.value
-      ? sliderMinValue
-      : parseInt(e.target.value, 10);
-    if (value >= sliderMinValue && value < maxVal - minGap) {
-      setMinInput(value);
-      setMinVal(value);
-    }
+  const handleMinInput = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    const value = target.value ? sliderMinValue : parseInt(target.value, 10);
+    if (value >= sliderMinValue && value < maxVal - minGap) setMinVal(value);
   };
 
-  const handleMaxInput = (e: { target: { value: string } }) => {
-    const { value } = e.target;
+  const handleMaxInput = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = target;
     const newValue = value ? sliderMaxValue : parseInt(value, 10);
 
-    if (newValue <= sliderMaxValue && newValue > minVal + minGap) {
-      setMaxInput(newValue);
+    if (newValue <= sliderMaxValue && newValue > minVal + minGap)
       setMaxVal(newValue);
-    }
   };
+  useEffect(() => {
+    dispatch(
+      setPriceRangeGoods({
+        minPrice: minVal,
+        maxPrice: maxVal,
+      })
+    );
+  }, [maxVal, minVal, dispatch]);
 
+  useEffect(() => {
+    if (!maxPrice || !minPrice) {
+      dispatch(
+        setPriceRangeGoods({
+          minPrice: initialMinPrice,
+          maxPrice: initialMaxPrice,
+        })
+      );
+    } else {
+      dispatch(
+        setPriceRangeGoods({
+          minPrice,
+          maxPrice,
+        })
+      );
+    }
+  }, []);
   return (
     <div className="double-slider-box">
       <div className="input-box">
         <div className="min-box">
           <input
             type="text"
-            value={minInput + "$"}
+            value={minPrice + "$"}
             onChange={handleMinInput}
             className="min-input"
             min={sliderMinValue}
             max={maxVal - minGap}
+            placeholder="min-input"
           />
         </div>
         <span>to</span>
         <div className="max-box">
           <input
             type="text"
-            value={maxInput + "$"}
+            value={maxPrice + "$"}
             onChange={handleMaxInput}
             className="max-input"
             min={minVal + minGap}
             max={sliderMaxValue}
+            placeholder="max-input"
           />
         </div>
       </div>

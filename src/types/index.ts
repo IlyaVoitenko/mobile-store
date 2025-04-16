@@ -65,6 +65,7 @@ export interface initialStateProps {
   productFiltered: IProduct[];
   selectedFilters: IFilter;
   isLoading: boolean;
+  priceRange: { minPrice: number | null; maxPrice: number | null };
 }
 
 export interface ApplyFilterArgs {

@@ -8,6 +8,7 @@ const initialState: initialStateProps = {
   productFiltered: [],
   isLoading: false,
   selectedFilters: { model: [], storage: [], color: [], type: [] },
+  priceRange: { minPrice: null, maxPrice: null },
 };
 
 const productsSlice = createSlice({
@@ -29,6 +30,13 @@ const productsSlice = createSlice({
     setProductsByFilter: (state, action) => {
       state.productFiltered = [...action.payload];
     },
+    setPriceRangeGoods: (state, action) => {
+      const { maxPrice, minPrice } = action.payload;
+      state.priceRange = {
+        minPrice,
+        maxPrice,
+      };
+    },
   },
 });
 
@@ -37,6 +45,7 @@ export const {
   setProductsByCategory,
   setProductsByFilter,
   setIsLoading,
+  setPriceRangeGoods,
   setSelectedFilters,
 } = productsSlice.actions;
 
