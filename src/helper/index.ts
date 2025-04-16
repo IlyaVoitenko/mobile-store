@@ -7,7 +7,9 @@ import {
   FilterKey,
   Filters,
 } from "../types";
+import { setProductsByFilter } from "../store/slices/productsSlice.ts";
 import { redirect } from "react-router-dom";
+import { Dispatch } from "@reduxjs/toolkit";
 
 export const queryClient: IActionStateReducer<IQueryData> = async (
   _,
@@ -200,9 +202,39 @@ export const handleFilterGoodsByPriceRange = (
   priceRange: IPriceRange
 ) => {
   const { maxPrice, minPrice } = priceRange;
-  if (maxPrice === null || minPrice === null) return list;
-  return list?.filter(
+  if (!maxPrice || !minPrice) return list;
+  return list.filter(
     (item) => item.price <= maxPrice && item.price >= minPrice
   );
 };
-export const handleApplyFilters = () => {};
+export const handleApplySelectedFilters = (
+  productsSelector: IProduct[],
+  selectedFilters: Filters,
+  priceRangeSelector: IPriceRange,
+  dispatch: Dispatch
+): void => {
+  const products: IProduct[] = productsSelector ?? [];
+  const filteredListGoods = handleFilteringGoodsBySelectedCategories(
+    products,
+    selectedFilters
+  );
+  const filteredByPriceRange = handleFilterGoodsByPriceRange(
+    filteredListGoods,
+    priceRangeSelector
+  );
+  dispatch(setProductsByFilter(filteredByPriceRange));
+};
+export const minAndMaxPriceListGoods = (
+  listGoods: IProduct[]
+): IPriceRange | void => {
+  if (listGoods.length === 0) return;
+
+  return {
+    initialMinPrice: Math.min(
+      ...listGoods.map((item: { price: number }) => item.price)
+    ),
+    initialMaxPrice: Math.max(
+      ...listGoods.map((item: { price: number }) => item.price)
+    ),
+  };
+};

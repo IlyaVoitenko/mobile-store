@@ -60,8 +60,10 @@ export interface IFilter {
   type?: string[];
 }
 export interface IPriceRange {
-  minPrice: number | null;
-  maxPrice: number | null;
+  minPrice?: number | null;
+  maxPrice?: number | null;
+  initialMinPrice?: number | null;
+  initialMaxPrice?: number | null;
 }
 
 export interface initialStateProps {

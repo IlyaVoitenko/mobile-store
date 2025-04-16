@@ -15,8 +15,9 @@ import {
   filtersProductsByCategory,
   handleIsCheckedFilter,
   handlePositionBtnApplyFilters,
-  handleFilterGoodsByPriceRange,
-  handleFilteringGoodsBySelectedCategories,
+  handleApplySelectedFilters,
+  minAndMaxPriceListGoods,
+  // handleFilteringGoodsBySelectedCategories,
 } from "../../helper";
 import { IProduct, CategoryType, ProductMap } from "../../types";
 import { useEffect, useState, useRef } from "react";
@@ -33,7 +34,7 @@ import {
 } from "../../store/selectors";
 import {
   setSelectedFilters,
-  setProductsByFilter,
+  // setPriceRangeGoods,
 } from "../../store/slices/productsSlice";
 const Category = () => {
   const { category } = useParams() as { category: CategoryType };
@@ -66,7 +67,30 @@ const Category = () => {
   useEffect(() => {
     dispatch(setSelectedFilters(actionFilters));
   }, [actionFilters, dispatch]);
-  useEffect(() => {}, [selectedFilters]);
+
+  useEffect(() => {
+    const { initialMinPrice, initialMaxPrice } =
+      minAndMaxPriceListGoods(productsSelector[category] ?? []) || {};
+    const { minPrice, maxPrice } = priceRangeSelector;
+    const isEmptySelectedFiltersObject = Object.entries(selectedFilters).every(
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      ([_, values]) => {
+        if (values.length === 0) return true;
+      }
+    );
+    if (
+      isEmptySelectedFiltersObject &&
+      minPrice === initialMinPrice &&
+      maxPrice === initialMaxPrice
+    ) {
+      handleApplySelectedFilters(
+        productsSelector[category] ?? [],
+        selectedFilters,
+        priceRangeSelector,
+        dispatch
+      );
+    }
+  }, [selectedFilters, dispatch]);
 
   return (
     <div className="pageDefault">
@@ -281,19 +305,14 @@ const Category = () => {
               <div className="triangle"></div>
               <button
                 className="applyFilterBtn"
-                onClick={() => {
-                  const products: IProduct[] = productsSelector[category] ?? [];
-                  const filteredListGoods =
-                    handleFilteringGoodsBySelectedCategories(
-                      products,
-                      selectedFilters
-                    );
-                  const filteredByPriceRange = handleFilterGoodsByPriceRange(
-                    filteredListGoods,
-                    priceRangeSelector
-                  );
-                  dispatch(setProductsByFilter(filteredByPriceRange));
-                }}
+                onClick={() =>
+                  handleApplySelectedFilters(
+                    productsSelector[category] ?? [],
+                    selectedFilters,
+                    priceRangeSelector,
+                    dispatch
+                  )
+                }
               >
                 <span>Apply filter</span> <img src={successFilter} alt="" />
               </button>
@@ -301,6 +320,7 @@ const Category = () => {
           </div>
           {productsByFilterSelector?.length !== 0 ? (
             <div className="listProductsContainer">
+              ф
               <ul className="listProducts">
                 {paginatedProducts &&
                   paginatedProducts?.map((item) => (
@@ -314,6 +334,7 @@ const Category = () => {
             </div>
           ) : (
             <div className="listProductsContainer">
+              а
               <ul className="listProducts">
                 {paginatedProducts &&
                   paginatedProducts?.map((item) => (
