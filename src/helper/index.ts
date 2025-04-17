@@ -207,12 +207,24 @@ export const handleFilterGoodsByPriceRange = (
     (item) => item.price <= maxPrice && item.price >= minPrice
   );
 };
+export const handleFilterGoodsByPopular = (
+  list: IProduct[],
+  popular: string
+) => {
+  if (popular === "Popular") {
+    return list.filter((item) => item.isPopular === true);
+  }
+  if (popular === "Unpopular") {
+    return list.filter((item) => item.isPopular === false);
+  }
+};
 export const handleApplySelectedFilters = (
   productsSelector: IProduct[],
   selectedFilters: Filters,
   priceRangeSelector: IPriceRange,
-  dispatch: Dispatch
-): void => {
+  dispatch: Dispatch,
+  popular: string = "default"
+) => {
   const products: IProduct[] = productsSelector ?? [];
   const filteredListGoods = handleFilteringGoodsBySelectedCategories(
     products,
@@ -222,7 +234,24 @@ export const handleApplySelectedFilters = (
     filteredListGoods,
     priceRangeSelector
   );
-  dispatch(setProductsByFilter(filteredByPriceRange));
+  console.log(filteredByPriceRange);
+  if (popular === "Popular") {
+    const popularGoods = handleFilterGoodsByPopular(
+      filteredByPriceRange,
+      popular
+    );
+    console.log("popularGoods", popularGoods);
+    return dispatch(setProductsByFilter(popularGoods));
+  }
+  if (popular === "Unpopular") {
+    const unpopularGoods = handleFilterGoodsByPopular(
+      filteredByPriceRange,
+      popular
+    );
+    console.log("unpopularGoods", unpopularGoods);
+    return dispatch(setProductsByFilter(unpopularGoods));
+  }
+  return dispatch(setProductsByFilter(filteredByPriceRange));
 };
 export const minAndMaxPriceListGoods = (
   listGoods: IProduct[]

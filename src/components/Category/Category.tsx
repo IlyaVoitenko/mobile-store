@@ -17,7 +17,6 @@ import {
   handlePositionBtnApplyFilters,
   handleApplySelectedFilters,
   minAndMaxPriceListGoods,
-  // handleFilteringGoodsBySelectedCategories,
 } from "../../helper";
 import { IProduct, CategoryType, ProductMap } from "../../types";
 import { useEffect, useState, useRef } from "react";
@@ -25,16 +24,17 @@ import ProductCard from "../ProductCard";
 import Pagination from "../Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  // getIsPopularGoods,
   getProductsSelector,
   getPaginatedProductsSelector,
   getProductsByFilterSelector,
   getSelectedFiltersSelector,
+  getIsPopularGoods,
   getPriceRangeSelector,
 } from "../../store/selectors";
 import {
   setSelectedFilters,
-  // setPriceRangeGoods,
+  setPopularGoodsOptionSelector,
+  setPriceRangeGoods,
 } from "../../store/slices/productsSlice";
 const Category = () => {
   const { category } = useParams() as { category: CategoryType };
@@ -48,7 +48,7 @@ const Category = () => {
     getPaginatedProductsSelector
   ) as IProduct[];
   const selectedFilters = useSelector(getSelectedFiltersSelector);
-  // const isPopularGoods = useSelector(getIsPopularGoods);
+  const popularGoodsOptionSelector = useSelector(getIsPopularGoods);
   const priceRangeSelector = useSelector(getPriceRangeSelector);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -90,6 +90,14 @@ const Category = () => {
         dispatch
       );
     }
+    if (isEmptySelectedFiltersObject) {
+      dispatch(
+        setPriceRangeGoods({
+          minPrice: initialMinPrice,
+          maxPrice: initialMaxPrice,
+        })
+      );
+    }
   }, [selectedFilters, dispatch]);
 
   return (
@@ -121,13 +129,42 @@ const Category = () => {
             <select
               name="sortProducts"
               id="sortProducts"
-              onChange={(value) => {
-                console.log(value);
+              onChange={({ target }) => {
+                console.log(target.value);
+                dispatch(setPopularGoodsOptionSelector(target.value));
+
+                if (target.value === "default") {
+                  return handleApplySelectedFilters(
+                    productsSelector[category] ?? [],
+                    selectedFilters,
+                    priceRangeSelector,
+                    dispatch
+                  );
+                }
+                if (target.value) {
+                  return handleApplySelectedFilters(
+                    productsSelector[category] ?? [],
+                    selectedFilters,
+                    priceRangeSelector,
+                    dispatch,
+                    target.value
+                  );
+                }
+                if (!target.value) {
+                  return handleApplySelectedFilters(
+                    productsSelector[category] ?? [],
+                    selectedFilters,
+                    priceRangeSelector,
+                    dispatch,
+                    target.value
+                  );
+                }
               }}
+              value={popularGoodsOptionSelector}
             >
-              <option value={"null"}>Default</option>
-              <option value={1}>Popular</option>
-              <option value={0}>Unpopular</option>
+              <option value={"default"}>Default</option>
+              <option value={"Popular"}>Popular</option>
+              <option value={"Unpopular"}>Unpopular</option>
             </select>
           </section>
         </div>
@@ -320,7 +357,6 @@ const Category = () => {
           </div>
           {productsByFilterSelector?.length !== 0 ? (
             <div className="listProductsContainer">
-              ф
               <ul className="listProducts">
                 {paginatedProducts &&
                   paginatedProducts?.map((item) => (
@@ -334,7 +370,6 @@ const Category = () => {
             </div>
           ) : (
             <div className="listProductsContainer">
-              а
               <ul className="listProducts">
                 {paginatedProducts &&
                   paginatedProducts?.map((item) => (

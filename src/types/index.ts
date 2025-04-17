@@ -73,7 +73,7 @@ export interface initialStateProps {
   selectedFilters: IFilter;
   isLoading: boolean;
   priceRange: IPriceRange;
-  isPopularGoods: number | boolean | null;
+  popularGoodsOption: string;
 }
 
 export interface ApplyFilterArgs {

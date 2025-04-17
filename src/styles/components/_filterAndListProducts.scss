@@ -4,11 +4,12 @@
 @use "../abstracts/mediaQuery" as *;
 
 .containerFilterAndListProducts {
-  @include containerResponsiveWidth;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   margin-top: 1.5rem;
+
+  @include containerResponsiveWidth;
 
   @include for-mobile {
     flex-direction: column;

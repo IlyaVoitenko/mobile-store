@@ -29,4 +29,4 @@ export const getPriceRangeSelector = (state: { products: initialStateProps }) =>
   state.products.priceRange;
 
 export const getIsPopularGoods = (state: { products: initialStateProps }) =>
-  state.products.isPopularGoods;
+  state.products.popularGoodsOption;
