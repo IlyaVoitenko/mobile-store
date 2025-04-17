@@ -101,6 +101,7 @@
       height: 48px;
       border-radius: 0px 12px 12px 0px;
       border-left: 0px;
+      cursor: pointer;
 
       @include for-desktop4K {
         width: 188.5px;
@@ -162,7 +163,7 @@
         border-radius: 5px;
         display: inline-block;
         position: relative;
-
+        cursor: pointer;
         @include for-desktop4K {
           width: 30px;
           height: 30px;
@@ -202,7 +203,7 @@
         background-color: $white;
         border: none;
         text-align: left;
-
+        cursor: pointer;
         @include for-desktop4K {
           width: 100px;
           height: 32px;
@@ -329,6 +330,35 @@
     @include for-desktop4K {
       font-size: 30px;
       line-height: 50px;
+    }
+  }
+}
+.GoodsNotFound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 50vh;
+
+  @include containerResponsiveWidth;
+  span {
+    font-family: $fontFamily;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    @include for-mobile {
+      font-size: 15px;
+    }
+  }
+  .GoodsNotFoundLink {
+    font-family: $fontFamily;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+    color: $blue;
+    text-align: center;
+    @include for-mobile {
+      font-size: 17px;
     }
   }
 }

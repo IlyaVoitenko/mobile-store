@@ -62,6 +62,9 @@ const Category = () => {
 
   useEffect(() => {
     setIsShow(false);
+    dispatch(
+      setSelectedFilters({ model: [], storage: [], color: [], type: [] })
+    );
   }, [category, dispatch]);
 
   useEffect(() => {
@@ -120,267 +123,278 @@ const Category = () => {
               items
             </span>
           </div>
-          <section className="containerSortProducts">
-            <label className="sortProductsLabel" htmlFor="sortProducts">
-              <span className="sortProductsSpan">
-                Sort by &nbsp; <img src={arrowDownGrey} alt="" />
-              </span>
-            </label>
-            <select
-              name="sortProducts"
-              id="sortProducts"
-              onChange={({ target }) => {
-                console.log(target.value);
-                dispatch(setPopularGoodsOptionSelector(target.value));
-
-                if (target.value === "default") {
-                  return handleApplySelectedFilters(
-                    productsSelector[category] ?? [],
-                    selectedFilters,
-                    priceRangeSelector,
-                    dispatch
-                  );
-                }
-                if (target.value) {
-                  return handleApplySelectedFilters(
-                    productsSelector[category] ?? [],
-                    selectedFilters,
-                    priceRangeSelector,
-                    dispatch,
-                    target.value
-                  );
-                }
-                if (!target.value) {
-                  return handleApplySelectedFilters(
-                    productsSelector[category] ?? [],
-                    selectedFilters,
-                    priceRangeSelector,
-                    dispatch,
-                    target.value
-                  );
-                }
-              }}
-              value={popularGoodsOptionSelector}
-            >
-              <option value={"default"}>Default</option>
-              <option value={"Popular"}>Popular</option>
-              <option value={"Unpopular"}>Unpopular</option>
-            </select>
-          </section>
+          {priceRangeSelector.minPrice !== undefined && (
+            <section className="containerSortProducts">
+              <label className="sortProductsLabel" htmlFor="sortProducts">
+                <span className="sortProductsSpan">
+                  Sort by &nbsp; <img src={arrowDownGrey} alt="" />
+                </span>
+              </label>
+              <select
+                name="sortProducts"
+                id="sortProducts"
+                onChange={({ target }) => {
+                  dispatch(setPopularGoodsOptionSelector(target.value));
+                  if (target.value === "default") {
+                    return handleApplySelectedFilters(
+                      productsSelector[category] ?? [],
+                      selectedFilters,
+                      priceRangeSelector,
+                      dispatch
+                    );
+                  }
+                  if (target.value) {
+                    return handleApplySelectedFilters(
+                      productsSelector[category] ?? [],
+                      selectedFilters,
+                      priceRangeSelector,
+                      dispatch,
+                      target.value
+                    );
+                  }
+                  if (!target.value) {
+                    return handleApplySelectedFilters(
+                      productsSelector[category] ?? [],
+                      selectedFilters,
+                      priceRangeSelector,
+                      dispatch,
+                      target.value
+                    );
+                  }
+                }}
+                value={popularGoodsOptionSelector}
+              >
+                <option value={"default"}>Default</option>
+                <option value={"Popular"}>Popular</option>
+                <option value={"Unpopular"}>Unpopular</option>
+              </select>
+            </section>
+          )}
         </div>
         <section className="containerFilterAndListProducts">
-          <div className="filtersProducts" ref={containerRef}>
-            <div className="filterPrises">
-              <span className="filterTitle">Price</span>
-              <PriceRange
-                listProducts={
-                  productsByFilterSelector || productsSelector[category]
-                }
-              />
-              {model && (
-                <div className="containerFilters">
-                  <span className="filterTitle">Phone models</span>
-                  <ul className={isShow ? "listFilterShow" : "listFilter"}>
-                    {model.map((item: string) => (
-                      <li key={nanoid()}>
-                        <label htmlFor={item} className="filterLabel">
-                          <input
-                            type="checkbox"
-                            id={item}
-                            name={item}
-                            className="checkboxFilter"
-                            checked={
-                              selectedFilters?.model?.includes(item) ?? false
-                            }
-                            onChange={({ target }) => {
-                              handlePositionBtnApplyFilters(
-                                target,
-                                setPositionApplyBtn,
-                                containerRef
-                              );
-                              handleIsCheckedFilter(
-                                target,
-                                setActionFilters,
-                                "model"
-                              );
-                            }}
-                          />
-                          <span className="box"></span>
+          {priceRangeSelector.minPrice !== undefined && (
+            <div className="filtersProducts" ref={containerRef}>
+              <div className="filterPrises">
+                <span className="filterTitle">Price</span>
+                <PriceRange
+                  listProducts={
+                    productsByFilterSelector || productsSelector[category]
+                  }
+                />
+                {model && (
+                  <div className="containerFilters">
+                    <span className="filterTitle">Phone models</span>
+                    <ul className={isShow ? "listFilterShow" : "listFilter"}>
+                      {model.map((item: string) => (
+                        <li key={nanoid()}>
+                          <label htmlFor={item} className="filterLabel">
+                            <input
+                              type="checkbox"
+                              id={item}
+                              name={item}
+                              className="checkboxFilter"
+                              checked={
+                                selectedFilters?.model?.includes(item) ?? false
+                              }
+                              onChange={({ target }) => {
+                                handlePositionBtnApplyFilters(
+                                  target,
+                                  setPositionApplyBtn,
+                                  containerRef
+                                );
+                                handleIsCheckedFilter(
+                                  target,
+                                  setActionFilters,
+                                  "model"
+                                );
+                              }}
+                            />
+                            <span className="box"></span>
 
-                          <span className="filterSpan">{item}</span>
-                        </label>
-                      </li>
-                    ))}
-                  </ul>
-                  <button
-                    className="btnShowAll"
-                    onClick={() => setIsShow(!isShow)}
-                  >
-                    <span>Show all </span>
-                    <img src={arrowDownBlue} alt="" />
-                  </button>
-                </div>
-              )}
-              {storage && (
-                <div className="containerFilters">
-                  <span className="filterTitle">Memory</span>
-                  <ul className={"listFilterShow"}>
-                    {storage.map((item: string) => (
-                      <li key={nanoid()}>
-                        <label htmlFor={item} className="filterLabel">
-                          <input
-                            type="checkbox"
-                            id={item}
-                            name={item}
-                            className="checkboxFilter"
-                            checked={
-                              selectedFilters?.storage?.includes(item) ?? false
-                            }
-                            onChange={({ target }) => {
-                              handlePositionBtnApplyFilters(
-                                target,
-                                setPositionApplyBtn,
-                                containerRef
-                              );
-                              handleIsCheckedFilter(
-                                target,
-                                setActionFilters,
-                                "storage"
-                              );
-                            }}
-                          />
-                          <span className="box"></span>
+                            <span className="filterSpan">{item}</span>
+                          </label>
+                        </li>
+                      ))}
+                    </ul>
+                    {model.length > 5 && (
+                      <button
+                        className="btnShowAll"
+                        onClick={() => setIsShow(!isShow)}
+                      >
+                        <span>Show all </span>
+                        <img src={arrowDownBlue} alt="" />
+                      </button>
+                    )}
+                  </div>
+                )}
+                {storage && (
+                  <div className="containerFilters">
+                    <span className="filterTitle">Memory</span>
+                    <ul className={"listFilterShow"}>
+                      {storage.map((item: string) => (
+                        <li key={nanoid()}>
+                          <label htmlFor={item} className="filterLabel">
+                            <input
+                              type="checkbox"
+                              id={item}
+                              name={item}
+                              className="checkboxFilter"
+                              checked={
+                                selectedFilters?.storage?.includes(item) ??
+                                false
+                              }
+                              onChange={({ target }) => {
+                                handlePositionBtnApplyFilters(
+                                  target,
+                                  setPositionApplyBtn,
+                                  containerRef
+                                );
+                                handleIsCheckedFilter(
+                                  target,
+                                  setActionFilters,
+                                  "storage"
+                                );
+                              }}
+                            />
+                            <span className="box"></span>
 
-                          <span className="filterSpan">{item}</span>
-                        </label>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {color && (
-                <div className="containerFilters">
-                  <span className="filterTitle">Color</span>
-                  <ul className={"listFilterShow"}>
-                    {color.map((item: string) => (
-                      <li key={nanoid()}>
-                        <label htmlFor={item} className="filterLabel">
-                          <input
-                            type="checkbox"
-                            id={item}
-                            name={item}
-                            className="checkboxFilter"
-                            checked={
-                              selectedFilters?.color?.includes(item) ?? false
-                            }
-                            onChange={({ target }) => {
-                              handlePositionBtnApplyFilters(
-                                target,
-                                setPositionApplyBtn,
-                                containerRef
-                              );
-                              handleIsCheckedFilter(
-                                target,
-                                setActionFilters,
-                                "color"
-                              );
-                            }}
-                          />
-                          <span className="box"></span>
+                            <span className="filterSpan">{item}</span>
+                          </label>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {color && (
+                  <div className="containerFilters">
+                    <span className="filterTitle">Color</span>
+                    <ul className={"listFilterShow"}>
+                      {color.map((item: string) => (
+                        <li key={nanoid()}>
+                          <label htmlFor={item} className="filterLabel">
+                            <input
+                              type="checkbox"
+                              id={item}
+                              name={item}
+                              className="checkboxFilter"
+                              checked={
+                                selectedFilters?.color?.includes(item) ?? false
+                              }
+                              onChange={({ target }) => {
+                                handlePositionBtnApplyFilters(
+                                  target,
+                                  setPositionApplyBtn,
+                                  containerRef
+                                );
+                                handleIsCheckedFilter(
+                                  target,
+                                  setActionFilters,
+                                  "color"
+                                );
+                              }}
+                            />
+                            <span className="box"></span>
 
-                          <span className="filterSpan">{item}</span>
-                        </label>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-              {type && (
-                <div className="containerFilters">
-                  <span className="filterTitle">Type</span>
-                  <ul className={"listFilterShow"}>
-                    {type.map((item: string) => (
-                      <li key={nanoid()}>
-                        <label htmlFor={item} className="filterLabel">
-                          <input
-                            type="checkbox"
-                            id={item}
-                            name={item}
-                            className="checkboxFilter"
-                            checked={
-                              selectedFilters?.type?.includes(item) ?? false
-                            }
-                            onChange={({ target }) => {
-                              handlePositionBtnApplyFilters(
-                                target,
-                                setPositionApplyBtn,
-                                containerRef
-                              );
-                              handleIsCheckedFilter(
-                                target,
-                                setActionFilters,
-                                "type"
-                              );
-                            }}
-                          />
-                          <span className="box"></span>
+                            <span className="filterSpan">{item}</span>
+                          </label>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {type && (
+                  <div className="containerFilters">
+                    <span className="filterTitle">Type</span>
+                    <ul className={"listFilterShow"}>
+                      {type.map((item: string) => (
+                        <li key={nanoid()}>
+                          <label htmlFor={item} className="filterLabel">
+                            <input
+                              type="checkbox"
+                              id={item}
+                              name={item}
+                              className="checkboxFilter"
+                              checked={
+                                selectedFilters?.type?.includes(item) ?? false
+                              }
+                              onChange={({ target }) => {
+                                handlePositionBtnApplyFilters(
+                                  target,
+                                  setPositionApplyBtn,
+                                  containerRef
+                                );
+                                handleIsCheckedFilter(
+                                  target,
+                                  setActionFilters,
+                                  "type"
+                                );
+                              }}
+                            />
+                            <span className="box"></span>
 
-                          <span className="filterSpan">{item}</span>
-                        </label>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-            <div
-              className="applyFilterBtnContainer"
-              style={{
-                top: `${positionApplyBtn}%`,
-              }}
-            >
-              <div className="triangle"></div>
-              <button
-                className="applyFilterBtn"
-                onClick={() =>
-                  handleApplySelectedFilters(
-                    productsSelector[category] ?? [],
-                    selectedFilters,
-                    priceRangeSelector,
-                    dispatch
-                  )
-                }
+                            <span className="filterSpan">{item}</span>
+                          </label>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <div
+                className="applyFilterBtnContainer"
+                style={{
+                  top: `${positionApplyBtn}%`,
+                }}
               >
-                <span>Apply filter</span> <img src={successFilter} alt="" />
-              </button>
+                <div className="triangle"></div>
+                <button
+                  className="applyFilterBtn"
+                  onClick={() =>
+                    handleApplySelectedFilters(
+                      productsSelector[category] ?? [],
+                      selectedFilters,
+                      priceRangeSelector,
+                      dispatch
+                    )
+                  }
+                >
+                  <span>Apply filter</span> <img src={successFilter} alt="" />
+                </button>
+              </div>
             </div>
-          </div>
-          {productsByFilterSelector?.length !== 0 ? (
-            <div className="listProductsContainer">
-              <ul className="listProducts">
-                {paginatedProducts &&
-                  paginatedProducts?.map((item) => (
+          )}
+          {priceRangeSelector.minPrice !== undefined ? (
+            productsByFilterSelector?.length !== 0 ? (
+              <div className="listProductsContainer">
+                <ul className="listProducts">
+                  {paginatedProducts?.map((item) => (
                     <ProductCard card={item} key={item.id} />
                   ))}
-              </ul>
-              {productsByFilterSelector?.length !== 0 &&
-                Array.isArray(productsByFilterSelector) && (
+                </ul>
+                {Array.isArray(productsByFilterSelector) && (
                   <Pagination list={productsByFilterSelector} />
                 )}
-            </div>
-          ) : (
-            <div className="listProductsContainer">
-              <ul className="listProducts">
-                {paginatedProducts &&
-                  paginatedProducts?.map((item) => (
+              </div>
+            ) : (
+              <div className="listProductsContainer">
+                <ul className="listProducts">
+                  {paginatedProducts?.map((item) => (
                     <ProductCard card={item} key={item.id} />
                   ))}
-              </ul>
-              {productsSelector[category]?.length &&
-                Array.isArray(productsSelector[category]) && (
-                  <Pagination list={productsSelector[category]} />
-                )}
-            </div>
+                </ul>
+                {Array.isArray(productsSelector[category]) &&
+                  productsSelector[category]?.length !== 0 && (
+                    <Pagination list={productsSelector[category]} />
+                  )}
+              </div>
+            )
+          ) : (
+            <nav className="GoodsNotFound">
+              <span>Goods not found . Iphone category is full </span>{" "}
+              <Link to={"/category/Iphone"} className="GoodsNotFoundLink">
+                Go to IPhone category
+              </Link>
+            </nav>
           )}
         </section>
       </main>

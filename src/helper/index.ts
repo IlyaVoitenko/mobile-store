@@ -234,13 +234,13 @@ export const handleApplySelectedFilters = (
     filteredListGoods,
     priceRangeSelector
   );
-  console.log(filteredByPriceRange);
   if (popular === "Popular") {
     const popularGoods = handleFilterGoodsByPopular(
       filteredByPriceRange,
       popular
     );
-    console.log("popularGoods", popularGoods);
+    if (!popularGoods?.length) alert("Goods not found");
+
     return dispatch(setProductsByFilter(popularGoods));
   }
   if (popular === "Unpopular") {
@@ -248,7 +248,8 @@ export const handleApplySelectedFilters = (
       filteredByPriceRange,
       popular
     );
-    console.log("unpopularGoods", unpopularGoods);
+    if (!unpopularGoods?.length) alert("Goods not found");
+
     return dispatch(setProductsByFilter(unpopularGoods));
   }
   return dispatch(setProductsByFilter(filteredByPriceRange));

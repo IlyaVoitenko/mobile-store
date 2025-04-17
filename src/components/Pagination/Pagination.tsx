@@ -99,7 +99,6 @@ const Pagination = ({ list = [] }: PaginationProps) => {
       <button
         className="btnShowAllItems"
         onClick={() => {
-          console.log(isShowAllItems);
           if (!isShowAllItems) {
             setIsShowAllItems(!isShowAllItems);
             setCurrentPage(1);

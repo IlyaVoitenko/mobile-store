@@ -10,7 +10,7 @@ const AddToCardBtn = ({ dataCard }: AddToCardBtnProps) => {
     <button
       className="basketBtn"
       onClick={() => {
-        console.log(dataCard);
+        return dataCard;
       }}
     >
       <span>Add to cart</span> <img src={basketImg} alt="Add to card button" />

@@ -115,8 +115,8 @@ const PriceRange = ({ listProducts }: IPriceRangeProps) => {
         <div className="slider-track"></div>
         <input
           type="range"
-          min={sliderMinValue ?? 0}
-          max={sliderMaxValue ?? 0}
+          min={sliderMinValue}
+          max={sliderMaxValue}
           value={minVal ?? 0}
           onChange={slideMin}
           className="min-val"
@@ -124,8 +124,8 @@ const PriceRange = ({ listProducts }: IPriceRangeProps) => {
         />
         <input
           type="range"
-          min={sliderMinValue ?? 0}
-          max={sliderMaxValue ?? 0}
+          min={sliderMinValue}
+          max={sliderMaxValue}
           value={maxVal ?? 0}
           onChange={slideMax}
           className="max-val"
