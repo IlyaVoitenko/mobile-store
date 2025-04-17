@@ -14,8 +14,8 @@ const PriceRange = ({ listProducts }: IPriceRangeProps) => {
   const { minPrice, maxPrice } = priceRangeSelector;
   const { initialMinPrice, initialMaxPrice } =
     minAndMaxPriceListGoods(listProducts) || {};
-  const [sliderMinValue] = useState(initialMinPrice);
-  const [sliderMaxValue] = useState(initialMaxPrice);
+  const [sliderMinValue, setSliderMinValue] = useState(initialMinPrice);
+  const [sliderMaxValue, setSliderMaxValue] = useState(initialMaxPrice);
 
   const [minVal, setMinVal] = useState(minPrice ? minPrice : initialMinPrice);
   const [maxVal, setMaxVal] = useState(maxPrice ? maxPrice : initialMaxPrice);
@@ -57,6 +57,7 @@ const PriceRange = ({ listProducts }: IPriceRangeProps) => {
     if (newValue <= sliderMaxValue && newValue > minVal + minGap)
       setMaxVal(newValue);
   };
+
   useEffect(() => {
     dispatch(
       setPriceRangeGoods({
@@ -75,6 +76,8 @@ const PriceRange = ({ listProducts }: IPriceRangeProps) => {
         })
       );
     } else {
+      setSliderMinValue(minPrice);
+      setSliderMaxValue(maxPrice);
       dispatch(
         setPriceRangeGoods({
           minPrice,
@@ -111,12 +114,13 @@ const PriceRange = ({ listProducts }: IPriceRangeProps) => {
           />
         </div>
       </div>
+
       <div className="range-slider">
         <div className="slider-track"></div>
         <input
           type="range"
-          min={sliderMinValue}
-          max={sliderMaxValue}
+          min={sliderMinValue ?? 0}
+          max={sliderMaxValue ?? 0}
           value={minVal ?? 0}
           onChange={slideMin}
           className="min-val"
@@ -124,8 +128,8 @@ const PriceRange = ({ listProducts }: IPriceRangeProps) => {
         />
         <input
           type="range"
-          min={sliderMinValue}
-          max={sliderMaxValue}
+          min={sliderMinValue ?? 0}
+          max={sliderMaxValue ?? 0}
           value={maxVal ?? 0}
           onChange={slideMax}
           className="max-val"
