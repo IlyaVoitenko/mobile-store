@@ -93,7 +93,7 @@ const Main = () => {
                   {slidersCategory[currentSlideNumber - 1].productDescription}
                 </h3>
               </div>
-              <Link to={"/Category"} className="slideCategoryInfoLink">
+              <Link to={"/category/Iphone"} className="slideCategoryInfoLink">
                 Go to the category
               </Link>
             </nav>
@@ -185,7 +185,7 @@ const Main = () => {
         />
         <nav className="categoriesBlocksContainer">
           <div className="blocksContainer">
-            <Link to="/Category" className="categoriesBlocksLink first">
+            <Link to="/category/Iphone" className="categoriesBlocksLink first">
               <div className="categoriesBlockContent">
                 <span className="categoriesTitle">Iphone</span>
                 <span className="categoryTextLink">
@@ -200,7 +200,7 @@ const Main = () => {
               />
             </Link>
             <Link
-              to="/Category"
+              to="/category/Accessories"
               className="categoriesBlocksLink second categoriesBlocksLink "
             >
               <div className="categoriesBlockContent">
@@ -216,7 +216,7 @@ const Main = () => {
                 className="bgImageCategories"
               />
             </Link>
-            <Link to="/Category" className="categoriesBlocksLink third  ">
+            <Link to="/category/IMac" className="categoriesBlocksLink third  ">
               <div className="categoriesBlockContent">
                 <span className="categoriesTitle">iMac</span>
                 <span className="categoryTextLink">
@@ -230,7 +230,7 @@ const Main = () => {
                 className="bgImageCategories"
               />
             </Link>
-            <Link to="/Category" className="categoriesBlocksLink fourth">
+            <Link to="/category/IPad" className="categoriesBlocksLink fourth">
               <div className="categoriesBlockContent">
                 <span className="categoriesTitle">IPad</span>
                 <span className="categoryTextLink">
@@ -245,7 +245,10 @@ const Main = () => {
               />
             </Link>
           </div>
-          <Link to="/Category" className="categoriesBlocksLink fifth  ">
+          <Link
+            to="/category/Apple Watch"
+            className="categoriesBlocksLink fifth  "
+          >
             <div className="categoriesBlockContent">
               <span className="categoriesTitle">Apple Watch</span>
               <span className="categoryTextLink">

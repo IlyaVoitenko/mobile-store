@@ -10,6 +10,7 @@ type ProductCardProps = {
 };
 
 const ProductCard = ({ card, promotion = false }: ProductCardProps) => {
+  console.log(card);
   const { name, description, price, imgUrl } = card || {};
   return (
     <li
