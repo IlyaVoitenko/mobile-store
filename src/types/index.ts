@@ -26,7 +26,7 @@ export interface IProduct {
   name?: string;
   description?: string;
   price: number;
-  inStock?: boolean;
+  inStock: boolean;
   isPopular?: boolean;
   color?: string;
   model?: string;
@@ -34,6 +34,7 @@ export interface IProduct {
   quantity?: number;
   imgUrl: string;
   type?: string;
+  vendorCode: number;
 }
 
 export interface IProductCategory {

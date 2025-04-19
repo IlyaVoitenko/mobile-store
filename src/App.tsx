@@ -16,6 +16,13 @@ const router = createBrowserRouter([
       Component: (await import("./pages/CategoryPage")).default,
     }),
   },
+  {
+    path: "/good/:category/:goodName",
+    errorElement: <ErrorPage />,
+    lazy: async () => ({
+      Component: (await import("./pages/GoodInfoPages")).default,
+    }),
+  },
 ]);
 
 function App() {

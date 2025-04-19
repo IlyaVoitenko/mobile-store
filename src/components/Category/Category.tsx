@@ -41,7 +41,7 @@ const Category = () => {
 
   const dispatch = useDispatch();
   const productsSelector = useSelector(getProductsSelector) as ProductMap;
-  const productsByFilterSelector = useSelector(
+  const productFilteredSelector = useSelector(
     getProductsByFilterSelector
   ) as IProduct[];
   const paginatedProducts = useSelector(
@@ -58,7 +58,7 @@ const Category = () => {
   const [positionApplyBtn, setPositionApplyBtn] = useState(21);
 
   const filters = filtersProductsByCategory(category as CategoryType);
-  const { model, storage, color, type } = filters || {};
+  const { model, storage, color } = filters || {};
 
   useEffect(() => {
     setIsShow(false);
@@ -118,7 +118,7 @@ const Category = () => {
           <div className="productNameAndCount">
             <h1 className="productName">{category as CategoryType}</h1>
             <span className="productCount">
-              {productsByFilterSelector?.length ||
+              {productFilteredSelector?.length ||
                 productsSelector[category]?.length}{" "}
               items
             </span>
@@ -172,18 +172,21 @@ const Category = () => {
           )}
         </div>
         <section className="containerFilterAndListProducts">
-          {priceRangeSelector.minPrice !== undefined && (
+          {productFilteredSelector?.length !== 0 ||
+          productsSelector[category]?.length !== 0 ? (
             <div className="filtersProducts" ref={containerRef}>
               <div className="filterPrises">
                 <span className="filterTitle">Price</span>
                 <PriceRange
                   listProducts={
-                    productsByFilterSelector || productsSelector[category]
+                    productFilteredSelector || productsSelector[category]
                   }
                 />
                 {model && (
                   <div className="containerFilters">
-                    <span className="filterTitle">Phone models</span>
+                    <span className="filterTitle">
+                      {category === "Accessories" ? " Type" : "Phone models"}{" "}
+                    </span>
                     <ul className={isShow ? "listFilterShow" : "listFilter"}>
                       {model.map((item: string) => (
                         <li key={nanoid()}>
@@ -302,9 +305,9 @@ const Category = () => {
                     </ul>
                   </div>
                 )}
-                {type && (
+                {/* {type && (
                   <div className="containerFilters">
-                    <span className="filterTitle">Type</span>
+                    <span className="filterTitle"> Type</span>
                     <ul className={"listFilterShow"}>
                       {type.map((item: string) => (
                         <li key={nanoid()}>
@@ -338,7 +341,7 @@ const Category = () => {
                       ))}
                     </ul>
                   </div>
-                )}
+                )} */}
               </div>
               <div
                 className="applyFilterBtnContainer"
@@ -362,24 +365,33 @@ const Category = () => {
                 </button>
               </div>
             </div>
-          )}
-          {priceRangeSelector.minPrice !== undefined ? (
-            productsByFilterSelector?.length !== 0 ? (
+          ) : null}
+          {productFilteredSelector?.length ||
+          productsSelector[category]?.length ? (
+            productFilteredSelector?.length !== 0 ? (
               <div className="listProductsContainer">
                 <ul className="listProducts">
                   {paginatedProducts?.map((item) => (
-                    <ProductCard card={item} key={item.id} />
+                    <ProductCard
+                      card={item}
+                      category={category}
+                      key={item.id}
+                    />
                   ))}
                 </ul>
-                {Array.isArray(productsByFilterSelector) && (
-                  <Pagination list={productsByFilterSelector} />
+                {Array.isArray(productFilteredSelector) && (
+                  <Pagination list={productFilteredSelector} />
                 )}
               </div>
             ) : (
               <div className="listProductsContainer">
                 <ul className="listProducts">
                   {paginatedProducts?.map((item) => (
-                    <ProductCard card={item} key={item.id} />
+                    <ProductCard
+                      card={item}
+                      category={category}
+                      key={item.id}
+                    />
                   ))}
                 </ul>
                 {Array.isArray(productsSelector[category]) &&

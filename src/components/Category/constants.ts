@@ -1,8 +1,15 @@
 import { nanoid } from "nanoid";
+import { generateVendorCode } from "../../helper";
 import iphoneSierraBlue from "../../assets/iphoneSierraBlue.svg";
 import iphoneBlue from "../../assets/iphoneBlue.svg";
 import iphoneBlack from "../../assets/iphoneBlack.svg";
 import iphoneGraphiteBlack from "../../assets/iphoneGraphiteBlack.svg";
+import colorsCaseApple from "../../assets/colorsCaseApple.svg";
+import caseApple from "../../assets/caseApple.svg";
+import appleScreens from "../../assets/appleScreens.svg";
+import IMac from "../../assets/IMacCategory.svg";
+
+import samsungScreens from "../../assets/samsungScreens.svg";
 
 import { IProductCategory } from "../../types";
 export const listProduct: IProductCategory = {
@@ -17,6 +24,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -29,6 +38,7 @@ export const listProduct: IProductCategory = {
       model: "13",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
       imgUrl: iphoneBlue,
     },
     {
@@ -41,6 +51,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -53,6 +65,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "64 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -65,6 +79,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro",
       storage: "256 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -77,6 +93,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneGraphiteBlack,
     },
     {
@@ -89,6 +107,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -101,6 +121,8 @@ export const listProduct: IProductCategory = {
       model: "13",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlue,
     },
     {
@@ -113,6 +135,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -125,6 +149,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "64 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -137,6 +163,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro",
       storage: "256 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -149,6 +177,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneGraphiteBlack,
     },
     {
@@ -161,6 +191,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -173,6 +205,8 @@ export const listProduct: IProductCategory = {
       model: "13",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlue,
     },
     {
@@ -185,6 +219,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -197,6 +233,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "64 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -209,6 +247,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro",
       storage: "256 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -221,6 +261,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneGraphiteBlack,
     },
     {
@@ -233,6 +275,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -245,6 +289,8 @@ export const listProduct: IProductCategory = {
       model: "13",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlue,
     },
     {
@@ -257,6 +303,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -269,6 +317,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "64 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -281,6 +331,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro",
       storage: "256 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -293,6 +345,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneGraphiteBlack,
     },
     {
@@ -305,6 +359,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -317,6 +373,8 @@ export const listProduct: IProductCategory = {
       model: "13",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlue,
     },
     {
@@ -329,6 +387,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -341,6 +401,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "64 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -353,6 +415,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro",
       storage: "256 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -365,6 +429,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneGraphiteBlack,
     },
     {
@@ -377,6 +443,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -389,6 +457,8 @@ export const listProduct: IProductCategory = {
       model: "13",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlue,
     },
     {
@@ -401,6 +471,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -413,6 +485,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "64 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -425,6 +499,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro",
       storage: "256 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -437,6 +513,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneGraphiteBlack,
     },
     {
@@ -449,6 +527,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -461,6 +541,8 @@ export const listProduct: IProductCategory = {
       model: "13",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlue,
     },
     {
@@ -473,6 +555,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -485,6 +569,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "64 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -497,6 +583,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro",
       storage: "256 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -509,6 +597,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneGraphiteBlack,
     },
     {
@@ -521,6 +611,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -533,6 +625,7 @@ export const listProduct: IProductCategory = {
       model: "13",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
       imgUrl: iphoneBlue,
     },
     {
@@ -545,6 +638,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -557,6 +652,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "64 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -569,6 +666,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro",
       storage: "256 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -581,6 +680,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneGraphiteBlack,
     },
     {
@@ -593,6 +694,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -605,6 +708,8 @@ export const listProduct: IProductCategory = {
       model: "13",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlue,
     },
     {
@@ -617,6 +722,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -629,6 +736,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "64 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -641,6 +750,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro",
       storage: "256 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -653,6 +764,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneGraphiteBlack,
     },
     {
@@ -665,6 +778,8 @@ export const listProduct: IProductCategory = {
       model: "13 Pro Max",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneSierraBlue,
     },
     {
@@ -677,6 +792,8 @@ export const listProduct: IProductCategory = {
       model: "13",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlue,
     },
     {
@@ -689,6 +806,8 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "128 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
     {
@@ -701,12 +820,294 @@ export const listProduct: IProductCategory = {
       model: "11",
       storage: "64 GB",
       quantity: 1,
+      vendorCode: generateVendorCode(),
+
       imgUrl: iphoneBlack,
     },
   ],
   IPad: [],
   Smartphones: [],
-  Accessories: [],
-  IMac: [],
+  Accessories: [
+    {
+      id: nanoid(),
+      name: "Silicone case overlay Original iPhone Silicone Case for iPhone 6 / 6s / 7 / 8 / Plus / X",
+      price: 5,
+      inStock: true,
+      isPopular: false,
+      model: "Case",
+      color: "Red",
+
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+      imgUrl: colorsCaseApple,
+    },
+    {
+      id: nanoid(),
+      name: "Ultra-thin case for iPhone 5s/6/6s/7",
+      price: 1,
+      inStock: true,
+      isPopular: false,
+      model: "Case",
+      color: "Black",
+
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+      imgUrl: caseApple,
+    },
+    {
+      id: nanoid(),
+      name: "HOCO Cool Radian Series (HD) 3D Shockproof Protective Glass for iPhone 6 / 6s / 7 / 8 / X / 11 / 12 / 13 / Plus / 16 ",
+      price: 3,
+      inStock: true,
+      isPopular: false,
+      model: "Screen Protector",
+      color: "Yellow",
+
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+      imgUrl: samsungScreens,
+    },
+    {
+      id: nanoid(),
+      name: "HOCO Cool Zenith Series (HD) 3D Shockproof Glass Screen Protector for iPhone 6 / 6s / 7 / 8 / X / Plus...",
+      price: 4,
+      inStock: true,
+      isPopular: false,
+      model: "Screen Protector",
+      color: "Yellow",
+
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+      imgUrl: appleScreens,
+    },
+    {
+      id: nanoid(),
+      name: "Silicone case overlay Original iPhone Silicone Case for iPhone 6 / 6s / 7 / 8 / Plus / X",
+      price: 5,
+      inStock: true,
+      isPopular: false,
+      model: "Screen Protector",
+      color: "Blue",
+
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+      imgUrl: colorsCaseApple,
+    },
+    {
+      id: nanoid(),
+      name: "Silicone case overlay Original iPhone Silicone Case for iPhone 6 / 6s / 7 / 8 / Plus / X",
+      price: 5,
+      inStock: true,
+      isPopular: false,
+      model: "Case",
+      color: "Black",
+
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+      imgUrl: colorsCaseApple,
+    },
+    {
+      id: nanoid(),
+      name: "Ultra-thin case for iPhone 5s/6/6s/7",
+      price: 1,
+      inStock: true,
+      isPopular: false,
+      model: "Case",
+      color: "Black",
+
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+      imgUrl: caseApple,
+    },
+    {
+      id: nanoid(),
+      name: "HOCO Cool Radian Series (HD) 3D Shockproof Protective Glass for iPhone 6 / 6s / 7 / 8 / X / 11 / 12 / 13 / Plus / 16 ",
+      price: 3,
+      inStock: true,
+      isPopular: false,
+      model: "Screen Protector",
+      color: "Blue",
+
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+      imgUrl: samsungScreens,
+    },
+    {
+      id: nanoid(),
+      name: "HOCO Cool Zenith Series (HD) 3D Shockproof Glass Screen Protector for iPhone 6 / 6s / 7 / 8 / X / Plus...",
+      price: 4,
+      inStock: true,
+      isPopular: false,
+      model: "Screen Protector",
+      color: "Yellow",
+
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+      imgUrl: appleScreens,
+    },
+    {
+      id: nanoid(),
+      name: "Silicone case overlay Original iPhone Silicone Case for iPhone 6 / 6s / 7 / 8 / Plus / X",
+      price: 5,
+      inStock: true,
+      isPopular: false,
+      model: "Screen Protector",
+      color: "Green",
+
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+      imgUrl: colorsCaseApple,
+    },
+    {
+      id: nanoid(),
+      name: "Silicone case overlay Original iPhone Silicone Case for iPhone 6 / 6s / 7 / 8 / Plus / X",
+      price: 5,
+      inStock: true,
+      isPopular: false,
+      model: "Case",
+      color: "Green",
+
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+      imgUrl: colorsCaseApple,
+    },
+    {
+      id: nanoid(),
+      name: "Ultra-thin case for iPhone 5s/6/6s/7",
+      price: 1,
+      inStock: true,
+      isPopular: false,
+      model: "Case",
+      color: "Yellow",
+
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+      imgUrl: caseApple,
+    },
+    {
+      id: nanoid(),
+      name: "HOCO Cool Radian Series (HD) 3D Shockproof Protective Glass for iPhone 6 / 6s / 7 / 8 / X / 11 / 12 / 13 / Plus / 16 ",
+      price: 3,
+      inStock: true,
+      isPopular: false,
+      model: "Screen Protector",
+      color: "Blue",
+
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+      imgUrl: samsungScreens,
+    },
+    {
+      id: nanoid(),
+      name: "HOCO Cool Zenith Series (HD) 3D Shockproof Glass Screen Protector for iPhone 6 / 6s / 7 / 8 / X / Plus...",
+      price: 4,
+      inStock: true,
+      isPopular: false,
+      model: "Screen Protector",
+      color: "Black",
+
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+      imgUrl: appleScreens,
+    },
+    {
+      id: nanoid(),
+      name: "Silicone case overlay Original iPhone Silicone Case for iPhone 6 / 6s / 7 / 8 / Plus / X",
+      price: 5,
+      inStock: true,
+      isPopular: false,
+      model: "Screen Protector",
+      color: "Red",
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+      imgUrl: colorsCaseApple,
+    },
+  ],
+  IMac: [
+    {
+      id: nanoid(),
+      name: "IMac Mini",
+      price: 1200,
+      inStock: true,
+      isPopular: true,
+      color: "Green",
+      model: "Mini",
+      storage: "256 GB",
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+
+      imgUrl: IMac,
+    },
+    {
+      id: nanoid(),
+      name: "IMac Air",
+      price: 2000,
+      inStock: true,
+      isPopular: true,
+      color: "Blue",
+      model: "Air",
+      storage: "256 GB",
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+
+      imgUrl: IMac,
+    },
+    {
+      id: nanoid(),
+      name: "IMac Air",
+      price: 3200,
+      inStock: true,
+      isPopular: true,
+      color: "Blue",
+      model: "Air",
+      storage: "512 GB",
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+
+      imgUrl: IMac,
+    },
+    {
+      id: nanoid(),
+      name: "IMac Pro",
+      price: 4200,
+      inStock: true,
+      isPopular: true,
+      color: "Black",
+      model: "Pro",
+      storage: "1 TB",
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+
+      imgUrl: IMac,
+    },
+    {
+      id: nanoid(),
+      name: "IMac Pro",
+      price: 3800,
+      inStock: true,
+      isPopular: true,
+      color: "Green",
+      model: "Pro",
+      storage: "512 GB",
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+
+      imgUrl: IMac,
+    },
+    {
+      id: nanoid(),
+      name: "IMac Mini",
+      price: 1800,
+      inStock: true,
+      isPopular: true,
+      color: "Green",
+      model: "Mini",
+      storage: "512 GB",
+      quantity: 1,
+      vendorCode: generateVendorCode(),
+
+      imgUrl: IMac,
+    },
+  ],
   AppleWatch: [],
 };

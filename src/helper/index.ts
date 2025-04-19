@@ -1,4 +1,5 @@
 import { SetStateAction } from "react";
+import { customAlphabet } from "nanoid";
 import {
   IQueryData,
   IActionStateReducer,
@@ -110,8 +111,8 @@ export const filtersProductsByCategory = (
     case "IMac":
       return {
         model: ["Pro", "Air", "Mini"],
-        storage: ["64 GB", "128 GB", "256 GB", "512 GB", "1 TB"],
-        color: ["Red", "Black", "Blue", "Yellow", "Green"],
+        storage: ["256 GB", "512 GB", "1 TB"],
+        color: ["Black", "Blue", "Green"],
       };
     case "Android Smartphones":
       return {
@@ -122,7 +123,7 @@ export const filtersProductsByCategory = (
     case "Accessories":
       return {
         color: ["Red", "Black", "Blue", "Yellow", "Green"],
-        type: ["Case", "Screen Protector", "Charger", "Headphones"],
+        model: ["Case", "Screen Protector", "Charger", "Headphones"],
       };
     default:
       redirect("/");
@@ -267,4 +268,10 @@ export const minAndMaxPriceListGoods = (
       ...listGoods.map((item: { price: number }) => item.price)
     ),
   };
+};
+
+export const generateVendorCode = (): number => {
+  const vendorCode = customAlphabet("1234567890", 5);
+  const res = vendorCode();
+  return +res;
 };

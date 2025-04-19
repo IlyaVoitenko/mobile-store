@@ -1,6 +1,5 @@
 import resources from "./resources";
 import { Link } from "react-router-dom";
-import { arrProduct } from "../ProductCollection/constants";
 import {
   handleValidClientName,
   handleValidClientNumber,
@@ -9,22 +8,33 @@ import {
 } from "../../helper";
 import Header from "../../components/Header";
 import ProductCollection from "../ProductCollection";
-
+import {
+  setProductsByFilter,
+  setSelectedFilters,
+} from "../../store/slices/productsSlice";
+import { getProductsSelector } from "../../store/selectors";
 import { slidersCategory } from "./constants";
 import { useState, useEffect, useRef } from "react";
 import Footer from "../Footer";
 import NeedHelpSubmitBtn from "./NeedHelpSubmitBtn";
+import { useDispatch, useSelector } from "react-redux";
 
 const Main = () => {
+  const dispatch = useDispatch();
   const formRef = useRef<HTMLFormElement>(null);
   const [currentSlideNumber, setCurrentSlideNumber] = useState<number>(1);
   const [nameClient, setNameClient] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
+  const productsSelector = useSelector(getProductsSelector);
   const amountSliders = slidersCategory.length;
 
   useEffect(() => {
     setNameClient("");
     setPhoneNumber("");
+    dispatch(setProductsByFilter([]));
+    dispatch(
+      setSelectedFilters({ model: [], storage: [], color: [], type: [] })
+    );
   }, []);
 
   return (
@@ -132,10 +142,8 @@ const Main = () => {
           </div>
         </div>
         <ProductCollection
-          listProduct={arrProduct}
+          listProduct={productsSelector}
           title={"Recommended"}
-          amountItems={4}
-          promotion={true}
         />
         <div className="needHelpContainer">
           <img src={resources.needHelpBg} alt="bg image need help" />
@@ -177,12 +185,7 @@ const Main = () => {
             </form>
           </div>
         </div>
-        <ProductCollection
-          listProduct={arrProduct}
-          title={"Popular"}
-          amountItems={4}
-          promotion={true}
-        />
+        <ProductCollection listProduct={productsSelector} title={"Popular"} />
         <nav className="categoriesBlocksContainer">
           <div className="blocksContainer">
             <Link to="/category/Iphone" className="categoriesBlocksLink first">

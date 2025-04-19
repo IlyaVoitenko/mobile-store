@@ -86,7 +86,18 @@ const PriceRange = ({ listProducts }: IPriceRangeProps) => {
       );
     }
   }, []);
-
+  useEffect(() => {
+    setSliderMinValue(initialMinPrice);
+    setSliderMaxValue(initialMaxPrice);
+    setMinVal(initialMinPrice);
+    setMaxVal(initialMaxPrice);
+    dispatch(
+      setPriceRangeGoods({
+        minPrice: initialMinPrice,
+        maxPrice: initialMaxPrice,
+      })
+    );
+  }, [listProducts, dispatch]);
   return (
     <div className="double-slider-box">
       <div className="input-box">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IProduct } from "../../types";
+import { IProduct, CategoryType, ProductMap } from "../../types";
 import ProductCard from "../ProductCard";
 import "../../styles/components/_categorySlider.scss";
 import "../../styles/components/_productCollection.scss";
@@ -8,22 +8,23 @@ import ArrowLeftBlue from "../../assets/ArrowLeftBlue.svg";
 import ArrowRightBlue from "../../assets/ArrowRightBlue.svg";
 
 type ProductCollectionProps = {
-  listProduct: IProduct[];
+  listProduct: ProductMap;
   title: string;
-  amountItems: number;
-  promotion: boolean;
+  category?: CategoryType;
 };
+const AMOUNT_ITEMS = 4;
 const ProductCollection = ({
   listProduct,
   title,
-  amountItems = 4,
+  category = "Accessories",
 }: ProductCollectionProps) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const showItems = amountItems;
-  const lengthList = Math.ceil(listProduct.length / showItems);
+  const list = listProduct[category]?.slice(0, 8) ?? [];
+  const showItems = AMOUNT_ITEMS;
+  const lengthList = Math.ceil(list.length / showItems);
   const maxItems = currentPage * showItems;
   const minItems = maxItems - showItems;
-  const newProductCollectionSlice = listProduct.slice(minItems, maxItems);
+  const newProductCollectionSlice = list.slice(minItems, maxItems);
   return (
     <div className="productCollectionContainer">
       <div className="titleAndAmountContainer">
@@ -55,7 +56,7 @@ const ProductCollection = ({
       </div>
       <ul className="listContainer">
         {newProductCollectionSlice &&
-          newProductCollectionSlice.map((card) => (
+          newProductCollectionSlice.map((card: IProduct) => (
             <ProductCard key={card.id} card={card} promotion={true} />
           ))}
       </ul>
