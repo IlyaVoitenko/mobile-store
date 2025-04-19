@@ -12,6 +12,7 @@ import { setProductsByFilter } from "../store/slices/productsSlice.ts";
 import { redirect } from "react-router-dom";
 import { Dispatch } from "@reduxjs/toolkit";
 
+//imitation fetch query
 export const queryClient: IActionStateReducer<IQueryData> = async (
   _,
   queryData
@@ -25,6 +26,7 @@ export const queryClient: IActionStateReducer<IQueryData> = async (
     success: true,
   };
 };
+//checking is valid the client number
 export const handleValidClientName = (
   target: EventTarget & HTMLInputElement,
   setNameClient: {
@@ -37,6 +39,7 @@ export const handleValidClientName = (
   if (!clientNameRegex.test(value)) return;
   setNameClient(value);
 };
+//checking is valid the client number
 export const handleValidClientNumber = (
   target: EventTarget & HTMLInputElement,
   setPhoneNumber: {
@@ -50,6 +53,7 @@ export const handleValidClientNumber = (
 
   if (isPhone) setPhoneNumber(value);
 };
+//render previous slider
 export const handlePreSlider = (
   currentSlideNumber: number,
   setCurrentSlideNumber: {
@@ -59,6 +63,7 @@ export const handlePreSlider = (
   if (currentSlideNumber < 1) return;
   setCurrentSlideNumber(currentSlideNumber);
 };
+//render next slider
 export const handleNextSlider = (
   currentSlideNumber: number,
   setCurrentSlideNumber: {
@@ -69,15 +74,7 @@ export const handleNextSlider = (
   if (currentSlideNumber > amountSliders) return;
   setCurrentSlideNumber(currentSlideNumber);
 };
-export const objectToFormData = (
-  obj: Record<string, string | Blob>
-): FormData => {
-  const formData = new FormData();
-  Object.entries(obj).forEach(([key, value]) => {
-    formData.append(key, value);
-  });
-  return formData;
-};
+//rendering filters by category
 export const filtersProductsByCategory = (
   category: string | undefined
 ): Filters | void => {
@@ -100,7 +97,7 @@ export const filtersProductsByCategory = (
     case "IPad":
       return {
         model: ["Pro", "Air", "Mini"],
-        storage: ["64 GB", "128 GB", "256 GB", "512 GB", "1 TB"],
+        storage: ["128 GB", "256 GB", "512 GB", "1 TB"],
         color: ["Red", "Black", "Blue", "Yellow", "Green"],
       };
     case "Apple Watch":
@@ -129,6 +126,7 @@ export const filtersProductsByCategory = (
       redirect("/");
   }
 };
+//checking whether the filter is in use.
 export const handleIsCheckedFilter = (
   target: HTMLInputElement,
   setState: React.Dispatch<React.SetStateAction<Filters>>,
@@ -152,6 +150,7 @@ export const handleIsCheckedFilter = (
     }
   });
 };
+// move a btn 'apply filters' to selected filter
 export const handlePositionBtnApplyFilters = (
   target: HTMLInputElement,
   setPositionApplyBtn: React.Dispatch<React.SetStateAction<number>>,
@@ -169,7 +168,7 @@ export const handlePositionBtnApplyFilters = (
     setPositionApplyBtn(percent);
   }
 };
-
+//render amount pages by amount goods for pagination component
 export const handleReducerPaginationPages = (
   paginationPages: number,
   currentPage: number
@@ -186,6 +185,7 @@ export const handleReducerPaginationPages = (
   const reducedList = list.slice(prevPage, nextPage);
   return reducedList;
 };
+//filtering array by filters that using a user
 export const handleFilteringGoodsBySelectedCategories = (
   products: IProduct[],
   selectedFilters: Filters
@@ -198,6 +198,7 @@ export const handleFilteringGoodsBySelectedCategories = (
     });
   });
 };
+//returning array by price range chosen the user
 export const handleFilterGoodsByPriceRange = (
   list: IProduct[],
   priceRange: IPriceRange
@@ -208,6 +209,7 @@ export const handleFilterGoodsByPriceRange = (
     (item) => item.price <= maxPrice && item.price >= minPrice
   );
 };
+//filtering array by popularity and unpopularity
 export const handleFilterGoodsByPopular = (
   list: IProduct[],
   popular: string
@@ -219,6 +221,7 @@ export const handleFilterGoodsByPopular = (
     return list.filter((item) => item.isPopular === false);
   }
 };
+// event Applying filters
 export const handleApplySelectedFilters = (
   productsSelector: IProduct[],
   selectedFilters: Filters,
@@ -231,10 +234,12 @@ export const handleApplySelectedFilters = (
     products,
     selectedFilters
   );
+
   const filteredByPriceRange = handleFilterGoodsByPriceRange(
     filteredListGoods,
     priceRangeSelector
   );
+  //selected user a filter by popularity
   if (popular === "Popular") {
     const popularGoods = handleFilterGoodsByPopular(
       filteredByPriceRange,
@@ -244,6 +249,7 @@ export const handleApplySelectedFilters = (
 
     return dispatch(setProductsByFilter(popularGoods));
   }
+  //selected user a filter by unpopularity
   if (popular === "Unpopular") {
     const unpopularGoods = handleFilterGoodsByPopular(
       filteredByPriceRange,
@@ -255,6 +261,20 @@ export const handleApplySelectedFilters = (
   }
   return dispatch(setProductsByFilter(filteredByPriceRange));
 };
+//if filters are unused , render list goods without filters
+export const handleShowDefaultListGoods = (
+  productsSelector: IProduct[],
+  selectedFilters: Filters,
+  dispatch: Dispatch
+) => {
+  const products: IProduct[] = productsSelector ?? [];
+  const filteredListGoods = handleFilteringGoodsBySelectedCategories(
+    products,
+    selectedFilters
+  );
+  return dispatch(setProductsByFilter(filteredListGoods));
+};
+//finding out min and max price value of goods
 export const minAndMaxPriceListGoods = (
   listGoods: IProduct[]
 ): IPriceRange | void => {
@@ -269,7 +289,7 @@ export const minAndMaxPriceListGoods = (
     ),
   };
 };
-
+//generation a Vendor Code for every goods
 export const generateVendorCode = (): number => {
   const vendorCode = customAlphabet("1234567890", 5);
   const res = vendorCode();

@@ -35,7 +35,7 @@ const GoodInfo = () => {
         <ProductCollection
           listProduct={productsSelector}
           title={"Recommended"}
-          category={category}
+          category={category as CategoryType}
         />
       </main>
 

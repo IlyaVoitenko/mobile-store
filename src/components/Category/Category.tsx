@@ -17,6 +17,7 @@ import {
   handlePositionBtnApplyFilters,
   handleApplySelectedFilters,
   minAndMaxPriceListGoods,
+  handleShowDefaultListGoods,
 } from "../../helper";
 import { IProduct, CategoryType, ProductMap } from "../../types";
 import { useEffect, useState, useRef } from "react";
@@ -74,26 +75,20 @@ const Category = () => {
   useEffect(() => {
     const { initialMinPrice, initialMaxPrice } =
       minAndMaxPriceListGoods(productsSelector[category] ?? []) || {};
-    const { minPrice, maxPrice } = priceRangeSelector;
+
     const isEmptySelectedFiltersObject = Object.entries(selectedFilters).every(
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       ([_, values]) => {
         if (values.length === 0) return true;
       }
     );
-    if (
-      isEmptySelectedFiltersObject &&
-      minPrice === initialMinPrice &&
-      maxPrice === initialMaxPrice
-    ) {
-      handleApplySelectedFilters(
+
+    if (isEmptySelectedFiltersObject) {
+      handleShowDefaultListGoods(
         productsSelector[category] ?? [],
         selectedFilters,
-        priceRangeSelector,
         dispatch
       );
-    }
-    if (isEmptySelectedFiltersObject) {
       dispatch(
         setPriceRangeGoods({
           minPrice: initialMinPrice,
@@ -123,57 +118,58 @@ const Category = () => {
               items
             </span>
           </div>
-          {priceRangeSelector.minPrice !== undefined && (
-            <section className="containerSortProducts">
-              <label className="sortProductsLabel" htmlFor="sortProducts">
-                <span className="sortProductsSpan">
-                  Sort by &nbsp; <img src={arrowDownGrey} alt="" />
-                </span>
-              </label>
-              <select
-                name="sortProducts"
-                id="sortProducts"
-                onChange={({ target }) => {
-                  dispatch(setPopularGoodsOptionSelector(target.value));
-                  if (target.value === "default") {
-                    return handleApplySelectedFilters(
-                      productsSelector[category] ?? [],
-                      selectedFilters,
-                      priceRangeSelector,
-                      dispatch
-                    );
-                  }
-                  if (target.value) {
-                    return handleApplySelectedFilters(
-                      productsSelector[category] ?? [],
-                      selectedFilters,
-                      priceRangeSelector,
-                      dispatch,
-                      target.value
-                    );
-                  }
-                  if (!target.value) {
-                    return handleApplySelectedFilters(
-                      productsSelector[category] ?? [],
-                      selectedFilters,
-                      priceRangeSelector,
-                      dispatch,
-                      target.value
-                    );
-                  }
-                }}
-                value={popularGoodsOptionSelector}
-              >
-                <option value={"default"}>Default</option>
-                <option value={"Popular"}>Popular</option>
-                <option value={"Unpopular"}>Unpopular</option>
-              </select>
-            </section>
-          )}
+          {productFilteredSelector?.length !== 0 ||
+            (productsSelector[category] !== undefined && (
+              <section className="containerSortProducts">
+                <label className="sortProductsLabel" htmlFor="sortProducts">
+                  <span className="sortProductsSpan">
+                    Sort by &nbsp; <img src={arrowDownGrey} alt="" />
+                  </span>
+                </label>
+                <select
+                  name="sortProducts"
+                  id="sortProducts"
+                  onChange={({ target }) => {
+                    dispatch(setPopularGoodsOptionSelector(target.value));
+                    if (target.value === "default") {
+                      return handleApplySelectedFilters(
+                        productsSelector[category] ?? [],
+                        selectedFilters,
+                        priceRangeSelector,
+                        dispatch
+                      );
+                    }
+                    if (target.value) {
+                      return handleApplySelectedFilters(
+                        productsSelector[category] ?? [],
+                        selectedFilters,
+                        priceRangeSelector,
+                        dispatch,
+                        target.value
+                      );
+                    }
+                    if (!target.value) {
+                      return handleApplySelectedFilters(
+                        productsSelector[category] ?? [],
+                        selectedFilters,
+                        priceRangeSelector,
+                        dispatch,
+                        target.value
+                      );
+                    }
+                  }}
+                  value={popularGoodsOptionSelector}
+                >
+                  <option value={"default"}>Default</option>
+                  <option value={"Popular"}>Popular</option>
+                  <option value={"Unpopular"}>Unpopular</option>
+                </select>
+              </section>
+            ))}
         </div>
         <section className="containerFilterAndListProducts">
           {productFilteredSelector?.length !== 0 ||
-          productsSelector[category]?.length !== 0 ? (
+          productsSelector[category] !== undefined ? (
             <div className="filtersProducts" ref={containerRef}>
               <div className="filterPrises">
                 <span className="filterTitle">Price</span>
