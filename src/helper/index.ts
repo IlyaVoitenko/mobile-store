@@ -39,10 +39,39 @@ export const handleValidClientName = (
   if (!clientNameRegex.test(value)) return;
   setNameClient(value);
 };
+//checking is valid the client email
+export const handleValidEmail = (
+  target: EventTarget & HTMLInputElement,
+  setState: {
+    (value: SetStateAction<string>): void;
+    (arg0: string): void;
+  }
+) => {
+  const emailRegex = /(?<=\s)\w+@\w+\.(?:com|net)/;
+  const { value } = target;
+  const isEmail = emailRegex.test(value);
+
+  if (isEmail) setState(value);
+};
+//checking is valid the client feedback
+
+export const handleValidFeedback = (
+  target: EventTarget & HTMLInputElement,
+  setState: {
+    (value: SetStateAction<string>): void;
+    (arg0: string): void;
+  }
+) => {
+  const feedbackRegex = /[^A-Za-z 0-9]/g;
+  const { value } = target;
+  const isFeedback = feedbackRegex.test(value);
+
+  if (isFeedback) setState(value);
+};
 //checking is valid the client number
 export const handleValidClientNumber = (
   target: EventTarget & HTMLInputElement,
-  setPhoneNumber: {
+  setState: {
     (value: SetStateAction<string>): void;
     (arg0: string): void;
   }
@@ -51,7 +80,7 @@ export const handleValidClientNumber = (
   const { value } = target;
   const isPhone = clientPhoneNumberRegex.test(value);
 
-  if (isPhone) setPhoneNumber(value);
+  if (isPhone) setState(value);
 };
 //render previous slider
 export const handlePreSlider = (

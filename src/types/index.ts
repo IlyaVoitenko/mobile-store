@@ -81,3 +81,10 @@ export interface ApplyFilterArgs {
   productsByFilterSelector: IProduct[];
   selectedFilters: string[];
 }
+export interface IPostReviews {
+  id: string;
+  userName: string;
+  amountStars: number;
+  dateCreated: string;
+  message: string;
+}

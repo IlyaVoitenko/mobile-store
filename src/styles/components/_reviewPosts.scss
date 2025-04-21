@@ -1,0 +1,55 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/mediaQuery" as *;
+
+.reviewPostsContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  overflow: auto;
+  height: 57%;
+  width: 90%;
+
+  .post {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 110px;
+    border-bottom: 1px solid $inputBg;
+  }
+  .starsAndNameAndCreateDateContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .starsAndNameContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 56%;
+      .userName {
+        font-family: $fontFamily;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+      }
+      .listStars {
+        display: flex;
+      }
+    }
+    .dateCreated {
+      font-family: $fontFamily;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 19px;
+      color: $createDate;
+    }
+  }
+  .messagePost {
+    font-family: $fontFamily;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
