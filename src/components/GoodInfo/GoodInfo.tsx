@@ -7,6 +7,7 @@ import { Link, useParams } from "react-router-dom";
 import { getProductsSelector } from "../../store/selectors";
 import { CategoryType } from "../../types";
 import { useSelector } from "react-redux";
+import { handleSubmitCreateReviewPost } from "../../helper";
 
 // import { handleValidClientName } from "../../helper";
 import ReviewPosts from "./ReviewPosts";
@@ -17,6 +18,7 @@ import greyStar from "../../assets/greenStar.svg";
 import goldStar from "../../assets/goldStar.svg";
 
 import { useState } from "react";
+
 const GoodInfo = () => {
   const { category } = useParams();
   const productsSelector = useSelector(getProductsSelector);
@@ -79,42 +81,18 @@ const GoodInfo = () => {
                   <h1 className="formTitle">Write a review</h1>
                 </div>
                 <form
-                  onSubmit={(e: React.SyntheticEvent) => {
-                    e.preventDefault();
-                    if (!clientName.message) {
-                      return setClientName({
-                        message: clientName.message,
-                        isError: true,
-                      });
-                    }
-                    if (!email.message) {
-                      return setEmail({
-                        message: email.message,
-                        isError: true,
-                      });
-                    }
-                    if (!feedback.message) {
-                      return setFeedback({
-                        message: feedback.message,
-                        isError: true,
-                      });
-                    }
-                    setFeedback({
-                      message: feedback.message,
-                      isError: false,
-                    });
-                    setEmail({
-                      message: email.message,
-                      isError: false,
-                    });
-                    setClientName({
-                      message: clientName.message,
-                      isError: false,
-                    });
-                    console.log(clientName, email, feedback);
-
-                    setAmountsSelectedStars(0);
-                  }}
+                  onSubmit={(e: React.SyntheticEvent) =>
+                    handleSubmitCreateReviewPost(
+                      e as React.FormEvent<HTMLFormElement>,
+                      setClientName,
+                      clientName,
+                      email,
+                      setEmail,
+                      feedback,
+                      setFeedback,
+                      setAmountsSelectedStars
+                    )
+                  }
                 >
                   <input
                     type="text"

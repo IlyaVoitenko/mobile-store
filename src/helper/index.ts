@@ -3,6 +3,7 @@ import { customAlphabet } from "nanoid";
 import {
   IQueryData,
   IActionStateReducer,
+  IReviewPostInputs,
   IPriceRange,
   IProduct,
   FilterKey,
@@ -323,4 +324,58 @@ export const generateVendorCode = (): number => {
   const vendorCode = customAlphabet("1234567890", 5);
   const res = vendorCode();
   return +res;
+};
+//handle for create new review
+export const handleSubmitCreateReviewPost = (
+  event: React.FormEvent<HTMLFormElement>,
+  setClientName: {
+    (value: SetStateAction<IReviewPostInputs>): void;
+  },
+  clientName: IReviewPostInputs,
+  email: IReviewPostInputs,
+  setEmail: {
+    (value: SetStateAction<IReviewPostInputs>): void;
+  },
+  feedback: IReviewPostInputs,
+  setFeedback: {
+    (value: SetStateAction<IReviewPostInputs>): void;
+  },
+  setAmountsSelectedStars: {
+    (value: SetStateAction<number>): void;
+  }
+) => {
+  event.preventDefault();
+  if (!clientName.message) {
+    return setClientName({
+      message: clientName.message,
+      isError: true,
+    });
+  }
+  if (!email.message) {
+    return setEmail({
+      message: email.message,
+      isError: true,
+    });
+  }
+  if (!feedback.message) {
+    return setFeedback({
+      message: feedback.message,
+      isError: true,
+    });
+  }
+  setFeedback({
+    message: feedback.message,
+    isError: false,
+  });
+  setEmail({
+    message: email.message,
+    isError: false,
+  });
+  setClientName({
+    message: clientName.message,
+    isError: false,
+  });
+  console.log(clientName, email, feedback);
+
+  setAmountsSelectedStars(0);
 };

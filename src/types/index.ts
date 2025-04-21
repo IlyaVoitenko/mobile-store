@@ -88,3 +88,7 @@ export interface IPostReviews {
   dateCreated: string;
   message: string;
 }
+export interface IReviewPostInputs {
+  message: string;
+  isError: boolean;
+}
