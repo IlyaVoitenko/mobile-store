@@ -214,11 +214,13 @@
   .searchInputContainer {
     position: relative;
   }
-  .loopImg {
+  .loopBtn {
+    background-color: $white;
     position: absolute;
     left: 90%;
     top: 25%;
-
+    cursor: pointer;
+    border: none;
     @include for-tablet {
       left: 85%;
       top: 30%;

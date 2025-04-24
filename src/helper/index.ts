@@ -1,8 +1,6 @@
 import { SetStateAction } from "react";
 import { customAlphabet } from "nanoid";
 import {
-  IQueryData,
-  IActionStateReducer,
   IReviewPostInputs,
   IPriceRange,
   IProduct,
@@ -13,75 +11,51 @@ import { setProductsByFilter } from "../store/slices/productsSlice.ts";
 import { redirect } from "react-router-dom";
 import { Dispatch } from "@reduxjs/toolkit";
 
-//imitation fetch query
-export const queryClient: IActionStateReducer<IQueryData> = async (
-  _,
-  queryData
+export const allowedKeys = [
+  "Backspace",
+  "ArrowLeft",
+  "ArrowRight",
+  "Delete",
+  "Tab",
+];
+
+export const checkValidContent = <
+  T extends HTMLInputElement | HTMLTextAreaElement
+>(
+  e: React.KeyboardEvent<T>,
+  eventValidContent: (value: string) => boolean
 ) => {
-  const nameClient = queryData?.get("nameClient") as string;
-  const phoneNumber = queryData?.get("phoneNumber") as string;
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  return {
-    nameClient,
-    phoneNumber,
-    success: true,
-  };
+  const { key } = e;
+  //check valid text and keys
+  if (!eventValidContent(key) && !allowedKeys.includes(key)) e.preventDefault();
+};
+export const handleValidSearchProduct = (value: string): boolean => {
+  const textRegex = /^[a-zA-Z]+$/;
+  const numberRegex = /^\+?\d{0,15}$/;
+  if (textRegex.test(value) || numberRegex.test(value)) return true;
+  return false;
 };
 //checking is valid the client number
-export const handleValidClientName = (
-  target: EventTarget & HTMLInputElement,
-  setNameClient: {
-    (value: SetStateAction<string>): void;
-    (arg0: string): void;
-  }
-) => {
+export const handleValidClientName = (value: string): boolean => {
   const clientNameRegex = /^[a-zA-Z]+$/;
-  const { value } = target;
-  if (!clientNameRegex.test(value)) return;
-  setNameClient(value);
+  const isName = clientNameRegex.test(value);
+  return isName;
 };
 //checking is valid the client email
 export const handleValidEmail = (
-  target: EventTarget & HTMLInputElement,
-  setState: {
-    (value: SetStateAction<string>): void;
-    (arg0: string): void;
-  }
-) => {
+  target: EventTarget & HTMLInputElement
+): boolean => {
   const emailRegex = /(?<=\s)\w+@\w+\.(?:com|net)/;
   const { value } = target;
   const isEmail = emailRegex.test(value);
-
-  if (isEmail) setState(value);
+  return isEmail;
 };
-//checking is valid the client feedback
 
-export const handleValidFeedback = (
-  target: EventTarget & HTMLInputElement,
-  setState: {
-    (value: SetStateAction<string>): void;
-    (arg0: string): void;
-  }
-) => {
-  const feedbackRegex = /[^A-Za-z 0-9]/g;
-  const { value } = target;
-  const isFeedback = feedbackRegex.test(value);
-
-  if (isFeedback) setState(value);
-};
 //checking is valid the client number
-export const handleValidClientNumber = (
-  target: EventTarget & HTMLInputElement,
-  setState: {
-    (value: SetStateAction<string>): void;
-    (arg0: string): void;
-  }
-) => {
+export const handleValidClientNumber = (value: string): boolean => {
   const clientPhoneNumberRegex = /^\+?\d{0,15}$/;
-  const { value } = target;
   const isPhone = clientPhoneNumberRegex.test(value);
-
-  if (isPhone) setState(value);
+  return isPhone;
 };
 //render previous slider
 export const handlePreSlider = (

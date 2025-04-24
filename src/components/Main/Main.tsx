@@ -1,36 +1,59 @@
 import resources from "./resources";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductsSelector } from "../../store/selectors";
+import Footer from "../Footer";
+import ProductCollection from "../ProductCollection";
 import {
   handleValidClientName,
   handleValidClientNumber,
   handleNextSlider,
+  checkValidContent,
   handlePreSlider,
 } from "../../helper";
 import Header from "../../components/Header";
-import ProductCollection from "../ProductCollection";
 import {
   setProductsByFilter,
   setSelectedFilters,
 } from "../../store/slices/productsSlice";
-import { getProductsSelector } from "../../store/selectors";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { FormNeedHelp } from "../../types";
 import { slidersCategory } from "./constants";
-import { useState, useEffect, useRef } from "react";
-import Footer from "../Footer";
-import NeedHelpSubmitBtn from "./NeedHelpSubmitBtn";
-import { useDispatch, useSelector } from "react-redux";
+
+const validationSchema = Yup.object({
+  nameClient: Yup.string()
+    .min(2, "min 2 symbols")
+    .matches(/^[A-Za-z\s]+$/, "Only letters")
+    .required("name is required "),
+  phoneNumber: Yup.string()
+    .matches(/^[0-9]+$/, "Only numbers")
+    .min(10, "min 10 numbers")
+    .max(15, "max 15 numbers")
+    .required("number phone is required"),
+});
 
 const Main = () => {
   const dispatch = useDispatch();
-  const formRef = useRef<HTMLFormElement>(null);
   const [currentSlideNumber, setCurrentSlideNumber] = useState<number>(1);
-  const [nameClient, setNameClient] = useState<string>("");
-  const [phoneNumber, setPhoneNumber] = useState<string>("");
   const productsSelector = useSelector(getProductsSelector);
   const amountSliders = slidersCategory.length;
 
+  const formik = useFormik<FormNeedHelp>({
+    initialValues: {
+      nameClient: "",
+      phoneNumber: "",
+    },
+    validationSchema,
+    onSubmit: async (_, { setSubmitting, resetForm }) => {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      setSubmitting(false);
+      resetForm();
+    },
+  });
+
   useEffect(() => {
-    setNameClient("");
-    setPhoneNumber("");
     dispatch(setProductsByFilter([]));
     dispatch(
       setSelectedFilters({ model: [], storage: [], color: [], type: [] })
@@ -153,35 +176,46 @@ const Main = () => {
               Leave a request in the form below and we will call you back as
               soon as possible
             </h4>
-            <form ref={formRef}>
+            <form onSubmit={formik.handleSubmit}>
               <input
-                value={nameClient}
-                onInput={({ target }) =>
-                  handleValidClientName(
-                    target as HTMLInputElement,
-                    setNameClient
-                  )
+                value={formik.values.nameClient}
+                onChange={formik.handleChange}
+                className={
+                  formik.touched.nameClient && formik.errors.nameClient
+                    ? "needHelpInputError"
+                    : "needHelpInput"
                 }
+                onPaste={(e) => {
+                  //get data from clipboard and check valid
+                  const pasted = e.clipboardData.getData("text");
+                  if (!handleValidClientName(pasted)) e.preventDefault();
+                }}
+                onKeyDown={(e) => checkValidContent(e, handleValidClientName)}
                 placeholder="name"
                 name="nameClient"
                 required
               />
               <input
-                value={phoneNumber}
-                onInput={({ target }) =>
-                  handleValidClientNumber(
-                    target as HTMLInputElement,
-                    setPhoneNumber
-                  )
+                value={formik.values.phoneNumber}
+                onChange={formik.handleChange}
+                onKeyDown={(e) => checkValidContent(e, handleValidClientNumber)}
+                onPaste={(e) => {
+                  //get data from clipboard and check valid
+                  const pasted = e.clipboardData.getData("text");
+                  if (!handleValidClientNumber(pasted)) e.preventDefault();
+                }}
+                className={
+                  formik.touched.phoneNumber && formik.errors.phoneNumber
+                    ? "needHelpInputError"
+                    : "needHelpInput"
                 }
                 placeholder="phone number"
                 name="phoneNumber"
                 required
               />
-              <NeedHelpSubmitBtn
-                setNameClient={setNameClient}
-                setPhoneNumber={setPhoneNumber}
-              />
+              <button disabled={formik.isSubmitting}>
+                {formik.isSubmitting ? "Loading..." : "Call me back"}
+              </button>
             </form>
           </div>
         </div>

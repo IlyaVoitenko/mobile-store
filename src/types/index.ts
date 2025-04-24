@@ -40,14 +40,7 @@ export interface IProduct {
 export interface IProductCategory {
   [key: string]: IProduct[];
 }
-export interface IQueryData {
-  nameClient: string;
-  phoneNumber: string;
-  success: boolean;
-}
-export interface IActionStateReducer<S> {
-  (prevState: S, formData: FormData): S | Promise<S>;
-}
+
 export interface IState {
   products: {
     products: IProductCategory[];
@@ -91,4 +84,8 @@ export interface IPostReviews {
 export interface IReviewPostInputs {
   message: string;
   isError: boolean;
+}
+export interface FormNeedHelp {
+  nameClient: string;
+  phoneNumber: string;
 }

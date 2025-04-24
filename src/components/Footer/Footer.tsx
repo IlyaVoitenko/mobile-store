@@ -1,12 +1,28 @@
 import Logo from "../Header/Logo";
 import "../../styles/layout/_footer.scss";
 import "./../../styles/layout/_header.scss";
-
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import sendIcon from "../../assets/sendEmail.svg";
 import { Link } from "react-router-dom";
 import { slidersCategory } from "../Main/constants";
 import ContactInfo from "../Header/ContactInfo";
+
+const validationSchema = Yup.object({
+  email: Yup.string().email(),
+});
+
 const Footer = () => {
+  const formik = useFormik<{ email: string }>({
+    initialValues: {
+      email: "",
+    },
+    validationSchema,
+    onSubmit(_, { setSubmitting, resetForm }) {
+      setSubmitting(false);
+      resetForm();
+    },
+  });
   return (
     <footer className="containerFooter">
       <div className="containerFooterInfo">
@@ -14,14 +30,14 @@ const Footer = () => {
           <Logo />
           <label htmlFor="email" className="emailLabel">
             Newsletter subscription
-            <form className="email">
-              <button
-                className="emailButton"
-                onClick={(e) => e.preventDefault()}
-              >
+            <form className="email" onSubmit={formik.handleSubmit}>
+              <button type="submit" className="emailButton">
                 <img src={sendIcon} alt="" />
               </button>
               <input
+                className="emailInput"
+                value={formik.values.email}
+                onChange={formik.handleChange}
                 type="email"
                 placeholder="E-mail"
                 name="email"

@@ -67,7 +67,7 @@
         margin-top: 20px;
       }
 
-      input {
+      .emailInput {
         width: 96%;
         height: 80px;
         border-radius: 6px;
@@ -118,9 +118,9 @@
           padding-left: 1rem;
           padding-right: 6rem;
         }
-      }
-      input::placeholder {
-        color: #c2c2c2;
+        &::placeholder {
+          color: #c2c2c2;
+        }
       }
     }
     .emailLabel {

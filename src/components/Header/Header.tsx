@@ -2,9 +2,15 @@ import resources from "./resources";
 import { useState } from "react";
 import "./../../styles/layout/_header.scss";
 import { Link } from "react-router-dom";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import Logo from "./Logo";
 import ContactInfo from "./ContactInfo";
+import { checkValidContent, handleValidSearchProduct } from "../../helper";
 
+const validationSchema = Yup.object({
+  searchGood: Yup.string().min(2, "min 2 symbols"),
+});
 const Header = () => {
   const [isShowMenu, setIsShowMenu] = useState<boolean>(true);
   const [iPhoneSelect, setIPhoneSelect] = useState<string>("iPhone");
@@ -13,6 +19,16 @@ const Header = () => {
   const [smartphonesSelect, setSmartphones] = useState<string>("Smartphones");
   const [accessoriesSelect, setAccessories] = useState<string>("Accessories");
 
+  const formik = useFormik<{ searchGood: string }>({
+    initialValues: {
+      searchGood: "",
+    },
+    validationSchema,
+    onSubmit: async (_, { setSubmitting, resetForm }) => {
+      setSubmitting(false);
+      resetForm();
+    },
+  });
   return (
     <header className="containerHeader">
       <div className="containerInfoHeaderContext">
@@ -60,9 +76,28 @@ const Header = () => {
             }`}
           >
             <search role="search" className="searchInputContainer">
-              <img src={resources.loop} alt="loop" className="loopImg" />
-              <input className="searchInput" placeholder="Search..." />
+              <form onSubmit={formik.handleSubmit}>
+                <button type="submit" className="loopBtn">
+                  <img src={resources.loop} alt="loop" className="loopImg" />
+                </button>
+                <input
+                  onKeyDown={(e) =>
+                    checkValidContent(e, handleValidSearchProduct)
+                  }
+                  onPaste={(e) => {
+                    //get data from clipboard and check valid
+                    const pasted = e.clipboardData.getData("text");
+                    if (!handleValidSearchProduct(pasted)) e.preventDefault();
+                  }}
+                  onChange={formik.handleChange}
+                  value={formik.values.searchGood}
+                  name="searchGood"
+                  className="searchInput"
+                  placeholder="Search..."
+                />
+              </form>
             </search>
+
             <ContactInfo isFooter={false} />
           </div>
         </div>

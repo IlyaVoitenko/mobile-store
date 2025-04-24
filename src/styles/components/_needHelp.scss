@@ -202,7 +202,7 @@
           height: 69px;
         }
       }
-      input {
+      .needHelpInput {
         height: 38px;
         border-radius: 6px;
         border: 1px solid grey;
@@ -290,6 +290,96 @@
         }
         input:-moz-placeholder {
           color: grey;
+        }
+      }
+      .needHelpInputError {
+        height: 38px;
+        border-radius: 6px;
+        border: 1px solid $promoRed;
+        background-color: transparent;
+        font-family: $fontFamily;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 18px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        padding-left: 15px;
+        outline: none;
+        color: $white;
+
+        @include for-mobileS {
+          height: 13px;
+          font-size: 5px;
+          padding-left: 2px;
+          border-radius: 3px;
+          width: 40px;
+        }
+        @include for-mobileM {
+          height: 13px;
+          font-size: 5px;
+          padding-left: 4px;
+          border-radius: 3px;
+          width: 48px;
+        }
+
+        @include for-mobileL {
+          height: 17px;
+          font-size: 6px;
+          padding-left: 4px;
+          border-radius: 4px;
+          width: 50px;
+        }
+        @include for-tablet {
+          height: 24px;
+          font-size: 10px;
+          padding-left: 7px;
+          border-radius: 4px;
+          width: 100px;
+        }
+        @include for-laptop {
+          width: 125px;
+          height: 33px;
+
+          @include for-retina {
+            width: 125px;
+          }
+        }
+        @include for-desktop {
+          width: 145px;
+          @include retina-laptop-l-half-1 {
+            width: 28%;
+          }
+          @include retina-laptop-l-half-2 {
+            width: 29%;
+          }
+        }
+        @include for-desktop4K {
+          width: 240px;
+          font-size: 25px;
+          height: 69px;
+        }
+        input:focus {
+          border: 1px solid $promoRed;
+          color: $white;
+        }
+        input::placeholder {
+          color: $promoRed;
+        }
+        input::placeholder {
+          color: $promoRed;
+        }
+        input::-webkit-input-placeholder {
+          color: $promoRed;
+        }
+        input:-ms-input-placeholder {
+          color: $promoRed;
+        }
+        input::-moz-placeholder {
+          color: $promoRed;
+        }
+        input:-moz-placeholder {
+          color: $promoRed;
         }
       }
     }

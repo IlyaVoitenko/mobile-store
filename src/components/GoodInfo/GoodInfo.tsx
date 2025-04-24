@@ -7,9 +7,14 @@ import { Link, useParams } from "react-router-dom";
 import { getProductsSelector } from "../../store/selectors";
 import { CategoryType } from "../../types";
 import { useSelector } from "react-redux";
-import { handleSubmitCreateReviewPost } from "../../helper";
+import {
+  checkValidContent,
+  handleValidClientName,
+  handleValidSearchProduct,
+} from "../../helper";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
-// import { handleValidClientName } from "../../helper";
 import ReviewPosts from "./ReviewPosts";
 import ArrowRightGrey from "../../assets/ArrowRightGrey.svg";
 import iPhonesDetail from "../../assets/IPhonesDetail.svg";
@@ -18,14 +23,36 @@ import greyStar from "../../assets/greenStar.svg";
 import goldStar from "../../assets/goldStar.svg";
 
 import { useState } from "react";
-
+const validationSchema = Yup.object({
+  feedback: Yup.string()
+    .min(2, "min 2 symbols")
+    .matches(/^[A-Za-z\s]+$/, "Only letters")
+    .required("feedback is required "),
+  email: Yup.string().email().required("email is required"),
+  clientName: Yup.string()
+    .min(2, "min 2 symbols")
+    .matches(/^[A-Za-z\s]+$/, "Only letters")
+    .required("name is required "),
+});
 const GoodInfo = () => {
   const { category } = useParams();
   const productsSelector = useSelector(getProductsSelector);
   const [amountsSelectedStars, setAmountsSelectedStars] = useState(0);
-  const [clientName, setClientName] = useState({ isError: false, message: "" });
-  const [email, setEmail] = useState({ isError: false, message: "" });
-  const [feedback, setFeedback] = useState({ isError: false, message: "" });
+  const formik = useFormik<{
+    email: string;
+    feedback: string;
+    clientName: string;
+  }>({
+    initialValues: { email: "", feedback: "", clientName: "" },
+    validationSchema,
+    onSubmit: async (values, { resetForm, setSubmitting }) => {
+      console.log("values", values);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      setSubmitting(false);
+      setAmountsSelectedStars(0);
+      resetForm();
+    },
+  });
   return (
     <div className="pageDefault">
       <Header />
@@ -80,57 +107,57 @@ const GoodInfo = () => {
                 <div className="formTitleContainer">
                   <h1 className="formTitle">Write a review</h1>
                 </div>
-                <form
-                  onSubmit={(e: React.SyntheticEvent) =>
-                    handleSubmitCreateReviewPost(
-                      e as React.FormEvent<HTMLFormElement>,
-                      setClientName,
-                      clientName,
-                      email,
-                      setEmail,
-                      feedback,
-                      setFeedback,
-                      setAmountsSelectedStars
-                    )
-                  }
-                >
+                <form onSubmit={formik.handleSubmit}>
                   <input
                     type="text"
                     name="clientName"
                     placeholder="Your name"
-                    className="inputsForm inputsFormNameAndEmail"
-                    value={clientName.message}
-                    onChange={({ target }) =>
-                      setClientName({
-                        isError: email.isError,
-                        message: target.value,
-                      })
+                    className={`${
+                      formik.touched.clientName && formik.errors.clientName
+                        ? "inputsFormError"
+                        : "inputsForm"
+                    }  inputsFormNameAndEmail`}
+                    value={formik.values.clientName}
+                    onChange={formik.handleChange}
+                    onPaste={(e) => {
+                      //get data from clipboard and check valid
+                      const pasted = e.clipboardData.getData("text");
+                      if (!handleValidClientName(pasted)) e.preventDefault();
+                    }}
+                    onKeyDown={(e) =>
+                      checkValidContent(e, handleValidClientName)
                     }
                   ></input>
                   <input
                     type="email"
                     name="email"
-                    className="inputsForm inputsFormNameAndEmail"
+                    className={`${
+                      formik.touched.email && formik.errors.email
+                        ? "inputsFormError"
+                        : "inputsForm"
+                    } inputsFormNameAndEmail`}
                     placeholder="Email"
-                    value={email.message}
-                    onChange={({ target }) =>
-                      setEmail({
-                        isError: email.isError,
-                        message: target.value,
-                      })
-                    }
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
                   ></input>
                   <textarea
                     name="feedback"
                     placeholder="Your feedback"
-                    className="inputsForm areaForm"
-                    value={feedback.message}
-                    onChange={({ target }) =>
-                      setFeedback({
-                        isError: email.isError,
-                        message: target.value,
-                      })
-                    }
+                    className={`${
+                      formik.touched.feedback && formik.errors.feedback
+                        ? "inputsFormError"
+                        : "inputsForm"
+                    }  areaForm`}
+                    value={formik.values.feedback}
+                    onChange={formik.handleChange}
+                    onPaste={(e) => {
+                      //get data from clipboard and check valid
+                      const pasted = e.clipboardData.getData("text");
+                      if (!handleValidSearchProduct(pasted)) e.preventDefault();
+                    }}
+                    onKeyDown={(e) => {
+                      checkValidContent(e, handleValidSearchProduct);
+                    }}
                   ></textarea>
 
                   <div className="submitFormContainer">
@@ -153,8 +180,10 @@ const GoodInfo = () => {
                         )
                       )}
                     </ul>
-                    <button onClick={() => setAmountsSelectedStars(0)}>
-                      To send the comment
+                    <button type="submit">
+                      {formik.isSubmitting
+                        ? "Loading ..."
+                        : "To send the comment"}{" "}
                     </button>
                   </div>
                 </form>
