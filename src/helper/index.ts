@@ -1,12 +1,13 @@
 import { SetStateAction } from "react";
-import { customAlphabet } from "nanoid";
+import { customAlphabet, nanoid } from "nanoid";
 import {
-  IReviewPostInputs,
+  IReviewPostValues,
   IPriceRange,
   IProduct,
   FilterKey,
   Filters,
 } from "../types";
+import { listReviews } from "../components/GoodInfo/constants.ts";
 import { setProductsByFilter } from "../store/slices/productsSlice.ts";
 import { redirect } from "react-router-dom";
 import { Dispatch } from "@reduxjs/toolkit";
@@ -300,56 +301,35 @@ export const generateVendorCode = (): number => {
   return +res;
 };
 //handle for create new review
-export const handleSubmitCreateReviewPost = (
-  event: React.FormEvent<HTMLFormElement>,
-  setClientName: {
-    (value: SetStateAction<IReviewPostInputs>): void;
-  },
-  clientName: IReviewPostInputs,
-  email: IReviewPostInputs,
-  setEmail: {
-    (value: SetStateAction<IReviewPostInputs>): void;
-  },
-  feedback: IReviewPostInputs,
-  setFeedback: {
-    (value: SetStateAction<IReviewPostInputs>): void;
-  },
-  setAmountsSelectedStars: {
-    (value: SetStateAction<number>): void;
-  }
+export const addNewReviewPost = async (
+  values: IReviewPostValues,
+  setSubmitting: (isSubmitting: boolean) => void,
+  resetForm: () => void,
+  amountsSelectedStars: number,
+  setAmountsSelectedStars: React.Dispatch<React.SetStateAction<number>>
 ) => {
-  event.preventDefault();
-  if (!clientName.message) {
-    return setClientName({
-      message: clientName.message,
-      isError: true,
-    });
+  if (amountsSelectedStars === 0) {
+    alert("Please select a star");
+    return;
   }
-  if (!email.message) {
-    return setEmail({
-      message: email.message,
-      isError: true,
+  const year = new Date().getFullYear();
+  const month = new Date().getMonth();
+  const day = new Date().getDate();
+  const correctedMonth = month <= 9 ? `0${month + 1}` : month + 1;
+
+  await new Promise<void>((resolve) => {
+    listReviews.unshift({
+      id: nanoid(),
+      userName: values.clientName,
+      message: values.feedback,
+      dateCreated: `${day}.${correctedMonth}.${year}`,
+      amountStars: amountsSelectedStars,
+      email: values.email,
     });
-  }
-  if (!feedback.message) {
-    return setFeedback({
-      message: feedback.message,
-      isError: true,
-    });
-  }
-  setFeedback({
-    message: feedback.message,
-    isError: false,
+    setTimeout(resolve, 1000);
   });
-  setEmail({
-    message: email.message,
-    isError: false,
-  });
-  setClientName({
-    message: clientName.message,
-    isError: false,
-  });
-  console.log(clientName, email, feedback);
+  setSubmitting(false);
 
   setAmountsSelectedStars(0);
+  resetForm();
 };

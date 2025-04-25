@@ -80,12 +80,15 @@ export interface IPostReviews {
   amountStars: number;
   dateCreated: string;
   message: string;
+  email: string;
 }
-export interface IReviewPostInputs {
-  message: string;
-  isError: boolean;
-}
+
 export interface FormNeedHelp {
   nameClient: string;
   phoneNumber: string;
+}
+export interface IReviewPostValues {
+  clientName: string;
+  feedback: string;
+  email: string;
 }

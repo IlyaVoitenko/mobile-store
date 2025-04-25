@@ -5,8 +5,9 @@ import "../../styles/components/_categoryNavProduct.scss";
 import ProductCollection from "../ProductCollection";
 import { Link, useParams } from "react-router-dom";
 import { getProductsSelector } from "../../store/selectors";
-import { CategoryType } from "../../types";
+import { CategoryType, IReviewPostValues } from "../../types";
 import { useSelector } from "react-redux";
+import { addNewReviewPost } from "../../helper";
 import {
   checkValidContent,
   handleValidClientName,
@@ -14,15 +15,14 @@ import {
 } from "../../helper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
 import ReviewPosts from "./ReviewPosts";
 import ArrowRightGrey from "../../assets/ArrowRightGrey.svg";
 import iPhonesDetail from "../../assets/IPhonesDetail.svg";
 import arrowDownBlue from "../../assets/ArrowBlueDownFull.svg";
 import greyStar from "../../assets/greenStar.svg";
 import goldStar from "../../assets/goldStar.svg";
-
 import { useState } from "react";
+
 const validationSchema = Yup.object({
   feedback: Yup.string()
     .min(2, "min 2 symbols")
@@ -38,20 +38,17 @@ const GoodInfo = () => {
   const { category } = useParams();
   const productsSelector = useSelector(getProductsSelector);
   const [amountsSelectedStars, setAmountsSelectedStars] = useState(0);
-  const formik = useFormik<{
-    email: string;
-    feedback: string;
-    clientName: string;
-  }>({
+  const formik = useFormik<IReviewPostValues>({
     initialValues: { email: "", feedback: "", clientName: "" },
     validationSchema,
-    onSubmit: async (values, { resetForm, setSubmitting }) => {
-      console.log("values", values);
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      setSubmitting(false);
-      setAmountsSelectedStars(0);
-      resetForm();
-    },
+    onSubmit: async (values, { resetForm, setSubmitting }) =>
+      addNewReviewPost(
+        values,
+        setSubmitting,
+        resetForm,
+        amountsSelectedStars,
+        setAmountsSelectedStars
+      ),
   });
   return (
     <div className="pageDefault">
