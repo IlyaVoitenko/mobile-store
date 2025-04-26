@@ -26,10 +26,43 @@ import deliveryCar from "../../assets/deliveryCar.svg";
 import geoMark from "../../assets/geoMark.svg";
 import moneyCash from "../../assets/moneyCash.svg";
 import openBox from "../../assets/openBox.svg";
+import redSiliconeCase from "../../assets/redSiliconeCase.svg";
+import blueSiliconeCase from "../../assets/blueSiliconeCase.svg";
+import whiteSiliconeCase from "../../assets/whiteSiliconeCase.svg";
+import blackSiliconeCase from "../../assets/blackSiliconeCase.svg";
+import ArrowWhiteDown from "../../assets/ArrowWhiteDown.svg";
+import ArrowWhiteUp from "../../assets/ArrowWhiteUp.svg";
+
 import visa from "../../assets/visa.svg";
 
 import { useState } from "react";
-
+import { nanoid } from "nanoid";
+const imgsProductList = [
+  {
+    id: nanoid(),
+    img: redSiliconeCase,
+    color: "Red",
+    isActive: true,
+  },
+  {
+    id: nanoid(),
+    img: blueSiliconeCase,
+    color: "Blue",
+    isActive: false,
+  },
+  {
+    id: nanoid(),
+    img: whiteSiliconeCase,
+    color: "White",
+    isActive: false,
+  },
+  {
+    id: nanoid(),
+    img: blackSiliconeCase,
+    color: "Black",
+    isActive: false,
+  },
+];
 const validationSchema = Yup.object({
   feedback: Yup.string()
     .min(2, "min 2 symbols")
@@ -45,6 +78,8 @@ const GoodInfo = () => {
   const { category } = useParams();
   const productsSelector = useSelector(getProductsSelector);
   const [amountsSelectedStars, setAmountsSelectedStars] = useState(0);
+  const [activeImgItem, setActiveImgItem] = useState(imgsProductList[0]);
+
   const formik = useFormik<IReviewPostValues>({
     initialValues: { email: "", feedback: "", clientName: "" },
     validationSchema,
@@ -75,7 +110,49 @@ const GoodInfo = () => {
           <span>buy a phone and get a</span>
           <h1>gift</h1>
         </div>
-        <div className="productOptionsContainer"></div>
+        <div className="productOptionsContainer">
+          <section className="productsImgsContainer">
+            <div className="productImgListContainer">
+              <ul className="productImgList">
+                {imgsProductList &&
+                  imgsProductList.map((item) => (
+                    <li
+                      key={item.id}
+                      onClick={() => {
+                        setActiveImgItem(item);
+                        imgsProductList.forEach((el) => {
+                          el.isActive = false;
+                        });
+                        item.isActive = true;
+                      }}
+                      className={`${
+                        item.isActive ? "liActive" : "liNotActive"
+                      } `}
+                    >
+                      <img src={item.img} alt="" />
+                    </li>
+                  ))}
+              </ul>
+              <div>
+                <button className="productImgListButton" title="Scroll down">
+                  <img src={ArrowWhiteDown} alt="Scroll down" />
+                </button>
+                &nbsp;
+                <button className="productImgListButton" title="Scroll up">
+                  <img src={ArrowWhiteUp} alt="Scroll up" />
+                </button>
+              </div>
+            </div>
+            <div className="mainProductImgContainer">
+              <img
+                className="mainProductImg"
+                src={activeImgItem.img}
+                alt={activeImgItem.color}
+              />
+            </div>
+          </section>
+          <section></section>
+        </div>
         <br />
         <div className="shippingAndPaymentContainer">
           <section className="shippingAndPaymentBlock shippingBgImg">

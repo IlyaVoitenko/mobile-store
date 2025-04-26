@@ -149,6 +149,75 @@
     }
   }
 }
+.productOptionsContainer {
+  display: flex;
+  height: 356px;
+  @include containerResponsiveWidth;
+  .productsImgsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 48.5%;
+    .mainProductImgContainer {
+      width: 445px;
+      height: 356px;
+      border-radius: 23px;
+      background-color: $white;
+      .mainProductImg {
+        width: 96%;
+        height: 99%;
+      }
+    }
+
+    .productImgListContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      .productImgList {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 85%;
+        .liNotActive {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 80px;
+          height: 66px;
+          border-radius: 8px;
+          border-width: 1px;
+          background-color: $white;
+          border-color: $brItemImg;
+          border-style: solid;
+        }
+        .liActive {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 80px;
+          height: 66px;
+          border-radius: 8px;
+          border-width: 1px;
+          border-color: $activeBrItemImg;
+          background-color: $white;
+          border-style: solid;
+        }
+      }
+    }
+  }
+
+  .productImgListButton {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background-color: $listImgBtn;
+  }
+}
 .titleSection {
   font-family: $fontFamily;
   font-weight: 600;
