@@ -71,7 +71,10 @@ const GoodInfo = () => {
           <span className="selectedProduct">{category as CategoryType}</span>
         </nav>
 
-        <div className="giftMessageContainer"></div>
+        <div className="giftMessageContainer">
+          <span>buy a phone and get a</span>
+          <h1>gift</h1>
+        </div>
         <div className="productOptionsContainer"></div>
         <br />
         <div className="shippingAndPaymentContainer">
@@ -256,7 +259,6 @@ const GoodInfo = () => {
               </div>
             </div>
           </section>
-
           <section className="characteristicsContainer positionContainer">
             <h1 className="titleSection">Characteristics</h1>
             <br />
