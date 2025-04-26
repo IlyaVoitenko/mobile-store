@@ -21,6 +21,13 @@ import iPhonesDetail from "../../assets/IPhonesDetail.svg";
 import arrowDownBlue from "../../assets/ArrowBlueDownFull.svg";
 import greyStar from "../../assets/greenStar.svg";
 import goldStar from "../../assets/goldStar.svg";
+import novaPosta from "../../assets/novaPosta.svg";
+import deliveryCar from "../../assets/deliveryCar.svg";
+import geoMark from "../../assets/geoMark.svg";
+import moneyCash from "../../assets/moneyCash.svg";
+import openBox from "../../assets/openBox.svg";
+import visa from "../../assets/visa.svg";
+
 import { useState } from "react";
 
 const validationSchema = Yup.object({
@@ -66,9 +73,70 @@ const GoodInfo = () => {
 
         <div className="giftMessageContainer"></div>
         <div className="productOptionsContainer"></div>
-        <div className="shippingAndPaymentContainer"></div>
+        <br />
+        <div className="shippingAndPaymentContainer">
+          <section className="shippingAndPaymentBlock shippingBgImg">
+            <div className="containerContent ">
+              <h3>Shipping options</h3>
+              <article className="imgAndTextContainer">
+                <figure>
+                  <img
+                    className="imgShippingAndPayment"
+                    src={deliveryCar}
+                    alt=""
+                  />
+                </figure>
+                <span>In city - for free.</span>
+              </article>
+              <article className="imgAndTextContainer">
+                <figure>
+                  <img src={geoMark} className="imgShippingAndPayment" alt="" />
+                </figure>
+                <span>Pickup</span>
+              </article>
+              <article className="imgAndTextContainer">
+                <figure>
+                  <img
+                    className="imgShippingAndPayment"
+                    src={novaPosta}
+                    alt=""
+                  />
+                </figure>
+                <span>Mail. In country 1-2 days</span>
+              </article>
+            </div>
+          </section>
+          <section className="shippingAndPaymentBlock paymentBgImg">
+            <div className="containerContent ">
+              <h3>Payment Methods</h3>
+              <article className="imgAndTextContainer">
+                <figure>
+                  <img
+                    src={moneyCash}
+                    alt=""
+                    className="imgShippingAndPayment"
+                  />
+                </figure>
+                <span>Cash</span>
+              </article>
+              <article className="imgAndTextContainer">
+                <figure>
+                  <img src={openBox} alt="" className="imgShippingAndPayment" />
+                </figure>
+                <span>Payment upon receipt</span>
+              </article>
+              <article className="imgAndTextContainer">
+                <figure>
+                  <img className="imgShippingAndPayment" src={visa} alt="" />
+                </figure>
+                <span>Visa | MasterCard | Privat24</span>
+              </article>
+            </div>
+          </section>
+        </div>
+        <br />
         <div className="infoAndReviewsContainer">
-          <section className="descriptionContainer">
+          <section className="descriptionContainer positionContainer">
             <h1 className="titleSection">Description</h1>
             <br />
             <div className="descriptionInfoContainer">
@@ -85,17 +153,18 @@ const GoodInfo = () => {
               </span>
               <br />
               <br />
-              <img src={iPhonesDetail} alt="" />
+              <img className="imgDescription" src={iPhonesDetail} alt="" />
               <br />
               <br />
 
               <button>
-                <span>Full description</span> <img src={arrowDownBlue} alt="" />{" "}
+                <span>Full description</span>&nbsp;{" "}
+                <img src={arrowDownBlue} alt="" />{" "}
               </button>
               <br />
             </div>
           </section>
-          <section className="reviewsContainer">
+          <section className="reviewsContainer positionContainer">
             <h1 className="titleSection">Reviews</h1>
             <br />
             <div className="reviewsBlock">
@@ -188,7 +257,7 @@ const GoodInfo = () => {
             </div>
           </section>
 
-          <section className="characteristicsContainer">
+          <section className="characteristicsContainer positionContainer">
             <h1 className="titleSection">Characteristics</h1>
             <br />
             <table>
@@ -205,7 +274,9 @@ const GoodInfo = () => {
                 </tr>
 
                 <tr>
-                  <th className="trTitle titleTop">Phone model:</th>
+                  <th className="trTitle " id="textMove">
+                    Phone model:
+                  </th>
                   <td className="trSubtitle">
                     6s, 6s plus, 7, 7 plus, 8, 8 plus, X\XS, XS Max, 11, 11 Pro,
                     11 Pro Max, 12\12 Pro, 12 Mini, 12 Pro Max{" "}

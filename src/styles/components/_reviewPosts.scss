@@ -12,12 +12,35 @@
   height: 57%;
   width: 90%;
 
+  @include for-desktop4K {
+    height: 67%;
+    width: 90%;
+  }
+  ul {
+    margin-top: 1rem;
+    @include for-LaptopL {
+      margin-top: 0;
+    }
+    @include for-laptop {
+      margin-top: 0;
+    }
+    @include for-tablet {
+      margin-top: 0;
+    }
+    @include for-mobile {
+      margin-top: 0;
+    }
+  }
   .post {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     height: 110px;
     border-bottom: 1px solid $inputBg;
+
+    @include for-desktop4K {
+      height: 240px;
+    }
   }
   .starsAndNameAndCreateDateContainer {
     display: flex;
@@ -28,11 +51,46 @@
       justify-content: space-between;
       align-items: center;
       width: 56%;
+
+      @include for-mobileS {
+        width: 75%;
+      }
+      @include for-mobileM {
+        width: 75%;
+      }
+      @include for-mobileL {
+        width: 66%;
+      }
       .userName {
         font-family: $fontFamily;
         font-weight: 400;
         font-size: 16px;
         line-height: 19px;
+
+        @include for-desktop4K {
+          font-size: 28px;
+          font-weight: 500;
+        }
+        @include for-laptop {
+          font-weight: 500;
+          font-size: 15px;
+          line-height: 19px;
+        }
+        @include for-mobileS {
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 19px;
+        }
+        @include for-mobileM {
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 19px;
+        }
+        @include for-mobileL {
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 19px;
+        }
       }
       .listStars {
         display: flex;
@@ -44,6 +102,10 @@
       font-size: 12px;
       line-height: 19px;
       color: $createDate;
+
+      @include for-desktop4K {
+        font-size: 22px;
+      }
     }
   }
   .messagePost {
@@ -51,5 +113,26 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+
+    @include for-desktop4K {
+      font-size: 24px;
+      line-height: 40px;
+    }
+    @include for-laptop {
+      font-weight: 300;
+      font-size: 13px;
+      line-height: 17px;
+    }
+    @include for-mobile {
+      font-weight: 300;
+    }
+    @include for-tablet {
+      font-size: 13.4px;
+      line-height: 17px;
+    }
+    @include for-mobileS {
+      font-size: 13px;
+      line-height: 17px;
+    }
   }
 }

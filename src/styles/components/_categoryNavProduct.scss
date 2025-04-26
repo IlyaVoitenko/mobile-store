@@ -20,7 +20,7 @@
     color: $greyNavLink;
 
     @include for-desktop4K {
-      font-size: 17px;
+      font-size: 24px;
     }
   }
   img {
@@ -29,7 +29,7 @@
     padding-right: 0.2rem;
 
     @include for-desktop4K {
-      width: 15px;
+      width: 20px;
     }
   }
   .selectedProduct {
@@ -42,7 +42,7 @@
     color: $greySelectedProduct;
 
     @include for-desktop4K {
-      font-size: 17px;
+      font-size: 24px;
     }
   }
 }

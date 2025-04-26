@@ -8,10 +8,44 @@
   justify-content: space-between;
   flex-wrap: wrap;
   @include containerResponsiveWidth;
+
+  @include for-desktop4K {
+    height: 1800px;
+  }
+  @include for-tablet {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 1700px;
+    flex-wrap: nowrap;
+
+    .positionContainer:nth-child(2) {
+      order: 3;
+    }
+  }
+  @include for-mobile {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 1700px;
+    flex-wrap: nowrap;
+
+    .positionContainer:nth-child(2) {
+      order: 3;
+    }
+  }
 }
 .descriptionContainer {
   width: 635px;
-
+  @include for-desktop4K {
+    width: 60%;
+  }
+  @include for-laptop {
+    width: 481px;
+  }
+  @include for-mobile {
+    width: 100%;
+  }
   .descriptionInfoContainer {
     display: flex;
     flex-direction: column;
@@ -20,18 +54,54 @@
     background-color: $white;
     border-radius: 10px;
     padding: 20px;
+    height: 551px;
+
+    @include for-desktop4K {
+      height: 1100px;
+      justify-content: space-between;
+      padding: 40px;
+      border-radius: 20px;
+    }
+    @include for-laptop {
+      padding: 17px;
+    }
+    @include for-mobile {
+      height: 472px;
+    }
     span {
       font-family: $fontFamily;
       font-weight: 300;
-      font-size: 14px;
+      font-size: 12px;
       line-height: 19px;
       color: $spanGoodInfo;
-    }
 
-    img {
-      padding-left: 0.5rem;
+      @include for-desktop4K {
+        font-size: 27px;
+        line-height: 42px;
+      }
+      @include for-laptop {
+        font-size: 13px;
+        line-height: 19px;
+      }
+      @include for-tablet {
+        font-size: 14px;
+        line-height: 19px;
+      }
     }
-
+    .imgDescription {
+      @include for-desktop4K {
+        width: 91%;
+        height: 100%;
+      }
+      @include for-laptop {
+        width: 85%;
+        height: 100%;
+      }
+      @include for-mobile {
+        width: 90%;
+        height: 100%;
+      }
+    }
     button {
       display: flex;
       justify-content: center;
@@ -48,6 +118,33 @@
         font-size: 14px;
         line-height: 18px;
         vertical-align: middle;
+
+        @include for-desktop4K {
+          font-size: 24px;
+          line-height: 40px;
+        }
+        @include for-laptop {
+          font-size: 12px;
+          line-height: 19px;
+        }
+        @include for-tablet {
+          font-size: 11px;
+          line-height: 19px;
+        }
+        @include for-mobile {
+          font-size: 11px;
+          line-height: 19px;
+        }
+      }
+      img {
+        @include for-desktop4K {
+          width: 17px;
+          height: 17px;
+        }
+      }
+      @include for-desktop4K {
+        width: 200px;
+        height: 30px;
       }
     }
   }
@@ -58,9 +155,139 @@
   font-size: 24px;
   line-height: 100%;
   color: $titleGoodInfo;
+
+  @include for-desktop4K {
+    font-size: 36px;
+    line-height: 100%;
+    font-weight: 500;
+  }
+  @include for-mobile {
+    font-size: 20px;
+  }
+}
+.shippingAndPaymentContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include containerResponsiveWidth;
+  .shippingBgImg {
+    background-image: url("../../assets/locationMark.svg");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position-x: 80%;
+  }
+  .paymentBgImg {
+    background-image: url("../../assets/paymentBg.svg");
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: right;
+  }
+
+  @include for-tablet {
+    height: 350px;
+    flex-direction: column;
+  }
+  @include for-mobile {
+    height: 350px;
+    flex-direction: column;
+  }
+  .shippingAndPaymentBlock {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 540px;
+    height: 156px;
+
+    border-radius: 12px;
+    background-color: $shippingBg;
+
+    @include for-desktop4K {
+      width: 48%;
+      height: 300px;
+      border-radius: 20px;
+    }
+    @include for-laptop {
+      width: 445px;
+      height: 156px;
+    }
+
+    @include for-mobile {
+      width: 100%;
+    }
+
+    .containerContent {
+      margin-left: 1.5rem;
+
+      @include for-desktop4K {
+        margin-left: 3rem;
+      }
+    }
+
+    h3 {
+      font-family: $fontFamily;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 25.8px;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: $shippingTitle;
+      margin-bottom: 0.7rem;
+
+      @include for-desktop4K {
+        font-size: 28px;
+        line-height: 40px;
+        margin-bottom: 1rem;
+      }
+      @include for-mobile {
+        font-size: 16px;
+        line-height: 25px;
+      }
+    }
+    .imgAndTextContainer {
+      display: flex;
+      align-items: center;
+      margin-top: 0.2rem;
+
+      span {
+        font-family: $fontFamily;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 15px;
+        vertical-align: middle;
+        padding-left: 0.5rem;
+        color: $shippingTitle;
+
+        @include for-desktop4K {
+          font-size: 24px;
+          line-height: 34px;
+        }
+        @include for-mobile {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}
+.imgShippingAndPayment {
+  width: 17px;
+  height: 17px;
+
+  @include for-desktop4K {
+    width: 35px;
+    height: 30px;
+  }
 }
 .reviewsContainer {
   width: 445px;
+  @include for-desktop4K {
+    height: 1178px;
+    width: 38%;
+  }
+  @include for-mobile {
+    width: 100%;
+  }
   .reviewsBlock {
     display: flex;
     flex-direction: column;
@@ -71,12 +298,26 @@
     border-radius: 10px;
     background-color: $white;
 
+    @include for-desktop4K {
+      height: 100%;
+    }
+    @include for-LaptopL {
+      height: 592px;
+    }
+
     .formContainer {
       height: 245px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
+      @include for-desktop4K {
+        height: 500px;
+      }
+      @include for-mobile {
+        width: 100%;
+      }
       form {
         display: flex;
         flex-wrap: wrap;
@@ -84,6 +325,10 @@
         align-items: center;
         height: 90%;
         width: 90%;
+
+        @include for-desktop4K {
+          height: 80%;
+        }
       }
       .formTitleContainer {
         display: flex;
@@ -97,6 +342,11 @@
           color: $trGoodInfo;
           margin-top: 1rem;
           margin-bottom: 1rem;
+
+          @include for-desktop4K {
+            font-size: 30px;
+            line-height: 40px;
+          }
         }
       }
     }
@@ -115,6 +365,27 @@
     background-color: $white;
     border-spacing: 0px;
     padding: 10px;
+
+    @include for-desktop4K {
+      width: 1228px;
+      height: 400px;
+      font-size: 31px;
+      line-height: 40px;
+      padding: 25px;
+      border-radius: 20px;
+    }
+    @include for-laptop {
+      font-size: 11.5px;
+      line-height: 20px;
+      width: 481px;
+    }
+    @include for-mobile {
+      width: 100%;
+      font-size: 11px;
+    }
+    @include for-mobileM {
+      font-size: 10px;
+    }
   }
 
   tbody tr {
@@ -127,6 +398,32 @@
     font-weight: 500;
     padding-left: 1rem;
     width: 50%;
+    @include for-desktop4K {
+      padding-left: 3rem;
+    }
+  }
+  #textMove {
+    vertical-align: baseline;
+
+    @include for-desktop4K {
+      padding-top: 2rem;
+    }
+    @include for-LaptopL {
+      padding-top: 1rem;
+    }
+    @include for-laptop {
+      padding-top: 1rem;
+    }
+    @include for-tablet {
+      padding-top: 0.7rem;
+    }
+    @include for-mobileL {
+      padding-top: 0.7rem;
+    }
+
+    @include for-mobileM {
+      padding-top: 0.5rem;
+    }
   }
   .trSubtitle {
     font-weight: 400;
@@ -134,19 +431,44 @@
   }
 
   th {
-    border-radius: 6px 0 0 6px;
+    border-radius: 6px 0px 0px 6px;
     height: 47px;
+
+    @include for-desktop4K {
+      border-radius: 20px 0px 0px 20px;
+
+      height: 70px;
+    }
   }
   td {
     border-radius: 0px 6px 6px 0px;
     height: 47px;
+    @include for-desktop4K {
+      border-radius: 0px 20px 20px 0px;
+
+      height: 70px;
+    }
   }
+
   tr:nth-child(3) {
     height: 84px;
+    border-radius: 0px 6px 6px 0px;
+    @include for-desktop4K {
+      border-radius: 20px 20px 20px 20px;
+    }
   }
   .titleTop {
+    @include for-desktop4K {
+      border-radius: 20px 20px 20px 20px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .tnp {
     display: flex;
-    padding-top: 0.8rem;
+    align-items: self-start;
+    width: 100%;
+    height: 100%;
   }
 }
 .submitFormContainer {
@@ -160,9 +482,23 @@
     align-items: center;
     width: 100px;
 
+    @include for-desktop4K {
+      width: 140px;
+    }
+
     li {
       width: 17px;
       height: 17px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+
+      @include for-desktop4K {
+        width: 25px;
+        height: 25px;
+      }
     }
   }
   button {
@@ -178,6 +514,20 @@
     font-size: 14px;
     line-height: 18px;
     vertical-align: middle;
+
+    @include for-desktop4K {
+      width: 300px;
+      height: 70px;
+      font-size: 24px;
+    }
+    @include for-mobileS {
+      width: 140px;
+      font-size: 12px;
+    }
+    @include for-mobileM {
+      width: 152px;
+      font-size: 12px;
+    }
   }
 }
 .inputsForm {
@@ -190,6 +540,11 @@
   line-height: 19px;
   border: none;
   color: $titleGoodInfo;
+
+  @include for-desktop4K {
+    font-size: 24px;
+    line-height: 40px;
+  }
 }
 .inputsFormError {
   background-color: $inputBg;
@@ -206,6 +561,23 @@
 .inputsFormNameAndEmail {
   width: 172px;
   height: 39px;
+
+  @include for-desktop4K {
+    width: 300px;
+    height: 70px;
+  }
+  @include for-mobile {
+    height: 39px;
+  }
+  @include for-mobileM {
+    width: 136px;
+  }
+  @include for-mobileS {
+    width: 112px;
+  }
+  @include for-mobileL {
+    width: 158px;
+  }
   &::placeholder {
     color: $textInput;
   }
@@ -217,11 +589,30 @@
   padding-top: 0.5rem;
   resize: none;
   color: $titleGoodInfo;
-}
-.areaForm::placeholder {
-  color: $textInput;
+
+  @include for-desktop4K {
+    width: 100%;
+    height: 100px;
+  }
+
+  &::placeholder {
+    color: $textInput;
+  }
 }
 .goldStar {
   width: 17px;
   height: 17px;
+
+  @include for-desktop4K {
+    width: 25px;
+    height: 25px;
+  }
+  @include for-laptop {
+    width: 13px;
+    height: 13px;
+  }
+  @include for-tablet {
+    width: 14px;
+    height: 13px;
+  }
 }
