@@ -333,3 +333,35 @@ export const addNewReviewPost = async (
   setAmountsSelectedStars(0);
   resetForm();
 };
+export const filterProductsByUniqField = (
+  arr: IProduct[],
+  field: keyof IProduct
+) => {
+  const unique = new Set();
+  const listUniqFields = arr.filter((item) => {
+    if (!unique.has(item[field])) {
+      unique.add(item[field]);
+      return true;
+    }
+    return false;
+  });
+  return listUniqFields;
+};
+export const handleDefiningColorBlock = (color: string) => {
+  switch (color) {
+    case "Red":
+      return "#cc3c3c";
+    case "Black":
+      return "#343434";
+    case "Blue":
+      return "#359e6c";
+    case "Yellow":
+      return "#ffd700";
+    case "Green":
+      return "#359e6c";
+    case "White":
+      return " #F1F0EE";
+    default:
+      return; // Default color if none match
+  }
+};

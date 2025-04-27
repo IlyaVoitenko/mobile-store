@@ -8,6 +8,9 @@ import {
 export const getProductsSelector = (state: {
   products: initialStateProps;
 }): IProductCategory => state.products.products;
+export const getSelectedProductSelector = (state: {
+  products: initialStateProps;
+}): IProduct => state.products.selectedProduct;
 
 export const getPaginatedProductsSelector = (state: {
   products: initialStateProps;

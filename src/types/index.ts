@@ -68,6 +68,7 @@ export interface initialStateProps {
   isLoading: boolean;
   priceRange: IPriceRange;
   popularGoodsOption: string;
+  selectedProduct: IProduct;
 }
 
 export interface ApplyFilterArgs {

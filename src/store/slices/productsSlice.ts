@@ -10,12 +10,30 @@ const initialState: initialStateProps = {
   selectedFilters: { model: [], storage: [], color: [], type: [] },
   priceRange: { minPrice: null, maxPrice: null },
   popularGoodsOption: "default",
+  selectedProduct: {
+    id: "",
+    name: "",
+    description: "",
+    price: 0,
+    inStock: false,
+    isPopular: false,
+    color: "",
+    model: "",
+    storage: "",
+    quantity: 0,
+    imgUrl: "",
+    type: "",
+    vendorCode: 0,
+  },
 };
 
 const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
+    setSelectedProduct: (state, action) => {
+      state.selectedProduct = { ...action.payload };
+    },
     setPopularGoodsOptionSelector: (state, action) => {
       state.popularGoodsOption = action.payload;
     },
@@ -50,6 +68,7 @@ export const {
   setProductsByCategory,
   setProductsByFilter,
   setIsLoading,
+  setSelectedProduct,
   setPriceRangeGoods,
   setSelectedFilters,
 } = productsSlice.actions;

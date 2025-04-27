@@ -1,9 +1,10 @@
 import { IProduct } from "../../types";
 import { Link } from "react-router-dom";
 import "../../styles/components/_productCard.scss";
-
 import AddToCardBtn from "./AddToCardBtn";
 import AmountProduct from "./AmountProduct";
+import { useDispatch } from "react-redux";
+import { setSelectedProduct } from "../../store/slices/productsSlice";
 
 type ProductCardProps = {
   card: IProduct;
@@ -16,6 +17,7 @@ const ProductCard = ({
   promotion = false,
   category = "Accessories",
 }: ProductCardProps) => {
+  const dispatch = useDispatch();
   const { name, price, imgUrl, id } = card || {};
 
   return (
@@ -27,6 +29,9 @@ const ProductCard = ({
       }
     >
       <Link
+        onClick={() => {
+          dispatch(setSelectedProduct(card));
+        }}
         to={`/good/${encodeURIComponent(category.trim())}/${encodeURIComponent(
           id
         )}`}

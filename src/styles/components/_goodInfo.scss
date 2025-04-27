@@ -151,7 +151,12 @@
 }
 .productOptionsContainer {
   display: flex;
+  justify-content: space-between;
   height: 356px;
+
+  @include for-desktop4K {
+    height: 700px;
+  }
   @include containerResponsiveWidth;
   .productsImgsContainer {
     display: flex;
@@ -159,10 +164,18 @@
     align-items: center;
     width: 48.5%;
     .mainProductImgContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 445px;
       height: 356px;
       border-radius: 23px;
       background-color: $white;
+      @include for-desktop4K {
+        width: 75%;
+        height: 100%;
+        border-radius: 30px;
+      }
       .mainProductImg {
         width: 96%;
         height: 99%;
@@ -175,12 +188,18 @@
       justify-content: space-between;
       align-items: center;
       height: 100%;
+      .productImgOverFlow {
+        display: flex;
+        justify-content: space-between;
+        overflow: auto;
+        height: 85%;
+      }
       .productImgList {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        height: 85%;
+        height: 100%;
         .liNotActive {
           display: flex;
           justify-content: center;
@@ -208,7 +227,410 @@
       }
     }
   }
+  .productInfoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100%;
 
+    @include for-desktop4K {
+      width: 48.1%;
+    }
+    .nameProduct {
+      font-family: $fontFamily;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: $shippingTitle;
+
+      @include for-desktop4K {
+        font-size: 41px;
+        line-height: 100%;
+      }
+    }
+    .stockAndVendorCodeContainer {
+      display: flex;
+      align-items: center;
+      .spanGreyBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 58px;
+        height: 25px;
+        border-radius: 25px;
+        background-color: $greyBox;
+
+        @include for-desktop4K {
+          width: 140px;
+          height: 60px;
+        }
+      }
+      span {
+        font-family: $fontFamily;
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        vertical-align: middle;
+
+        @include for-desktop4K {
+          font-size: 27px;
+        }
+      }
+      #greenColorText {
+        color: $greenColorText;
+      }
+      #errorColorText {
+        color: $promoRed;
+      }
+      #greyColorText {
+        color: $greyColorText;
+      }
+      #vendorCode {
+        color: $vectorColor;
+      }
+    }
+    .colorsContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+      h4 {
+        font-family: $fontFamily;
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: $vectorColor;
+
+        @include for-desktop4K {
+          font-size: 27px;
+        }
+      }
+      .colorsList {
+        display: flex;
+        align-items: center;
+        overflow: auto;
+        margin-top: 0.5rem;
+        width: 100%;
+        height: 100%;
+        @include for-desktop4K {
+          margin-top: 1rem;
+        }
+        li:nth-child(1) {
+          margin-left: 0;
+        }
+        li {
+          margin-left: 2%;
+        }
+        .colorBlock {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 20px;
+          height: 20px;
+          border-radius: 5px;
+          cursor: pointer;
+
+          @include for-desktop4K {
+            width: 40px;
+            height: 40px;
+            border-radius: 9px;
+          }
+        }
+        .activeColorLi {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 20px;
+          height: 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          background-color: #cee7e8;
+
+          @include for-desktop4K {
+            width: 40px;
+            height: 40px;
+            border-radius: 7px;
+          }
+        }
+        .activeColorDiv {
+          width: 12.26px;
+          height: 12.26px;
+          border-radius: 3px;
+
+          @include for-desktop4K {
+            width: 25px;
+            height: 25px;
+            border-radius: 6px;
+          }
+        }
+      }
+    }
+    .modelsContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-direction: column;
+      width: 100%;
+
+      h4 {
+        font-family: $fontFamily;
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: $vectorColor;
+        @include for-desktop4K {
+          font-size: 27px;
+        }
+      }
+      .modelsList {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        button {
+          margin-top: 0.5rem;
+          margin-bottom: 0.5rem;
+          border-radius: 5px;
+          font-family: $fontFamily;
+          font-weight: 400;
+          font-size: 11px;
+          line-height: 100%;
+          letter-spacing: 0%;
+          vertical-align: middle;
+          padding: 10px;
+          border: none;
+          cursor: pointer;
+
+          @include for-desktop4K {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            font-size: 24px;
+            line-height: 100%;
+            padding: 15px;
+          }
+        }
+        .btnModel {
+          color: $modelBtn;
+        }
+        .btnActiveModel {
+          color: $blue;
+          border-color: #adc9e4;
+          border-style: solid;
+          border-width: 1px;
+        }
+      }
+    }
+    .priceContainer {
+      display: flex;
+
+      h1 {
+        font-family: $fontFamily;
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 25%;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: $shippingTitle;
+
+        @include for-desktop4K {
+          font-size: 60px;
+          line-height: 25%;
+        }
+      }
+      span {
+        font-family: $fontFamily;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        vertical-align: bottom;
+        color: $shippingTitle;
+
+        @include for-desktop4K {
+          font-size: 31px;
+          line-height: 100%;
+          margin-left: 0.5rem;
+        }
+      }
+    }
+    .btnBuyProductContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      .amountProductContainer {
+        display: flex;
+        border-radius: 5px;
+        background-color: $bgPage;
+        width: 97px;
+        height: 38px;
+        border-width: 1px;
+        border-color: #e3e9ef;
+        border-style: solid;
+        @include for-desktop4K {
+          width: 189px;
+          height: 78px;
+          border-width: 2px;
+          border-radius: 10px;
+        }
+        button {
+          background-color: $bgPage;
+          border-radius: 5px;
+          display: flex;
+          flex: 1;
+          justify-content: center;
+          align-items: center;
+          border: none;
+          color: $btnsAmountProject;
+          font-size: 20px;
+          cursor: pointer;
+
+          @include for-desktop4K {
+            font-size: 39px;
+          }
+        }
+        span {
+          display: flex;
+          flex: 1;
+          justify-content: center;
+          align-items: center;
+          background-color: $bgPage;
+
+          color: $blue;
+          font-family: $fontFamily;
+          font-size: 15px;
+          font-weight: 600;
+          line-height: 18px;
+          text-align: left;
+          text-underline-position: from-font;
+          text-decoration-skip-ink: none;
+          @include for-desktop4K {
+            font-size: 31px;
+          }
+        }
+      }
+
+      .basketBtn {
+        width: 102px;
+        height: 38px;
+        border-radius: 5px;
+        background-color: $blue;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        cursor: pointer;
+
+        @include for-desktop4K {
+          width: 188px;
+          height: 78px;
+          border-radius: 10px;
+        }
+        img {
+          width: 12px;
+          height: 11px;
+          margin-left: 3px;
+
+          @include for-desktop4K {
+            width: 33px;
+            height: 22px;
+          }
+        }
+        span {
+          font-family: $fontFamily;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 18px;
+          text-align: left;
+          text-underline-position: from-font;
+          text-decoration-skip-ink: none;
+          color: $white;
+
+          @include for-desktop4K {
+            font-size: 25px;
+            line-height: 18px;
+          }
+        }
+      }
+      .buyOneClickContainer {
+        display: flex;
+        position: relative;
+        height: 100%;
+        width: 250px;
+
+        @include for-desktop4K {
+          width: 57%;
+        }
+        .phoneNumber {
+          padding-left: 0.5rem;
+          width: 119px;
+          height: 37px;
+          border-radius: 7px;
+          border-top-right-radius: 0px;
+          border-bottom-right-radius: 0px;
+          border-width: 1px;
+          border-style: solid;
+          border-color: $inputGreyColor;
+          background-color: $bgPage;
+
+          font-family: $fontFamily;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 18px;
+          letter-spacing: 0%;
+          vertical-align: middle;
+
+          @include for-desktop4K {
+            height: 96%;
+            width: 47%;
+            font-size: 21px;
+            border-width: 2px;
+            border-radius: 11px;
+            padding-left: 1.5rem;
+          }
+        }
+        .buyOneClick {
+          position: absolute;
+          left: 49%;
+          width: 129px;
+          height: 39px;
+          border-radius: 7px;
+          background-color: $inputGreyColor;
+          font-family: $fontFamily;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 18px;
+          letter-spacing: 0%;
+          vertical-align: middle;
+          color: $blue;
+          border: none;
+          cursor: pointer;
+          z-index: 1;
+          &:hover {
+            background-color: rgb(207, 207, 207);
+          }
+
+          @include for-desktop4K {
+            height: 100%;
+            width: 53%;
+            font-size: 24px;
+            border-radius: 15px;
+            left: 47%;
+          }
+        }
+      }
+    }
+  }
   .productImgListButton {
     width: 36px;
     height: 36px;

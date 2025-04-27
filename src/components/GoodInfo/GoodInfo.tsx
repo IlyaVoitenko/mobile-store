@@ -3,15 +3,23 @@ import Footer from "../Footer";
 import "../../styles/components/_goodInfo.scss";
 import "../../styles/components/_categoryNavProduct.scss";
 import ProductCollection from "../ProductCollection";
-import { Link, useParams } from "react-router-dom";
-import { getProductsSelector } from "../../store/selectors";
+import basketImg from "../../assets/basketImg.svg";
+import { Link, redirect, useParams } from "react-router-dom";
+import {
+  getProductsSelector,
+  getProductsByFilterSelector,
+  getSelectedProductSelector,
+} from "../../store/selectors";
 import { CategoryType, IReviewPostValues } from "../../types";
 import { useSelector } from "react-redux";
 import { addNewReviewPost } from "../../helper";
 import {
   checkValidContent,
   handleValidClientName,
+  filterProductsByUniqField,
   handleValidSearchProduct,
+  handleValidClientNumber,
+  handleDefiningColorBlock,
 } from "../../helper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -32,10 +40,8 @@ import whiteSiliconeCase from "../../assets/whiteSiliconeCase.svg";
 import blackSiliconeCase from "../../assets/blackSiliconeCase.svg";
 import ArrowWhiteDown from "../../assets/ArrowWhiteDown.svg";
 import ArrowWhiteUp from "../../assets/ArrowWhiteUp.svg";
-
 import visa from "../../assets/visa.svg";
-
-import { useState } from "react";
+import React, { useState } from "react";
 import { nanoid } from "nanoid";
 const imgsProductList = [
   {
@@ -76,10 +82,24 @@ const validationSchema = Yup.object({
 });
 const GoodInfo = () => {
   const { category } = useParams();
+  const selectedProduct = useSelector(getSelectedProductSelector);
+  if (!selectedProduct.id) redirect("/");
   const productsSelector = useSelector(getProductsSelector);
+  const productFilteredSelector = useSelector(getProductsByFilterSelector);
   const [amountsSelectedStars, setAmountsSelectedStars] = useState(0);
+  const [amountItem, setAmountItem] = useState<number>(1);
   const [activeImgItem, setActiveImgItem] = useState(imgsProductList[0]);
-
+  // const colorsUniq =
+  //   productFilteredSelector.length === 0
+  //     ? filterProductsByUniqField(productsSelector[category as CategoryType],'color')
+  //     : filterProductsByUniqField(productFilteredSelector,'color');
+  const modelsUniq =
+    productFilteredSelector.length === 0
+      ? filterProductsByUniqField(
+          productsSelector[category as CategoryType],
+          "model"
+        )
+      : filterProductsByUniqField(productFilteredSelector, "model");
   const formik = useFormik<IReviewPostValues>({
     initialValues: { email: "", feedback: "", clientName: "" },
     validationSchema,
@@ -113,32 +133,58 @@ const GoodInfo = () => {
         <div className="productOptionsContainer">
           <section className="productsImgsContainer">
             <div className="productImgListContainer">
-              <ul className="productImgList">
-                {imgsProductList &&
-                  imgsProductList.map((item) => (
-                    <li
-                      key={item.id}
-                      onClick={() => {
-                        setActiveImgItem(item);
-                        imgsProductList.forEach((el) => {
-                          el.isActive = false;
-                        });
-                        item.isActive = true;
-                      }}
-                      className={`${
-                        item.isActive ? "liActive" : "liNotActive"
-                      } `}
-                    >
-                      <img src={item.img} alt="" />
-                    </li>
-                  ))}
-              </ul>
+              <div className="productImgOverFlow">
+                <ul className="productImgList">
+                  {imgsProductList &&
+                    imgsProductList.map((item) => (
+                      <li
+                        key={item.id}
+                        onClick={() => {
+                          const index = imgsProductList.findIndex(
+                            (itemList) => itemList.id === item.id
+                          );
+                          setActiveImgItem(imgsProductList[index]);
+                        }}
+                        className={`${
+                          activeImgItem.id === item.id
+                            ? "liActive"
+                            : "liNotActive"
+                        } `}
+                      >
+                        <img src={item.img} alt="" />
+                      </li>
+                    ))}
+                </ul>
+              </div>
+
               <div>
-                <button className="productImgListButton" title="Scroll down">
+                <button
+                  onClick={() => {
+                    const index = imgsProductList.findIndex(
+                      (item) => item.id === activeImgItem.id
+                    );
+
+                    if (index === imgsProductList.length - 1) return;
+                    setActiveImgItem(imgsProductList[index + 1]);
+                  }}
+                  className="productImgListButton"
+                  title="Scroll down"
+                >
                   <img src={ArrowWhiteDown} alt="Scroll down" />
                 </button>
                 &nbsp;
-                <button className="productImgListButton" title="Scroll up">
+                <button
+                  onClick={() => {
+                    const index = imgsProductList.findIndex(
+                      (item) => item.id === activeImgItem.id
+                    );
+
+                    if (index === 0) return;
+                    setActiveImgItem(imgsProductList[index - 1]);
+                  }}
+                  className="productImgListButton"
+                  title="Scroll up"
+                >
                   <img src={ArrowWhiteUp} alt="Scroll up" />
                 </button>
               </div>
@@ -151,7 +197,134 @@ const GoodInfo = () => {
               />
             </div>
           </section>
-          <section></section>
+          <section className="productInfoContainer">
+            <h1 className="nameProduct">{selectedProduct.name}</h1>
+            <section className="stockAndVendorCodeContainer">
+              <span
+                className="spanGreyBox"
+                id={
+                  selectedProduct.inStock ? "greenColorText" : "errorColorText"
+                }
+              >
+                &nbsp; {selectedProduct.inStock ? `In stock` : "Haven't"} &nbsp;
+              </span>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <span id="vendorCode">Vendor code:</span>&nbsp;&nbsp;
+              <span className="spanGreyBox" id="greyColorText">
+                {selectedProduct.vendorCode}
+              </span>
+            </section>
+            <section className="colorsContainer">
+              <h4>Choose color:</h4>
+              <ul className="colorsList">
+                {imgsProductList.map((item) => (
+                  <li
+                    key={item.id}
+                    onClick={() => {
+                      const index = imgsProductList.findIndex(
+                        (itemList) => itemList.color === item.color
+                      );
+                      setActiveImgItem(imgsProductList[index]);
+                    }}
+                    className={
+                      activeImgItem.color === item.color
+                        ? "activeColorLi"
+                        : "colorBlock"
+                    }
+                    style={{
+                      backgroundColor:
+                        activeImgItem.color === item.color
+                          ? "white"
+                          : handleDefiningColorBlock(item.color),
+                      border:
+                        activeImgItem.color === item.color
+                          ? `1px solid ${handleDefiningColorBlock(item.color)}`
+                          : "none",
+                    }}
+                  >
+                    <div
+                      style={{
+                        backgroundColor:
+                          activeImgItem.color === item.color
+                            ? handleDefiningColorBlock(item.color)
+                            : "",
+                      }}
+                      className={
+                        activeImgItem.color === item.color
+                          ? "activeColorDiv"
+                          : "colorBlock"
+                      }
+                    ></div>
+                  </li>
+                ))}
+              </ul>
+            </section>
+            <section className="modelsContainer">
+              <h4>{category} model:</h4>
+              <div className="modelsList">
+                {modelsUniq &&
+                  modelsUniq.map((item) => (
+                    <React.Fragment key={item.id}>
+                      <button
+                        className={
+                          selectedProduct.model === item.model
+                            ? "btnActiveModel"
+                            : "btnModel"
+                        }
+                      >
+                        {item.model}
+                      </button>
+                      &nbsp; &nbsp;
+                    </React.Fragment>
+                  ))}
+              </div>
+            </section>
+            <section className="priceContainer">
+              <h1>{selectedProduct.price}</h1>
+              <span>$</span>
+            </section>
+            <div className="btnBuyProductContainer">
+              <div className="amountProductContainer">
+                <button
+                  onClick={() => {
+                    if (amountItem === 1) return;
+                    setAmountItem(amountItem - 1);
+                  }}
+                >
+                  -
+                </button>
+                <span>{amountItem}</span>
+                <button
+                  onClick={() => {
+                    if (amountItem > 99) return;
+                    setAmountItem(amountItem + 1);
+                  }}
+                >
+                  +
+                </button>
+              </div>
+              <button className="basketBtn" onClick={() => selectedProduct}>
+                <span>Add to cart</span>{" "}
+                <img src={basketImg} alt="Add to card button" />
+              </button>{" "}
+              <div className="buyOneClickContainer">
+                <input
+                  className="phoneNumber"
+                  type="text"
+                  placeholder="Phone number"
+                  onPaste={(e) => {
+                    //get data from clipboard and check valid
+                    const pasted = e.clipboardData.getData("text");
+                    if (!handleValidClientNumber(pasted)) e.preventDefault();
+                  }}
+                  onKeyDown={(e) =>
+                    checkValidContent(e, handleValidClientNumber)
+                  }
+                />
+                <button className="buyOneClick">Buy in one click</button>
+              </div>
+            </div>
+          </section>
         </div>
         <br />
         <div className="shippingAndPaymentContainer">

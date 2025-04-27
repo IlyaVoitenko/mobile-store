@@ -301,43 +301,6 @@ const Category = () => {
                     </ul>
                   </div>
                 )}
-                {/* {type && (
-                  <div className="containerFilters">
-                    <span className="filterTitle"> Type</span>
-                    <ul className={"listFilterShow"}>
-                      {type.map((item: string) => (
-                        <li key={nanoid()}>
-                          <label htmlFor={item} className="filterLabel">
-                            <input
-                              type="checkbox"
-                              id={item}
-                              name={item}
-                              className="checkboxFilter"
-                              checked={
-                                selectedFilters?.type?.includes(item) ?? false
-                              }
-                              onChange={({ target }) => {
-                                handlePositionBtnApplyFilters(
-                                  target,
-                                  setPositionApplyBtn,
-                                  containerRef
-                                );
-                                handleIsCheckedFilter(
-                                  target,
-                                  setActionFilters,
-                                  "type"
-                                );
-                              }}
-                            />
-                            <span className="box"></span>
-
-                            <span className="filterSpan">{item}</span>
-                          </label>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )} */}
               </div>
               <div
                 className="applyFilterBtnContainer"

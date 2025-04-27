@@ -16,6 +16,7 @@ import Header from "../../components/Header";
 import {
   setProductsByFilter,
   setSelectedFilters,
+  setSelectedProduct,
 } from "../../store/slices/productsSlice";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -57,6 +58,23 @@ const Main = () => {
     dispatch(setProductsByFilter([]));
     dispatch(
       setSelectedFilters({ model: [], storage: [], color: [], type: [] })
+    );
+    dispatch(
+      setSelectedProduct({
+        id: "",
+        name: "",
+        description: "",
+        price: 0,
+        inStock: false,
+        isPopular: false,
+        color: "",
+        model: "",
+        storage: "",
+        quantity: 0,
+        imgUrl: "",
+        type: "",
+        vendorCode: 0,
+      })
     );
   }, []);
 
