@@ -228,6 +228,7 @@ const Main = () => {
                     : "needHelpInput"
                 }
                 placeholder="phone number"
+                maxLength={11}
                 name="phoneNumber"
                 required
               />

@@ -157,12 +157,31 @@
   @include for-desktop4K {
     height: 700px;
   }
+  @include for-mobile {
+    flex-direction: column;
+  }
+  @include for-mobileL {
+    height: 800px;
+  }
+  @include for-mobileM {
+    height: 800px;
+  }
+  @include for-mobileS {
+    height: 830px;
+  }
   @include containerResponsiveWidth;
   .productsImgsContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 48.5%;
+    @include for-mobile {
+      width: 100%;
+    }
+    @include for-laptop {
+      width: 49%;
+    }
+
     .mainProductImgContainer {
       display: flex;
       justify-content: center;
@@ -171,10 +190,18 @@
       height: 356px;
       border-radius: 23px;
       background-color: $white;
+      @include for-mobile {
+        width: 75%;
+      }
       @include for-desktop4K {
         width: 75%;
         height: 100%;
         border-radius: 30px;
+      }
+      @include for-laptop {
+        width: 348px;
+        height: 100%;
+        border-radius: 20px;
       }
       .mainProductImg {
         width: 96%;
@@ -236,6 +263,24 @@
 
     @include for-desktop4K {
       width: 48.1%;
+    }
+    @include for-LaptopL {
+      width: 48.8%;
+    }
+    @include for-laptop {
+      width: 49.1%;
+    }
+    @include for-mobile {
+      width: 100%;
+    }
+    @include for-mobileL {
+      height: 430px;
+    }
+    @include for-mobileM {
+      height: 430px;
+    }
+    @include for-mobileS {
+      height: 450px;
     }
     .nameProduct {
       font-family: $fontFamily;
@@ -432,33 +477,30 @@
     }
     .priceContainer {
       display: flex;
-
+      height: 10%;
+      align-items: baseline;
       h1 {
         font-family: $fontFamily;
         font-weight: 700;
         font-size: 30px;
-        line-height: 25%;
         letter-spacing: 0%;
         vertical-align: middle;
         color: $shippingTitle;
 
         @include for-desktop4K {
           font-size: 60px;
-          line-height: 25%;
         }
       }
       span {
         font-family: $fontFamily;
         font-weight: 600;
         font-size: 16px;
-        line-height: 100%;
         letter-spacing: 0%;
         vertical-align: bottom;
         color: $shippingTitle;
 
         @include for-desktop4K {
           font-size: 31px;
-          line-height: 100%;
           margin-left: 0.5rem;
         }
       }
@@ -468,6 +510,27 @@
       justify-content: space-between;
       align-items: center;
       width: 100%;
+      @include for-mobile {
+        align-items: end;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+      @include for-mobileM {
+        flex-wrap: nowrap;
+      }
+      @include for-mobileL {
+        flex-wrap: nowrap;
+      }
+      @include for-mobileS {
+        flex-wrap: wrap-reverse;
+      }
+      @include for-tablet {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
       .amountProductContainer {
         display: flex;
         border-radius: 5px;
@@ -477,6 +540,12 @@
         border-width: 1px;
         border-color: #e3e9ef;
         border-style: solid;
+        @include for-tablet {
+          width: 121px;
+        }
+        @include for-mobileS {
+          width: 130px;
+        }
         @include for-desktop4K {
           width: 189px;
           height: 78px;
@@ -530,11 +599,19 @@
         justify-content: center;
         border: none;
         cursor: pointer;
-
+        @include for-mobile {
+          width: 90px;
+        }
+        @include for-tablet {
+          width: 126px;
+        }
         @include for-desktop4K {
           width: 188px;
           height: 78px;
           border-radius: 10px;
+        }
+        @include for-mobileS {
+          width: 130px;
         }
         img {
           width: 12px;
@@ -555,7 +632,12 @@
           text-underline-position: from-font;
           text-decoration-skip-ink: none;
           color: $white;
-
+          @include for-mobile {
+            font-size: 11px;
+          }
+          @include for-tablet {
+            font-size: 11px;
+          }
           @include for-desktop4K {
             font-size: 25px;
             line-height: 18px;
@@ -567,9 +649,22 @@
         position: relative;
         height: 100%;
         width: 250px;
-
+        @include for-tablet {
+          margin-top: 0rem;
+          height: 40px;
+        }
         @include for-desktop4K {
           width: 57%;
+        }
+        @include for-mobileL {
+          width: 200px;
+        }
+        @include for-mobileM {
+          width: 200px;
+        }
+        @include for-mobileS {
+          width: 100%;
+          height: 55px;
         }
         .phoneNumber {
           padding-left: 0.5rem;
@@ -590,6 +685,21 @@
           letter-spacing: 0%;
           vertical-align: middle;
 
+          @include for-mobile {
+            padding-top: 0px;
+            font-size: 11px;
+            height: 38px;
+          }
+          @include for-mobileM {
+            width: 119px;
+          }
+          @include for-mobileS {
+            width: 50%;
+          }
+          @include for-tablet {
+            margin-top: 0;
+            font-size: 11px;
+          }
           @include for-desktop4K {
             height: 96%;
             width: 47%;
@@ -597,6 +707,9 @@
             border-width: 2px;
             border-radius: 11px;
             padding-left: 1.5rem;
+          }
+          &:focus {
+            outline: none;
           }
         }
         .buyOneClick {
@@ -616,6 +729,19 @@
           border: none;
           cursor: pointer;
           z-index: 1;
+
+          @include for-mobile {
+            font-size: 11px;
+            width: 96px;
+          }
+          @include for-mobileS {
+            width: 50%;
+            height: 41px;
+          }
+          @include for-tablet {
+            font-size: 11px;
+            width: 103px;
+          }
           &:hover {
             background-color: rgb(207, 207, 207);
           }
@@ -700,7 +826,7 @@
       border-radius: 20px;
     }
     @include for-laptop {
-      width: 445px;
+      width: 465px;
       height: 156px;
     }
 

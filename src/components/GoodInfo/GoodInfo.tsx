@@ -89,10 +89,14 @@ const GoodInfo = () => {
   const [amountsSelectedStars, setAmountsSelectedStars] = useState(0);
   const [amountItem, setAmountItem] = useState<number>(1);
   const [activeImgItem, setActiveImgItem] = useState(imgsProductList[0]);
-  // const colorsUniq =
-  //   productFilteredSelector.length === 0
-  //     ? filterProductsByUniqField(productsSelector[category as CategoryType],'color')
-  //     : filterProductsByUniqField(productFilteredSelector,'color');
+  const colorsUniq =
+    productFilteredSelector.length === 0
+      ? filterProductsByUniqField(
+          productsSelector[category as CategoryType],
+          "color"
+        )
+      : filterProductsByUniqField(productFilteredSelector, "color");
+  console.log("colorsUniq", colorsUniq);
   const modelsUniq =
     productFilteredSelector.length === 0
       ? filterProductsByUniqField(
@@ -312,6 +316,7 @@ const GoodInfo = () => {
                   className="phoneNumber"
                   type="text"
                   placeholder="Phone number"
+                  maxLength={11}
                   onPaste={(e) => {
                     //get data from clipboard and check valid
                     const pasted = e.clipboardData.getData("text");
