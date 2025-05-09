@@ -1,6 +1,7 @@
 import {
   IProduct,
   initialStateProps,
+  InitialBucket,
   IProductCategory,
   IFilter,
 } from "../../types";
@@ -33,3 +34,6 @@ export const getPriceRangeSelector = (state: { products: initialStateProps }) =>
 
 export const getIsPopularGoods = (state: { products: initialStateProps }) =>
   state.products.popularGoodsOption;
+
+export const getBucketProducts = (state: { bucket: InitialBucket }) =>
+  state.bucket.bucket;

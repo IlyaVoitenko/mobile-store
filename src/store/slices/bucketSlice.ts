@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { InitialBucket } from "../../types";
+
 const initialState: InitialBucket = {
   bucket: [],
   totalSumma: 0,
@@ -24,24 +25,45 @@ const bucketSlice = createSlice({
       );
       if (!existingProduct) state.bucket = [...state.bucket, action.payload];
     },
-    removeFromBucket: (state, action) => {
+    increaseQuantity: (state, action) => {
       const index = state.bucket.findIndex(
-        (item) => item.id === action.payload.id
+        (item) => item.id === action.payload
       );
-      if (!index) {
-        state.bucket.splice(index, 1);
+
+      if (index !== -1) {
+        const updatedProduct = {
+          ...state.bucket[index],
+          quantity: (state.bucket[index]?.quantity ?? 0) + 1,
+        };
+
+        state.bucket[index] = updatedProduct;
       }
     },
-    clearBucket: (state) => {
-      state.bucket = [];
+    decreaseQuantity: (state, action) => {
+      const index = state.bucket.findIndex(
+        (item) => item.id === action.payload
+      );
+
+      if (index !== -1) {
+        const updatedProduct = {
+          ...state.bucket[index],
+          quantity: (state.bucket[index]?.quantity ?? 0) - 1,
+        };
+        state.bucket[index] = updatedProduct;
+      }
     },
+
     setDataClient: (state, action) => {
       state.dataClient = { ...action.payload };
     },
   },
 });
 
-export const { addToBucket, removeFromBucket, clearBucket, setDataClient } =
-  bucketSlice.actions;
+export const {
+  addToBucket,
+  setDataClient,
+  decreaseQuantity,
+  increaseQuantity,
+} = bucketSlice.actions;
 
 export default bucketSlice.reducer;

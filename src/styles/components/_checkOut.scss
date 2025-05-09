@@ -1,0 +1,156 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/colors" as *;
+@use "../abstracts/mixins" as *;
+@use "../abstracts/mediaQuery" as *;
+
+.containerContent {
+  display: flex;
+  justify-content: space-between;
+
+  .containerCard {
+    width: 730px;
+    height: 373px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      tbody {
+        tr:nth-child(1) {
+          border-top: 1px solid $borderTable;
+          border-bottom: 1px solid $borderTable;
+        }
+        tr {
+          border-bottom: 1px solid $borderTable;
+        }
+      }
+    }
+    .quantityProduct {
+      position: relative;
+      width: 20%;
+      height: 100%;
+      div {
+        position: absolute;
+        top: 30%;
+        left: 17%;
+      }
+    }
+    .border {
+      border: 1px solid #e3e9ef;
+    }
+    .productFlex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      width: 300px;
+      .productImg {
+        width: 117.75px;
+        height: 94px;
+        border-radius: 6.09px;
+      }
+      .productName {
+        width: 142px;
+        height: 68px;
+
+        font-family: $fontFamily;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        overflow: hidden;
+
+        line-clamp: 5;
+        color: $greyOnlineStore;
+      }
+    }
+    .thHead {
+      height: 35px;
+      font-family: $fontFamily;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: $thHead;
+    }
+    .sumProduct {
+      text-align: center;
+
+      .sum {
+        font-family: $fontFamily;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        vertical-align: middle;
+      }
+      .dollarChar {
+        font-family: $fontFamily;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        vertical-align: middle;
+      }
+    }
+    .priceProduct {
+      text-align: center;
+      font-family: $fontFamily;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: $shippingTitle;
+    }
+    .sumContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      .totalSumContainer {
+        margin-top: 2rem;
+        display: flex;
+
+        .totalText {
+          font-family: $fontFamily;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 100%;
+          letter-spacing: 0%;
+          color: $titleGoodInfo;
+        }
+        .sumText {
+          font-family: $fontFamily;
+          font-weight: 600;
+          font-size: 22px;
+          line-height: 18px;
+          letter-spacing: 0%;
+          vertical-align: middle;
+          color: $linkContinueShopping;
+        }
+      }
+      .linkContinueShopping {
+        font-family: $fontFamily;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: $linkContinueShopping;
+        text-decoration: dashed underline;
+      }
+    }
+    h1 {
+      font-family: $fontFamily;
+      font-weight: 600;
+      font-size: 50px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: $greyOnlineStore;
+    }
+  }
+}

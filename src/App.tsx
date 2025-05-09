@@ -23,6 +23,13 @@ const router = createBrowserRouter([
       Component: (await import("./pages/GoodInfoPages")).default,
     }),
   },
+  {
+    path: "/checkout",
+    errorElement: <ErrorPage />,
+    lazy: async () => ({
+      Component: (await import("./pages/CheckOutPage")).default,
+    }),
+  },
 ]);
 
 function App() {

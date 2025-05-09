@@ -564,6 +564,9 @@
         @include for-mobileS {
           width: 130px;
         }
+        @include for-LaptopL {
+          width: 130px;
+        }
         @include for-desktop4K {
           width: 189px;
           height: 78px;
@@ -622,6 +625,9 @@
         }
         @include for-tablet {
           width: 126px;
+        }
+        @include for-LaptopL {
+          width: 132px;
         }
         @include for-desktop4K {
           width: 188px;
