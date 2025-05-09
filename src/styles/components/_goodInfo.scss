@@ -238,6 +238,13 @@
           background-color: $white;
           border-color: $brItemImg;
           border-style: solid;
+          img {
+            width: 80px;
+            height: 66px;
+            border-width: 0px;
+
+            border-radius: 8px;
+          }
         }
         .liActive {
           display: flex;
@@ -250,6 +257,17 @@
           border-color: $activeBrItemImg;
           background-color: $white;
           border-style: solid;
+
+          img {
+            width: 80px;
+            height: 66px;
+            border-width: 1px;
+
+            border-radius: 8px;
+          }
+        }
+        li {
+          margin-bottom: 0.5rem;
         }
       }
     }
@@ -667,6 +685,7 @@
           height: 55px;
         }
         .phoneNumber {
+          padding: 0px;
           padding-left: 0.5rem;
           width: 119px;
           height: 37px;

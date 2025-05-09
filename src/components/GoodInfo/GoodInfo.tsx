@@ -11,8 +11,9 @@ import {
   getSelectedProductSelector,
 } from "../../store/selectors";
 import { CategoryType, IReviewPostValues } from "../../types";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addNewReviewPost } from "../../helper";
+import { addToBucket } from "../../store/slices/bucketSlice";
 import {
   checkValidContent,
   handleValidClientName,
@@ -34,41 +35,11 @@ import deliveryCar from "../../assets/deliveryCar.svg";
 import geoMark from "../../assets/geoMark.svg";
 import moneyCash from "../../assets/moneyCash.svg";
 import openBox from "../../assets/openBox.svg";
-import redSiliconeCase from "../../assets/redSiliconeCase.svg";
-import blueSiliconeCase from "../../assets/blueSiliconeCase.svg";
-import whiteSiliconeCase from "../../assets/whiteSiliconeCase.svg";
-import blackSiliconeCase from "../../assets/blackSiliconeCase.svg";
 import ArrowWhiteDown from "../../assets/ArrowWhiteDown.svg";
 import ArrowWhiteUp from "../../assets/ArrowWhiteUp.svg";
 import visa from "../../assets/visa.svg";
 import React, { useState } from "react";
-import { nanoid } from "nanoid";
-const imgsProductList = [
-  {
-    id: nanoid(),
-    img: redSiliconeCase,
-    color: "Red",
-    isActive: true,
-  },
-  {
-    id: nanoid(),
-    img: blueSiliconeCase,
-    color: "Blue",
-    isActive: false,
-  },
-  {
-    id: nanoid(),
-    img: whiteSiliconeCase,
-    color: "White",
-    isActive: false,
-  },
-  {
-    id: nanoid(),
-    img: blackSiliconeCase,
-    color: "Black",
-    isActive: false,
-  },
-];
+
 const validationSchema = Yup.object({
   feedback: Yup.string()
     .min(2, "min 2 symbols")
@@ -82,13 +53,13 @@ const validationSchema = Yup.object({
 });
 const GoodInfo = () => {
   const { category } = useParams();
+  const dispatch = useDispatch();
   const selectedProduct = useSelector(getSelectedProductSelector);
   if (!selectedProduct.id) redirect("/");
   const productsSelector = useSelector(getProductsSelector);
   const productFilteredSelector = useSelector(getProductsByFilterSelector);
   const [amountsSelectedStars, setAmountsSelectedStars] = useState(0);
   const [amountItem, setAmountItem] = useState<number>(1);
-  const [activeImgItem, setActiveImgItem] = useState(imgsProductList[0]);
   const colorsUniq =
     productFilteredSelector.length === 0
       ? filterProductsByUniqField(
@@ -96,7 +67,8 @@ const GoodInfo = () => {
           "color"
         )
       : filterProductsByUniqField(productFilteredSelector, "color");
-  console.log("colorsUniq", colorsUniq);
+  const [activeImgItem, setActiveImgItem] = useState(colorsUniq[0]);
+  const [activeModel, setActiveModel] = useState(selectedProduct?.model);
   const modelsUniq =
     productFilteredSelector.length === 0
       ? filterProductsByUniqField(
@@ -104,6 +76,7 @@ const GoodInfo = () => {
           "model"
         )
       : filterProductsByUniqField(productFilteredSelector, "model");
+
   const formik = useFormik<IReviewPostValues>({
     initialValues: { email: "", feedback: "", clientName: "" },
     validationSchema,
@@ -139,15 +112,15 @@ const GoodInfo = () => {
             <div className="productImgListContainer">
               <div className="productImgOverFlow">
                 <ul className="productImgList">
-                  {imgsProductList &&
-                    imgsProductList.map((item) => (
+                  {colorsUniq &&
+                    colorsUniq.map((item) => (
                       <li
                         key={item.id}
                         onClick={() => {
-                          const index = imgsProductList.findIndex(
+                          const index = colorsUniq.findIndex(
                             (itemList) => itemList.id === item.id
                           );
-                          setActiveImgItem(imgsProductList[index]);
+                          setActiveImgItem(colorsUniq[index]);
                         }}
                         className={`${
                           activeImgItem.id === item.id
@@ -155,7 +128,7 @@ const GoodInfo = () => {
                             : "liNotActive"
                         } `}
                       >
-                        <img src={item.img} alt="" />
+                        <img src={item.imgUrl} alt="" />
                       </li>
                     ))}
                 </ul>
@@ -164,12 +137,12 @@ const GoodInfo = () => {
               <div>
                 <button
                   onClick={() => {
-                    const index = imgsProductList.findIndex(
+                    const index = colorsUniq.findIndex(
                       (item) => item.id === activeImgItem.id
                     );
 
-                    if (index === imgsProductList.length - 1) return;
-                    setActiveImgItem(imgsProductList[index + 1]);
+                    if (index === colorsUniq.length - 1) return;
+                    setActiveImgItem(colorsUniq[index + 1]);
                   }}
                   className="productImgListButton"
                   title="Scroll down"
@@ -179,12 +152,12 @@ const GoodInfo = () => {
                 &nbsp;
                 <button
                   onClick={() => {
-                    const index = imgsProductList.findIndex(
+                    const index = colorsUniq.findIndex(
                       (item) => item.id === activeImgItem.id
                     );
 
                     if (index === 0) return;
-                    setActiveImgItem(imgsProductList[index - 1]);
+                    setActiveImgItem(colorsUniq[index - 1]);
                   }}
                   className="productImgListButton"
                   title="Scroll up"
@@ -196,65 +169,68 @@ const GoodInfo = () => {
             <div className="mainProductImgContainer">
               <img
                 className="mainProductImg"
-                src={activeImgItem.img}
-                alt={activeImgItem.color}
+                src={activeImgItem?.imgUrl}
+                alt={activeImgItem?.color}
               />
             </div>
           </section>
           <section className="productInfoContainer">
-            <h1 className="nameProduct">{selectedProduct.name}</h1>
+            <h1 className="nameProduct">{selectedProduct?.name}</h1>
             <section className="stockAndVendorCodeContainer">
               <span
                 className="spanGreyBox"
                 id={
-                  selectedProduct.inStock ? "greenColorText" : "errorColorText"
+                  selectedProduct?.inStock ? "greenColorText" : "errorColorText"
                 }
               >
-                &nbsp; {selectedProduct.inStock ? `In stock` : "Haven't"} &nbsp;
+                &nbsp; {selectedProduct?.inStock ? `In stock` : "Haven't"}{" "}
+                &nbsp;
               </span>
               &nbsp;&nbsp;&nbsp;&nbsp;
               <span id="vendorCode">Vendor code:</span>&nbsp;&nbsp;
               <span className="spanGreyBox" id="greyColorText">
-                {selectedProduct.vendorCode}
+                {selectedProduct?.vendorCode}
               </span>
             </section>
             <section className="colorsContainer">
               <h4>Choose color:</h4>
               <ul className="colorsList">
-                {imgsProductList.map((item) => (
+                {colorsUniq.map((item) => (
                   <li
-                    key={item.id}
+                    key={item?.id}
                     onClick={() => {
-                      const index = imgsProductList.findIndex(
-                        (itemList) => itemList.color === item.color
+                      const index = colorsUniq.findIndex(
+                        (itemList) => itemList?.color === item?.color
                       );
-                      setActiveImgItem(imgsProductList[index]);
+                      setActiveImgItem(colorsUniq[index]);
                     }}
                     className={
-                      activeImgItem.color === item.color
+                      activeImgItem?.color === item?.color
                         ? "activeColorLi"
                         : "colorBlock"
                     }
                     style={{
                       backgroundColor:
-                        activeImgItem.color === item.color
+                        activeImgItem?.color === item?.color
                           ? "white"
-                          : handleDefiningColorBlock(item.color),
+                          : handleDefiningColorBlock(item?.color as string),
                       border:
-                        activeImgItem.color === item.color
-                          ? `1px solid ${handleDefiningColorBlock(item.color)}`
+                        activeImgItem?.color === item?.color
+                          ? `1px solid ${handleDefiningColorBlock(
+                              item?.color as string
+                            )}`
                           : "none",
                     }}
                   >
                     <div
                       style={{
                         backgroundColor:
-                          activeImgItem.color === item.color
-                            ? handleDefiningColorBlock(item.color)
+                          activeImgItem?.color === item?.color
+                            ? handleDefiningColorBlock(item?.color as string)
                             : "",
                       }}
                       className={
-                        activeImgItem.color === item.color
+                        activeImgItem?.color === item?.color
                           ? "activeColorDiv"
                           : "colorBlock"
                       }
@@ -270,13 +246,16 @@ const GoodInfo = () => {
                   modelsUniq.map((item) => (
                     <React.Fragment key={item.id}>
                       <button
+                        onClick={() => {
+                          setActiveModel(item?.model);
+                        }}
                         className={
-                          selectedProduct.model === item.model
+                          activeModel === item?.model
                             ? "btnActiveModel"
                             : "btnModel"
                         }
                       >
-                        {item.model}
+                        {item?.model}
                       </button>
                       &nbsp; &nbsp;
                     </React.Fragment>
@@ -284,7 +263,7 @@ const GoodInfo = () => {
               </div>
             </section>
             <section className="priceContainer">
-              <h1>{selectedProduct.price}</h1>
+              <h1>{selectedProduct?.price}</h1>
               <span>$</span>
             </section>
             <div className="btnBuyProductContainer">
@@ -307,7 +286,20 @@ const GoodInfo = () => {
                   +
                 </button>
               </div>
-              <button className="basketBtn" onClick={() => selectedProduct}>
+              <button
+                className="basketBtn"
+                onClick={() => {
+                  dispatch(
+                    addToBucket({
+                      ...selectedProduct,
+                      color: activeImgItem.color,
+                      imgUrl: activeImgItem.imgUrl,
+                      quantity: amountItem,
+                      model: activeModel,
+                    })
+                  );
+                }}
+              >
                 <span>Add to cart</span>{" "}
                 <img src={basketImg} alt="Add to card button" />
               </button>{" "}
@@ -436,11 +428,11 @@ const GoodInfo = () => {
                     type="text"
                     name="clientName"
                     placeholder="Your name"
-                    className={`${
+                    className={`inputsFormNameAndEmail ${
                       formik.touched.clientName && formik.errors.clientName
                         ? "inputsFormError"
                         : "inputsForm"
-                    }  inputsFormNameAndEmail`}
+                    }  `}
                     value={formik.values.clientName}
                     onChange={formik.handleChange}
                     onPaste={(e) => {
@@ -455,11 +447,11 @@ const GoodInfo = () => {
                   <input
                     type="email"
                     name="email"
-                    className={`${
+                    className={`inputsFormNameAndEmail ${
                       formik.touched.email && formik.errors.email
                         ? "inputsFormError"
                         : "inputsForm"
-                    } inputsFormNameAndEmail`}
+                    } `}
                     placeholder="Email"
                     value={formik.values.email}
                     onChange={formik.handleChange}

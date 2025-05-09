@@ -26,7 +26,7 @@
   border-radius: 5px;
 }
 
-.range-slider input[type="range"] {
+.range-slider .rangeInputs {
   position: absolute;
   width: 100%;
   top: 0;
@@ -36,7 +36,7 @@
   height: 5px;
 }
 
-input[type="range"]::-webkit-slider-thumb {
+.rangeInputs::-webkit-slider-thumb {
   height: 15px;
   width: 15px;
   border-radius: 4px;
@@ -50,7 +50,7 @@ input[type="range"]::-webkit-slider-thumb {
   background-image: url("../../assets/trigger_from.svg");
 }
 
-input[type="range"]::-moz-range-thumb {
+.rangeInputs::-moz-range-thumb {
   height: 15px;
   width: 15px;
   border-radius: 4px;
@@ -88,7 +88,7 @@ input[type="range"]::-moz-range-thumb {
 .max-box input {
   float: right;
 }
-input[type="text"] {
+.maxPriceRange {
   width: 70%;
   padding: 10px;
   border: 1px solid $inputGreyColor;
@@ -99,7 +99,26 @@ input[type="text"] {
   font-weight: 400;
   font-size: 14px;
   line-height: 18px;
+  vertical-align: middle;
+  color: $greyNavLink;
+
+  @include for-desktop4K {
+    font-size: 20px;
+    line-height: 33px;
+    border-radius: 10px;
+  }
+}
+.minPriceRange {
+  width: 70%;
+  padding: 10px;
+  border: 1px solid $inputGreyColor;
+  border-radius: 5px;
   text-align: center;
+
+  font-family: $fontFamily;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
   vertical-align: middle;
   color: $greyNavLink;
 
@@ -110,8 +129,13 @@ input[type="text"] {
   }
 }
 
-input[type="text"]::-webkit-inner-spin-button,
-input[type="text"]::-webkit-outer-spin-button {
+.minPriceRange::-webkit-inner-spin-button,
+.minPriceRange::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.maxPriceRange::-webkit-inner-spin-button,
+.maxPriceRange::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }

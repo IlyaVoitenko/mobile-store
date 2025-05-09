@@ -354,7 +354,7 @@ export const handleDefiningColorBlock = (color: string) => {
     case "Black":
       return "#343434";
     case "Blue":
-      return "#359e6c";
+      return "#0066cc";
     case "Yellow":
       return "#ffd700";
     case "Green":

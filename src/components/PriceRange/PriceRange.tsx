@@ -106,10 +106,10 @@ const PriceRange = ({ listProducts }: IPriceRangeProps) => {
             type="text"
             value={minPrice + "$"}
             onChange={handleMinInput}
-            className="min-input"
+            className="minPriceRange"
             min={sliderMinValue ?? 0}
             max={maxVal ? maxVal - minGap : 0}
-            placeholder="min-input"
+            placeholder="min-price"
           />
         </div>
         <span>to</span>
@@ -118,7 +118,7 @@ const PriceRange = ({ listProducts }: IPriceRangeProps) => {
             type="text"
             value={maxPrice + "$"}
             onChange={handleMaxInput}
-            className="max-input"
+            className="maxPriceRange"
             min={minVal ? minVal + minGap : 0}
             max={sliderMaxValue ?? 0}
             placeholder="max-input"
@@ -134,8 +134,8 @@ const PriceRange = ({ listProducts }: IPriceRangeProps) => {
           max={sliderMaxValue ?? 0}
           value={minVal ?? 0}
           onChange={slideMin}
-          className="min-val"
-          placeholder="min"
+          className="min-val rangeInputs"
+          placeholder="Min"
         />
         <input
           type="range"
@@ -143,7 +143,7 @@ const PriceRange = ({ listProducts }: IPriceRangeProps) => {
           max={sliderMaxValue ?? 0}
           value={maxVal ?? 0}
           onChange={slideMax}
-          className="max-val"
+          className="max-val rangeInputs"
           placeholder="Max"
         />
       </div>

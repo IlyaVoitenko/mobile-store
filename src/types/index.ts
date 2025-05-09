@@ -59,7 +59,9 @@ export interface IPriceRange {
   initialMinPrice?: number | null;
   initialMaxPrice?: number | null;
 }
-
+export interface NewProductToBucket extends IProduct {
+  number: number;
+}
 export interface initialStateProps {
   products: IProductCategory;
   paginatedProducts: IProduct[];
@@ -70,7 +72,20 @@ export interface initialStateProps {
   popularGoodsOption: string;
   selectedProduct: IProduct;
 }
-
+export interface DataClient {
+  name: string;
+  surname: string;
+  phone: string;
+  address: string;
+}
+export interface InitialBucket {
+  bucket: NewProductToBucket[];
+  totalSumma: number;
+  typeDelivery: string;
+  typePayment: string;
+  addressClient: string;
+  dataClient: DataClient;
+}
 export interface ApplyFilterArgs {
   productsByFilterSelector: IProduct[];
   selectedFilters: string[];
