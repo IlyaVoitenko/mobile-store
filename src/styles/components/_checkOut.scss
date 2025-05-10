@@ -6,6 +6,7 @@
 .containerContent {
   display: flex;
   justify-content: space-between;
+  @include containerResponsiveWidth;
 
   .containerCard {
     width: 730px;
@@ -151,6 +152,89 @@
       letter-spacing: 0%;
       vertical-align: middle;
       color: $greyOnlineStore;
+    }
+  }
+  .containerCheckOut {
+    h1 {
+      font-family: $fontFamily;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: $greyOnlineStore;
+    }
+    .formCheckout {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 301px;
+      height: 100%;
+      .checkoutInput {
+        width: 301px;
+        height: 38px;
+        border-radius: 6px;
+        border-width: 1px;
+        border-color: #838b9542;
+
+        font-family: $fontFamily;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 18px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        padding-left: 5%;
+      }
+      .typesDeliveryContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .buttonDeliveryType {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: flex-start;
+          padding-left: 1rem;
+          width: 145px;
+          height: 89px;
+          border-radius: 6px;
+          border-width: 1px;
+
+          span {
+            display: flex;
+            text-align: start;
+            align-items: center;
+            width: 60px;
+            height: 32px;
+            font-family: $fontFamily;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 14px;
+            letter-spacing: 0%;
+            vertical-align: middle;
+          }
+        }
+        .buttonDeliveryType:last-child {
+          width: 301px;
+          height: 89px;
+          border-radius: 6px;
+          border-width: 1px;
+        }
+        .buttonDeliveryTypeNotActive {
+          background-color: $white;
+          border-color: $borderTypeDelivery;
+          span {
+            color: $typeDeliveryColor;
+          }
+        }
+        .buttonDeliveryTypeActive {
+          border-width: 0px;
+          background-color: $blue;
+
+          span {
+            color: $white;
+          }
+        }
+      }
     }
   }
 }

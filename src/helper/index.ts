@@ -19,7 +19,7 @@ export const allowedKeys = [
   "Delete",
   "Tab",
 ];
-
+//checking is valid keys pasted
 export const checkValidContent = <
   T extends HTMLInputElement | HTMLTextAreaElement
 >(
@@ -30,13 +30,14 @@ export const checkValidContent = <
   //check valid text and keys
   if (!eventValidContent(key) && !allowedKeys.includes(key)) e.preventDefault();
 };
+//checking is valid values by numbers and text
 export const handleValidSearchProduct = (value: string): boolean => {
   const textRegex = /^[a-zA-Z]+$/;
   const numberRegex = /^\+?\d{0,15}$/;
   if (textRegex.test(value) || numberRegex.test(value)) return true;
   return false;
 };
-//checking is valid the client number
+//checking is valid the client name
 export const handleValidClientName = (value: string): boolean => {
   const clientNameRegex = /^[a-zA-Z]+$/;
   const isName = clientNameRegex.test(value);

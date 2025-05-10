@@ -2,10 +2,25 @@ import "../../styles/pages/_index.scss";
 import "../../styles/components/_categoryNavProduct.scss";
 import "../../styles/components/_checkOut.scss";
 import "../../styles/components/_amountProduct.scss";
+import CourierDelivery from "../../assets/CourierDelivery.svg";
+import CourierDeliveryGrey from "../../assets/CourierDeliveryGrey.svg";
+import PickUpDelivery from "../../assets/PickUpDelivery.svg";
+import PickUpDeliveryWhite from "../../assets/PickUpDeliveryWhite.svg";
+import novaPostaGrey from "../../assets/novaPostaGrey.svg";
+import novaPostaWhite from "../../assets/novaPostaWhite.svg";
 
 import { Link } from "react-router-dom";
+import { CheckOutForm } from "../../types";
 import { useSelector, useDispatch } from "react-redux";
 import { getBucketProducts } from "../../store/selectors";
+import {
+  checkValidContent,
+  handleValidSearchProduct,
+  handleValidClientName,
+  handleValidClientNumber,
+} from "../../helper";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import {
   decreaseQuantity,
   increaseQuantity,
@@ -16,10 +31,21 @@ import Header from "../Header";
 import ArrowRightGrey from "../../assets/ArrowRightGrey.svg";
 import { useEffect, useState } from "react";
 
+const validationSchema = Yup.object({
+  name: Yup.string().min(3, "min 3 symbols").required(),
+  surname: Yup.string().min(3, "min 3 symbols").required(),
+  numberPhone: Yup.number().min(10, "min 10 numbers").required(),
+  address: Yup.string().min(10, "min 3 symbols").required(),
+});
 const CheckOut = () => {
   const dispatch = useDispatch();
   const bucketList = useSelector(getBucketProducts);
   const [totalSum, setTotalSum] = useState<number>(0);
+  const [deliveryType, setDeliveryType] = useState({
+    courierType: true,
+    pickUpType: false,
+    postalType: false,
+  });
   useEffect(() => {
     const total = bucketList.reduce((prev, current) => {
       const { quantity, price } = current;
@@ -28,6 +54,20 @@ const CheckOut = () => {
     }, 0);
     setTotalSum(total);
   }, [bucketList]);
+
+  const formik = useFormik<CheckOutForm>({
+    initialValues: {
+      name: "",
+      surname: "",
+      numberPhone: 0,
+      address: "",
+    },
+    validationSchema,
+    onSubmit: async (_, { setSubmitting, resetForm }) => {
+      setSubmitting(false);
+      resetForm();
+    },
+  });
   return (
     <div className="pageDefault">
       <Header />
@@ -108,7 +148,147 @@ const CheckOut = () => {
               </div>
             </nav>
           </section>
-          <section className="containerCheckOut"></section>
+          <section className="containerCheckOut">
+            <h1>Checkout</h1>
+            <form className="formCheckout" onSubmit={formik.handleSubmit}>
+              <input
+                onKeyDown={(e) => checkValidContent(e, handleValidClientName)}
+                onPaste={(e) => {
+                  //get data from clipboard and check valid
+                  const pasted = e.clipboardData.getData("text");
+                  if (!handleValidClientName(pasted)) e.preventDefault();
+                }}
+                onChange={formik.handleChange}
+                value={formik.values.name}
+                name="name"
+                className="checkoutInput"
+                placeholder="Name"
+              />
+              <input
+                onKeyDown={(e) => checkValidContent(e, handleValidClientName)}
+                onPaste={(e) => {
+                  //get data from clipboard and check valid
+                  const pasted = e.clipboardData.getData("text");
+                  if (!handleValidClientName(pasted)) e.preventDefault();
+                }}
+                onChange={formik.handleChange}
+                value={formik.values.surname}
+                name="surname"
+                className="checkoutInput"
+                placeholder="Surname"
+              />
+              <input
+                onKeyDown={(e) => checkValidContent(e, handleValidClientNumber)}
+                onPaste={(e) => {
+                  //get data from clipboard and check valid
+                  const pasted = e.clipboardData.getData("text");
+                  if (!handleValidClientNumber(pasted)) e.preventDefault();
+                }}
+                onChange={formik.handleChange}
+                value={formik.values.numberPhone}
+                name="numberPhone"
+                className="checkoutInput"
+                placeholder="Number phone"
+              />
+              <section className="typesDeliveryContainer">
+                <button
+                  type="button"
+                  className={`buttonDeliveryType ${
+                    deliveryType.courierType
+                      ? "buttonDeliveryTypeActive"
+                      : "buttonDeliveryTypeNotActive"
+                  }`}
+                  onClick={() => {
+                    setDeliveryType({
+                      pickUpType: false,
+                      postalType: false,
+                      courierType: true,
+                    });
+                  }}
+                >
+                  <figure>
+                    <img
+                      src={
+                        deliveryType.courierType
+                          ? CourierDelivery
+                          : CourierDeliveryGrey
+                      }
+                      alt="Courier delivery"
+                    />
+                  </figure>
+                  <span>Courier delivery</span>
+                </button>
+                <button
+                  type="button"
+                  className={`buttonDeliveryType ${
+                    deliveryType.pickUpType
+                      ? "buttonDeliveryTypeActive"
+                      : "buttonDeliveryTypeNotActive"
+                  }`}
+                  onClick={() => {
+                    setDeliveryType({
+                      pickUpType: true,
+                      postalType: false,
+                      courierType: false,
+                    });
+                  }}
+                >
+                  <figure>
+                    <img
+                      src={
+                        deliveryType.pickUpType
+                          ? PickUpDeliveryWhite
+                          : PickUpDelivery
+                      }
+                      alt=""
+                    />
+                  </figure>
+                  <span>Pickup in City </span>
+                </button>
+                <button
+                  type="button"
+                  className={`buttonDeliveryType ${
+                    deliveryType.postalType
+                      ? "buttonDeliveryTypeActive"
+                      : "buttonDeliveryTypeNotActive"
+                  }`}
+                  onClick={() => {
+                    setDeliveryType({
+                      pickUpType: false,
+                      postalType: true,
+                      courierType: false,
+                    });
+                  }}
+                >
+                  <figure>
+                    <img
+                      src={
+                        deliveryType.postalType ? novaPostaWhite : novaPostaGrey
+                      }
+                      alt=""
+                    />
+                  </figure>
+                  <span>Postal company</span>
+                </button>
+              </section>
+              <input
+                onKeyDown={(e) =>
+                  checkValidContent(e, handleValidSearchProduct)
+                }
+                onPaste={(e) => {
+                  //get data from clipboard and check valid
+                  const pasted = e.clipboardData.getData("text");
+                  if (!handleValidSearchProduct(pasted)) e.preventDefault();
+                }}
+                onChange={formik.handleChange}
+                value={formik.values.address}
+                name="searchGood"
+                className="checkoutInput"
+                placeholder="Address"
+              />
+              <button type="submit">Checkout </button>
+            </form>
+          </section>
         </section>
       </main>
       <Footer />

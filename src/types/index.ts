@@ -98,7 +98,6 @@ export interface IPostReviews {
   message: string;
   email: string;
 }
-
 export interface FormNeedHelp {
   nameClient: string;
   phoneNumber: string;
@@ -107,4 +106,10 @@ export interface IReviewPostValues {
   clientName: string;
   feedback: string;
   email: string;
+}
+export interface CheckOutForm {
+  name: string;
+  surname: string;
+  numberPhone: number;
+  address: string;
 }
