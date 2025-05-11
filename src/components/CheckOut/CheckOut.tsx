@@ -34,7 +34,7 @@ import { useEffect, useState } from "react";
 const validationSchema = Yup.object({
   name: Yup.string().min(3, "min 3 symbols").required(),
   surname: Yup.string().min(3, "min 3 symbols").required(),
-  numberPhone: Yup.number().min(10, "min 10 numbers").required(),
+  numberPhone: Yup.string().min(10, "min 10 numbers").required(),
   address: Yup.string().min(10, "min 3 symbols").required(),
 });
 const CheckOut = () => {
@@ -59,7 +59,7 @@ const CheckOut = () => {
     initialValues: {
       name: "",
       surname: "",
-      numberPhone: 0,
+      numberPhone: "",
       address: "",
     },
     validationSchema,
@@ -189,65 +189,80 @@ const CheckOut = () => {
                 name="numberPhone"
                 className="checkoutInput"
                 placeholder="Number phone"
+                maxLength={11}
               />
+
               <section className="typesDeliveryContainer">
-                <button
-                  type="button"
-                  className={`buttonDeliveryType ${
-                    deliveryType.courierType
-                      ? "buttonDeliveryTypeActive"
-                      : "buttonDeliveryTypeNotActive"
-                  }`}
-                  onClick={() => {
-                    setDeliveryType({
-                      pickUpType: false,
-                      postalType: false,
-                      courierType: true,
-                    });
-                  }}
-                >
-                  <figure>
-                    <img
-                      src={
+                <div className="typesDeliveryHeadingAndTwoTypes">
+                  <h5 className="typesDeliveryHeading">Type delivery</h5>
+
+                  <div className="twoTypesDelivers">
+                    <button
+                      type="button"
+                      className={`buttonDeliveryType ${
                         deliveryType.courierType
-                          ? CourierDelivery
-                          : CourierDeliveryGrey
-                      }
-                      alt="Courier delivery"
-                    />
-                  </figure>
-                  <span>Courier delivery</span>
-                </button>
-                <button
-                  type="button"
-                  className={`buttonDeliveryType ${
-                    deliveryType.pickUpType
-                      ? "buttonDeliveryTypeActive"
-                      : "buttonDeliveryTypeNotActive"
-                  }`}
-                  onClick={() => {
-                    setDeliveryType({
-                      pickUpType: true,
-                      postalType: false,
-                      courierType: false,
-                    });
-                  }}
-                >
-                  <figure>
-                    <img
-                      src={
+                          ? "buttonDeliveryTypeActive"
+                          : "buttonDeliveryTypeNotActive"
+                      }`}
+                      onClick={() => {
+                        setDeliveryType({
+                          pickUpType: false,
+                          postalType: false,
+                          courierType: true,
+                        });
+                      }}
+                    >
+                      <figure>
+                        <img
+                          className="imgsTypesDelivery"
+                          src={
+                            deliveryType.courierType
+                              ? CourierDelivery
+                              : CourierDeliveryGrey
+                          }
+                          alt="Courier delivery"
+                        />
+                      </figure>
+                      <span className="spansButtonDeliveryType buttonDeliveryTypeSmallText">
+                        Courier delivery
+                      </span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`buttonDeliveryType ${
                         deliveryType.pickUpType
-                          ? PickUpDeliveryWhite
-                          : PickUpDelivery
-                      }
-                      alt=""
-                    />
-                  </figure>
-                  <span>Pickup in City </span>
-                </button>
+                          ? "buttonDeliveryTypeActive"
+                          : "buttonDeliveryTypeNotActive"
+                      }`}
+                      onClick={() => {
+                        setDeliveryType({
+                          pickUpType: true,
+                          postalType: false,
+                          courierType: false,
+                        });
+                      }}
+                    >
+                      <figure>
+                        <img
+                          className="imgsTypesDelivery"
+                          src={
+                            deliveryType.pickUpType
+                              ? PickUpDeliveryWhite
+                              : PickUpDelivery
+                          }
+                          alt=""
+                        />
+                      </figure>
+                      <span className="spansButtonDeliveryType buttonDeliveryTypeSmallText">
+                        Pickup in City{" "}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+
                 <button
                   type="button"
-                  className={`buttonDeliveryType ${
+                  className={`buttonDeliveryTypeFullBlock ${
                     deliveryType.postalType
                       ? "buttonDeliveryTypeActive"
                       : "buttonDeliveryTypeNotActive"
@@ -262,13 +277,16 @@ const CheckOut = () => {
                 >
                   <figure>
                     <img
+                      className="imgsTypesDelivery"
                       src={
                         deliveryType.postalType ? novaPostaWhite : novaPostaGrey
                       }
                       alt=""
                     />
                   </figure>
-                  <span>Postal company</span>
+                  <span className="spansButtonDeliveryType buttonDeliveryTypeFullText">
+                    Postal company
+                  </span>
                 </button>
               </section>
               <input
@@ -282,11 +300,13 @@ const CheckOut = () => {
                 }}
                 onChange={formik.handleChange}
                 value={formik.values.address}
-                name="searchGood"
+                name="address"
                 className="checkoutInput"
                 placeholder="Address"
               />
-              <button type="submit">Checkout </button>
+              <button type="submit" className="submitBtn">
+                <span className="submitBtnText"> Checkout</span>
+              </button>
             </form>
           </section>
         </section>

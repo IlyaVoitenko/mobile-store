@@ -122,7 +122,7 @@ const GoodInfo = () => {
                           );
                           setActiveImgItem(colorsUniq[index]);
                         }}
-                        className={`${
+                        className={`itemListImg ${
                           activeImgItem.id === item.id
                             ? "liActive"
                             : "liNotActive"

@@ -169,6 +169,11 @@
   @include for-mobileS {
     height: 830px;
   }
+  @include for-tablet {
+    flex-direction: column;
+    align-items: center;
+    height: 675px;
+  }
   @include containerResponsiveWidth;
   .productsImgsContainer {
     display: flex;
@@ -181,7 +186,9 @@
     @include for-laptop {
       width: 49%;
     }
-
+    @include for-tablet {
+      width: 75%;
+    }
     .mainProductImgContainer {
       display: flex;
       justify-content: center;
@@ -192,6 +199,10 @@
       background-color: $white;
       @include for-mobile {
         width: 75%;
+      }
+      @include for-tablet {
+        width: 300px;
+        height: 356px;
       }
       @include for-desktop4K {
         width: 75%;
@@ -227,7 +238,10 @@
         justify-content: space-between;
         align-items: center;
         height: 100%;
-        .liNotActive {
+        @include for-desktop4K {
+          width: 180px;
+        }
+        .itemListImg {
           display: flex;
           justify-content: center;
           align-items: center;
@@ -235,34 +249,48 @@
           height: 66px;
           border-radius: 8px;
           border-width: 1px;
-          background-color: $white;
-          border-color: $brItemImg;
-          border-style: solid;
+
+          @include for-desktop4K {
+            border-radius: 21px;
+            width: 160px;
+            height: 140px;
+          }
+
           img {
             width: 80px;
             height: 66px;
             border-width: 0px;
+            border-radius: 8px;
+            @include for-desktop4K {
+              width: 180px;
+              height: 110px;
+            }
+            @include for-tablet {
+              width: 80px;
+              height: 54px;
+            }
+            @include for-mobile {
+              height: 55px;
+            }
+          }
+        }
+        .liNotActive {
+          background-color: $white;
+          border-color: $brItemImg;
+          border-style: solid;
 
+          img {
+            border-width: 0px;
             border-radius: 8px;
           }
         }
         .liActive {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 80px;
-          height: 66px;
-          border-radius: 8px;
-          border-width: 1px;
           border-color: $activeBrItemImg;
           background-color: $white;
           border-style: solid;
 
           img {
-            width: 80px;
-            height: 66px;
             border-width: 1px;
-
             border-radius: 8px;
           }
         }
@@ -287,6 +315,10 @@
     }
     @include for-laptop {
       width: 49.1%;
+    }
+    @include for-tablet {
+      height: 300px;
+      width: 73%;
     }
     @include for-mobile {
       width: 100%;
@@ -545,7 +577,7 @@
       }
       @include for-tablet {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         width: 100%;
       }
@@ -766,6 +798,7 @@
           @include for-tablet {
             font-size: 11px;
             width: 103px;
+            left: 59%;
           }
           &:hover {
             background-color: rgb(207, 207, 207);

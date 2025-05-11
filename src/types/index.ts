@@ -110,6 +110,6 @@ export interface IReviewPostValues {
 export interface CheckOutForm {
   name: string;
   surname: string;
-  numberPhone: number;
+  numberPhone: string;
   address: string;
 }
