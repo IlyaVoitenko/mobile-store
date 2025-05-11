@@ -15,6 +15,11 @@
   @include for-LaptopL {
     margin-top: 2rem;
   }
+  @include for-mobile {
+    height: 1000px;
+
+    flex-direction: column;
+  }
   .containerCard {
     display: flex;
     flex-direction: column;
@@ -36,11 +41,27 @@
       height: 445px;
       margin-top: 1rem;
     }
+    @include for-mobile {
+      margin-top: 1.5rem;
+      height: 440px;
+      width: 100%;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
       @include for-desktop4K {
         height: 631px;
+      }
+      @include for-mobileL {
+        width: 400px;
+      }
+      @include for-mobileM {
+      }
+      @include for-mobileS {
+      }
+      @include for-mobile {
+        overflow-x: auto;
+        display: block;
       }
       tbody {
         tr:nth-child(1) {
@@ -56,6 +77,11 @@
       position: relative;
       width: 20%;
       height: 100%;
+
+      @include for-mobile {
+        width: 26%;
+        height: 100%;
+      }
       div {
         position: absolute;
         top: 30%;
@@ -65,10 +91,17 @@
           top: 33%;
           left: 23%;
         }
+        @include for-laptop {
+          top: 32%;
+          left: 16%;
+        }
         @include for-tablet {
-          top: 30%;
-
-          left: 0%;
+          top: 34%;
+          left: 9%;
+        }
+        @include for-mobile {
+          top: 31%;
+          left: 16%;
         }
       }
     }
@@ -90,6 +123,9 @@
       @include for-tablet {
         width: 230px;
       }
+      @include for-mobile {
+        width: 190px;
+      }
       .productImg {
         width: 117.75px;
         height: 94px;
@@ -108,6 +144,10 @@
         @include for-tablet {
           width: 78.75px;
           height: 94px;
+        }
+        @include for-mobile {
+          width: 69.75px;
+          height: 85px;
         }
       }
       .productName {
@@ -136,6 +176,9 @@
         @include for-tablet {
           height: 43px;
           font-size: 11px;
+        }
+        @include for-mobile {
+          width: 110px;
         }
       }
     }
@@ -198,6 +241,9 @@
       }
       @include for-tablet {
         font-size: 14px;
+      }
+      @include for-mobile {
+        font-size: 15px;
       }
     }
     .sumContainer {
@@ -266,6 +312,79 @@
         font-size: 40px;
         line-height: 66%;
       }
+      @include for-tablet {
+        font-size: 40px;
+      }
+    }
+    .amountProductContainer {
+      display: flex;
+      border-radius: 5px;
+      background-color: $bgPage;
+      width: 97px;
+      height: 38px;
+      @include for-desktop4K {
+        width: 152px;
+        height: 60px;
+      }
+      @include for-laptop {
+        width: 87px;
+        height: 32px;
+      }
+      @include for-tablet {
+        width: 80px;
+        height: 30px;
+      }
+      @include for-mobile {
+        width: 74px;
+        height: 30px;
+      }
+      button {
+        background-color: $bgPage;
+        border-radius: 5px;
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        color: $btnsAmountProject;
+        font-size: 20px;
+        cursor: pointer;
+
+        @include for-desktop4K {
+          font-size: 30px;
+        }
+        @include for-laptop {
+          font-size: 17px;
+        }
+        @include for-tablet {
+          font-size: 17px;
+        }
+      }
+      span {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        background-color: $bgPage;
+
+        color: $blue;
+        font-family: $fontFamily;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 18px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        @include for-desktop4K {
+          font-size: 24px;
+        }
+        @include for-laptop {
+          font-size: 13px;
+        }
+        @include for-tablet {
+          font-size: 12px;
+        }
+      }
     }
   }
   .containerCheckOut {
@@ -280,6 +399,9 @@
     }
     @include for-laptop {
       height: 492px;
+    }
+    @include for-tablet {
+      margin-top: 0.8rem;
     }
     h1 {
       font-family: $fontFamily;
@@ -366,6 +488,7 @@
         vertical-align: middle;
         padding-left: 5%;
         outline: none;
+        background-color: $bgPage;
         @include for-desktop4K {
           height: 66px;
           font-size: 24px;
@@ -506,7 +629,7 @@
           }
         }
         .buttonDeliveryTypeNotActive {
-          background-color: $white;
+          background-color: $bgPage;
           border-color: $borderTypeDelivery;
           span {
             color: $typeDeliveryColor;
