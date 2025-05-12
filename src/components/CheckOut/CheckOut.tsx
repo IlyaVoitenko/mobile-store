@@ -22,6 +22,7 @@ import {
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
+  setTotalSumBucket,
   decreaseQuantity,
   increaseQuantity,
 } from "../../store/slices/bucketSlice";
@@ -54,7 +55,9 @@ const CheckOut = () => {
     }, 0);
     setTotalSum(total);
   }, [bucketList]);
-
+  useEffect(() => {
+    dispatch(setTotalSumBucket(totalSum));
+  }, [totalSum, dispatch]);
   const formik = useFormik<CheckOutForm>({
     initialValues: {
       name: "",
@@ -68,6 +71,21 @@ const CheckOut = () => {
       resetForm();
     },
   });
+
+  if (!bucketList.length) {
+    return (
+      <div className="pageDefault">
+        <Header />
+        <main className="containerContentPage emptyBucketContainer">
+          <h1>Your bucket is empty !</h1>
+          <Link to={"/"} className="linkContinueShopping">
+            Continue Shopping
+          </Link>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
   return (
     <div className="pageDefault">
       <Header />

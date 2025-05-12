@@ -52,7 +52,9 @@ const bucketSlice = createSlice({
         state.bucket[index] = updatedProduct;
       }
     },
-
+    setTotalSumBucket: (state, action) => {
+      state.totalSumma = action.payload;
+    },
     setDataClient: (state, action) => {
       state.dataClient = { ...action.payload };
     },
@@ -61,6 +63,7 @@ const bucketSlice = createSlice({
 
 export const {
   addToBucket,
+  setTotalSumBucket,
   setDataClient,
   decreaseQuantity,
   increaseQuantity,

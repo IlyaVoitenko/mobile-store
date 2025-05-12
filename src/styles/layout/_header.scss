@@ -422,7 +422,7 @@
       margin-top: 1rem;
     }
     @include for-tablet {
-      width: 70px;
+      width: 62px;
     }
     @include for-laptop {
       width: 70px;
@@ -431,7 +431,7 @@
       width: 70px;
     }
     @include for-desktop4K {
-      padding-right: 3%;
+      padding-right: 2%;
       width: 6.5%;
       height: 100%;
     }

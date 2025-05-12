@@ -37,3 +37,5 @@ export const getIsPopularGoods = (state: { products: initialStateProps }) =>
 
 export const getBucketProducts = (state: { bucket: InitialBucket }) =>
   state.bucket.bucket;
+export const getTotalSumBucket = (state: { bucket: InitialBucket }) =>
+  state.bucket.totalSumma;

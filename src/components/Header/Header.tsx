@@ -2,6 +2,8 @@ import resources from "./resources";
 import { useState } from "react";
 import "./../../styles/layout/_header.scss";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getTotalSumBucket, getBucketProducts } from "../../store/selectors";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Logo from "./Logo";
@@ -18,7 +20,8 @@ const Header = () => {
     useState<string>("Apple Store");
   const [smartphonesSelect, setSmartphones] = useState<string>("Smartphones");
   const [accessoriesSelect, setAccessories] = useState<string>("Accessories");
-
+  const totalSumBucket = useSelector(getTotalSumBucket);
+  const bucketProducts = useSelector(getBucketProducts);
   const formik = useFormik<{ searchGood: string }>({
     initialValues: {
       searchGood: "",
@@ -187,7 +190,7 @@ const Header = () => {
             <Link to="#" className="catalogMenuText">
               Contacts
             </Link>
-            <Link to="#" className="catalogMenuText">
+            <Link to="/checkout" className="catalogMenuText">
               {" "}
               Shipping and payment
             </Link>
@@ -195,8 +198,10 @@ const Header = () => {
           <div className="containerShoppingInfo">
             <img src={resources.shoppingBag} alt="shopping bag" />
             <div className="itemsInfoContainer">
-              <span className="amountItems">0 goods</span>
-              <span className="summaText">0 usd</span>
+              <span className="amountItems">
+                {bucketProducts.length ?? 0} goods
+              </span>
+              <span className="summaText">{totalSumBucket} usd</span>
             </div>
           </div>
         </nav>

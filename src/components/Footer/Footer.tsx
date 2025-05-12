@@ -85,7 +85,7 @@ const Footer = () => {
             <Link to="/category/Android Smartphones">Smartphones</Link>
             <Link to="/category/Accessories">Accessories</Link>
             <Link to="/">Contacts</Link>
-            <Link to="#" id="ShippingPayment">
+            <Link to="/checkout" id="ShippingPayment">
               {" "}
               Shipping and payment
             </Link>
