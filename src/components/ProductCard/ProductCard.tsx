@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { IProduct } from "../../types";
 import { Link } from "react-router-dom";
 import "../../styles/components/_productCard.scss";
@@ -19,6 +20,7 @@ const ProductCard = ({
 }: ProductCardProps) => {
   const dispatch = useDispatch();
   const { name, price, imgUrl, id } = card || {};
+  const [amountItem, setAmountItem] = useState<number>(1);
 
   return (
     <li
@@ -73,8 +75,8 @@ const ProductCard = ({
         </div>
       </Link>
       <div className="addToCardBtnAndAmountProductContainer">
-        <AmountProduct />
-        <AddToCardBtn dataCard={card} />
+        <AmountProduct amountItem={amountItem} setAmountItem={setAmountItem} />
+        <AddToCardBtn dataCard={card} amountItem={amountItem} />
       </div>
     </li>
   );

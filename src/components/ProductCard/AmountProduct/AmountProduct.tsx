@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { SetStateAction } from "react";
 import "../../../styles/components/_amountProduct.scss";
-const AmountProduct = () => {
-  const [amountItem, setAmountItem] = useState<number>(1);
+interface AmountProductProps {
+  amountItem: number;
+  setAmountItem: {
+    (value: SetStateAction<number>): void;
+  };
+}
+const AmountProduct = ({ amountItem, setAmountItem }: AmountProductProps) => {
   return (
     <div className="amountProductContainer">
       <button
