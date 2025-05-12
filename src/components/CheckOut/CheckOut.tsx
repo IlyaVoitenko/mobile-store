@@ -83,60 +83,65 @@ const CheckOut = () => {
         <section className="containerContent">
           <section className="containerCard">
             <h1>Cart</h1>
-            <table>
-              <thead>
-                <tr>
-                  <th className="thHead">Item</th>
-                  <th className="thHead">Price</th>
-                  <th className="thHead">Quantity</th>
-                  <th className="thHead">Sum</th>
-                </tr>
-              </thead>
-              <tbody>
-                {bucketList &&
-                  bucketList.map((item) => (
-                    <tr key={item.id}>
-                      <td className="productFlex">
-                        <img
-                          src={item.imgUrl}
-                          className="productImg"
-                          alt={item.name}
-                        />
-                        <span className="productName">{item.name}</span>
-                      </td>
-                      <td className="priceProduct">{item.price} $</td>
-                      <td className="quantityProduct">
-                        <div className="amountProductContainer border">
-                          <button
-                            onClick={() => {
-                              if (item.quantity === 1) return;
-                              dispatch(decreaseQuantity(item.id));
-                            }}
-                          >
-                            -
-                          </button>
-                          <span>{item.quantity}</span>
-                          <button
-                            onClick={() => {
-                              if ((item.quantity ?? 0) > 99) return;
-                              dispatch(increaseQuantity(item.id));
-                            }}
-                          >
-                            +
-                          </button>
-                        </div>{" "}
-                      </td>
-                      <td className="sumProduct">
-                        <span className="sum">
-                          {item.price * (item.quantity ?? 0)}
-                        </span>
-                        &nbsp;
-                        <span className="dollarChar">$</span>{" "}
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+            <div className="tableContainer">
+              <table>
+                <thead>
+                  <tr>
+                    <th className="thHead">Item</th>
+                    <th className="thHead">Price</th>
+                    <th className="thHead">Quantity</th>
+                    <th className="thHead">Sum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {bucketList &&
+                    bucketList.map((item) => (
+                      <tr key={item.id}>
+                        <td>
+                          <div className="productFlex">
+                            <img
+                              src={item.imgUrl}
+                              className="productImg"
+                              alt={item.name}
+                            />
+                            <span className="productName">{item.name}</span>
+                          </div>
+                        </td>
+                        <td className="priceProduct">{item.price} $</td>
+                        <td className="quantityProduct">
+                          <div className="amountProductContainer border">
+                            <button
+                              onClick={() => {
+                                if (item.quantity === 1) return;
+                                dispatch(decreaseQuantity(item.id));
+                              }}
+                            >
+                              -
+                            </button>
+                            <span>{item.quantity}</span>
+                            <button
+                              onClick={() => {
+                                if ((item.quantity ?? 0) > 99) return;
+                                dispatch(increaseQuantity(item.id));
+                              }}
+                            >
+                              +
+                            </button>
+                          </div>{" "}
+                        </td>
+                        <td className="sumProduct">
+                          <span className="sum">
+                            {item.price * (item.quantity ?? 0)}
+                          </span>
+                          &nbsp;
+                          <span className="dollarChar">$</span>{" "}
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+
             <nav className="sumContainer">
               <Link to={"/"} className="linkContinueShopping">
                 Continue Shopping
@@ -161,7 +166,11 @@ const CheckOut = () => {
                 onChange={formik.handleChange}
                 value={formik.values.name}
                 name="name"
-                className="checkoutInput"
+                className={`checkoutInput ${
+                  formik.touched.name && formik.errors.name
+                    ? "inputsError"
+                    : "inputsForm"
+                } `}
                 placeholder="Name"
               />
               <input
@@ -174,7 +183,11 @@ const CheckOut = () => {
                 onChange={formik.handleChange}
                 value={formik.values.surname}
                 name="surname"
-                className="checkoutInput"
+                className={`checkoutInput ${
+                  formik.touched.surname && formik.errors.surname
+                    ? "inputsError"
+                    : "inputsForm"
+                } `}
                 placeholder="Surname"
               />
               <input
@@ -187,7 +200,11 @@ const CheckOut = () => {
                 onChange={formik.handleChange}
                 value={formik.values.numberPhone}
                 name="numberPhone"
-                className="checkoutInput"
+                className={`checkoutInput ${
+                  formik.touched.numberPhone && formik.errors.numberPhone
+                    ? "inputsError"
+                    : "inputsForm"
+                } `}
                 placeholder="Number phone"
                 maxLength={11}
               />
@@ -301,7 +318,11 @@ const CheckOut = () => {
                 onChange={formik.handleChange}
                 value={formik.values.address}
                 name="address"
-                className="checkoutInput"
+                className={`checkoutInput ${
+                  formik.touched.address && formik.errors.address
+                    ? "inputsError"
+                    : "inputsForm"
+                } `}
                 placeholder="Address"
               />
               <button type="submit" className="submitBtn">
