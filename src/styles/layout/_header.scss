@@ -2,7 +2,29 @@
 @use "../abstracts/colors" as *;
 @use "../abstracts/mixins" as *;
 @use "../abstracts/mediaQuery" as *;
-
+.linksDropdownCategoriesProduct {
+  color: $colorsProductText;
+  font-family: $fontFamily;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.71px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  @include for-mobile {
+    margin-bottom: 0px;
+    height: 20px;
+  }
+  @include for-laptop {
+    font-size: 11px;
+  }
+  @include for-tablet {
+    font-size: 11px;
+  }
+  @include for-desktop4K {
+    font-size: 24px;
+  }
+}
 .containerHeader {
   display: flex;
   flex-direction: column;
@@ -529,6 +551,164 @@
     }
   }
 
+  .dropdownCategoriesProduct {
+    position: relative;
+    display: flex;
+
+    @include for-mobile {
+      width: 190px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .positionsDropdownIphone {
+      @include for-desktop4K {
+        left: -95%;
+      }
+      @include for-LaptopL {
+        left: -95%;
+      }
+      @include for-laptop {
+        left: -95%;
+      }
+      @include for-tablet {
+        left: -90%;
+      }
+    }
+    .positionsDropdownAppleStore {
+      @include for-desktop4K {
+        left: -54%;
+      }
+      @include for-LaptopL {
+        left: -48%;
+      }
+      @include for-laptop {
+        left: -40%;
+      }
+      @include for-tablet {
+        left: -40%;
+      }
+    }
+    .positionsDropdownSmartphones {
+      @include for-desktop4K {
+        left: -35%;
+      }
+      @include for-LaptopL {
+        left: -35%;
+      }
+      @include for-laptop {
+        left: -32%;
+      }
+      @include for-tablet {
+        left: -32%;
+      }
+    }
+    .positionsDropdownAccessories {
+      @include for-desktop4K {
+        left: -44%;
+      }
+      @include for-LaptopL {
+        left: -40%;
+      }
+      @include for-laptop {
+        left: -40%;
+      }
+      @include for-tablet {
+        left: -32%;
+      }
+    }
+
+    .dropdownCategoriesBtn {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      background-color: $headerCategoriesBg;
+      color: $colorsProductText;
+      font-family: $fontFamily;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 16.71px;
+      border: none;
+      cursor: pointer;
+
+      @include for-mobile {
+        margin-bottom: 0px;
+        height: 20px;
+      }
+      @include for-laptop {
+        font-size: 11px;
+      }
+      @include for-tablet {
+        font-size: 11px;
+      }
+      @include for-desktop4K {
+        font-size: 24px;
+      }
+    }
+
+    .dropdownCategoriesProduct-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      height: 100px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      width: 190px;
+      top: 100%;
+      @include for-desktop4K {
+        width: 270px;
+        height: 170px;
+        top: 140%;
+      }
+      @include for-LaptopL {
+        width: 150px;
+      }
+      @include for-laptop {
+        width: 120px;
+      }
+      @include for-tablet {
+        width: 115px;
+      }
+      @include for-mobile {
+        width: 190px;
+        top: 100%;
+      }
+      a {
+        @include for-tablet {
+          color: #282828;
+          font-family: $fontFamily;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 16.71px;
+          border: none;
+          cursor: pointer;
+          text-decoration: none;
+
+          @include for-tablet {
+            font-size: 11px;
+          }
+        }
+      }
+    }
+
+    .dropdownCategoriesProduct-content Link {
+      color: black;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdownCategoriesProduct-content a:hover {
+      background-color: #ddd;
+    }
+  }
+  .dropdownCategoriesProduct:hover .dropdownCategoriesProduct-content,
+  .dropdownCategoriesProduct:active .dropdownCategoriesProduct-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  ///////
   .dropdown {
     position: relative;
     display: inline-block;
@@ -569,6 +749,22 @@
       height: 100px;
       box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
       z-index: 1;
+      @include for-mobile {
+        top: 84%;
+        height: 150px;
+      }
+      @include for-tablet {
+        height: 100px;
+      }
+      @include for-laptop {
+        height: 120px;
+      }
+      @include for-LaptopL {
+        height: 150px;
+      }
+      @include for-desktop4K {
+        height: 240px;
+      }
     }
 
     .dropdown-content Link {
@@ -580,7 +776,8 @@
       background-color: #ddd;
     }
   }
-  .dropdown:hover .dropdown-content {
+  .dropdown:hover .dropdown-content,
+  .dropdown:active .dropdown-content {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

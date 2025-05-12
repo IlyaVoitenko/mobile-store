@@ -1,27 +1,43 @@
 import resources from "./resources";
+import ArrowBlackDown from "../../assets/ArrowBlackDown.svg";
 import { useState } from "react";
 import "./../../styles/layout/_header.scss";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { getTotalSumBucket, getBucketProducts } from "../../store/selectors";
+import {
+  getTotalSumBucket,
+  getBucketProducts,
+  getProductsSelector,
+} from "../../store/selectors";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Logo from "./Logo";
 import ContactInfo from "./ContactInfo";
-import { checkValidContent, handleValidSearchProduct } from "../../helper";
+import {
+  checkValidContent,
+  handleValidSearchProduct,
+  filterProductsByUniqField,
+} from "../../helper";
 
 const validationSchema = Yup.object({
   searchGood: Yup.string().min(2, "min 2 symbols"),
 });
 const Header = () => {
   const [isShowMenu, setIsShowMenu] = useState<boolean>(true);
-  const [iPhoneSelect, setIPhoneSelect] = useState<string>("iPhone");
-  const [appleStoreSelect, setAppleStoreSelect] =
-    useState<string>("Apple Store");
-  const [smartphonesSelect, setSmartphones] = useState<string>("Smartphones");
-  const [accessoriesSelect, setAccessories] = useState<string>("Accessories");
   const totalSumBucket = useSelector(getTotalSumBucket);
-  const bucketProducts = useSelector(getBucketProducts);
+  const products = useSelector(getProductsSelector);
+  const productsAddedInBucket = useSelector(getBucketProducts);
+
+  // const appleStore = filterProductsByUniqField(products, "model");
+  const iPhonesList = filterProductsByUniqField(products["Iphone"], "model");
+  const smartphonesList = filterProductsByUniqField(
+    products["Android Smartphones"],
+    "model"
+  );
+  const accessoriesList = filterProductsByUniqField(
+    products["Accessories"],
+    "model"
+  );
   const formik = useFormik<{ searchGood: string }>({
     initialValues: {
       searchGood: "",
@@ -118,73 +134,119 @@ const Header = () => {
                 Catalog
               </button>
               <nav className="dropdown-content">
-                <Link to="#">Link 1</Link>
-                <Link to="#">Link 2</Link>
-                <Link to="#">Link 3</Link>
+                <Link
+                  to="/category/Accessories"
+                  className="linksDropdownCategoriesProduct"
+                >
+                  Accessories
+                </Link>
+                <Link
+                  to="/category/Android Smartphones"
+                  className="linksDropdownCategoriesProduct"
+                >
+                  Android Smartphones
+                </Link>
+                <Link
+                  to="/category/Apple Watch"
+                  className="linksDropdownCategoriesProduct"
+                >
+                  Apple Watch
+                </Link>
+                <Link
+                  to="/category/IMac"
+                  className="linksDropdownCategoriesProduct"
+                >
+                  IMac
+                </Link>
+                <Link
+                  to="/category/IPad"
+                  className="linksDropdownCategoriesProduct"
+                >
+                  IPad
+                </Link>
+                <Link
+                  to="/category/Iphone"
+                  className="linksDropdownCategoriesProduct"
+                >
+                  Iphone
+                </Link>
               </nav>
             </div>
-            <div className="SelectWrapper ">
-              <select
-                aria-label="iPhone"
-                defaultValue={iPhoneSelect}
-                className="SelectHeader catalogMenuText"
-                onChange={({ target }) => setIPhoneSelect(target.value)}
-              >
-                <option value="iPhone">iPhone</option>
-              </select>
-              <img
-                src={resources.ArrowDown}
-                alt=""
-                className="arrowDownSelect"
-              />
+            <div className="dropdownCategoriesProduct">
+              <button className="dropdownCategoriesBtn ">iPhone</button> &nbsp;
+              <img src={ArrowBlackDown} alt="" />
+              <nav className="positionsDropdownIphone dropdownCategoriesProduct-content">
+                {iPhonesList &&
+                  iPhonesList.map((item) => (
+                    <Link
+                      to="/category/Iphone"
+                      className="linksDropdownCategoriesProduct"
+                      key={item.id}
+                    >
+                      iPhone {item.model}
+                    </Link>
+                  ))}
+              </nav>
             </div>
-
-            <div className="SelectWrapper">
-              <select
-                aria-label="Apple Store"
-                defaultValue={appleStoreSelect}
-                className="SelectHeader catalogMenuText"
-                onChange={({ target }) => setAppleStoreSelect(target.value)}
-              >
-                <option value="Apple Store">Apple Store</option>
-              </select>
-              <img
-                src={resources.ArrowDown}
-                alt=""
-                className="arrowDownSelect"
-              />
+            <div className="dropdownCategoriesProduct">
+              <button className="  dropdownCategoriesBtn ">Apple Store</button>{" "}
+              &nbsp;
+              <img src={ArrowBlackDown} alt="" />
+              <nav className="positionsDropdownAppleStore dropdownCategoriesProduct-content">
+                <Link
+                  to="/category/Apple Watch"
+                  className="linksDropdownCategoriesProduct"
+                >
+                  Apple Watch
+                </Link>
+                <Link
+                  to="/category/IMac"
+                  className="linksDropdownCategoriesProduct"
+                >
+                  IMac
+                </Link>
+                <Link
+                  to="/category/Iphone"
+                  className="linksDropdownCategoriesProduct"
+                >
+                  IPhone
+                </Link>
+              </nav>
             </div>
-
-            <div className="SelectWrapper">
-              <select
-                aria-label="Smartphones"
-                defaultValue={smartphonesSelect}
-                className="SelectHeader catalogMenuText"
-                onChange={({ target }) => setSmartphones(target.value)}
-              >
-                <option value="Smartphones">Smartphones</option>
-              </select>
-              <img
-                src={resources.ArrowDown}
-                alt=""
-                className="arrowDownSelect"
-              />
+            <div className="dropdownCategoriesProduct">
+              <button className="  dropdownCategoriesBtn ">Smartphones</button>{" "}
+              &nbsp;
+              <img src={ArrowBlackDown} alt="" />
+              <nav className="positionsDropdownSmartphones dropdownCategoriesProduct-content">
+                {smartphonesList &&
+                  smartphonesList.map((item) => (
+                    <Link
+                      to="/category/Android Smartphones"
+                      className="linksDropdownCategoriesProduct"
+                      key={item.id}
+                    >
+                      {item.model}
+                    </Link>
+                  ))}
+              </nav>
             </div>
-
-            <div className="SelectWrapper">
-              <select
-                aria-label="Accessories"
-                defaultValue={accessoriesSelect}
-                className="SelectHeader catalogMenuText"
-                onChange={({ target }) => setAccessories(target.value)}
-              >
-                <option value="Accessories">Accessories</option>
-              </select>
-              <img
-                src={resources.ArrowDown}
-                alt=""
-                className="arrowDownSelect"
-              />
+            <div className="dropdownCategoriesProduct">
+              <button className=" dropdownCategoriesBtn ">
+                Accessories &nbsp;
+                <img src={ArrowBlackDown} alt="" />
+              </button>
+              <nav className="positionsDropdownAccessories dropdownCategoriesProduct-content">
+                {accessoriesList &&
+                  accessoriesList.map((item) => (
+                    <Link
+                      to="/category/Accessories"
+                      className="linksDropdownCategoriesProduct"
+                      key={item.id}
+                    >
+                      {item.model}
+                    </Link>
+                  ))}
+              </nav>
             </div>
 
             <Link to="#" className="catalogMenuText">
@@ -199,7 +261,7 @@ const Header = () => {
             <img src={resources.shoppingBag} alt="shopping bag" />
             <div className="itemsInfoContainer">
               <span className="amountItems">
-                {bucketProducts.length ?? 0} goods
+                {productsAddedInBucket.length ?? 0} goods
               </span>
               <span className="summaText">{totalSumBucket} usd</span>
             </div>
