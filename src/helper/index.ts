@@ -44,12 +44,9 @@ export const handleValidClientName = (value: string): boolean => {
   return isName;
 };
 //checking is valid the client email
-export const handleValidEmail = (
-  target: EventTarget & HTMLInputElement
-): boolean => {
-  const emailRegex = /(?<=\s)\w+@\w+\.(?:com|net)/;
-  const { value } = target;
-  const isEmail = emailRegex.test(value);
+export const handleValidEmail = (target: string): boolean => {
+  const emailRegex = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+  const isEmail = emailRegex.test(target.trim());
   return isEmail;
 };
 

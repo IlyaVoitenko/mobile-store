@@ -12,7 +12,7 @@ import {
 } from "../../store/selectors";
 import { CategoryType, IReviewPostValues } from "../../types";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewReviewPost } from "../../helper";
+import { addNewReviewPost, handleValidEmail } from "../../helper";
 import { addToBucket } from "../../store/slices/bucketSlice";
 import {
   checkValidContent,
@@ -452,6 +452,11 @@ const GoodInfo = () => {
                         ? "inputsFormError"
                         : "inputsForm"
                     } `}
+                    onPaste={(e) => {
+                      //get data from clipboard and check valid
+                      const pasted = e.clipboardData.getData("text");
+                      if (!handleValidEmail(pasted)) e.preventDefault();
+                    }}
                     placeholder="Email"
                     value={formik.values.email}
                     onChange={formik.handleChange}

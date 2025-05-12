@@ -2,6 +2,7 @@ import Logo from "../Header/Logo";
 import "../../styles/layout/_footer.scss";
 import "./../../styles/layout/_header.scss";
 import { useFormik } from "formik";
+import { handleValidEmail } from "../../helper";
 import * as Yup from "yup";
 import sendIcon from "../../assets/sendEmail.svg";
 import { Link } from "react-router-dom";
@@ -35,9 +36,14 @@ const Footer = () => {
                 <img src={sendIcon} alt="" />
               </button>
               <input
-                className="emailInput"
+                className={`emailInput `}
                 value={formik.values.email}
                 onChange={formik.handleChange}
+                onPaste={(e) => {
+                  //get data from clipboard and check valid
+                  const pasted = e.clipboardData.getData("text");
+                  if (!handleValidEmail(pasted)) e.preventDefault();
+                }}
                 type="email"
                 placeholder="E-mail"
                 name="email"
