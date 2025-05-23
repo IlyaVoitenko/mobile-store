@@ -218,7 +218,7 @@ const Category = () => {
                     {model.length > 5 && (
                       <button
                         className="btnShowAll"
-                        onClick={() => setIsShow(!isShow)}
+                        onClick={() => setIsShow((isShow) => !isShow)}
                       >
                         <span>Show all </span>
                         <img src={arrowDownBlue} alt="" />

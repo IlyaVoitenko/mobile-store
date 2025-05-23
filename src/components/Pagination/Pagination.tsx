@@ -100,11 +100,11 @@ const Pagination = ({ list = [] }: PaginationProps) => {
         className="btnShowAllItems"
         onClick={() => {
           if (!isShowAllItems) {
-            setIsShowAllItems(!isShowAllItems);
+            setIsShowAllItems((isShowAllItems) => !isShowAllItems);
             setCurrentPage(1);
             dispatch(setProductsByCategory(list));
           } else {
-            setIsShowAllItems(!isShowAllItems);
+            setIsShowAllItems((isShowAllItems) => !isShowAllItems);
             dispatch(setProductsByCategory(list.slice(0, LIMIT_PER_PAGE)));
             setCurrentPage(1);
           }

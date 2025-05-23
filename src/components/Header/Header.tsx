@@ -57,7 +57,7 @@ const Header = () => {
               <Logo />
               <button
                 className="btnShowMenu"
-                onClick={() => setIsShowMenu(!isShowMenu)}
+                onClick={() => setIsShowMenu((isShowMenu) => !isShowMenu)}
               >
                 &#9776;
               </button>
