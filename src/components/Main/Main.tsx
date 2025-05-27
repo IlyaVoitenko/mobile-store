@@ -87,10 +87,7 @@ const Main = () => {
           content="Welcome to the home page of My Website."
         />
         <meta property="og:image" content={"../../assets/deliveryGoods.svg"} />
-        <link
-          rel="canonical"
-          href={`${import.meta.env.VITE_BASE_URL}${location.pathname}`}
-        />
+        <link rel="canonical" href={`https://mobile-store-gold.vercel.app/`} />
       </Helmet>
       <Header />
       <main className="containerContentPage">

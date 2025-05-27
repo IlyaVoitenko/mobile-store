@@ -117,7 +117,10 @@ const Category = () => {
           property="og:description"
           content={`Explore our ${category} category with ${productsSelector[category]?.length} items. Find the best deals on mobile phones, accessories, and more.`}
         />
-        <meta property="og:url" content={window.location.href} />
+        <meta
+          property="og:url"
+          content={`https://mobile-store-gold.vercel.app/category/${category} `}
+        />
       </Helmet>
       <Header />
       <main className="containerContentPage">

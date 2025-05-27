@@ -103,7 +103,6 @@ const CheckOut = () => {
           property="og:description"
           content={`Buy ${bucketList.length} items in our store. Available in various colors and models. Fast delivery and secure payment options.`}
         />
-        <meta property="og:url" content={window.location.href} />
       </Helmet>
       <Header />
       <main className="containerContentPage">

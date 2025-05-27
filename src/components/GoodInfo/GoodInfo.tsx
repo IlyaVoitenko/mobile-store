@@ -4,7 +4,7 @@ import "../../styles/components/_goodInfo.scss";
 import "../../styles/components/_categoryNavProduct.scss";
 import ProductCollection from "../ProductCollection";
 import basketImg from "../../assets/basketImg.svg";
-import { Link, redirect, useLocation, useParams } from "react-router-dom";
+import { Link, redirect, useParams } from "react-router-dom";
 import {
   getProductsSelector,
   getProductsByFilterSelector,
@@ -53,7 +53,6 @@ const validationSchema = Yup.object({
     .required("name is required "),
 });
 const GoodInfo = () => {
-  const { pathname } = useLocation();
   const { category } = useParams();
   const dispatch = useDispatch();
   const selectedProduct = useSelector(getSelectedProductSelector);
@@ -109,7 +108,10 @@ const GoodInfo = () => {
           content={`Buy ${selectedProduct?.name} in our store. Available in various colors and models. Fast delivery and secure payment options.`}
         />
         <meta property="og:type" content={selectedProduct?.model} />
-        <meta property="og:url" content={pathname} />
+        <meta
+          property="og:url"
+          content={`https://mobile-store-gold.vercel.app/good/${category}/${selectedProduct?.name}`}
+        />
       </Helmet>
       <Header />
       <main className="containerContentPage">
