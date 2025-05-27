@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductsSelector } from "../../store/selectors";
 import Footer from "../Footer";
 import ProductCollection from "../ProductCollection";
+import { Helmet } from "react-helmet-async";
 import {
   handleValidClientName,
   handleValidClientNumber,
@@ -77,9 +78,20 @@ const Main = () => {
       })
     );
   }, []);
-
   return (
     <div className="pageDefault">
+      <Helmet>
+        <title>Store Mobile | Home </title>
+        <meta
+          name="description"
+          content="Welcome to the home page of My Website."
+        />
+        <meta property="og:image" content={"../../assets/deliveryGoods.svg"} />
+        <link
+          rel="canonical"
+          href={`${import.meta.env.VITE_BASE_URL}${location.pathname}`}
+        />
+      </Helmet>
       <Header />
       <main className="containerContentPage">
         <div className="containerCategory">

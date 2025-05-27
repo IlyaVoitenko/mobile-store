@@ -12,6 +12,7 @@ const router = createBrowserRouter([
   {
     path: "/category/:category",
     errorElement: <ErrorPage />,
+
     lazy: async () => ({
       Component: (await import("./pages/CategoryPage")).default,
     }),

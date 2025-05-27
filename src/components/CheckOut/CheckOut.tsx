@@ -8,7 +8,7 @@ import PickUpDelivery from "../../assets/PickUpDelivery.svg";
 import PickUpDeliveryWhite from "../../assets/PickUpDeliveryWhite.svg";
 import novaPostaGrey from "../../assets/novaPostaGrey.svg";
 import novaPostaWhite from "../../assets/novaPostaWhite.svg";
-
+import deliveryGoods from "../../assets/deliveryGoods.svg";
 import { Link } from "react-router-dom";
 import { CheckOutForm } from "../../types";
 import { useSelector, useDispatch } from "react-redux";
@@ -28,7 +28,7 @@ import {
 } from "../../store/slices/bucketSlice";
 import Footer from "../Footer";
 import Header from "../Header";
-
+import { Helmet } from "react-helmet-async";
 import ArrowRightGrey from "../../assets/ArrowRightGrey.svg";
 import { useEffect, useState } from "react";
 
@@ -88,6 +88,23 @@ const CheckOut = () => {
   }
   return (
     <div className="pageDefault">
+      <Helmet>
+        <title>Store Mobile | CheckOut {`| ${bucketList.length} items`}</title>
+        <meta
+          name="description"
+          content={`Buy ${bucketList.length} items in our store. Available in various colors and models. Fast delivery and secure payment options.`}
+        />
+        <meta property="og:image" content={deliveryGoods} />
+        <meta
+          property="og:title"
+          content={`Store Mobile | CheckOut | ${bucketList.length} items`}
+        />
+        <meta
+          property="og:description"
+          content={`Buy ${bucketList.length} items in our store. Available in various colors and models. Fast delivery and secure payment options.`}
+        />
+        <meta property="og:url" content={window.location.href} />
+      </Helmet>
       <Header />
       <main className="containerContentPage">
         <nav className="navProduct">

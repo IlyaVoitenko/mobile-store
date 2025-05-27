@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:dev": "cp public/robots.dev.txt public/robots.txt && vite build",
+    "build:prod": "cp public/robots.prod.txt public/robots.txt && vite build",
+    "preview:prod": "yarn build:prod && vite preview"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.7.0",
@@ -15,6 +18,7 @@
     "nanoid": "^5.1.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-helmet-async": "^2.0.5",
     "react-redux": "^9.2.0",
     "react-router-dom": "6.30.0",
     "redux-persist": "^6.0.0",
@@ -25,6 +29,7 @@
     "@types/node-sass": "^4.11.8",
     "@types/react": "^18.3.20",
     "@types/react-dom": "^18.3.6",
+    "@types/react-helmet": "^6.1.11",
     "@vitejs/plugin-react": "^4.4.1",
     "eslint": "^9.25.1",
     "eslint-plugin-react-hooks": "^6.0.0",

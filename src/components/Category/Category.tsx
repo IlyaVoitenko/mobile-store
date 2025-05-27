@@ -4,6 +4,8 @@ import "../../styles/pages/_index.scss";
 import Footer from "../Footer";
 import Header from "../Header";
 import PriceRange from "../PriceRange";
+import { Helmet } from "react-helmet-async";
+import deliveryGoods from "../../assets/deliveryGoods.svg";
 import ArrowRightGrey from "../../assets/ArrowRightGrey.svg";
 import arrowDownGrey from "../../assets/arrowDownGrey.svg";
 import arrowDownBlue from "../../assets/arrowDownBlue.svg";
@@ -100,6 +102,23 @@ const Category = () => {
 
   return (
     <div className="pageDefault">
+      <Helmet>
+        <title>Store Mobile | Categories of products</title>
+        <meta
+          name="description"
+          content={`Explore our ${category} category with ${productsSelector[category]?.length} items. Find the best deals on mobile phones, accessories, and more.`}
+        />
+        <meta property="og:image" content={deliveryGoods} />
+        <meta
+          property="og:title"
+          content={`Store Mobile | ${category} Category`}
+        />
+        <meta
+          property="og:description"
+          content={`Explore our ${category} category with ${productsSelector[category]?.length} items. Find the best deals on mobile phones, accessories, and more.`}
+        />
+        <meta property="og:url" content={window.location.href} />
+      </Helmet>
       <Header />
       <main className="containerContentPage">
         <nav className="navProduct">

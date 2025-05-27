@@ -4,7 +4,7 @@ import "../../styles/components/_goodInfo.scss";
 import "../../styles/components/_categoryNavProduct.scss";
 import ProductCollection from "../ProductCollection";
 import basketImg from "../../assets/basketImg.svg";
-import { Link, redirect, useParams } from "react-router-dom";
+import { Link, redirect, useLocation, useParams } from "react-router-dom";
 import {
   getProductsSelector,
   getProductsByFilterSelector,
@@ -39,6 +39,7 @@ import ArrowWhiteDown from "../../assets/ArrowWhiteDown.svg";
 import ArrowWhiteUp from "../../assets/ArrowWhiteUp.svg";
 import visa from "../../assets/visa.svg";
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const validationSchema = Yup.object({
   feedback: Yup.string()
@@ -52,6 +53,7 @@ const validationSchema = Yup.object({
     .required("name is required "),
 });
 const GoodInfo = () => {
+  const { pathname } = useLocation();
   const { category } = useParams();
   const dispatch = useDispatch();
   const selectedProduct = useSelector(getSelectedProductSelector);
@@ -91,6 +93,24 @@ const GoodInfo = () => {
   });
   return (
     <div className="pageDefault">
+      <Helmet>
+        <title>Store Mobile | Product | {selectedProduct?.name}</title>
+        <meta
+          name="description"
+          content={`Buy ${selectedProduct?.name} in our store. Available in various colors and models. Fast delivery and secure payment options.`}
+        />
+        <meta property="og:image" content={selectedProduct.imgUrl} />
+        <meta
+          property="og:title"
+          content={`Product | ${selectedProduct?.name}`}
+        />
+        <meta
+          property="og:description"
+          content={`Buy ${selectedProduct?.name} in our store. Available in various colors and models. Fast delivery and secure payment options.`}
+        />
+        <meta property="og:type" content={selectedProduct?.model} />
+        <meta property="og:url" content={pathname} />
+      </Helmet>
       <Header />
       <main className="containerContentPage">
         <nav className="navProduct">
@@ -489,7 +509,6 @@ const GoodInfo = () => {
                             key={star}
                             onClick={() => {
                               setAmountsSelectedStars(star);
-                              console.log(star);
                             }}
                           >
                             {amountsSelectedStars >= star ? (
