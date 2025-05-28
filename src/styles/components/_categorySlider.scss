@@ -44,7 +44,15 @@
 .slideCategoryContainer {
   position: relative;
   display: flex;
-
+  height: 100%;
+  width: 100%;
+  background: #7200cc;
+  background: linear-gradient(
+    135deg,
+    rgba(114, 0, 204, 1) 0%,
+    rgba(64, 141, 218, 1) 89%
+  );
+  border-radius: 15px;
   img {
     width: 100%;
   }

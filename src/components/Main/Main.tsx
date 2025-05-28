@@ -134,16 +134,6 @@ const Main = () => {
             </Link>
           </nav>
           <div className="slideCategoryContainer">
-            <img
-              src={resources.iPhoneBg}
-              alt={slidersCategory[currentSlideNumber - 1].productName}
-            />
-            <img
-              src={resources.freeIPhone}
-              alt="phones"
-              className="freeIphone"
-            />
-
             <nav className="slideCategoryInfoContainer">
               <div className="slideCategoryInfo">
                 <h2 className="slideCategoryInfoTitleProduct">
