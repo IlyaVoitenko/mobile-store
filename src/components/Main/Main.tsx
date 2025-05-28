@@ -88,6 +88,12 @@ const Main = () => {
         />
         <meta property="og:image" content={"../../assets/deliveryGoods.svg"} />
         <link rel="canonical" href={`https://mobile-store-gold.vercel.app/`} />
+        <link
+          rel="preload"
+          as="image"
+          href={resources.freeIPhone}
+          type="image/png"
+        />
       </Helmet>
       <Header />
       <main className="containerContentPage">
@@ -134,6 +140,16 @@ const Main = () => {
             </Link>
           </nav>
           <div className="slideCategoryContainer">
+            <img
+              src={resources.iPhoneBg}
+              alt={slidersCategory[currentSlideNumber - 1].productName}
+            />
+            <img
+              src={resources.freeIPhone}
+              alt="phones"
+              className="freeIphone"
+            />
+
             <nav className="slideCategoryInfoContainer">
               <div className="slideCategoryInfo">
                 <h2 className="slideCategoryInfoTitleProduct">
