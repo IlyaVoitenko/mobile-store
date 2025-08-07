@@ -101,25 +101,25 @@ const Main = () => {
           <nav className="containerCategoryLinks">
             <Link to={"/category/Iphone"} className="categoryLinks ">
               <div className="iPhoneContextContainer">
-                <img src={resources.iPhone} alt="iPhone" />
+                <img src={resources.iPhone} alt="" />
                 <span>Iphone</span>
               </div>
             </Link>
             <Link to={"/category/IPad"} className="categoryLinks">
               <div className="iPadContextContainer">
-                <img src={resources.iPad} alt="iPad" />
+                <img src={resources.iPad} alt="" />
                 <span>IPad</span>
               </div>
             </Link>
             <Link to={"/category/Apple Watch"} className="categoryLinks">
               <div className="appleWatchContextContainer">
-                <img src={resources.watch} alt="Apple Watch" />
+                <img src={resources.watch} alt="" />
                 <span>Apple Watch</span>
               </div>
             </Link>
             <Link to={"/category/IMac"} className="categoryLinks">
               <div className="iMacContextContainer">
-                <img src={resources.iMac} alt="iMac icon" />
+                <img src={resources.iMac} alt="" />
                 <span>IMac</span>
               </div>
             </Link>
