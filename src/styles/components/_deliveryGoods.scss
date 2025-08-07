@@ -21,6 +21,8 @@
 
     img {
       width: 48%;
+      min-width: 48%;
+      min-height: 100%;
       @include retina-laptop-l-half-1 {
         width: 57%;
       }
