@@ -15,23 +15,28 @@
   @include for-mobile {
     margin-top: 10px;
     margin-bottom: 10px;
+    min-height: 57px;
   }
 
   @include for-tablet {
     margin-top: 15px;
     margin-bottom: 15px;
+    min-height: 103px;
   }
   @include for-laptop {
     margin-top: 25px;
     margin-bottom: 25px;
+    min-height: 133px;
   }
   @include for-desktop {
     margin-top: 20px;
     margin-bottom: 20px;
+    min-height: 156px;
   }
   @include for-desktop4K {
     margin-top: 40px;
     margin-bottom: 40px;
+    min-height: 288px;
   }
   @include containerResponsiveWidth;
   .needHelpContentContainer {

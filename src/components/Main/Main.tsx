@@ -91,6 +91,12 @@ const Main = () => {
         <link
           rel="preload"
           as="image"
+          href={resources.needHelpBg}
+          type="image/svg"
+        />
+        <link
+          rel="preload"
+          as="image"
           href={resources.freeIPhone}
           type="image/png"
         />
