@@ -78,6 +78,8 @@ const Main = () => {
       })
     );
   }, []);
+
+  console.log("resources.freeIPhone", resources.freeIPhone);
   return (
     <div className="pageDefault">
       <Helmet>
@@ -93,12 +95,6 @@ const Main = () => {
           as="image"
           href={resources.needHelpBg}
           type="image/svg"
-        />
-        <link
-          rel="preload"
-          as="image"
-          href={resources.freeIPhone}
-          type="image/png"
         />
       </Helmet>
       <Header />
@@ -150,11 +146,21 @@ const Main = () => {
               src={resources.iPhoneBg}
               alt={slidersCategory[currentSlideNumber - 1].productName}
             />
-            <img
-              src={resources.freeIPhone}
-              alt="phones"
-              className="freeIphone"
-            />
+            {/* <picture>
+              {resources.freeIPhone.sources.map((source) => (
+                <source
+                  key={source.srcset}
+                  type={source.type}
+                  srcSet={source.srcset}
+                  sizes="100vh"
+                />
+              ))}
+              <img
+                src={resources.freeIPhone.img.src}
+                alt="phones"
+                className="freeIphone"
+              />
+            </picture> */}
 
             <nav className="slideCategoryInfoContainer">
               <div className="slideCategoryInfo">
