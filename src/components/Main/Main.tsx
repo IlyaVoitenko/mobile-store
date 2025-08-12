@@ -6,6 +6,7 @@ import { getProductsSelector } from "../../store/selectors";
 import Footer from "../Footer";
 import ProductCollection from "../ProductCollection";
 import { Helmet } from "react-helmet-async";
+
 import {
   handleValidClientName,
   handleValidClientNumber,
