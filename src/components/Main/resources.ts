@@ -62,7 +62,6 @@ export default {
   iPhoneBg,
   needHelpBg,
   freeIPhone,
-
   logoApple,
   logoLG,
   logoLenovo,

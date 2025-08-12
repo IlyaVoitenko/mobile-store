@@ -146,22 +146,11 @@ const Main = () => {
               src={resources.iPhoneBg}
               alt={slidersCategory[currentSlideNumber - 1].productName}
             />
-            {/* <picture>
-              {resources.freeIPhone.sources.map((source) => (
-                <source
-                  key={source.srcset}
-                  type={source.type}
-                  srcSet={source.srcset}
-                  sizes="100vh"
-                />
-              ))}
-              <img
-                src={resources.freeIPhone.img.src}
-                alt="phones"
-                className="freeIphone"
-              />
-            </picture> */}
-
+            <img
+              src={resources.freeIPhone}
+              alt="phones"
+              className="freeIphone"
+            />
             <nav className="slideCategoryInfoContainer">
               <div className="slideCategoryInfo">
                 <h2 className="slideCategoryInfoTitleProduct">

@@ -56,14 +56,15 @@
   }
   .freeIphone {
     position: absolute;
-    height: 100%;
-    width: 63%;
-    left: 40%;
+    height: 92%;
+    width: 38%;
+    left: 50%;
+    top: 8%;
     @include for-tablet {
-      left: 39%;
+      left: 50%;
     }
     @include for-mobile {
-      left: 39%;
+      left: 53%;
     }
   }
   .slideCategoryInfoContainer {
