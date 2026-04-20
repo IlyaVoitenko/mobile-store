@@ -59,7 +59,7 @@ const Main = () => {
   useEffect(() => {
     dispatch(setProductsByFilter([]));
     dispatch(
-      setSelectedFilters({ model: [], storage: [], color: [], type: [] })
+      setSelectedFilters({ model: [], storage: [], color: [], type: [] }),
     );
     dispatch(
       setSelectedProduct({
@@ -76,11 +76,10 @@ const Main = () => {
         imgUrl: "",
         type: "",
         vendorCode: 0,
-      })
+      }),
     );
-  }, []);
+  }, [dispatch]);
 
-  console.log("resources.freeIPhone", resources.freeIPhone);
   return (
     <div className="pageDefault">
       <Helmet>
@@ -187,7 +186,7 @@ const Main = () => {
                   handleNextSlider(
                     currentSlideNumber + 1,
                     setCurrentSlideNumber,
-                    amountSliders
+                    amountSliders,
                   )
                 }
               >

@@ -15,6 +15,7 @@ import {
 const persistConfig = {
   key: "root",
   storage,
+  whitelist: ["bucket"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -30,4 +31,6 @@ const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 export default store;

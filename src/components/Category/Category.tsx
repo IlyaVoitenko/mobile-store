@@ -45,10 +45,10 @@ const Category = () => {
   const dispatch = useDispatch();
   const productsSelector = useSelector(getProductsSelector) as ProductMap;
   const productFilteredSelector = useSelector(
-    getProductsByFilterSelector
+    getProductsByFilterSelector,
   ) as IProduct[];
   const paginatedProducts = useSelector(
-    getPaginatedProductsSelector
+    getPaginatedProductsSelector,
   ) as IProduct[];
   const selectedFilters = useSelector(getSelectedFiltersSelector);
   const popularGoodsOptionSelector = useSelector(getIsPopularGoods);
@@ -66,7 +66,7 @@ const Category = () => {
   useEffect(() => {
     setIsShow(false);
     dispatch(
-      setSelectedFilters({ model: [], storage: [], color: [], type: [] })
+      setSelectedFilters({ model: [], storage: [], color: [], type: [] }),
     );
   }, [category, dispatch]);
 
@@ -82,20 +82,20 @@ const Category = () => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       ([_, values]) => {
         if (values.length === 0) return true;
-      }
+      },
     );
 
     if (isEmptySelectedFiltersObject) {
       handleShowDefaultListGoods(
         productsSelector[category] ?? [],
         selectedFilters,
-        dispatch
+        dispatch,
       );
       dispatch(
         setPriceRangeGoods({
           minPrice: initialMinPrice,
           maxPrice: initialMaxPrice,
-        })
+        }),
       );
     }
   }, [selectedFilters, dispatch]);
@@ -158,7 +158,7 @@ const Category = () => {
                         productsSelector[category] ?? [],
                         selectedFilters,
                         priceRangeSelector,
-                        dispatch
+                        dispatch,
                       );
                     }
                     if (target.value) {
@@ -167,7 +167,7 @@ const Category = () => {
                         selectedFilters,
                         priceRangeSelector,
                         dispatch,
-                        target.value
+                        target.value,
                       );
                     }
                     if (!target.value) {
@@ -176,7 +176,7 @@ const Category = () => {
                         selectedFilters,
                         priceRangeSelector,
                         dispatch,
-                        target.value
+                        target.value,
                       );
                     }
                   }}
@@ -203,7 +203,9 @@ const Category = () => {
                 {model && (
                   <div className="containerFilters">
                     <span className="filterTitle">
-                      {category === "Accessories" ? " Type" : "Phone models"}{" "}
+                      {category === "Accessories"
+                        ? " Type"
+                        : "Phone models"}{" "}
                     </span>
                     <ul className={isShow ? "listFilterShow" : "listFilter"}>
                       {model.map((item: string) => (
@@ -221,12 +223,12 @@ const Category = () => {
                                 handlePositionBtnApplyFilters(
                                   target,
                                   setPositionApplyBtn,
-                                  containerRef
+                                  containerRef,
                                 );
                                 handleIsCheckedFilter(
                                   target,
                                   setActionFilters,
-                                  "model"
+                                  "model",
                                 );
                               }}
                             />
@@ -268,12 +270,12 @@ const Category = () => {
                                 handlePositionBtnApplyFilters(
                                   target,
                                   setPositionApplyBtn,
-                                  containerRef
+                                  containerRef,
                                 );
                                 handleIsCheckedFilter(
                                   target,
                                   setActionFilters,
-                                  "storage"
+                                  "storage",
                                 );
                               }}
                             />
@@ -305,12 +307,12 @@ const Category = () => {
                                 handlePositionBtnApplyFilters(
                                   target,
                                   setPositionApplyBtn,
-                                  containerRef
+                                  containerRef,
                                 );
                                 handleIsCheckedFilter(
                                   target,
                                   setActionFilters,
-                                  "color"
+                                  "color",
                                 );
                               }}
                             />
@@ -338,7 +340,7 @@ const Category = () => {
                       productsSelector[category] ?? [],
                       selectedFilters,
                       priceRangeSelector,
-                      dispatch
+                      dispatch,
                     )
                   }
                 >

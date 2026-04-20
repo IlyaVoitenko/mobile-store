@@ -1,16 +1,20 @@
+@use "../public/fonts/Roboto" as *;
+@use "../public/fonts/OpenSans/" as *;
+@use "../public/fonts/OpenSans/static/" as *;
+
 * {
   margin: 0;
   padding: 0;
 }
 ul,
 ol {
-  list-style: none; /* Убираем маркеры */
-  margin: 0; /* Убираем внешние отступы */
-  padding: 0; /* Убираем внутренние отступы */
+  list-style: none;
+  margin: 0;
+  padding: 0;
   padding-inline-start: 0px;
 
   li {
-    margin: 0; /* Убираем внешние отступы */
-    padding: 0; /* Убираем внутренние отступы */
+    margin: 0;
+    padding: 0;
   }
 }

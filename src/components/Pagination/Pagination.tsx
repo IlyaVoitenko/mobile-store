@@ -25,7 +25,7 @@ const Pagination = ({ list = [] }: PaginationProps) => {
   const paginatedList = list.slice(endIndex, startIndex);
   const reducedTotalPages = handleReducerPaginationPages(
     totalPages,
-    currentPage
+    currentPage,
   );
   useEffect(() => {
     dispatch(setProductsByCategory(paginatedList));

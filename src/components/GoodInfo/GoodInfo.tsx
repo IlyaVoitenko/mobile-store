@@ -65,7 +65,7 @@ const GoodInfo = () => {
     productFilteredSelector.length === 0
       ? filterProductsByUniqField(
           productsSelector[category as CategoryType],
-          "color"
+          "color",
         )
       : filterProductsByUniqField(productFilteredSelector, "color");
   const [activeImgItem, setActiveImgItem] = useState(colorsUniq[0]);
@@ -74,7 +74,7 @@ const GoodInfo = () => {
     productFilteredSelector.length === 0
       ? filterProductsByUniqField(
           productsSelector[category as CategoryType],
-          "model"
+          "model",
         )
       : filterProductsByUniqField(productFilteredSelector, "model");
 
@@ -87,7 +87,7 @@ const GoodInfo = () => {
         setSubmitting,
         resetForm,
         amountsSelectedStars,
-        setAmountsSelectedStars
+        setAmountsSelectedStars,
       ),
   });
   return (
@@ -140,7 +140,7 @@ const GoodInfo = () => {
                         key={item.id}
                         onClick={() => {
                           const index = colorsUniq.findIndex(
-                            (itemList) => itemList.id === item.id
+                            (itemList) => itemList.id === item.id,
                           );
                           setActiveImgItem(colorsUniq[index]);
                         }}
@@ -160,7 +160,7 @@ const GoodInfo = () => {
                 <button
                   onClick={() => {
                     const index = colorsUniq.findIndex(
-                      (item) => item.id === activeImgItem.id
+                      (item) => item.id === activeImgItem.id,
                     );
 
                     if (index === colorsUniq.length - 1) return;
@@ -175,7 +175,7 @@ const GoodInfo = () => {
                 <button
                   onClick={() => {
                     const index = colorsUniq.findIndex(
-                      (item) => item.id === activeImgItem.id
+                      (item) => item.id === activeImgItem.id,
                     );
 
                     if (index === 0) return;
@@ -222,7 +222,7 @@ const GoodInfo = () => {
                     key={item?.id}
                     onClick={() => {
                       const index = colorsUniq.findIndex(
-                        (itemList) => itemList?.color === item?.color
+                        (itemList) => itemList?.color === item?.color,
                       );
                       setActiveImgItem(colorsUniq[index]);
                     }}
@@ -239,7 +239,7 @@ const GoodInfo = () => {
                       border:
                         activeImgItem?.color === item?.color
                           ? `1px solid ${handleDefiningColorBlock(
-                              item?.color as string
+                              item?.color as string,
                             )}`
                           : "none",
                     }}
@@ -318,7 +318,7 @@ const GoodInfo = () => {
                       imgUrl: activeImgItem.imgUrl,
                       quantity: amountItem,
                       model: activeModel,
-                    })
+                    }),
                   );
                 }}
               >
@@ -519,7 +519,7 @@ const GoodInfo = () => {
                               <img src={greyStar} alt="" />
                             )}
                           </li>
-                        )
+                        ),
                       )}
                     </ul>
                     <button type="submit">

@@ -21,10 +21,10 @@ export const allowedKeys = [
 ];
 //checking is valid keys pasted
 export const checkValidContent = <
-  T extends HTMLInputElement | HTMLTextAreaElement
+  T extends HTMLInputElement | HTMLTextAreaElement,
 >(
   e: React.KeyboardEvent<T>,
-  eventValidContent: (value: string) => boolean
+  eventValidContent: (value: string) => boolean,
 ) => {
   const { key } = e;
   //check valid text and keys
@@ -61,7 +61,7 @@ export const handlePreSlider = (
   currentSlideNumber: number,
   setCurrentSlideNumber: {
     (value: SetStateAction<number>): void;
-  }
+  },
 ) => {
   if (currentSlideNumber < 1) return;
   setCurrentSlideNumber(currentSlideNumber);
@@ -72,14 +72,14 @@ export const handleNextSlider = (
   setCurrentSlideNumber: {
     (value: SetStateAction<number>): void;
   },
-  amountSliders: number
+  amountSliders: number,
 ) => {
   if (currentSlideNumber > amountSliders) return;
   setCurrentSlideNumber(currentSlideNumber);
 };
 //rendering filters by category
 export const filtersProductsByCategory = (
-  category: string | undefined
+  category: string | undefined,
 ): Filters | void => {
   switch (category) {
     case "Iphone":
@@ -133,7 +133,7 @@ export const filtersProductsByCategory = (
 export const handleIsCheckedFilter = (
   target: HTMLInputElement,
   setState: React.Dispatch<React.SetStateAction<Filters>>,
-  filter: keyof Filters
+  filter: keyof Filters,
 ) => {
   const name = target.name;
   const isChecked = target.checked;
@@ -157,7 +157,7 @@ export const handleIsCheckedFilter = (
 export const handlePositionBtnApplyFilters = (
   target: HTMLInputElement,
   setPositionApplyBtn: React.Dispatch<React.SetStateAction<number>>,
-  containerRef: React.RefObject<HTMLDivElement>
+  containerRef: React.RefObject<HTMLDivElement>,
 ) => {
   const inputRect = target.getBoundingClientRect();
   const containerRect = containerRef.current?.getBoundingClientRect();
@@ -174,7 +174,7 @@ export const handlePositionBtnApplyFilters = (
 //render amount pages by amount goods for pagination component
 export const handleReducerPaginationPages = (
   paginationPages: number,
-  currentPage: number
+  currentPage: number,
 ) => {
   const list = Array.from({ length: paginationPages }, (_, index) => index + 1);
 
@@ -191,7 +191,7 @@ export const handleReducerPaginationPages = (
 //filtering array by filters that using a user
 export const handleFilteringGoodsBySelectedCategories = (
   products: IProduct[],
-  selectedFilters: Filters
+  selectedFilters: Filters,
 ): IProduct[] => {
   return products?.filter((product: IProduct) => {
     return Object.entries(selectedFilters).every(([key, values]) => {
@@ -204,18 +204,18 @@ export const handleFilteringGoodsBySelectedCategories = (
 //returning array by price range chosen the user
 export const handleFilterGoodsByPriceRange = (
   list: IProduct[],
-  priceRange: IPriceRange
+  priceRange: IPriceRange,
 ) => {
   const { maxPrice, minPrice } = priceRange;
   if (!maxPrice || !minPrice) return list;
   return list.filter(
-    (item) => item.price <= maxPrice && item.price >= minPrice
+    (item) => item.price <= maxPrice && item.price >= minPrice,
   );
 };
 //filtering array by popularity and unpopularity
 export const handleFilterGoodsByPopular = (
   list: IProduct[],
-  popular: string
+  popular: string,
 ) => {
   if (popular === "Popular") {
     return list.filter((item) => item.isPopular === true);
@@ -230,36 +230,32 @@ export const handleApplySelectedFilters = (
   selectedFilters: Filters,
   priceRangeSelector: IPriceRange,
   dispatch: Dispatch,
-  popular: string = "default"
+  popular: string = "default",
 ) => {
   const products: IProduct[] = productsSelector ?? [];
   const filteredListGoods = handleFilteringGoodsBySelectedCategories(
     products,
-    selectedFilters
+    selectedFilters,
   );
 
   const filteredByPriceRange = handleFilterGoodsByPriceRange(
     filteredListGoods,
-    priceRangeSelector
+    priceRangeSelector,
   );
   //selected user a filter by popularity
   if (popular === "Popular") {
     const popularGoods = handleFilterGoodsByPopular(
       filteredByPriceRange,
-      popular
+      popular,
     );
-    if (!popularGoods?.length) alert("Goods not found");
-
     return dispatch(setProductsByFilter(popularGoods));
   }
   //selected user a filter by unpopularity
   if (popular === "Unpopular") {
     const unpopularGoods = handleFilterGoodsByPopular(
       filteredByPriceRange,
-      popular
+      popular,
     );
-    if (!unpopularGoods?.length) alert("Goods not found");
-
     return dispatch(setProductsByFilter(unpopularGoods));
   }
   return dispatch(setProductsByFilter(filteredByPriceRange));
@@ -268,27 +264,27 @@ export const handleApplySelectedFilters = (
 export const handleShowDefaultListGoods = (
   productsSelector: IProduct[],
   selectedFilters: Filters,
-  dispatch: Dispatch
+  dispatch: Dispatch,
 ) => {
   const products: IProduct[] = productsSelector ?? [];
   const filteredListGoods = handleFilteringGoodsBySelectedCategories(
     products,
-    selectedFilters
+    selectedFilters,
   );
   return dispatch(setProductsByFilter(filteredListGoods));
 };
 //finding out min and max price value of goods
 export const minAndMaxPriceListGoods = (
-  listGoods: IProduct[]
+  listGoods: IProduct[],
 ): IPriceRange | void => {
   if (listGoods.length === 0) return;
 
   return {
     initialMinPrice: Math.min(
-      ...listGoods.map((item: { price: number }) => item.price)
+      ...listGoods.map((item: { price: number }) => item.price),
     ),
     initialMaxPrice: Math.max(
-      ...listGoods.map((item: { price: number }) => item.price)
+      ...listGoods.map((item: { price: number }) => item.price),
     ),
   };
 };
@@ -304,10 +300,10 @@ export const addNewReviewPost = async (
   setSubmitting: (isSubmitting: boolean) => void,
   resetForm: () => void,
   amountsSelectedStars: number,
-  setAmountsSelectedStars: React.Dispatch<React.SetStateAction<number>>
+  setAmountsSelectedStars: React.Dispatch<React.SetStateAction<number>>,
 ) => {
   if (amountsSelectedStars === 0) {
-    alert("Please select a star");
+    setSubmitting(false);
     return;
   }
   const year = new Date().getFullYear();
@@ -333,7 +329,7 @@ export const addNewReviewPost = async (
 };
 export const filterProductsByUniqField = (
   arr: IProduct[],
-  field: keyof IProduct
+  field: keyof IProduct,
 ) => {
   const unique = new Set();
   const listUniqFields = arr.filter((item) => {

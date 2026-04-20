@@ -26,7 +26,6 @@ import iPhoneBg from "../../assets/Rectangle 6.svg";
 import needHelpBg from "../../assets/needHelpBg.svg";
 
 import freeIPhone from "../../assets/Free_iPhone_11_Pro_Mockup_2-1.png";
-console.log("freeIPhone:", freeIPhone);
 import logoApple from "../../assets/logoApple.svg";
 import logoLG from "../../assets/logoLG.svg";
 import logoLenovo from "../../assets/logoLenovo.svg";

@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { IProduct } from "../../types";
 import { Link } from "react-router-dom";
 import "../../styles/components/_productCard.scss";
 import AddToCardBtn from "./AddToCardBtn";
 import AmountProduct from "./AmountProduct";
-import { useDispatch } from "react-redux";
 import { setSelectedProduct } from "../../store/slices/productsSlice";
+import { useAppDispatch } from "../../store/hooks";
 
 type ProductCardProps = {
   card: IProduct;
@@ -18,7 +18,7 @@ const ProductCard = ({
   promotion = false,
   category = "Accessories",
 }: ProductCardProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { name, price, imgUrl, id } = card || {};
   const [amountItem, setAmountItem] = useState<number>(1);
 
@@ -82,4 +82,4 @@ const ProductCard = ({
   );
 };
 
-export default ProductCard;
+export default memo(ProductCard);

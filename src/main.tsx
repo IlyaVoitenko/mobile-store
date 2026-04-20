@@ -1,4 +1,4 @@
-import "./assets/styles/global.scss";
+import "./index.scss";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import { StrictMode } from "react";
@@ -21,5 +21,5 @@ createRoot(document.getElementById("root")!).render(
       </Provider>
     </HelmetProvider>
     <Analytics />
-  </StrictMode>
+  </StrictMode>,
 );
