@@ -1,6 +1,6 @@
 # Mobile Store
 
-A single-page e-commerce storefront for browsing mobile devices and accessories, viewing product details, and completing a checkout flow.
+A fake single-page e-commerce storefront for browsing mobile devices and accessories, viewing product details, and completing a checkout flow.
 
 The project is built with React + TypeScript and uses Redux Toolkit with persisted client state for cart and catalog UX continuity.
 
