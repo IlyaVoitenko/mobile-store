@@ -21,14 +21,13 @@ import {
   minAndMaxPriceListGoods,
   handleShowDefaultListGoods,
 } from "../../helper";
-import { IProduct, CategoryType, ProductMap } from "../../types";
+import { IProduct, CategoryType } from "../../types";
 import { useEffect, useState, useRef } from "react";
 import ProductCard from "../ProductCard";
 import Pagination from "../Pagination";
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import {
-  getProductsSelector,
-  getPaginatedProductsSelector,
+  getCategoryProductsSelector,
   getProductsByFilterSelector,
   getSelectedFiltersSelector,
   getIsPopularGoods,
@@ -42,23 +41,23 @@ import {
 const Category = () => {
   const { category } = useParams() as { category: CategoryType };
 
-  const dispatch = useDispatch();
-  const productsSelector = useSelector(getProductsSelector) as ProductMap;
-  const productFilteredSelector = useSelector(
+  const dispatch = useAppDispatch();
+  const categoryProducts = useAppSelector((state) =>
+    getCategoryProductsSelector(state, category),
+  ) as IProduct[];
+  const productFilteredSelector = useAppSelector(
     getProductsByFilterSelector,
   ) as IProduct[];
-  const paginatedProducts = useSelector(
-    getPaginatedProductsSelector,
-  ) as IProduct[];
-  const selectedFilters = useSelector(getSelectedFiltersSelector);
-  const popularGoodsOptionSelector = useSelector(getIsPopularGoods);
-  const priceRangeSelector = useSelector(getPriceRangeSelector);
+  const selectedFilters = useAppSelector(getSelectedFiltersSelector);
+  const popularGoodsOptionSelector = useAppSelector(getIsPopularGoods);
+  const priceRangeSelector = useAppSelector(getPriceRangeSelector);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [actionFilters, setActionFilters] = useState(selectedFilters);
   const [isShow, setIsShow] = useState(false);
   const [positionApplyBtn, setPositionApplyBtn] = useState(21);
+  const [pageItems, setPageItems] = useState<IProduct[]>([]);
 
   const filters = filtersProductsByCategory(category as CategoryType);
   const { model, storage, color } = filters || {};
@@ -76,7 +75,7 @@ const Category = () => {
 
   useEffect(() => {
     const { initialMinPrice, initialMaxPrice } =
-      minAndMaxPriceListGoods(productsSelector[category] ?? []) || {};
+      minAndMaxPriceListGoods(categoryProducts) || {};
 
     const isEmptySelectedFiltersObject = Object.entries(selectedFilters).every(
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -87,7 +86,7 @@ const Category = () => {
 
     if (isEmptySelectedFiltersObject) {
       handleShowDefaultListGoods(
-        productsSelector[category] ?? [],
+        categoryProducts,
         selectedFilters,
         dispatch,
       );
@@ -98,7 +97,7 @@ const Category = () => {
         }),
       );
     }
-  }, [selectedFilters, dispatch]);
+  }, [selectedFilters, dispatch, categoryProducts]);
 
   return (
     <div className="pageDefault">
@@ -106,7 +105,7 @@ const Category = () => {
         <title>Store Mobile | Categories of products</title>
         <meta
           name="description"
-          content={`Explore our ${category} category with ${productsSelector[category]?.length} items. Find the best deals on mobile phones, accessories, and more.`}
+          content={`Explore our ${category} category with ${categoryProducts.length} items. Find the best deals on mobile phones, accessories, and more.`}
         />
         <meta property="og:image" content={deliveryGoods} />
         <meta
@@ -115,7 +114,7 @@ const Category = () => {
         />
         <meta
           property="og:description"
-          content={`Explore our ${category} category with ${productsSelector[category]?.length} items. Find the best deals on mobile phones, accessories, and more.`}
+          content={`Explore our ${category} category with ${categoryProducts.length} items. Find the best deals on mobile phones, accessories, and more.`}
         />
         <meta
           property="og:url"
@@ -135,13 +134,12 @@ const Category = () => {
           <div className="productNameAndCount">
             <h1 className="productName">{category as CategoryType}</h1>
             <span className="productCount">
-              {productFilteredSelector?.length ||
-                productsSelector[category]?.length}{" "}
+              {productFilteredSelector?.length || categoryProducts.length}{" "}
               items
             </span>
           </div>
           {productFilteredSelector?.length !== 0 ||
-            (productsSelector[category] !== undefined && (
+            (categoryProducts.length !== 0 && (
               <section className="containerSortProducts">
                 <label className="sortProductsLabel" htmlFor="sortProducts">
                   <span className="sortProductsSpan">
@@ -155,7 +153,7 @@ const Category = () => {
                     dispatch(setPopularGoodsOptionSelector(target.value));
                     if (target.value === "default") {
                       return handleApplySelectedFilters(
-                        productsSelector[category] ?? [],
+                        categoryProducts,
                         selectedFilters,
                         priceRangeSelector,
                         dispatch,
@@ -163,7 +161,7 @@ const Category = () => {
                     }
                     if (target.value) {
                       return handleApplySelectedFilters(
-                        productsSelector[category] ?? [],
+                        categoryProducts,
                         selectedFilters,
                         priceRangeSelector,
                         dispatch,
@@ -172,7 +170,7 @@ const Category = () => {
                     }
                     if (!target.value) {
                       return handleApplySelectedFilters(
-                        productsSelector[category] ?? [],
+                        categoryProducts,
                         selectedFilters,
                         priceRangeSelector,
                         dispatch,
@@ -191,14 +189,12 @@ const Category = () => {
         </div>
         <section className="containerFilterAndListProducts">
           {productFilteredSelector?.length !== 0 ||
-          productsSelector[category] !== undefined ? (
+          categoryProducts.length !== 0 ? (
             <div className="filtersProducts" ref={containerRef}>
               <div className="filterPrises">
                 <span className="filterTitle">Price</span>
                 <PriceRange
-                  listProducts={
-                    productFilteredSelector || productsSelector[category]
-                  }
+                  listProducts={productFilteredSelector || categoryProducts}
                 />
                 {model && (
                   <div className="containerFilters">
@@ -337,7 +333,7 @@ const Category = () => {
                   className="applyFilterBtn"
                   onClick={() =>
                     handleApplySelectedFilters(
-                      productsSelector[category] ?? [],
+                      categoryProducts,
                       selectedFilters,
                       priceRangeSelector,
                       dispatch,
@@ -349,12 +345,11 @@ const Category = () => {
               </div>
             </div>
           ) : null}
-          {productFilteredSelector?.length ||
-          productsSelector[category]?.length ? (
+          {productFilteredSelector?.length || categoryProducts.length ? (
             productFilteredSelector?.length !== 0 ? (
               <div className="listProductsContainer">
                 <ul className="listProducts">
-                  {paginatedProducts?.map((item) => (
+                  {pageItems?.map((item) => (
                     <ProductCard
                       card={item}
                       category={category}
@@ -363,13 +358,16 @@ const Category = () => {
                   ))}
                 </ul>
                 {Array.isArray(productFilteredSelector) && (
-                  <Pagination list={productFilteredSelector} />
+                  <Pagination
+                    list={productFilteredSelector}
+                    onPageItemsChange={setPageItems}
+                  />
                 )}
               </div>
             ) : (
               <div className="listProductsContainer">
                 <ul className="listProducts">
-                  {paginatedProducts?.map((item) => (
+                  {pageItems?.map((item) => (
                     <ProductCard
                       card={item}
                       category={category}
@@ -377,9 +375,12 @@ const Category = () => {
                     />
                   ))}
                 </ul>
-                {Array.isArray(productsSelector[category]) &&
-                  productsSelector[category]?.length !== 0 && (
-                    <Pagination list={productsSelector[category]} />
+                {Array.isArray(categoryProducts) &&
+                  categoryProducts.length !== 0 && (
+                    <Pagination
+                      list={categoryProducts}
+                      onPageItemsChange={setPageItems}
+                    />
                   )}
               </div>
             )

@@ -4,8 +4,6 @@ import arrowDownBlue from "../../assets/arrowDownBlue.svg";
 import paginationLeftArrow from "../../assets/paginationLeftArrow.svg";
 import paginationRightArrow from "../../assets/paginationRightArrow.svg";
 import { IProduct } from "../../types";
-import { useDispatch } from "react-redux";
-import { setProductsByCategory } from "../../store/slices/productsSlice";
 import { handleReducerPaginationPages } from "../../helper";
 import { nanoid } from "nanoid";
 
@@ -13,9 +11,9 @@ const LIMIT_PER_PAGE = 12;
 
 interface PaginationProps {
   list: IProduct[];
+  onPageItemsChange: (items: IProduct[]) => void;
 }
-const Pagination = ({ list = [] }: PaginationProps) => {
-  const dispatch = useDispatch();
+const Pagination = ({ list = [], onPageItemsChange }: PaginationProps) => {
   const totalItems = list.length || 0;
   const totalPages = Math.ceil(totalItems / LIMIT_PER_PAGE);
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,11 +23,15 @@ const Pagination = ({ list = [] }: PaginationProps) => {
   const paginatedList = list.slice(endIndex, startIndex);
   const reducedTotalPages = handleReducerPaginationPages(
     totalPages,
-    currentPage,
+    currentPage
   );
   useEffect(() => {
-    dispatch(setProductsByCategory(paginatedList));
-  }, [dispatch, currentPage, list]);
+    onPageItemsChange(isShowAllItems ? list : paginatedList);
+  }, [currentPage, isShowAllItems, list, onPageItemsChange]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [list]);
 
   return (
     <section className="paginationContainer">
@@ -102,10 +104,8 @@ const Pagination = ({ list = [] }: PaginationProps) => {
           if (!isShowAllItems) {
             setIsShowAllItems((isShowAllItems) => !isShowAllItems);
             setCurrentPage(1);
-            dispatch(setProductsByCategory(list));
           } else {
             setIsShowAllItems((isShowAllItems) => !isShowAllItems);
-            dispatch(setProductsByCategory(list.slice(0, LIMIT_PER_PAGE)));
             setCurrentPage(1);
           }
         }}

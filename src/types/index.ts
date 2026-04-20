@@ -64,7 +64,6 @@ export interface NewProductToBucket extends IProduct {
 }
 export interface initialStateProps {
   products: IProductCategory;
-  paginatedProducts: IProduct[];
   productFiltered: IProduct[];
   selectedFilters: IFilter;
   isLoading: boolean;

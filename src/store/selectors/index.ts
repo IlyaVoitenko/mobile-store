@@ -5,6 +5,7 @@ import {
   IProductCategory,
   IFilter,
 } from "../../types";
+import { createSelector } from "@reduxjs/toolkit";
 
 export const getProductsSelector = (state: {
   products: initialStateProps;
@@ -12,10 +13,6 @@ export const getProductsSelector = (state: {
 export const getSelectedProductSelector = (state: {
   products: initialStateProps;
 }): IProduct => state.products.selectedProduct;
-
-export const getPaginatedProductsSelector = (state: {
-  products: initialStateProps;
-}): IProduct[] => state.products.paginatedProducts;
 
 export const getProductsByFilterSelector = (state: {
   products: initialStateProps;
@@ -34,6 +31,11 @@ export const getPriceRangeSelector = (state: { products: initialStateProps }) =>
 
 export const getIsPopularGoods = (state: { products: initialStateProps }) =>
   state.products.popularGoodsOption;
+
+export const getCategoryProductsSelector = createSelector(
+  [getProductsSelector, (_state: { products: initialStateProps }, category: string) => category],
+  (products, category): IProduct[] => products[category] ?? []
+);
 
 export const getBucketProducts = (state: { bucket: InitialBucket }) =>
   state.bucket.bucket;

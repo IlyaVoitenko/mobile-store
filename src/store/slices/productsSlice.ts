@@ -4,7 +4,6 @@ import { initialStateProps } from "../../types";
 
 const initialState: initialStateProps = {
   products: listProduct,
-  paginatedProducts: [],
   productFiltered: [],
   isLoading: false,
   selectedFilters: { model: [], storage: [], color: [], type: [] },
@@ -46,9 +45,6 @@ const productsSlice = createSlice({
     setIsLoading: (state, action) => {
       state.isLoading = action.payload;
     },
-    setProductsByCategory: (state, action) => {
-      state.paginatedProducts = [...action.payload];
-    },
     setProductsByFilter: (state, action) => {
       state.productFiltered = [...action.payload];
     },
@@ -65,7 +61,6 @@ const productsSlice = createSlice({
 export const {
   setProducts,
   setPopularGoodsOptionSelector,
-  setProductsByCategory,
   setProductsByFilter,
   setIsLoading,
   setSelectedProduct,
